@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
+
+  resources :users do
+
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -20,4 +20,18 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  user:
+    full_name: "Full Name"
+    email: "Email"
+    password: "Password"
+    confirm_password: "Confirm Password"
+    phone: "Phone Number"
+    remember_me: "Remember Me"
+    go: "Go"
+  login: "Login"
+  register: "Register"
+  sign:
+    up: "Sign Up"
+    in: "Sign In"
+  restore: "Restore"
+

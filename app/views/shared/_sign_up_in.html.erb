@@ -20,75 +20,60 @@
         <div role="tabpanel" class="tab-pane active" id="sign_in">
           <!--Sign In-->
           <h2 class="text-center"><i class="glyphicon glyphicon-log-in"></i> <%= t("login") %></h2>
-          <%= form_for(@user, url: {}, html: {class: "form-horizontal", role: "form"}) do |f| %>
-
-              <div class="form-group ">
-                <label for="login" class="sr-only"><%= t("user.email") %></label>
-                <input type="text" class="form-control" name="login" id="login_value"
-                       placeholder="Email" tabindex="1" value=""/>
+          <%= form_for(@user, url: signin_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
+              <div class="form-group">
+                <%#= f.label t("user.email"), class: "sr-only" #%>
+                <%= f.email_field :email, class: "form-control", placeholder: t("user.email"), tabindex: "1" %>
               </div>
-              <div class="form-group ">
-                <label for="password" class="sr-only"><%= t("user.confirm_password") %></label>
-                <input type="password" class="form-control" name="password" id="password"
-                       placeholder="Password" value="" tabindex="2"/>
+              <div class="form-group">
+                <%#= f.label t("user.password"), class: "sr-only" #%>
+                <%= f.password_field :password, class: "form-control", placeholder: t("user.password"), tabindex: "3" %>
               </div>
 
-              <div class="checkbox">
+              <!--<div class="checkbox">
                 <label class="control-label" for="remember_me">
-                  <input type="checkbox" name="remember_me" id="remember_me" value="1" class=""
-                         tabindex="3"/> <%= t("user.remember_me") %>
+                  <input type="checkbox" name="remember_me" id="remember_me" value="1" class="" tabindex="3"/> <%= t("user.remember_me") %>
                 </label>
-              </div>
-              <br/>
+              </div>-->
+              <!--<br/>-->
 
-              <div class="form-group ">
-                <button type="submit" name="log-me-in" id="submit" tabindex="5"
-                        class="btn btn-lg btn-green btn-group-justified">Go
-                </button>
+              <div class="form-group">
+                <!--<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-green btn-group-justified">Go</button>-->
+                <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "3" %>
               </div>
               <!--</form>-->
           <% end %>
         </div>
         <div role="tabpanel" class="tab-pane" id="sign_up">
-          <!--Sign Up-->
 
           <h2 class="text-center"><i class="glyphicon glyphicon-log-in"></i> <%= t("register") %></h2>
 
-          <form method="post" accept-charset="utf-8" autocomplete="off" role="form"
-                class="form-horizontal">
-            <div class="form-group ">
-              <label for="login" class="sr-only"><%= t("user.full_name") %></label>
-              <input type="email" class="form-control" name="full_name" id="full_name"
-                     placeholder="Full Name" tabindex="1" value=""/>
-            </div>
-            <div class="form-group ">
-              <label for="login" class="sr-only"><%= t("user.email") %></label>
-              <input type="email" class="form-control" name="login" id="login_value"
-                     placeholder="Email" tabindex="1" value=""/>
-            </div>
-            <div class="form-group ">
-              <label for="login" class="sr-only"><%= t("user.phone") %></label>
-              <input type="text" class="form-control" name="phone" id="phone"
-                     placeholder="Phone Number" tabindex="2" value=""/>
-            </div>
-            <div class="form-group ">
-              <label for="password" class="sr-only"><%= t("user.password") %></label>
-              <input type="password" class="form-control" name="password" id="password"
-                     placeholder="Password" value="" tabindex="3"/>
-            </div>
-            <div class="form-group ">
-              <label for="password" class="sr-only"><%= t("user.confirm_password") %></label>
-              <input type="password" class="form-control" name="confirm_password" id="password"
-                     placeholder="Confirm Password" value="" tabindex="4"/>
-            </div>
-            <br/>
+          <%= form_for(@user, url: signup_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
 
-            <div class="form-group ">
-              <button type="submit" name="log-me-in" id="submit" tabindex="5"
-                      class="btn btn-lg btn-green btn-group-justified"><%= t("user.go") %>
-              </button>
-            </div>
-          </form>
+              <div class="form-group">
+                <%= f.text_field :full_name, class: "form-control", placeholder: t("user.full_name"), tabindex: "1" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.email_field :email, class: "form-control", placeholder: t("user.email"), tabindex: "2" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.text_field :phone_number, class: "form-control", placeholder: t("user.phone"), tabindex: "3" %>
+              </div>
+
+              <div class="form-group ">
+                <%= f.password_field :password, class: "form-control", placeholder: t("user.password"), tabindex: "4" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.password_field :confirm_password, class: "form-control", placeholder: t("user.confirm_password"), tabindex: "5" %>
+              </div>
+
+              <div class="form-group ">
+                <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "5" %>
+              </div>
+          <% end %>
 
         </div>
       </div>

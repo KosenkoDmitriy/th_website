@@ -35,7 +35,39 @@ class UsersController < ApplicationController
 
   end
 
+  # login from game
+  def login
+    email = params['e'] if params['e'].present?
+    password = params['p'] if params['p'].present?
+    password = pass(password)
+    if User.exists?(email: email, password: password)
+      user = User.find_by(email: email, password: password)
+      user.key = generate_key(email, password)
+      if (user.save!)
+        render plain: "#{user.key}", status: 200
+        return
+      end
+      render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200
+      return
+    else
+      render plain: "please signup/register", status: 404
+      return
+    end
+  end
+
   private
+  def generate_key email, password
+    prng = Random.new()
+    salt = prng.rand(100..1000)
+    key = Digest::MD5.hexdigest("#{salt}#{email}#{password}")
+    return key
+  end
+
+  def pass pass
+    pass = Digest::MD5.hexdigest(pass)
+    return pass
+  end
+
   def user_params
     params.require(:user).permit(:email, :password, :confirm_password, :full_name, :credits, :phone_number)
   end

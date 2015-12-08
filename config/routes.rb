@@ -10,6 +10,14 @@ Rails.application.routes.draw do
   post 'signup' => 'users#signup', as: :signup
   post 'restore' => 'users#restore', as: :restore
 
+  # game
+  post 'login' => 'users#login', as: :login
+  get 'login' => 'users#login'
+  post 'add' => 'users#add', as: :add
+  post 'sub' => 'users#sub', as: :sub
+  post 'balance' => 'users#get_balance', as: :balance
+
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -1,7 +1,7 @@
 require 'digest/md5'
 
 class UsersController < ApplicationController
-  protect_from_forgery except: :login
+  protect_from_forgery except: [:login, :sub, :add, :get]
   skip_before_action :verify_authenticity_token
 
   respond_to :html, :json
@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     user.password = pass(password)
     if user.save!
       # respond_with user
-      render plain: "registered successfully! your email: #{ user.email }"
+      render plain: 'registered successfully! your email: #{ user.email }'
     else
-      render plain: "error: can't create user #{ user.email }"
+      render plain: 'error: can\' t create user #{ user.email }'
     end
   end
 
@@ -25,12 +25,12 @@ class UsersController < ApplicationController
       password = pass(password)
       if User.exists?(email: email, password: password)
         user = User.find_by(email: email, password: password)
-        render plain: "#{user.email} #{user.phone_number}"
+        render plain: '#{user.email} #{user.phone_number}'
       else
-        render plain: "please signup/register"
+        render plain: 'please signup/register'
       end
     else
-      render plain: "empty email"
+      render plain: 'empty email'
     end
   end
 
@@ -47,22 +47,67 @@ class UsersController < ApplicationController
       user = User.find_by(email: email, password: password)
       user.key = generate_key(email, password)
       if (user.save!)
-        render plain: "#{user.key}", status: 200
+        render plain: '#{user.key}', status: 200
         return
       end
-      render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200
-      return
-    else
-      render plain: "please signup/register", status: 404
+      #render plain: '#{user.key} #{user.email} #{user.phone_number}', status: 200
+      render plain 'error key', status: 404
       return
     end
+    render plain: 'please signup/register', status: 404
+  end
+
+  # sub lose amount from balance
+  def sub
+    user = get_user params
+    if user.present?
+      user.credits -= credits
+      if user.save!
+        render plain: 'ok', status: 200
+        return
+      end
+    end
+    render plain: 'error', status: 404
+  end
+
+  # add win amount to balance
+  def add
+    user = get_user params
+    if user.present?
+      user.credits += credits
+      if user.save!
+        render plain: 'ok', status: 200
+        return
+      end
+    end
+    render plain: 'error', status: 404
+  end
+
+  # get balance
+  def get
+    user = get_user params
+    if user.present?
+      render plain: '#{user.credits}', status: 200
+    end
+    render plain: 'error', status: 404
   end
 
   private
+
+  def get_user params
+    credits = params['a'] if params['a'].present?
+    key = params['k'] if params['k'].present?
+    if User.exists?(key: key)
+      user = User.find_by(key: key)
+      return user
+    end
+    return nil
+  end
+
   def generate_key email, password
     prng = Random.new()
     salt = prng.rand(100..1000)
-    key = Digest::MD5.hexdigest("#{salt}#{email}#{password}")
+    key = Digest::MD5.hexdigest('#{salt}#{email}#{password}')
     return key
   end
 
@@ -74,4 +119,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :confirm_password, :full_name, :credits, :phone_number)
   end
+
 end

@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get 'login' => 'users#login'
   post 'add' => 'users#add', as: :add
   post 'sub' => 'users#sub', as: :sub
-  post 'get_balance' => 'users#get_balance', as: :balance
-  post 'set_balance' => 'users#get_balance', as: :balance
+  post 'get' => 'users#get_balance', as: :get_balance
+  post 'set' => 'users#set_balance', as: :set_balance
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

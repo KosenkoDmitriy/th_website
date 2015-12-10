@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     key = params['k'] if params['k'].present?
     if User.exists?(key: key)
       user = User.find_by(key: key)
-      return user, credits
+      return user, credits.to_f
     end
     return nil
   end

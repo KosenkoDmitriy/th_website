@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     user.password = pass(password)
     if user.save!
       # respond_with user
-      render plain: 'registered successfully! your email: #{ user.email }'
+      render plain: "registered successfully! your email: #{ user.email }"
     else
-      render plain: 'error: can\' t create user #{ user.email }'
+      render plain: "error: can\' t create user #{ user.email }"
     end
   end
 
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       password = pass(password)
       if User.exists?(email: email, password: password)
         user = User.find_by(email: email, password: password)
-        render plain: '#{user.email} #{user.phone_number}'
+        render plain: "#{user.email} #{user.phone_number}"
       else
         render plain: 'please signup/register'
       end
@@ -47,10 +47,10 @@ class UsersController < ApplicationController
       user = User.find_by(email: email, password: password)
       user.key = generate_key(email, password)
       if (user.save!)
-        render plain: '#{user.key}', status: 200
+        render plain: "#{user.key}", status: 200
         return
       end
-      #render plain: '#{user.key} #{user.email} #{user.phone_number}', status: 200
+      #render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200
       render plain 'error key', status: 404
       return
     end
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
   def get
     user = get_user params
     if user.present?
-      render plain: '#{user.credits}', status: 200
+      render plain: "#{user.credits}", status: 200
     end
     render plain: 'error', status: 404
   end
@@ -107,7 +107,7 @@ class UsersController < ApplicationController
   def generate_key email, password
     prng = Random.new()
     salt = prng.rand(100..1000)
-    key = Digest::MD5.hexdigest('#{salt}#{email}#{password}')
+    key = Digest::MD5.hexdigest("#{salt}#{email}#{password}")
     return key
   end
 

@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 
   # sub lose amount from balance
   def sub
-    user = get_user params
+    user, credits_from_param = get_user params
     if user.present?
       user.credits -= credits
       if user.save!
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
   # add win amount to balance
   def add
-    user = get_user params
+    user, credits_from_param = get_user params
     if user.present?
       user.credits += credits
       if user.save!
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 
   # get balance
   def get
-    user = get_user params
+    user, credits_from_param = get_user params
     if user.present?
       render plain: "#{user.credits}", status: 200
     end
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     key = params['k'] if params['k'].present?
     if User.exists?(key: key)
       user = User.find_by(key: key)
-      return user
+      return user, credits
     end
     return nil
   end

@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   def sub
     user, credits_from_param = get_user params
     if user.present?
-      user.credits -= credits
+      user.credits -= credits_from_param
       if user.save!
         render plain: 'ok', status: 200
         return
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   def add
     user, credits_from_param = get_user params
     if user.present?
-      user.credits += credits
+      user.credits += credits_from_param
       if user.save!
         render plain: 'ok', status: 200
         return

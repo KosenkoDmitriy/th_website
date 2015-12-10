@@ -83,8 +83,20 @@ class UsersController < ApplicationController
     render plain: 'error', status: 404
   end
 
+  def set_balance
+    user, credits_from_param = get_user params
+    if user.present?
+      user.credits = credits_from_param
+      if user.save!
+        render plain: 'ok', status: 200
+        return
+      end
+    end
+    render plain: 'error', status: 404
+  end
+
   # get balance
-  def get
+  def get_balance
     user, credits_from_param = get_user params
     if user.present?
       render plain: "#{user.credits}", status: 200

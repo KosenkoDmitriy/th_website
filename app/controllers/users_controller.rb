@@ -1,7 +1,7 @@
 require 'digest/md5'
 
 class UsersController < ApplicationController
-  protect_from_forgery except: [:login, :sub, :add, :get]
+  protect_from_forgery except: [:login, :sub, :add, :get_balance, :set_balance]
   skip_before_action :verify_authenticity_token
 
   respond_to :html, :json

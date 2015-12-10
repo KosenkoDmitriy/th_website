@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if user.save!
       # respond_with user
       render plain: "registered successfully! your email: #{ user.email }"
+      return
     else
       render plain: "error: can\' t create user #{ user.email }"
     end
@@ -26,8 +27,10 @@ class UsersController < ApplicationController
       if User.exists?(email: email, password: password)
         user = User.find_by(email: email, password: password)
         render plain: "#{user.email} #{user.phone_number}"
+        return
       else
         render plain: 'please signup/register'
+        return
       end
     else
       render plain: 'empty email'
@@ -100,6 +103,7 @@ class UsersController < ApplicationController
     user, credits_from_param = get_user params
     if user.present?
       render plain: "#{user.credits}", status: 200
+      return
     end
     render plain: 'error', status: 404
   end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'signin' => 'users#signin', as: :signin
   post 'signup' => 'users#signup', as: :signup
   post 'restore' => 'users#restore', as: :restore
+  get 'restore' => 'users#restore', as: :restore_get
 
   # TODO: use this namespace and change urls in game
   # namespace :api do

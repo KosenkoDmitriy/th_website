@@ -23,7 +23,7 @@
                     <tr>
                       <td><%= credit.try(:[], :cost) %></td>
                       <td><%= credit.try(:[], :value) %></td>
-                      <td><%= link_to "Buy", "buy", class: "btn btn-green" %></td>
+                      <td><%= link_to "Login and Buy", "#{root_path}", class: "btn btn-green" %></td>
                     </tr>
                 <% end %>
             <% end %>

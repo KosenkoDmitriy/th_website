@@ -5,18 +5,25 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
 
-  resources :users
+  resources :users do
+    get 'credits/buy' => 'home#buy', as: :buy_get
+    post 'credits/buy' => 'home#buy', as: :buy
+  end
+
   post 'signin' => 'users#signin', as: :signin
   post 'signup' => 'users#signup', as: :signup
   post 'restore' => 'users#restore', as: :restore
 
-  # game
+  # TODO: use this namespace and change urls in game
+  # namespace :api do
   post 'login' => 'users#login', as: :login
   get 'login' => 'users#login'
   post 'add' => 'users#add', as: :add
   post 'sub' => 'users#sub', as: :sub
   post 'get' => 'users#get_balance', as: :get_balance
   post 'set' => 'users#set_balance', as: :set_balance
+  # end
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

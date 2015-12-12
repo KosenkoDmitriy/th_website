@@ -1,0 +1,42 @@
+<div class="container container-narrow content">
+  <div class="row" id="home">
+    <div class="col-xs-12">
+      <h2 class="text-center dark">Buy</h2>
+
+      <% image_tag "games/texas_holdem.jpeg", class: "img-responsive col-xs-12" %>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="text-capitalize">
+          <tr class="text-center">
+            <th class="text-center">cost</th>
+            <th class="text-center">credits</th>
+          </tr>
+          </thead>
+          <tbody class="text-center">
+          <% if @creditList.any? %>
+              <% @creditList.each do |credit| %>
+                  <tr>
+                    <td><%= credit.try(:[], :cost) %></td>
+                    <td><%= credit.try(:[], :value) %></td>
+                    <td><%=link_to "Buy", "buy", class:"btn btn-success"%></td>
+                  </tr>
+              <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <br/>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <div class="top">
+    <div id="top-link-block" class="hidden">
+      <a href="#top" class="btn-top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+        <i class="glyphicon glyphicon-chevron-up"></i> Go to Top
+      </a>
+    </div>
+    <!-- /top-link-block -->
+  </div>
+
+</div>

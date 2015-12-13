@@ -1,0 +1,128 @@
+
+<!-- saved from url=(0063)http://designrshub.com/demo/css3-keyframe-animations/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSS3 Keyframe Animations</title>
+<style>
+.sunburst {
+   width: 600px;
+   height: 600px;
+   margin:-11px -11px -11px -11px;
+   overflow: hidden;
+   background: black;
+
+    -moz-border-radius:300px;
+    -webkit-border-radius: 300px;
+}
+
+.sunburst .outer {
+   width: 2000px;
+   height: 800px;
+   padding-top: 1090px;
+   margin: -600px 0 0 -700px;
+
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(circle, yellow, green); /* Safari */
+    background: -o-radial-gradient(circle, yellow, green); /* Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle, yellow, green); /* Firefox 3.6 to 15 */
+    background: radial-gradient(circle, yellow, green); /* Standard syntax */
+
+
+    /*background: -webkit-linear-gradient(left, red , yellow); /!* For Safari 5.1 to 6.0 *!/*/
+    /*background: -o-linear-gradient(right, red, yellow); /!* For Opera 11.1 to 12.0 *!/*/
+    /*background: -moz-linear-gradient(right, red, yellow); /!* For Firefox 3.6 to 15 *!/*/
+    /*background: linear-gradient(to right, red , yellow); /!* Standard syntax *!/*/
+
+    /*-webkit-animation-name: rotate1;*/
+   /*-webkit-animation-duration:2s;*/
+   /*-webkit-animation-iteration-count:infinite;*/
+   /*-webkit-animation-timing-function:linear;*/
+   /*-moz-animation-name: rotate1;*/
+   /*-moz-animation-duration:2s;*/
+   /*-moz-animation-iteration-count:infinite;*/
+   /*-moz-animation-timing-function:linear;*/
+}
+
+.sunburst b {
+   display: block;
+   width: 0;
+   height: 0;
+   border-width: 200px 1000px;
+   margin: -400px 0 0 0;
+   border-color: transparent white;
+   border-style: solid;
+}
+
+.sunburst b:nth-child(1) { 
+   -webkit-transform:rotate(45deg);
+   -moz-transform:rotate(45deg);
+}
+
+.sunburst b:nth-child(2) { 
+   -webkit-transform:rotate(90deg);
+   -moz-transform:rotate(90deg);
+}
+
+.sunburst b:nth-child(3) { 
+   -webkit-transform:rotate(135deg);
+   -moz-transform:rotate(135deg);
+}
+
+.sunburst b:nth-child(4) { 
+   -webkit-transform:rotate(180deg);
+   -moz-transform:rotate(180deg);
+}
+
+.sunburst b:nth-child(5) { 
+   -webkit-transform:rotate(100deg);
+   -moz-transform:rotate(100deg);
+}
+
+.sunburst b:nth-child(6) {    
+   -webkit-transform:rotate(120deg);
+   -moz-transform:rotate(120deg);
+}
+
+.sunburst b:nth-child(7) {
+   -webkit-transform:rotate(140deg);
+   -moz-transform:rotate(140deg);
+}
+
+.sunburst b:nth-child(8) {
+   -webkit-transform:rotate(160deg);
+   -moz-transform:rotate(160deg);
+}
+
+.sunburst b:nth-child(9) {
+   -webkit-transform:rotate(180deg);
+   -moz-transform:rotate(180deg);
+}
+
+@-webkit-keyframes rotate1 {
+    from { -webkit-transform: rotate(0deg); }
+    to   { -webkit-transform: rotate(20deg); }
+}
+
+@-moz-keyframes rotate1 {
+    from { -moz-transform: rotate(0deg); }
+    to   { -moz-transform: rotate(20deg); }
+}
+</style>
+</head>
+
+<body>
+<div class="sunburst">
+    <div class="outer">
+	<b></b>
+	<b></b>
+	<b></b>
+	<b></b>
+	<!--<b></b>-->
+	<!--<b></b>-->
+	<!--<b></b>-->
+	<!--<b></b>-->
+	<!--<b></b>-->
+	<!--<b></b>-->
+    </div>
+</div>
+
+</body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style></html>

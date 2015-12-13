@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#signup'
 
   get 'signout' => 'users#signout', as: :signout
+  get 'logout' => 'users#signout', as: :logout
 
   post 'restore' => 'users#restore', as: :restore
   get 'restore' => 'users#restore'

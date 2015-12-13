@@ -36,11 +36,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav nav-pills nav-justified">
-                <li class="active"><a href="<%=root_path%>#home">Home</a></li>
-                <li><a href="<%=root_path%>#games">Games</a></li>
-                <li><a href="<%=root_path%>#credits">Credits</a></li>
-                <li><a href="<%=root_path%>#sign_in_up">Sign Up</a></li>
-                <li><a href="<%=root_path%>#sign_in_up">Sign In</a></li>
+                <li class="active"><a href="<%= root_path %>#home">Home</a></li>
+                <li><a href="<%= root_path %>#games">Games</a></li>
+                <li><a href="<%= root_path %>#credits">Credits</a></li>
+                <% if current_user %>
+                    <li><a href="<%= user_path(current_user) %>">Profile</a></li>
+                <% else %>
+                    <li><a href="<%= root_path %>#sign_in_up">Sign Up</a></li>
+                <% end %>
+                <% if current_user %>
+                    <li><a href="<%= signout_path %>">Sign Out</a></li>
+                <% else %>
+                    <li><a href="<%= root_path %>#sign_in_up">Sign In</a></li>
+                <% end %>
               </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -1,3 +1,4 @@
+<% if current_user %>
 <style type="text/css">
     .wcontainer {
         position: absolute;
@@ -217,3 +218,10 @@
         };
     }) (jQuery);
 </script>
+<% else %>
+    <p class="text-center">
+      <a href="<%= signin_get_path %>" class="btn btn-green">Login and Win credits
+        <%= image_tag("fortune_wheel_green", class:"img-responsive col-xs-12")%>
+      </a>
+    </p>
+<% end %>

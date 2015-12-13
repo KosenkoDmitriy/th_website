@@ -357,6 +357,15 @@ footer a, footer p {
     overflow-y: scroll;
 }
 
+.credits {
+    font-size: 1.8em;
+    padding-top: 15px;
+}
+
+.credits th {
+    color: palegoldenrod;
+}
+
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
 
@@ -383,3 +392,4 @@ footer a, footer p {
         max-width: 400px;
     }
 }
+

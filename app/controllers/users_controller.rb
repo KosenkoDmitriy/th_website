@@ -8,6 +8,29 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
   def show
+    uid = session[:user_id]
+    if session[:user_id].nil?
+      flash[:notice] = "please relogin"
+      redirect_to signin_get_path
+      return
+    end
+    if current_user.id != params[:id].to_i
+      redirect_to @current_user
+      return
+    else
+      flash[:notice] = "please relogin"
+      redirect_to signin_get_path
+      return
+    end
+
+    # uid = session[:user_id]
+    # pid = params[:id].to_i
+    # if uid.nil? || uid != pid
+    #   flash[:notice] = "please relogin"
+    #   redirect_to signin_get_path
+    #   return
+    # end
+
     @user = User.find(params[:id])
     @creditList = HomeController.get_credits #or ApplicationHelper.get_credits
   end
@@ -67,27 +90,31 @@ class UsersController < ApplicationController
       password = pass(password)
       if User.exists?(email: email, password: password)
         @user = User.find_by(email: email, password: password)
-        if @user.last_login_dt.blank?
-          @user.last_login_dt = DateTime.now
-          @user.credits += Rails.configuration.x.win_for_login
-        end
-        @user.credits += Rails.configuration.x.win_for_login if @user.last_login_dt.day < Date.today.day
-        if @user.save
+        if @user
+          session[:user_id] = @user.try(:id)
+          if @user.last_login_dt.blank? # first login
+            @user.last_login_dt = DateTime.now
+            @user.credits += Rails.configuration.x.win_for_login
+          end
+          @user.credits += Rails.configuration.x.win_for_login if @user.last_login_dt.day < Date.today.day
+          if @user.save
+            flash[:notice] = "you got #{Rails.configuration.x.win_for_login} credits for login"
+          end
           redirect_to @user
-          # render plain: "#{user.email} #{user.phone_number}"
+        else
+          flash[:error] = 'please signup/register'
         end
-        return
       else
-        msg = 'please signup/register'
-        flash[:error] = msg
-        #render plain: msg
-        return
+        flash[:error] = 'please signup/register'
       end
     else
-      msg = "empty email and/or password"
-      flash[:error] = msg
-      #render plain: msg
+      flash[:error] = 'empty email and/or password'
     end
+  end
+
+  def signout
+    session[:user_id] = nil
+    redirect_to root_path
   end
 
   def restore

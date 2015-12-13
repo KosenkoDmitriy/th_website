@@ -6,16 +6,20 @@ Rails.application.routes.draw do
   get 'game_play' => 'home#show', as: :game_play
 
   resources :users do
-    get 'credits/buy' => 'home#buy', as: :buy_get
-    post 'credits/buy' => 'home#buy', as: :buy
+    get 'credits/buy' => 'home#buy', as: :buy
+    post 'credits/buy' => 'home#buy'#, as: :buy
   end
 
   post 'signin' => 'users#signin', as: :signin
   get 'signin' => 'users#signin', as: :signin_get
+
   post 'signup' => 'users#signup', as: :signup
-  get 'signup' => 'users#signup', as: :signup_get
+  get 'signup' => 'users#signup'
+
+  get 'signout' => 'users#signout', as: :signout
+
   post 'restore' => 'users#restore', as: :restore
-  get 'restore' => 'users#restore', as: :restore_get
+  get 'restore' => 'users#restore'
 
   # TODO: use this namespace and change urls in game
   # namespace :api do

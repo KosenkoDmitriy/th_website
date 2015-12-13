@@ -8,28 +8,14 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
   def show
-    uid = session[:user_id]
-    if session[:user_id].nil?
+    if !current_user
       flash[:notice] = "please relogin"
       redirect_to signin_get_path
       return
-    end
-    if current_user.id != params[:id].to_i
-      redirect_to @current_user
-      return
-    else
-      flash[:notice] = "please relogin"
-      redirect_to signin_get_path
+    elsif current_user && current_user.id != params[:id].to_i
+      redirect_to current_user
       return
     end
-
-    # uid = session[:user_id]
-    # pid = params[:id].to_i
-    # if uid.nil? || uid != pid
-    #   flash[:notice] = "please relogin"
-    #   redirect_to signin_get_path
-    #   return
-    # end
 
     @user = User.find(params[:id])
     @creditList = HomeController.get_credits #or ApplicationHelper.get_credits

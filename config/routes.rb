@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
 
   post 'signin' => 'users#signin', as: :signin
+  get 'signin' => 'users#signin', as: :signin_get
   post 'signup' => 'users#signup', as: :signup
+  get 'signup' => 'users#signup', as: :signup_get
   post 'restore' => 'users#restore', as: :restore
   get 'restore' => 'users#restore', as: :restore_get
 

@@ -1,0 +1,53 @@
+<div class="container container-narrow content">
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="text-center dark">Welcome <%= @user.try(:name) || @user.try(:email)%></h2>
+    </div>
+  </div>
+  <div class="row" height="">
+    <div class="col-xs-12 col-sm-6" height="">
+
+      <%= render partial: "shared/fortune_wheel" %>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= render partial: "shared/credits" %>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="<%= game_play_url %>">
+        <%= image_tag "games/texas_holdem.jpeg", class: "img-responsive col-xs-12" %>
+      </a>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <div class="top">
+    <div id="top-link-block" class="hidden">
+      <a href="#top" class="btn-top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+        <i class="glyphicon glyphicon-chevron-up"></i> Go to Top
+      </a>
+    </div>
+    <!-- /top-link-block -->
+  </div>
+
+</div>

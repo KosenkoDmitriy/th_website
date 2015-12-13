@@ -1,0 +1,23 @@
+<%= form_for(@user, url: signin_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
+    <div class="form-group">
+      <%#= f.label t("user.email"), class: "sr-only" #%>
+      <%= f.email_field :email, class: "form-control", placeholder: t("user.email"), tabindex: "1" %>
+    </div>
+    <div class="form-group">
+      <%#= f.label t("user.password"), class: "sr-only" #%>
+      <%= f.password_field :password, class: "form-control", placeholder: t("user.password"), tabindex: "2" %>
+    </div>
+
+    <!--<div class="checkbox">
+                <label class="control-label" for="remember_me">
+                  <input type="checkbox" name="remember_me" id="remember_me" value="1" class="" tabindex="3"/> <%= t("user.remember_me") %>
+                </label>
+              </div>-->
+    <!--<br/>-->
+
+    <div class="form-group">
+      <!--<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-green btn-group-justified">Go</button>-->
+      <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "4" %>
+    </div>
+    <!--</form>-->
+<% end %>

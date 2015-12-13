@@ -1,70 +1,99 @@
 require 'digest/md5'
 
 class UsersController < ApplicationController
+
   protect_from_forgery except: [:login, :sub, :add, :get_balance, :set_balance]
   skip_before_action :verify_authenticity_token
 
   respond_to :html, :json
 
+  def show
+    @user = User.find(params[:id])
+    @creditList = HomeController.get_credits #or ApplicationHelper.get_credits
+  end
+
   def signup
     email = params[:user][:email] if params[:user].present? && params[:user][:email].present?
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
     confirm_password = params['user']['confirm_password'] if params['user'].present? && params['user']['confirm_password'].present?
-    if !email.present? && !password.present?
-      render plain: "please enter email and/or password"
+
+    @user = User.new(user_params)
+
+    if email.blank? || password.blank?
+      flash[:error] = "please enter email and/or password"
+      # redirect_to :back
       return
     end
 
     if (confirm_password != password)
-      render plain: "passwords didn't match"
+      flash[:error] = "passwords didn't match"
+      # redirect_to :back
+      # render ""
       return
     end
 
     if User.exists?(email: email)
-      render plain: "email already taken: #{ email }"
+      flash[:error] = "email already taken: #{ email }"
+      # redirect_to :back
       return
     end
 
-    user = User.new(user_params)
-    user.password = pass(password)
-    user.credits = Rails.configuration.x.win_for_reg
-    if user.save!
-      # respond_with user
-      render plain: "registered successfully! your email: #{ user.email }"
-      return
+    @user.password = pass(password)
+    @user.confirm_password = ''
+    @user.credits = Rails.configuration.x.win_for_reg
+
+    # if !@user.valid?
+    #   @user.errors.each do |error|
+    #     flash[:error2] += error + '\n'
+    #     return
+    #   end
+    # end
+
+    if @user.save
+      flash[:notice] = "registered successfully! your email: #{ @user.email }"
+      redirect_to @user
     else
-      render plain: "error: can\' t create user #{ user.email }"
+      flash[:error] = "error: can\' t create user #{ @user.email }"
+      # redirect_to :back
+      # return
     end
   end
 
   def signin
     email = params['user']['email'] if params['user'].present? && params['user']['email'].present?
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
+    @user = User.new
     if email.present? && password.present?
       password = pass(password)
       if User.exists?(email: email, password: password)
-        user = User.find_by(email: email, password: password)
-        if user.last_login_dt.blank?
-          user.last_login_dt = DateTime.now
-          user.credits += Rails.configuration.x.win_for_login
+        @user = User.find_by(email: email, password: password)
+        if @user.last_login_dt.blank?
+          @user.last_login_dt = DateTime.now
+          @user.credits += Rails.configuration.x.win_for_login
         end
-        user.credits += Rails.configuration.x.win_for_login if user.last_login_dt.day < Date.today.day
-        if user.save!
-          render plain: "#{user.email} #{user.phone_number}"
+        @user.credits += Rails.configuration.x.win_for_login if @user.last_login_dt.day < Date.today.day
+        if @user.save
+          redirect_to @user
+          # render plain: "#{user.email} #{user.phone_number}"
         end
         return
       else
-        render plain: 'please signup/register'
+        msg = 'please signup/register'
+        flash[:error] = msg
+        #render plain: msg
         return
       end
     else
-      render plain: 'empty email'
+      msg = "empty email and/or password"
+      flash[:error] = msg
+      #render plain: msg
     end
   end
 
   def restore
 
   end
+
 
   # login from game
   def login
@@ -153,6 +182,7 @@ class UsersController < ApplicationController
   end
 
   def pass pass
+    return nil if pass.blank?
     pass = Digest::MD5.hexdigest(pass)
     return pass
   end

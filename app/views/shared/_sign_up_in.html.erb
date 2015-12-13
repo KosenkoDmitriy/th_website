@@ -1,82 +1,22 @@
 <div class="bg-black">
   <!--<h4 class="text-center dark" id="sign_in_up">Sign In / Sign Up</h4>-->
-  <div class="row" id="sign_in_up">
-    <div class="col-xs-12">
-      <!-- Nav tabs -->
-      <ul class="nav nav-pills nav-justified" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#sign_in" aria-controls="home" role="tab" data-toggle="tab">
-            <%= t("sign.in") %>
-          </a>
-        </li>
-        <li role="presentation">
-          <a href="#sign_up" aria-controls="profile" role="tab" data-toggle="tab">
-            <%= t("sign.up") %>
-          </a>
-        </li>
-      </ul>
-      <!-- Tab panes -->
-      <div class="tab-content" id="">
-        <div role="tabpanel" class="tab-pane active" id="sign_in">
-          <!--Sign In-->
-          <h2 class="text-center"><i class="glyphicon glyphicon-log-in"></i> <%= t("login") %></h2>
-          <%= form_for(@user, url: signin_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
-              <div class="form-group">
-                <%#= f.label t("user.email"), class: "sr-only" #%>
-                <%= f.email_field :email, class: "form-control", placeholder: t("user.email"), tabindex: "1" %>
-              </div>
-              <div class="form-group">
-                <%#= f.label t("user.password"), class: "sr-only" #%>
-                <%= f.password_field :password, class: "form-control", placeholder: t("user.password"), tabindex: "3" %>
-              </div>
-
-              <!--<div class="checkbox">
-                <label class="control-label" for="remember_me">
-                  <input type="checkbox" name="remember_me" id="remember_me" value="1" class="" tabindex="3"/> <%= t("user.remember_me") %>
-                </label>
-              </div>-->
-              <!--<br/>-->
-
-              <div class="form-group">
-                <!--<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-green btn-group-justified">Go</button>-->
-                <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "3" %>
-              </div>
-              <!--</form>-->
-          <% end %>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="sign_up">
-
-          <h2 class="text-center"><i class="glyphicon glyphicon-log-in"></i> <%= t("register") %></h2>
-
-          <%= form_for(@user, url: signup_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
-
-              <div class="form-group">
-                <%= f.text_field :full_name, class: "form-control", placeholder: t("user.full_name"), tabindex: "1" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.email_field :email, class: "form-control", placeholder: t("user.email"), tabindex: "2" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.text_field :phone_number, class: "form-control", placeholder: t("user.phone"), tabindex: "3" %>
-              </div>
-
-              <div class="form-group ">
-                <%= f.password_field :password, class: "form-control", placeholder: t("user.password"), tabindex: "4" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.password_field :confirm_password, class: "form-control", placeholder: t("user.confirm_password"), tabindex: "5" %>
-              </div>
-
-              <div class="form-group ">
-                <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "5" %>
-              </div>
-          <% end %>
-
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-xs-pull-1">
+      <%= render partial: "shared/errors_flash" %>
+      <%= render partial: "shared/errors", locals: {obj: @user} %>
     </div>
+  </div>
+  <div class="row" id="sign_in_up">
+    <div class="col-xs-12 col-md-4 col-md-pull-1 col-md-offset-2">
+      <!--<h1 class="bg-red2 text-center"><%= t("sign.in") %></h1>-->
+      <h2 class="text-center"><i class="glyphicon glyphicon-log-in"></i> <%= t("login") %></h2>
+      <%= render partial: "shared/sign_in_form" %>
+    </div>
+    <div class="col-xs-12 col-md-5 col-md-pull-0">
+      <!--<h1 class="bg-red2 text-center"><%= t("sign.up") %></h1>-->
+      <h2 class="text-center"><i class="glyphicon glyphicon-log-in"></i> <%= t("register") %></h2>
+      <%= render partial: "shared/sign_up_form" %>
+    </div>
+    <div class=""></div>
   </div>
 </div>

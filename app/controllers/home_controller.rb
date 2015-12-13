@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @user = User.new
-    @creditList = get_credits
+    @creditList = HomeController.get_credits
   end
 
   def show
@@ -11,11 +11,12 @@ class HomeController < ApplicationController
 
   def buy
     # TODO: integrate with PayPal
-    @creditList = get_credits
+    @creditList = HomeController.get_credits
   end
 
   private
-  def get_credits
+
+  def self.get_credits
     @credtits = Rails.configuration.x
     creditList = [
         {cost: @credtits.one.cost, value: @credtits.one.value},
@@ -25,5 +26,4 @@ class HomeController < ApplicationController
     ]
     return creditList
   end
-
 end

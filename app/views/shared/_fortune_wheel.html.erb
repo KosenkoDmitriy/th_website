@@ -86,6 +86,7 @@
             $('.spinner').off('click');
             $('.spinner span').hide();
             $r.spin().done(function(price) {
+                //TODO: ajax call -> increase or reset current balance
                 $('.price').text('You have: ' + price.name);
                 $('.spinner').on('click', clickHandler);
                 $('.spinner span').show();

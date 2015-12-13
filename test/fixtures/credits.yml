@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  cost_in_cents: 
+  credits: 
+  dt: 2015-12-13 23:06:33
+  text: MyText
+
+two:
+  title: MyString
+  cost_in_cents: 
+  credits: 
+  dt: 2015-12-13 23:06:33
+  text: MyText

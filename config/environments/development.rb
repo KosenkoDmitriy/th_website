@@ -1,3 +1,5 @@
+require 'active_merchant'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -38,4 +40,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test  # :production when you will use a real Pro Account
+    gateway = ActiveMerchant::Billing::TrustCommerceGateway.new(
+        :login => 'kosenkodmitryv_api1.gmail.com',
+        :password => 'DJ8PJ2CA5NGZT4L8')#??, signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31Axj3pO3FyfQsH6qfmnlMR16K9SVb')
+
+    paypal_options = {
+        login: 'kosenkodmitryv_api1.gmail.com',
+        password: 'DJ8PJ2CA5NGZT4L8',
+        signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31Axj3pO3FyfQsH6qfmnlMR16K9SVb'
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
 end

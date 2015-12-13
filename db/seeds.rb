@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Credit.find_or_create_by(cost_in_cents: 99, credits: 25000)
+Credit.find_or_create_by(cost_in_cents: 299, credits: 100000)
+Credit.find_or_create_by(cost_in_cents: 599, credits: 350000)
+Credit.find_or_create_by(cost_in_cents: 999, credits: 750000)

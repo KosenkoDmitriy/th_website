@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  get 'express_checkout' => 'orders#express_checkout'#, as: :express_checkout_path
+
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
 
   resources :users do
+    resources :orders
+
     get 'credits/buy' => 'home#buy', as: :buy
     post 'credits/buy' => 'home#buy'#, as: :buy
   end

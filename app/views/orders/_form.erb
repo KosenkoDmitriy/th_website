@@ -1,6 +1,6 @@
 <% if @creditList.present? %>
     <% if current_user
-         class_list = ""
+         class_list = "credits"
          btn_label = "Buy"
          url = user_buy_path(current_user)
        else
@@ -20,25 +20,32 @@
               <table class="table">
                 <thead class="text-capitalize">
                 <tr class="text-center">
-                  <th class="text-center">cost</th>
+                  <th class="text-center">cost ($)</th>
                   <th class="text-center">credits</th>
                   <th class="text-center">action</th>
                 </tr>
                 </thead>
                 <tbody class="text-center">
+
                 <% if @creditList.any? %>
                     <% @creditList.each do |credit| %>
-                        <tr>
-                          <td><%= credit.try(:[], :cost) %></td>
-                          <td><%= credit.try(:[], :value) %></td>
-                          <td>
-                            <% link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path, class: "btn btn-green btn-justified") %>
-                            <%= link_to btn_label, url, class: "btn btn-green btn-justified" %>
-                          </td>
-                        </tr>
+                        <%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
+                            <% f.hidden_field :credit, value: credit.try(:id) %>
+                            <%= hidden_field_tag :credit_id, credit.try(:id) %>
+                            <tr>
+                              <td>
+                                <%= credit.try(:cost_in_cents)/100%>
+                              </td>
+                              <td>
+                                <%= credit.try(:credits).try(:to_i)%>
+                              </td>
+                              <td>
+                                <%= f.submit "Buy", class: "btn btn-lg btn-green btn-group-justified" %>
+                              </td>
+                            </tr>
+                        <% end %>
                     <% end %>
                 <% end %>
-                <!--<tr><td colspan="3">Win</td></tr>-->
                 </tbody>
               </table>
             </div>

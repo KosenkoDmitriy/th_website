@@ -1,0 +1,23 @@
+<div class="bg-black">
+  <div class="row" id="sign_up_in">
+    <% @creditList.each do |credit| %>
+        <div class="col-xs-2 col-xs-offset-1 col-xs-pull-1">
+          <%= credit.try(:credits) %>
+          <%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
+              <div class="form-group">
+                <%= f.label credit.try(:credits), class: "sr-only" %>
+                <%= f.label :credit, class: "", placeholder: t("user.email"), value: credit.try(:cost_in_cents)/100, tabindex: "1" %>
+              </div>
+              <div class="form-group">
+                <% f.number_field :user, class: "form-control", placeholder: t("user.password"), tabindex: "2" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "4" %>
+              </div>
+          <% end %>
+        </div>
+    <% end %>
+
+  </div>
+</div>

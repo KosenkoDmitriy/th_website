@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip: MyString
+  express_token: MyString
+  express_payer_id: MyString
+
+two:
+  ip: MyString
+  express_token: MyString
+  express_payer_id: MyString

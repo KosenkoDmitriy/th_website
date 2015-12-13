@@ -5,8 +5,8 @@ class OrdersController < ApplicationController
     @amount = order.credit.cost_in_cents.to_i
     response = EXPRESS_GATEWAY.setup_purchase(@amount,
                                               ip: request.remote_ip,
-                                              return_url: orders_url,
-                                              cancel_return_url: YOUR_CANCEL_RETURL_URL,
+                                              return_url: user_orders_url(current_user),
+                                              cancel_return_url: user_orders_url(current_user),
                                               currency: "USD",
                                               allow_guest_checkout: true,
                                               items: [{name: "Order", description: "buy #{order.credit.credits.to_i} credits", quantity: "1", amount: @amount}]
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-
+    @orders = Order.all.reverse
   end
 
   def new

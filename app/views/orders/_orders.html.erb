@@ -32,7 +32,6 @@
                           <td><%= credit.try(:[], :cost) %></td>
                           <td><%= credit.try(:[], :value) %></td>
                           <td>
-                            <% link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path, class: "btn btn-green btn-justified") %>
                             <%= link_to btn_label, url, class: "btn btn-green btn-justified" %>
                           </td>
                         </tr>

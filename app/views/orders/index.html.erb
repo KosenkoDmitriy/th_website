@@ -1,11 +1,39 @@
-
 <div class="container container-narrow content">
   <div class="row" id="home">
     <div class="col-xs-12">
-      <!--<h2 class="text-center dark">Start the best gaming experience</h2>-->
+
       <%= render partial: "shared/errors_flash" %>
       <%= render partial: "shared/errors", locals: {obj: @user} %>
 
+      <!--<h2 class="text-center dark">Orders</h2>-->
+      <h3 class="text-center bg-red2">Orders</h3>
+      <table class="table table-responsive">
+        <tr>
+          <th>#</th>
+          <th>cost in cents</th>
+          <th>credits</th>
+          <th>email</th>
+          <th>status</th>
+        </tr>
+        <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.try(:id) %></td>
+              <td><%= order.try(:credit).try(:cost_in_cents) %></td>
+              <td><%= order.try(:credit).try(:credits) %></td>
+              <td><%= order.try(:user).try(:email) %></td>
+              <td>
+                <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
+
+                <% form_tag(url: express_checkout_url) do |f| %>
+                    <%= hidden_field_tag :order_id, order.try(:id) %>
+                    <%= hidden_field_tag :credit_id, order.try(:credit).try(:id) %>
+                    <%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif", class:"btn", alt: "Buy Confirmation", data: { confirm: "Are you sure?" })%>
+
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
     </div>
   </div>
   <!-- /.row -->

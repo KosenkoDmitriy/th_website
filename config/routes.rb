@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   get 'express_checkout' => 'orders#express_checkout'#, as: :express_checkout_path
+  #post 'express_checkout' => 'orders#express_checkout'#, as: :express_checkout_path
 
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play

@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     end
 
     @order = order_new
-    @orders = Order.all.reverse
+    @orders = Order.where(user: current_user).reverse
   end
 
   def new
@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by(id: params[:id], user: current_user)
     @creditList = credits
   end
 
@@ -92,10 +92,6 @@ class OrdersController < ApplicationController
     # render plain: "failure"
     # return
     redirect_to users_orders_path(current_user)
-  end
-
-  def show
-    @order = Order.find(params[:id])
   end
 
   private

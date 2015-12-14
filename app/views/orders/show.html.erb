@@ -2,14 +2,23 @@
   <div class="row" id="home">
     <div class="col-xs-12 text-center bg-black credits">
       <%= render partial: "shared/errors_flash" %>
-      <h2 class="text-center bg-red2">Confirm order</h2>
-      <p>Order # <%= @order.try(:id) %></p>
-      <p>$<%= @order.try(:credit).try(:cost_in_cents)/100 rescue 0 %> - <%= @order.try(:credit).try(:credits).try(:to_i) %> credits</p>
+      <% if @order.present? %>
+          <h2 class="text-center bg-red2">Confirm order</h2>
 
-      <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: @order.try(:id), credit_id: @order.try(:credit).try(:id)), class: "btn btn-justified") %>
+          <p>Email: <%= @order.try(:user).try(:email) %></p>
+
+          <p>Order # <%= @order.try(:id) %></p>
+
+          <p>$<%= @order.try(:credit).try(:cost_in_cents)/100 rescue 0 %>
+            - <%= @order.try(:credit).try(:credits).try(:to_i) %> credits</p>
+
+          <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: @order.try(:id), credit_id: @order.try(:credit).try(:id)), class: "btn btn-justified") %>
+      <% else %>
+          <h2 class="bg-red2">Order not found</h2>
+      <% end %>
     </div>
   </div>
   <!-- /.row -->
-<br/>
+  <br/>
   <%= render partial: 'shared/back_to_top' %>
 </div>

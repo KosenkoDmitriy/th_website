@@ -48,3 +48,5 @@ end
 gem 'responders', '~> 2.0'
 
 gem 'activemerchant'
+
+gem 'simple_captcha2', require: 'simple_captcha'

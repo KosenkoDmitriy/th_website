@@ -14,6 +14,11 @@
                 </label>
               </div>-->
     <!--<br/>-->
+    <div class="form-group">
+        <%= f.simple_captcha :label => "Enter numbers.." %>
+    </div>
+
+    <% show_simple_captcha(object: :user) %>
 
     <div class="form-group">
       <!--<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-green btn-group-justified">Go</button>-->

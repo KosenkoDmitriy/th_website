@@ -20,6 +20,10 @@
       <%= f.password_field :confirm_password, class: "form-control", placeholder: t("user.confirm_password"), tabindex: "9" %>
     </div>
 
+    <%= f.simple_captcha :label => "Enter numbers.." %>
+
+    <% show_simple_captcha(object: :user) %>
+
     <div class="form-group ">
       <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "10" %>
     </div>

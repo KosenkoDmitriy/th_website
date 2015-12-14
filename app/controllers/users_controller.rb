@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     #   end
     # end
 
-    if @user.save
+    if @user.save_with_captcha
       session[:user_id] = @user.try(:id) # signup and signin
       flash[:notice] = "registered successfully! your email: #{ @user.email }"
       flash[:notice2] = "you got #{ Rails.configuration.x.win_for_reg } credits for sign up"
@@ -71,7 +71,8 @@ class UsersController < ApplicationController
   def signin
     email = params['user']['email'] if params['user'].present? && params['user']['email'].present?
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
-    @user = User.new
+    @user = User.new(user_params)
+
     if email.present? && password.present?
       password = pass(password)
       if User.exists?(email: email, password: password)
@@ -87,9 +88,9 @@ class UsersController < ApplicationController
             flash[:notice2] = "you got #{ Rails.configuration.x.win_for_login } credits for sign in"
             @user.credits += Rails.configuration.x.win_for_login
           end
-          if @user.save
+          if @user.save_with_captcha
+            redirect_to @user
           end
-          redirect_to @user
         else
           flash[:error] = 'please signup/register'
         end
@@ -223,7 +224,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :confirm_password, :full_name, :credits, :phone_number)
+    params.require(:user).permit(:email, :password, :confirm_password, :full_name, :credits, :phone_number, :captcha, :captcha_key)
   end
 
 end

@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
       if order.save
         if order.purchase #(@order.cost_in_cents, credit_card) # this is where we purchase the order. refer to the model method below
           flash[:success] = "Successfully charged $#{sprintf("%.2f", order.credit.cost_in_cents / 100) rescue 0} and bought #{order.try(:credit).try(:credits).try(:to_i)} credits"
-          redirect_to user_order_url(current_user, order)
+          redirect_to user_url(current_user) # user_order_url(current_user, order)
         else
           #render :action => 'failure'
           flash[:error] = "failure"

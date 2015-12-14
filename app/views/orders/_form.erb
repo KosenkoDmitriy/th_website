@@ -1,10 +1,10 @@
 <% if @creditList.present? && @creditList.any? %>
     <% if current_user
-         class_list = ""
+         class_list = "credits"
          btn_label = "Buy"
          url = user_orders_path(current_user)
        else
-         class_list = "credits"
+         class_list = "credits_big"
          btn_label = "Login and Buy"
          url = signin_path
        end %>

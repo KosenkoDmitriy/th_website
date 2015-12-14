@@ -1,18 +1,15 @@
 <div class="container container-narrow content">
   <div class="row" id="home">
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-12 text-center bg-black credits">
       <%= render partial: "shared/errors_flash" %>
+      <h2 class="text-center bg-red2">Confirm order</h2>
+      <p>Order # <%= @order.try(:id) %></p>
+      <p>$<%= @order.try(:credit).try(:cost_in_cents)/100 rescue 0 %> - <%= @order.try(:credit).try(:credits).try(:to_i) %> credits</p>
 
-      <h2 class="text-center dark">Confirm order</h2>
-      <p># <%= @order.try(:id) %></p>
-      <p>cost ($): <%= @order.try(:credit).try(:cost_in_cents)/100 rescue 0 %></p>
-      <p>credits: <%= @order.try(:credit).try(:credits) %></p>
-      <!--<p>credits: <%= @order.try(:credit).try(:credits) %></p>-->
-      <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path(order_id: @order.try(:id), credit_id: @order.try(:credit).try(:id)), class: "btn btn-justified") %>
+      <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: @order.try(:id), credit_id: @order.try(:credit).try(:id)), class: "btn btn-justified") %>
     </div>
   </div>
   <!-- /.row -->
 <br/>
   <%= render partial: 'shared/back_to_top' %>
-
 </div>

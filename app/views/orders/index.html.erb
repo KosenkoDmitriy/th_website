@@ -1,36 +1,36 @@
 <div class="container container-narrow content">
   <div class="row" id="home">
     <div class="col-xs-12">
-
       <%= render partial: "shared/errors_flash" %>
       <%= render partial: "shared/errors", locals: {obj: @user} %>
-
-      <!--<h2 class="text-center dark">Orders</h2>-->
-      <h3 class="text-center bg-red2">Orders</h3>
-      <table class="table table-responsive">
-        <tr>
-          <th>#</th>
-          <th>$</th>
-          <th>credits</th>
-          <th>email</th>
-          <th>confirm</th>
-        </tr>
-        <% if @orders && @orders.any? %>
-            <% @orders.each do |order| %>
-                <tr>
-                  <td><%= order.try(:id) %></td>
-                  <td><%= order.try(:credit).try(:cost_in_cents)/100 rescue 0 %></td>
-                  <td><%= order.try(:credit).try(:credits) %></td>
-                  <td><%= order.try(:user).try(:email) %></td>
-                  <td>
-                    <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
-                  </td>
-                </tr>
-            <% end %>
-        <% else %>
-            No orders
-        <% end %>
-      </table>
+      <div class="bg-black credits">
+        <!--<h2 class="text-center dark">Orders</h2>-->
+        <h3 class="text-center bg-red2">Orders</h3>
+        <table class="table table-responsive">
+          <tr>
+            <th>#</th>
+            <th>$</th>
+            <th>credits</th>
+            <th>email</th>
+            <th width="10%">confirm</th>
+          </tr>
+          <% if @orders && @orders.any? %>
+              <% @orders.each do |order| %>
+                  <tr>
+                    <td><%= order.try(:id) %></td>
+                    <td><%= order.try(:credit).try(:cost_in_cents)/100 rescue 0 %></td>
+                    <td><%= order.try(:credit).try(:credits) %></td>
+                    <td><%= order.try(:user).try(:email) %></td>
+                    <td>
+                      <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
+                    </td>
+                  </tr>
+              <% end %>
+          <% else %>
+              No orders
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
   <!-- /.row -->

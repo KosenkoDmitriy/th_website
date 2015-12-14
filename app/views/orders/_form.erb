@@ -1,4 +1,4 @@
-<% if @creditList.present? %>
+<% if @creditList.present? && @creditList.any? %>
     <% if current_user
          class_list = "credits"
          btn_label = "Buy"
@@ -26,26 +26,9 @@
                 </tr>
                 </thead>
                 <tbody class="text-center">
-
-                <% if @creditList.any? %>
                     <% @creditList.each do |credit| %>
-                        <%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
-                            <% f.hidden_field :credit, value: credit.try(:id) %>
-                            <%= hidden_field_tag :credit_id, credit.try(:id) %>
-                            <tr>
-                              <td>
-                                <%= credit.try(:cost_in_cents)/100%>
-                              </td>
-                              <td>
-                                <%= credit.try(:credits).try(:to_i)%>
-                              </td>
-                              <td>
-                                <%= f.submit "Buy", class: "btn btn-lg btn-green btn-group-justified" %>
-                              </td>
-                            </tr>
-                        <% end %>
+                        <%= render partial: "orders/form_btn_buy", locals: { object: credit.try(:order) || @order, credit: credit } %>
                     <% end %>
-                <% end %>
                 </tbody>
               </table>
             </div>
@@ -57,4 +40,6 @@
     </div>
 
     <br/>
+<% else %>
+    no credits found
 <% end %>

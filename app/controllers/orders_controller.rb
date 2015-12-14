@@ -15,17 +15,44 @@ class OrdersController < ApplicationController
   end
 
   def index
+    token = params[:token]
+    payer_id = params[:PayerID]
+    if token.present? && payer_id.present?
+      order = Order.last
+      order.express_token = token
+      order.express_payer_id = payer_id
+      if order.save
+        if order.purchase #(@order.cost_in_cents, credit_card) # this is where we purchase the order. refer to the model method below
+          flash[:success] = "Successfully charged $#{sprintf("%.2f", order.credit.cost_in_cents / 100) rescue 0} and bought #{order.try(:credit).try(:credits).try(:to_i)} credits"
+          redirect_to user_order_url(current_user, order)
+        else
+          #render :action => 'failure'
+          flash[:error] = "failure"
+          redirect_to user_order_url(current_user, order)
+          # redirect_to user_orders_path(current_user)
+        end
+        flash[:notice] = "save success #{token} #{payer_id}"
+      else
+        flash[:error] = "save error #{token} #{payer_id}"
+      end
+    end
+
+    @order = order_new
     @orders = Order.all.reverse
   end
 
   def new
     @order = Order.new(:express_token => params[:token])
-    # @credit = Credit.new()
+    @creditList = Credit.all
+  end
+
+  def show
+    @order = Order.find(params[:id])
     @creditList = Credit.all
   end
 
   def create
-    @order = Order.new#(order_params) #@cart.build_order(order_params)
+    @order = Order.new #(order_params) #@cart.build_order(order_params)
     @order.ip = request.remote_ip
     @order.credit = Credit.find(params[:credit_id])
     @order.user = current_user
@@ -43,15 +70,17 @@ class OrdersController < ApplicationController
     #     :verification_value => '000')
 
     if @order.save
-      if @order.purchase #(@order.cost_in_cents, credit_card) # this is where we purchase the order. refer to the model method below
-        flash[:success] = "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
-        redirect_to order_url(@order)
-      else
-        #render :action => 'failure'
-        flash[:error] = "failure"
-        redirect_to user_orders_path(current_user)
-
-      end
+      flash[:success] = 'order created successfully - please confirm it'
+      redirect_to user_order_url(current_user, @order)
+      # if @order.purchase #(@order.cost_in_cents, credit_card) # this is where we purchase the order. refer to the model method below
+      #   flash[:success] = "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
+      #   redirect_to order_url(@order)
+      # else
+      #   #render :action => 'failure'
+      #   flash[:error] = "failure"
+      #   redirect_to order_url(@order)
+      #   # redirect_to user_orders_path(current_user)
+      # end
     else
       render :action => 'new'
     end

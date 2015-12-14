@@ -3,8 +3,9 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h2 class="text-center dark">Welcome <%= @user.try(:full_name) || @user.try(:email)%> (credits: <%= @user.try(:credits) %>)</h2>
-
+      <h2 class="text-center dark">Welcome <%= @user.try(:full_name) || @user.try(:email) %>
+        (credits: <%= @user.try(:credits) %>)</h2>
+      <% render partial: "orders/form", locals: {object: @order} %>
     </div>
   </div>
   <div class="row" height="">
@@ -28,7 +29,8 @@
       <br>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <%= render partial: "shared/credits" %>
+      <% render partial: "shared/credits" %>
+      <%= render partial: "orders/form", locals: {object: @order} %>
     </div>
   </div>
   <!-- /.row -->
@@ -42,13 +44,6 @@
   </div>
   <!-- /.row -->
 
-  <div class="top">
-    <div id="top-link-block" class="hidden">
-      <a href="#top" class="btn-top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
-        <i class="glyphicon glyphicon-chevron-up"></i> Go to Top
-      </a>
-    </div>
-    <!-- /top-link-block -->
-  </div>
+  <%= render partial: 'shared/back_to_top' %>
 
 </div>

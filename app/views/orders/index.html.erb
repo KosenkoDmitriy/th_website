@@ -10,41 +10,33 @@
       <table class="table table-responsive">
         <tr>
           <th>#</th>
-          <th>cost in cents</th>
+          <th>$</th>
           <th>credits</th>
           <th>email</th>
-          <th>status</th>
+          <th>confirm</th>
         </tr>
-        <% @orders.each do |order| %>
-            <tr>
-              <td><%= order.try(:id) %></td>
-              <td><%= order.try(:credit).try(:cost_in_cents) %></td>
-              <td><%= order.try(:credit).try(:credits) %></td>
-              <td><%= order.try(:user).try(:email) %></td>
-              <td>
-                <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
+        <% if @orders && @orders.any? %>
+            <% @orders.each do |order| %>
+                <tr>
+                  <td><%= order.try(:id) %></td>
+                  <td><%= order.try(:credit).try(:cost_in_cents)/100 rescue 0 %></td>
+                  <td><%= order.try(:credit).try(:credits) %></td>
+                  <td><%= order.try(:user).try(:email) %></td>
+                  <td>
+                    <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
 
-                <% form_tag(url: express_checkout_url) do |f| %>
-                    <%= hidden_field_tag :order_id, order.try(:id) %>
-                    <%= hidden_field_tag :credit_id, order.try(:credit).try(:id) %>
-                    <%= image_submit_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif", class:"btn", alt: "Buy Confirmation", data: { confirm: "Are you sure?" })%>
-
-                <% end %>
-              </td>
-            </tr>
+                    <% render partial: "orders/form_btn_buy", locals: {btn_label:"Confirm", object: @order, credit: @order.try(:credit)} %>
+                  </td>
+                </tr>
+            <% end %>
+        <% else %>
+            No orders
         <% end %>
       </table>
     </div>
   </div>
   <!-- /.row -->
 
-  <div class="top">
-    <div id="top-link-block" class="hidden">
-      <a href="#top" class="btn-top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
-        <i class="glyphicon glyphicon-chevron-up"></i> Go to Top
-      </a>
-    </div>
-    <!-- /top-link-block -->
-  </div>
+  <%= render partial: 'shared/back_to_top' %>
 
 </div>

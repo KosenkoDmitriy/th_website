@@ -32,7 +32,8 @@
       <%= render partial: "shared/fortune_wheel" %>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <%= render partial: "shared/credits" %>
+      <%= render partial: "orders/form", locals: {object: @order} %>
+      <% render partial: "shared/credits" %>
     </div>
   </div>
 

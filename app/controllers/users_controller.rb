@@ -17,8 +17,10 @@ class UsersController < ApplicationController
       return
     end
 
+    @order = order_new
     @user = User.find(params[:id])
-    @creditList = HomeController.get_credits #or ApplicationHelper.get_credits
+    #@creditList = HomeController.get_credits #or ApplicationHelper.get_credits
+    @creditList = Credit.all
   end
 
   def signup

@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def credits
+    @credits ||= Credit.all
+  end
+  helper_method :credits
+
+  def order_new
+    @order_new ||= Order.new(:express_token => params[:token])
+  end
+  helper_method :order_new
 end

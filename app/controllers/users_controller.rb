@@ -1,6 +1,7 @@
 require 'digest/md5'
 
 class UsersController < ApplicationController
+  include SimpleCaptcha::ControllerHelpers
 
   protect_from_forgery except: [:login, :sub, :add, :get_balance, :set_balanceß]
   skip_before_action :verify_authenticity_token
@@ -71,8 +72,11 @@ class UsersController < ApplicationController
   def signin
     email = params['user']['email'] if params['user'].present? && params['user']['email'].present?
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
-    @user = User.new(user_params)
-
+    @user_empty = User.new(user_params)
+    if !simple_captcha_valid?
+      flash[:error] = t("simple_captcha.message.user")
+      return
+    end
     if email.present? && password.present?
       password = pass(password)
       if User.exists?(email: email, password: password)
@@ -88,8 +92,10 @@ class UsersController < ApplicationController
             flash[:notice2] = "you got #{ Rails.configuration.x.win_for_login } credits for sign in"
             @user.credits += Rails.configuration.x.win_for_login
           end
-          if @user.save_with_captcha
+          if @user.save
             redirect_to @user
+          else
+            flash[:error] = 'can not update user info'
           end
         else
           flash[:error] = 'please signup/register'
@@ -224,6 +230,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
+    return if params[:user].blank?
     params.require(:user).permit(:email, :password, :confirm_password, :full_name, :credits, :phone_number, :captcha, :captcha_key)
   end
 

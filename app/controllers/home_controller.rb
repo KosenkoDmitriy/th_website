@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @user = User.new
+    @user_empty = User.new
     @creditList = credits
   end
 

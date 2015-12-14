@@ -1,4 +1,4 @@
-<%= form_for(@user, url: signin_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
+<%= form_for(@user_empty, url: signin_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
     <div class="form-group">
       <%#= f.label t("user.email"), class: "sr-only" #%>
       <%= f.email_field :email, class: "form-control", placeholder: t("user.email"), tabindex: "1" %>
@@ -14,11 +14,10 @@
                 </label>
               </div>-->
     <!--<br/>-->
-    <div class="form-group">
-        <%= f.simple_captcha :label => "Enter numbers.." %>
-    </div>
 
-    <% show_simple_captcha(object: :user) %>
+    <div class="form-group">
+      <%= show_simple_captcha %>
+    </div>
 
     <div class="form-group">
       <!--<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-green btn-group-justified">Go</button>-->

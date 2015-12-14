@@ -1,6 +1,4 @@
 <div class="container container-narrow content">
-
-
   <div class="row">
     <div class="col-xs-12">
       <h2 class="text-center dark">Welcome <%= @user.try(:full_name) || @user.try(:email) %>
@@ -29,7 +27,6 @@
       <br>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <% render partial: "shared/credits" %>
       <%= render partial: "orders/form", locals: {object: @order} %>
     </div>
   </div>

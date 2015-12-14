@@ -1,8 +1,8 @@
 <% if @creditList.present? && @creditList.any? %>
     <% if current_user
-         class_list = "credits"
+         class_list = ""
          btn_label = "Buy"
-         url = user_buy_path(current_user)
+         url = user_orders_path(current_user)
        else
          class_list = "credits"
          btn_label = "Login and Buy"
@@ -20,7 +20,7 @@
               <table class="table">
                 <thead class="text-capitalize">
                 <tr class="text-center">
-                  <th class="text-center">cost ($)</th>
+                  <th class="text-center">$</th>
                   <th class="text-center">credits</th>
                   <th class="text-center">action</th>
                 </tr>

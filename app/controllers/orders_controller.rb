@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :check_permissions
 
   def express_checkout
     order = Order.find(params[:order_id])
@@ -43,12 +44,12 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new(:express_token => params[:token])
-    @creditList = Credit.all
+    @creditList = credits
   end
 
   def show
     @order = Order.find(params[:id])
-    @creditList = Credit.all
+    @creditList = credits
   end
 
   def create

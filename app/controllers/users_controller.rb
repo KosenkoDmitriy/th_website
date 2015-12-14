@@ -8,19 +8,10 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
   def show
-    if !current_user
-      flash[:notice] = "please relogin"
-      redirect_to signin_get_path
-      return
-    elsif current_user && current_user.id != params[:id].to_i
-      redirect_to current_user
-      return
-    end
-
+    check_permissions
     @order = order_new
     @user = User.find(params[:id])
-    #@creditList = HomeController.get_credits #or ApplicationHelper.get_credits
-    @creditList = Credit.all
+    @creditList = credits
   end
 
   def signup

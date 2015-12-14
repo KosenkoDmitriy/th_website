@@ -23,17 +23,6 @@ module ThWebsite
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # buy credits
-    config.x.one.value = 25000
-    config.x.two.value = 105000
-    config.x.three.value = 350000
-    config.x.four.value = 750000
-
-    config.x.one.cost = 0.99
-    config.x.two.cost = 2.99
-    config.x.three.cost = 5.99
-    config.x.four.cost = 9.99
-
     # + 100 000 credits after login every day (only one once)
     config.x.win_for_login = 10000
 

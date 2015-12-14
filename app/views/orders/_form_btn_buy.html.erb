@@ -1,6 +1,19 @@
-<%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
-    <% f.hidden_field :credit, value: credit.try(:id) %>
-    <%= hidden_field_tag :credit_id, credit.try(:id) %>
+<% if object.present? && current_user.present? %>
+    <%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
+        <%= hidden_field_tag :credit_id, credit.try(:id) %>
+        <tr>
+          <td>
+            <%= credit.try(:cost_in_cents)/100 rescue 0 %>
+          </td>
+          <td>
+            <%= credit.try(:credits).try(:to_i) %>
+          </td>
+          <td>
+            <%= f.submit "Buy", class: "btn btn-green btn-group-justified" %>
+          </td>
+        </tr>
+    <% end %>
+<% else %>
     <tr>
       <td>
         <%= credit.try(:cost_in_cents)/100 rescue 0 %>
@@ -9,7 +22,7 @@
         <%= credit.try(:credits).try(:to_i) %>
       </td>
       <td>
-        <%= f.submit "Buy", class: "btn btn-lg btn-green btn-group-justified" %>
+        <%= link_to "Login and Buy", signin_path, class: "btn btn-green btn-group-justified" %>
       </td>
     </tr>
 <% end %>

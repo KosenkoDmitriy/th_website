@@ -26,14 +26,13 @@
                 </tr>
                 </thead>
                 <tbody class="text-center">
-                    <% @creditList.each do |credit| %>
-                        <%= render partial: "orders/form_btn_buy", locals: { object: credit.try(:order) || @order, credit: credit } %>
-                    <% end %>
+                <% @creditList.each do |credit| %>
+                    <!--btn_label:"Confirm"-->
+                    <%= render partial: "orders/form_btn_buy", locals: {object: credit.try(:order) || @order, credit: credit, btn_label: btn_label} %>
+                <% end %>
                 </tbody>
               </table>
             </div>
-
-            <!--<div class="panel panel-footer bg-black"></div>-->
           </div>
         </div>
       </div>

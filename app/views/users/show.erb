@@ -3,7 +3,6 @@
     <div class="col-xs-12">
       <h2 class="text-center dark">Welcome <%= @user.try(:full_name) || @user.try(:email) %>
         (credits: <%= @user.try(:credits) %>)</h2>
-      <% render partial: "orders/form", locals: {object: @order} %>
     </div>
   </div>
   <div class="row" height="">

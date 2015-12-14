@@ -9,7 +9,7 @@
             <%= credit.try(:credits).try(:to_i) %>
           </td>
           <td>
-            <%= f.submit "Buy", class: "btn btn-green btn-group-justified" %>
+            <%= f.submit btn_label, class: "btn btn-green btn-group-justified" %>
           </td>
         </tr>
     <% end %>
@@ -22,7 +22,7 @@
         <%= credit.try(:credits).try(:to_i) %>
       </td>
       <td>
-        <%= link_to "Login and Buy", signin_path, class: "btn btn-green btn-group-justified" %>
+        <%= link_to btn_label, signin_path, class: "btn btn-green btn-group-justified" %>
       </td>
     </tr>
 <% end %>

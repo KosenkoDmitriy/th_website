@@ -19,11 +19,12 @@ class ApplicationController < ActionController::Base
   helper_method :order_new
 
   def check_permissions
+    uid =  params[:user_id] || params[:id]
     if !current_user
       flash[:notice] = "please relogin"
       redirect_to signin_get_path
       return
-    elsif current_user && current_user.id != params[:id].to_i
+    elsif current_user && current_user.id != uid.to_i
       redirect_to current_user
       return
     end

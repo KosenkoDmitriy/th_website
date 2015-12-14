@@ -8,7 +8,7 @@
       </a>
 
       <!--<a href="<%= game_play_url %>">-->
-        <!--<%= image_tag "button_red.png", class: "img-responsive col-xs-12" %>-->
+      <!--<%= image_tag "button_red.png", class: "img-responsive col-xs-12" %>-->
       <!--</a>-->
 
       <p><b>Texas hold 'em (also known as Texas holdem, hold 'em, or holdem) </b> is a variation of the standard
@@ -27,16 +27,18 @@
   </div>
   <!-- /.row -->
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <%= render partial: "shared/fortune_wheel" %>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <%= render partial: "orders/form", locals: {object: @order} %>
-    </div>
-  </div>
+  <% if !current_user %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <%= render partial: "shared/fortune_wheel" %>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <%= render partial: "orders/form", locals: {object: @order} %>
+        </div>
+      </div>
+      <%= render partial: "shared/sign_up_in" %>
+  <% end %>
 
-  <%= render partial: "shared/sign_up_in" %>
   <%= render partial: "shared/games" %>
   <%= render partial: "shared/back_to_top" %>
 

@@ -2,7 +2,7 @@ require 'digest/md5'
 
 class UsersController < ApplicationController
 
-  protect_from_forgery except: [:login, :sub, :add, :get_balance, :set_balance]
+  protect_from_forgery except: [:login, :sub, :add, :get_balance, :set_balanceß]
   skip_before_action :verify_authenticity_token
 
   respond_to :html, :json
@@ -176,6 +176,25 @@ class UsersController < ApplicationController
       return
     end
     render plain: 'error', status: 404
+  end
+
+  def fw
+    user_id = params[:user_id].to_i if params[:user_id].present?
+    win_amount = params[:win_amount].to_i if params[:win_amount].present?
+    if user_id > 0
+      user = current_user
+      if (win_amount > 0) #bankrupt
+        user.credits += win_amount
+      else
+        user.credits = 0
+      end
+      if user.save
+        # redirect_to user_path(user)
+        render plain: "#{user.credits}", status: 200
+        return
+      end
+    end
+    render plain: "error", status: 404
   end
 
   private

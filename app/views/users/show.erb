@@ -1,11 +1,4 @@
 <div class="container container-narrow content">
-  <div class="row">
-    <div class="col-xs-12">
-      <%= render partial: "shared/errors_flash" %>
-      <h2 class="text-center bg-red2">Welcome <%= @user.try(:full_name).try(:present?) ? @user.try(:full_name) : @user.try(:email) %></h2>
-      <h3 class="text-center">You have <%= @user.try(:credits).try(:to_i) %> credits</h3>
-    </div>
-  </div>
   <div class="row" height="">
     <div class="col-xs-12 col-sm-6" height="">
 

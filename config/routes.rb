@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :orders
   end
 
+  post 'fw' => "users#fw", as: :fw
+
   post 'signin' => 'users#signin', as: :signin
   get 'signin' => 'users#signin', as: :signin_get
 

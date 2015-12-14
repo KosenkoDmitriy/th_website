@@ -87,6 +87,7 @@
             $('.spinner span').hide();
             $r.spin().done(function(price) {
                 //TODO: ajax call -> increase or reset current balance
+                ajaxsend(price.name)
                 $('.price').text('You have: ' + price.name);
                 $('.spinner').on('click', clickHandler);
                 $('.spinner span').show();
@@ -94,6 +95,23 @@
         };
 
         $('.spinner').on('click', clickHandler);
+
+        function ajaxsend(win_amount) {
+            $.ajax({
+                url: "<%=fw_url%>",
+                type: "POST",
+//                data: { "article": { "title": "acme", "text": "123 Carrot Street" } },
+                data: { "user_id": "<%= current_user.id%>", "win_amount": win_amount },
+                success: function(resp){
+                    $("#balance").text("You have " + resp + " credits");
+                    //alert("Data:" + resp);
+                },
+                error: function(resp){
+                    //alert("Error update balance");
+                }
+            });
+        }
+
     });
 </script>
 

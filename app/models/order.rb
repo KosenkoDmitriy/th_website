@@ -4,7 +4,11 @@ class Order < ActiveRecord::Base
 
   def purchase
     response = EXPRESS_GATEWAY.purchase(credit.cost_in_cents, express_purchase_options)
-    credit.update_attribute(:dt, Time.now) if response.success?
+    if response.success?
+      credit.update_attribute(:dt, Time.now)
+      ucredits = user.try(:credits) + credit.try(:credits)
+      user.update_attribute(:credits, ucredits)
+    end
     response.success?
   end
 

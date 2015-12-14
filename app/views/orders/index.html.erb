@@ -26,11 +26,14 @@
                     <td><%= order.try(:credit).try(:credits) %></td>
                     <td><%= order.try(:user).try(:email) %></td>
                     <td>
-                      <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
+                      <% if order.try(:express_payer_id).try(:present?) %>
+                          confirmed
+                      <% else %>
+                          <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
+                      <% end %>
                     </td>
                     <td>
-                      <%= "Payed" if order.try(:credit).try(:express_payer_id).try(:present?)%>
-                      <%= order.try(:credit).try(:express_payer_id)%>
+                      <%= order.try(:express_payer_id).try(:present?) ? "paid" : "unpaid" %>
                     </td>
                   </tr>
               <% end %>

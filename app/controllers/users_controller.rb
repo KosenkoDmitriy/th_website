@@ -7,10 +7,15 @@ class UsersController < ApplicationController
 
   respond_to :html, :json
 
+  def index
+    redirect_to current_user
+  end
+
   def show
     check_permissions
     @order = order_new
-    @user = User.find(params[:id])
+
+    @user = current_user
     @creditList = credits
   end
 

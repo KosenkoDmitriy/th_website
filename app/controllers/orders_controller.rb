@@ -6,8 +6,8 @@ class OrdersController < ApplicationController
     @amount = order.credit.cost_in_cents.to_i
     response = EXPRESS_GATEWAY.setup_purchase(@amount,
                                               ip: request.remote_ip,
-                                              return_url: user_orders_url(current_user),
-                                              cancel_return_url: user_orders_url(current_user),
+                                              return_url: user_order_url(current_user, order),
+                                              cancel_return_url: user_order_url(current_user, order),
                                               currency: "USD",
                                               allow_guest_checkout: true,
                                               items: [{name: "Order", description: "buy #{order.credit.credits.to_i} credits", quantity: "1", amount: @amount}]
@@ -16,10 +16,20 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @order = order_new
+    @orders = Order.where(user: current_user).reverse
+  end
+
+  def new
+    @order = Order.new(:express_token => params[:token])
+    @creditList = credits
+  end
+
+  def show
     token = params[:token]
     payer_id = params[:PayerID]
     if token.present? && payer_id.present?
-      order = Order.last
+      order = Order.find(params[:id])
       order.express_token = token
       order.express_payer_id = payer_id
       if order.save
@@ -37,17 +47,6 @@ class OrdersController < ApplicationController
         flash[:error] = "save error #{token} #{payer_id}"
       end
     end
-
-    @order = order_new
-    @orders = Order.where(user: current_user).reverse
-  end
-
-  def new
-    @order = Order.new(:express_token => params[:token])
-    @creditList = credits
-  end
-
-  def show
     @order = Order.find_by(id: params[:id], user: current_user)
     @creditList = credits
   end

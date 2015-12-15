@@ -5,22 +5,33 @@
       <div class="row">
         <div class="col-xs-3">
           <div class="ribbon1 text-center">
-            <%= image_tag "wheel_of_fortuna.png", class: "" %>
-            <br>
-            <span>Cash, Credits <br>and <br>Free Spins!</span>
+            <a href="<%= credits_url %>">
+              <%= image_tag "wheel_of_fortuna.png", class: "", alt: "win more credits" %>
+              <br>
+              <span>Cash, Credits <br>and <br>Free Spins!</span>
+            </a>
           </div>
           <div class="ribbon text-center">
-            <%= image_tag "logo.png", class: "" %>
+            <a href="<%= root_path %>">
+              <%= image_tag "logo.png", class: "", alt: "logo" %>
+            </a>
             <br>
-            <span class="">All Rights <br>Reserved 2015 </span>
+            <span class="">All Rights <br>Reserved <%= Date.today.year %> </span>
           </div>
         </div>
 
         <div class="col-xs-offset-1 col-xs-8">
-          <h3>Start Playing - win 100% welcome bonus</h3>
-          <ul>
+          <a href="<%= credits_url %>">
+            <h3>Get more credits now</h3>
+          </a>
+
+          <a href="<%= sign_in_up_url %>">
+            <p class="big">register or login to the website and will get the bonus</p>
+          </a>
+
+          <!--<ul>-->
             <!--<li>Texas Holdem</li>-->
-          </ul>
+          <!--</ul>-->
         </div>
       </div>
     </div>

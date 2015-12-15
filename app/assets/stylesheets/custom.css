@@ -143,7 +143,6 @@ ul.nav-pills {
     background-color: #aa0915;
 }
 
-
 .bg-black {
     min-height: 100px;
     color: floralwhite;
@@ -161,13 +160,13 @@ ul.nav-pills {
 }
 
 .ribbon-menu img.right {
-    position:absolute;
+    position: absolute;
     margin-left: 50%;
     /*margin-top: -9.5%;*/
 }
 
 .ribbon-menu img.left {
-    position:absolute;
+    position: absolute;
     margin-left: -542px;
 }
 
@@ -244,42 +243,43 @@ footer a, footer p {
     max-width: 700px;
     min-width: 240px;
     z-index: -100;
-    height:auto;
+    height: auto;
 }
 
 .mast_pika {
-    left:-25%;
-    top:40px;
+    left: -25%;
+    top: 40px;
     position: absolute;
-    width:100px;
+    width: 100px;
 }
 
 .mast_krest {
     position: absolute;
-    right:-20%;
-    top:30px;
-    width:40px;
+    right: -20%;
+    top: 30px;
+    width: 40px;
 }
 
 .mast_buben {
     position: absolute;
-    right:0px;
-    top:100px;
-    width:80px;
+    right: 0px;
+    top: 100px;
+    width: 80px;
 }
 
 .mast_cherv {
     position: absolute;
-    top:220px;
-    left:-12%;
+    top: 220px;
+    left: -12%;
     z-index: 90 !important;
-    width:80px;
+    width: 80px;
 }
+
 /* end masti*/
 
 .content img {
-    padding-right:0px;
-    padding-left:0px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 .bg-transparent {
@@ -291,12 +291,12 @@ footer a, footer p {
     background-image: -webkit-linear-gradient(top, #F00000 0%, #580000 100%);
     background-image: linear-gradient(to bottom, #d51909 0%, #8c0c00 100%);
     background-color: #aa0915;
-    color:palegoldenrod !important;
+    color: palegoldenrod !important;
 }
 
 .form-control {
     background: none;
-    color:floralwhite;
+    color: floralwhite;
 }
 
 .form-control:focus {
@@ -318,18 +318,18 @@ footer a, footer p {
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00D000', endColorstr='#ff005800', GradientType=0);
     background-color: #008800;
-    color:white;
+    color: white;
 
 }
 
 .btn-green:hover {
     background-image: -webkit-linear-gradient(top, #F00000 0%, #580000 100%);
     background-color: #aa0915;
-    color:black;
+    color: black;
 }
 
 .control-label {
-    color:#888;
+    color: #888;
 }
 
 #top-link-block.affix {
@@ -354,20 +354,20 @@ footer a, footer p {
 /* end back to top */
 
 #games {
-    min-height:240px;
-    max-height:600px;
+    min-height: 240px;
+    max-height: 600px;
     overflow-y: scroll;
 }
 
 .credits {
     font-size: 1.5em;
-    text-align:center;
+    text-align: center;
 }
 
 .credits_big {
     font-size: 1.8em;
     padding-top: 15px;
-    text-align:center;
+    text-align: center;
 }
 
 .credits th {
@@ -377,6 +377,22 @@ footer a, footer p {
 
 p.big {
     font-size: 1.2em;
+}
+
+.bg-red p, .bg-red2 p {
+    color: palegoldenrod;
+}
+
+.bg-red a:hover {
+    text-decoration: none;
+}
+
+.bg-red a:hover h3 {
+    color: palegoldenrod;
+}
+
+.bg-red a:hover p {
+    color: white;
 }
 
 /* Large desktops and laptops */

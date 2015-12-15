@@ -5,7 +5,7 @@
           <%= render partial: "shared/errors_flash" %>
           <h2 class="text-center bg-red2">Welcome <%= current_user.try(:full_name).try(:present?) ? current_user.try(:full_name) : current_user.try(:email) %></h2>
 
-          <h3 id="balance" class="text-center">You have <%= current_user.try(:credits).try(:to_i) %> credits</h3>
+          <h3 id="balance" class="text-center">You have <%= number_with_delimiter current_user.try(:credits).try(:to_i) %> credits</h3>
         </div>
       </div>
     </div>

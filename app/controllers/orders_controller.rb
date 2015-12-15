@@ -34,17 +34,17 @@ class OrdersController < ApplicationController
       order.express_payer_id = payer_id
       if order.save
         if order.purchase #(@order.cost_in_cents, credit_card) # this is where we purchase the order. refer to the model method below
-          flash[:success] = "Successfully charged $#{sprintf("%.2f", order.credit.cost_in_cents / 100) rescue 0} and bought #{order.try(:credit).try(:credits).try(:to_i)} credits"
-          redirect_to user_url(current_user) # user_order_url(current_user, order)
+          flash[:success] = "Successfully charged #{order.try(:credit).try(:fcost)} and bought #{order.try(:credit).try(:fcredits)} credits"
+          redirect_to user_url(current_user)
         else
           #render :action => 'failure'
           flash[:error] = "failure"
           redirect_to user_order_url(current_user, order)
-          # redirect_to user_orders_path(current_user)
         end
-        flash[:notice] = "save success #{token} #{payer_id}"
+        # flash[:notice] = "save success #{token} #{payer_id}"
       else
-        flash[:error] = "save error #{token} #{payer_id}"
+        # flash[:error] = "save error #{token} #{payer_id}"
+        flash[:error] = "can't update order"
       end
     end
     @order = Order.find_by(id: params[:id], user: current_user)

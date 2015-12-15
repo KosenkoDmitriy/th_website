@@ -18,5 +18,5 @@ module HomeHelper
       root_path + "#sign_in_up"
     end
   end
-  
+
 end

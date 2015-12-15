@@ -1,0 +1,17 @@
+<div class="container content">
+  <div class="row" id="home">
+    <div class="col-xs-12">
+      <h2 class="text-center bg-red2"><%= @game.try(:title) %></h2>
+      <br/>
+      <iframe src="<%= @game.try(:url) %>" class="col-xs-12" width="" height="700" allowfullscreen="true" frameBorder="0"></iframe>
+
+      <p class="big text-center"></p>
+
+      <p class="big text-center"><%= @game.try(:text) %><a href="<%= @game.try(:url) %>"<%= @game.try(:url) %></a> </p>
+      <br/>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <%= render partial: 'shared/back_to_top' %>
+</div>

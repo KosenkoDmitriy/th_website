@@ -1,0 +1,7 @@
+<% url = game_path game %>
+<a href="<%= url %>">
+  <%= image_tag "games/texas_holdem.gif", class: "img-responsive col-xs-12" %>
+</a>
+
+<p class="big text-center"><%= game.try(:title) %></p>
+<p class="big text-center"><%= game.try(:text) %></p>

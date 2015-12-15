@@ -1,0 +1,19 @@
+<div class="container container-narrow content">
+  <h2 class="text-center bg-red2">Games</h2>
+  <% if @games.present? && @games.any? %>
+      <div class="row" id="games" class="">
+        <% @games.each do |game| %>
+            <div class="col-xs-12 col-sm-6">
+              <%= render partial: "games/game", locals: {game: game} %>
+            </div>
+        <% end %>
+      </div>
+  <% else %>
+      <p class="big text-center">no any games found</p>
+  <% end %>
+
+  <br>
+
+  <%= render partial: "shared/back_to_top" %>
+</div>
+

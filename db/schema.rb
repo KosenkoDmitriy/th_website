@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215010841) do
+ActiveRecord::Schema.define(version: 20151215135309) do
 
   create_table "credits", force: :cascade do |t|
     t.string   "title"
@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20151215010841) do
     t.string   "ip"
     t.string   "express_token"
     t.string   "express_payer_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.datetime "dt"
+    t.string   "status",           default: "unpaid"
   end
 
   add_index "orders", ["credit_id"], name: "index_orders_on_credit_id"

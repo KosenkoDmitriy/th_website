@@ -9,12 +9,11 @@
         <table class="table table-responsive">
           <thead class="text-center">
           <tr>
-            <th width="1%">#</th>
-            <th width="1%">$</th>
-            <th width="20%">credits</th>
-            <th width="10%">email</th>
+            <th width="5%">#</th>
+            <th width="5%">$</th>
+            <th width="10%">credits</th>
             <th width="10%">confirm</th>
-            <th width="10%">status</th>
+            <th width="40%">date time </th>
           </tr>
           </thead>
           <tbody>
@@ -23,18 +22,14 @@
                   <tr>
                     <td><%= order.try(:id) %></td>
                     <td><%= order.try(:credit).try(:fcost) %></td>
-                    <td><%= number_with_delimiter order.try(:credit).try(:fcredits) %></td>
-                    <td><%= order.try(:user).try(:email) %></td>
-                    <td>
-                      <% if order.try(:dt).try(:present?) %>
-                          confirmed
-                      <% else %>
-                          <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= order.try(:dt).try(:present?) ? "paid" : "unpaid" %>
-                    </td>
+                    <td><%= order.try(:credit).try(:fcredits) %></td>
+                    <% if order.try(:dt).try(:present?) %>
+                        <td> <%= order.try(:status) %> </td>
+                        <td> <%= fdate order.try(:dt) %> </td>
+                    <% else %>
+                        <td><%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %></td>
+                        <td> - </td>
+                  <% end %>
                   </tr>
               <% end %>
           <% else %>

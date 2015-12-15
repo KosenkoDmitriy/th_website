@@ -10,4 +10,8 @@ module ApplicationHelper
   #   fcredits = number_to_currency(fcost)
   # end
 
+  def fdate(date)
+    date.strftime("%d/%m/%Y %I:%M %p")
+  end
+
 end

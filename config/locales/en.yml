@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  th:
+    about: "Free Texas Hold Em Poker is the most popular of the poker games being played today."
   user:
     full_name: "Full Name"
     email: "Email"

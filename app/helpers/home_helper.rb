@@ -11,6 +11,12 @@ module HomeHelper
   end
 
   def sign_in_up_url
-    root_path + "#sign_in_up"
+    user = current_user
+    if user
+      user_path user
+    else
+      root_path + "#sign_in_up"
+    end
   end
+  
 end

@@ -25,7 +25,12 @@ class UsersController < ApplicationController
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
     confirm_password = params['user']['confirm_password'] if params['user'].present? && params['user']['confirm_password'].present?
 
-    @user = User.new(user_params)
+    @user_empty = user = User.new(user_params)
+
+    if !simple_captcha_valid?
+      flash[:error] = t("simple_captcha.message.user")
+      return
+    end
 
     if email.blank? || password.blank?
       flash[:error] = "please enter email and/or password"
@@ -46,24 +51,24 @@ class UsersController < ApplicationController
       return
     end
 
-    @user.password = pass(password)
-    @user.confirm_password = ''
-    @user.credits = Rails.configuration.x.win_for_reg
+    user.password = pass(password)
+    user.confirm_password = ''
+    user.credits = Rails.configuration.x.win_for_reg
 
-    # if !@user.valid?
-    #   @user.errors.each do |error|
+    # if !user.valid?
+    #   user.errors.each do |error|
     #     flash[:error2] += error + '\n'
     #     return
     #   end
     # end
 
-    if @user.save_with_captcha
-      session[:user_id] = @user.try(:id) # signup and signin
-      flash[:notice] = "registered successfully! your email: #{ @user.email }"
+    if user.save
+      session[:user_id] = user.try(:id) # signup and signin
+      flash[:notice] = "registered successfully! your email: #{ user.email }"
       flash[:notice2] = "you got #{ Rails.configuration.x.win_for_reg } credits for sign up"
-      redirect_to @user
+      redirect_to user
     else
-      flash[:error] = "error: can\' t create user #{ @user.email }"
+      flash[:error] = "error: can\' t create user #{ user.email }"
       # redirect_to :back
       # return
     end
@@ -80,20 +85,18 @@ class UsersController < ApplicationController
     if email.present? && password.present?
       password = pass(password)
       if User.exists?(email: email, password: password)
-        @user = User.find_by(email: email, password: password)
-        if @user
-          session[:user_id] = @user.try(:id)
-          if @user.last_login_dt.blank? # first login
-            flash[:notice] = "you got #{ Rails.configuration.x.win_for_reg } credits for sign up"
-            @user.last_login_dt = DateTime.now
-            @user.credits += Rails.configuration.x.win_for_login
-          end
-          if @user.last_login_dt.day < Date.today.day
+        user = User.find_by(email: email, password: password)
+        if user
+          session[:user_id] = user.try(:id)
+          # ldt = @user.last_login_dt.day
+          # dt = Date.today.day
+          if (user.last_login_dt.present? && user.last_login_dt.day < Date.today.day) || user.last_login_dt.blank? # yesterday login or first login
             flash[:notice2] = "you got #{ Rails.configuration.x.win_for_login } credits for sign in"
-            @user.credits += Rails.configuration.x.win_for_login
+            user.update_column(:last_login_dt, DateTime.now)
+            user.credits += Rails.configuration.x.win_for_login
           end
-          if @user.save
-            redirect_to @user
+          if user.save
+            redirect_to user
           else
             flash[:error] = 'can not update user info'
           end

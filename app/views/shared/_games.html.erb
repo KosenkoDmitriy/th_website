@@ -1,9 +1,7 @@
 <h2 class="text-center bg-red2">Games</h2>
 <div class="row" id="games" class="">
   <div class="col-xs-12 col-sm-6">
-    <a href="<%= game_play_url %>">
-        <%= image_tag "games/texas_holdem.jpeg", class: "img-responsive col-xs-12" %>
-    </a>
+    <%= render partial: "home/game_no_text" %>
   </div>
   <div class="col-xs-12 col-sm-6">
     <%= image_tag "games/caribbean_poker.jpeg", class: "img-responsive col-xs-12" %>

@@ -26,14 +26,14 @@
                     <td><%= number_with_delimiter order.try(:credit).try(:fcredits) %></td>
                     <td><%= order.try(:user).try(:email) %></td>
                     <td>
-                      <% if order.try(:express_payer_id).try(:present?) %>
+                      <% if order.try(:dt).try(:present?) %>
                           confirmed
                       <% else %>
                           <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %>
                       <% end %>
                     </td>
                     <td>
-                      <%= order.try(:express_payer_id).try(:present?) ? "paid" : "unpaid" %>
+                      <%= order.try(:dt).try(:present?) ? "paid" : "unpaid" %>
                     </td>
                   </tr>
               <% end %>

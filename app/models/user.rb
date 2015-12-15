@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-
+  include ActionView::Helpers::NumberHelper
+  
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 

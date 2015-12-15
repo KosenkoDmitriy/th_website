@@ -239,39 +239,41 @@ footer a, footer p {
 }
 
 /*start masti*/
-.mast{
+.mast {
     position: relative;
     max-width: 700px;
     min-width: 240px;
     z-index: -100;
+    height:auto;
 }
 
 .mast_pika {
     left:-25%;
     top:40px;
     position: absolute;
+    width:100px;
 }
 
 .mast_krest {
     position: absolute;
     right:-20%;
     top:30px;
+    width:40px;
 }
 
 .mast_buben {
     position: absolute;
     right:0px;
     top:100px;
+    width:80px;
 }
 
 .mast_cherv {
     position: absolute;
-    /*left:-15%;*/
-    /*top:480px;*/
-
     top:220px;
     left:-12%;
     z-index: 90 !important;
+    width:80px;
 }
 /* end masti*/
 
@@ -371,6 +373,10 @@ footer a, footer p {
 .credits th {
     color: palegoldenrod;
     text-align: center;
+}
+
+p.big {
+    font-size: 1.2em;
 }
 
 /* Large desktops and laptops */

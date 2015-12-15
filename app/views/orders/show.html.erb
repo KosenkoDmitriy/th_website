@@ -9,8 +9,8 @@
 
           <p>Order # <%= @order.try(:id) %></p>
 
-          <p>$<%= @order.try(:credit).try(:cost_in_cents)/100 rescue 0 %>
-            - <%= @order.try(:credit).try(:credits).try(:to_i) %> credits</p>
+          <p>$<%= @order.try(:credit).try(:fcost) %>
+            - <%= @order.try(:credit).try(:fcredits) %> credits</p>
 
           <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: @order.try(:id), credit_id: @order.try(:credit).try(:id)), class: "btn btn-justified") %>
       <% else %>

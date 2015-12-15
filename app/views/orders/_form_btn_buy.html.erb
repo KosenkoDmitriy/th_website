@@ -3,10 +3,10 @@
         <%= hidden_field_tag :credit_id, credit.try(:id) %>
         <tr>
           <td>
-            <%= credit.try(:cost_in_cents)/100 rescue 0 %>
+            <%= credit.try(:fcost) %>
           </td>
           <td>
-            <%= credit.try(:credits).try(:to_i) %>
+            <%= credit.try(:fcredits) %>
           </td>
           <td>
             <%= f.submit btn_label, class: "btn btn-green btn-group-justified" %>
@@ -16,10 +16,10 @@
 <% else %>
     <tr>
       <td>
-        <%= credit.try(:cost_in_cents)/100 rescue 0 %>
+        <%= credit.try(:fcost) %>
       </td>
       <td>
-        <%= credit.try(:credits).try(:to_i) %>
+        <%= credit.try(:fcredits) %>
       </td>
       <td>
         <%= link_to btn_label, signin_path, class: "btn btn-green btn-group-justified" %>

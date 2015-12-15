@@ -22,8 +22,8 @@
               <% @orders.each do |order| %>
                   <tr>
                     <td><%= order.try(:id) %></td>
-                    <td><%= order.try(:credit).try(:cost_in_cents)/100 rescue 0 %></td>
-                    <td><%= order.try(:credit).try(:credits) %></td>
+                    <td><%= order.try(:credit).try(:fcost) %></td>
+                    <td><%= number_with_delimiter order.try(:credit).try(:fcredits) %></td>
                     <td><%= order.try(:user).try(:email) %></td>
                     <td>
                       <% if order.try(:express_payer_id).try(:present?) %>

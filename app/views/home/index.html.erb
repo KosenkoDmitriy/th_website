@@ -2,37 +2,7 @@
   <div class="row" id="home">
     <div class="col-xs-12 col-sm-9 col-md-9 text-center">
       <h2 class="text-center dark">Start the best gaming experience</h2>
-
-      <a href="<%= game_play_url %>">
-        <%= image_tag "games/texas_holdem.jpeg", class: "img-responsive col-xs-12" %>
-      </a>
-
-      <!--<a href="<%= game_play_url %>">-->
-      <!--<%= image_tag "button_red.png", class: "img-responsive col-xs-12" %>-->
-      <!--</a>-->
-
-      <!--<h4>-->
-        <!--<b>Texas hold 'em </b>-->
-        <!--is a variation of the standard card-->
-        <!--game of poker.</h4>-->
-
-      <p class="big"><%=t("th.about")%></p>
-      <!--<ul>-->
-      <!--<li></li>-->
-      <!--<li></li>-->
-      <!--<li></li>-->
-      <!--</ul>-->
-      <!--<p>
-              <b>Texas hold 'em (also known as Texas holdem, hold 'em, or holdem) </b> is a variation of the standard
-              card game of poker. Two cards (hole cards) are dealt face down to each player and then five community
-              cards are placed face-up by the dealer—a series of three ("the flop") then an additional single card
-              ("the turn" or "fourth street") and another additional card ("the river" or "fifth street"). The best
-              five card poker hand is obtained by taking cards from either the community or their hole cards. Players
-              have the option to check, bet, raise or fold after each deal; i.e., betting may occur prior to the flop,
-              "on the flop", "on the turn", and "on the river".
-            </p>-->
-
-      <br/>
+      <%= render partial: "home/game" %>
     </div>
 
     <div class="col-xs-12 col-sm-3 col-md-3">

@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.try(:id) # signup and signin
       flash[:notice] = "registered successfully! your email: #{ user.email }"
-      flash[:notice2] = "you got #{ Rails.configuration.x.win_for_reg } credits for sign up"
+      flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"
@@ -89,10 +89,8 @@ class UsersController < ApplicationController
         user = User.find_by(email: email, password: password)
         if user
           session[:user_id] = user.try(:id)
-          # ldt = @user.last_login_dt.day
-          # dt = Date.today.day
           if (user.last_login_dt.present? && user.last_login_dt.day < Date.today.day) || user.last_login_dt.blank? # yesterday login or first login
-            flash[:notice2] = "you got #{ Rails.configuration.x.win_for_login } credits for sign in"
+            flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
             user.update_column(:last_login_dt, DateTime.now)
             user.credits += Rails.configuration.x.win_for_login
           end

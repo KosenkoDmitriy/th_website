@@ -26,4 +26,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  include ActionView::Helpers::NumberHelper
+
+  def fcredits credits
+    number_with_delimiter credits.to_i
+  end
+  helper_method :fcredits
+
+  def fcost cost_in_cents
+    fcost = cost_in_cents/100 rescue 0
+    fcredits = number_to_currency(fcost)
+  end
+  helper_method :fcost
+
+
+  def fdate(date)
+    date.strftime("%d/%m/%Y %I:%M %p")
+  end
+  helper_method :fdate
+
 end

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   protect_from_forgery except: [:login, :sub, :add, :get_balance, :set_balance]
   skip_before_action :verify_authenticity_token
 
+  before_action :allow_webgl, only: [:login, :sub, :add, :get_balance, :set_balace]
   respond_to :html, :json
 
   def index
@@ -230,6 +231,20 @@ class UsersController < ApplicationController
     return nil if pass.blank?
     pass = Digest::MD5.hexdigest(pass)
     return pass
+  end
+
+  def allow_webgl
+    header_orig = request.headers['Origin']
+    host = Rails.configuration.x.api.host
+    if header_orig.present? && host.present? && header_orig.include?(host)
+    # if /\Ahttps?:\/\/localhost:8000\z/ =~ request.headers['Origin']
+      headers['Access-Control-Allow-Origin'] = request.headers['Origin']
+      # headers['Access-Control-Request-Method'] = %w{GET POST OPTIONS}.join(",")
+      # # Change this to something smaller while you are debugging
+      # headers['Access-Control-Max-Age']       = "1728000"
+      # # Change this to the list of accepted headers, or remove it if you do not accept any.
+      # headers['Access-Control-Allow-Headers'] = request.headers['Access-Control-Request-Headers']
+    end
   end
 
   def user_params

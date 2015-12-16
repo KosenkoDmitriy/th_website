@@ -29,5 +29,7 @@ module ThWebsite
     # 35 000 credits for new registraion/sign up
     config.x.win_for_reg = 35000
 
+    # api host for webgl
+    config.x.api.host = 'shopomob.ru'
   end
 end

@@ -3,11 +3,17 @@
     <div class="col-xs-12">
       <!--<h2 class="text-center dark">Start the best gaming experience</h2>-->
       <br/>
-        <iframe src="<%= th_game_url %>" class="col-xs-12" width="" height="700" allowfullscreen="true" frameBorder="0"></iframe>
+      <iframe src="
+        <%= th_game_url %>" class="col-xs-12" width="" height="700" allowfullscreen="true" frameBorder="0"></iframe>
       <br/>
     </div>
   </div>
   <!-- /.row -->
+</div>
+<div class="container container-narrow content">
+  <%= render partial: "home/game_about" %>
+
+  <%= render partial: 'home/instructions' %>
 
   <%= render partial: 'shared/back_to_top' %>
 </div>

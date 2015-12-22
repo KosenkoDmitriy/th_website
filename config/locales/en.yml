@@ -22,6 +22,17 @@
 en:
   th:
     about: "Free Texas Hold Em Poker is the most popular of the poker games being played today."
+    about1: "The most popular card game in the world just got better and more thrilling! With Texas Hold’em Fold Up, you play Texas Hold’em against virtual robots. If any of the virtual robots fold during the hand they fold up to show you their hold cards, providing you with a lot more information, and strategies."
+    about2: "Every time that a robot folds up, the odds change, the excitement changes, and how you play your hand changes. This additional information should make it easier to determine if you should fold, check, or raise your hand."
+    instructions:
+      one: "1. If you want win the bonus - click on the button \"bonus bet\" and make any bet before clicking on the button \"start game\"."
+      two: "2. Make the bet and play Texas Hold'em Fold Up (sm) against five other virtual players."
+      three: "3. If you win the pot you get BOTH the pot and the TEXAS HOLD EM FOLD UP BONUS. If you split the pot you get half of the TEXAS HOLD EM FOLD UP BONUS"
+      four: "4. You choose the amount of your bet for each hand and the five other virtual players will match your bet, creating the pot."
+      five: "5. If any of the virtual players fold, they will fold the cards face up, showing you what they folded."
+      six: "6. If you choose to call, raise, or go ALL IN, you can only bet the maximium amount of credits that you have displayed at the start of the game in the CREDITS window."
+      seven: "7. The button moves each hand. You will be the first to act on the first hand, and last to act on the sixth, and so on."
+      eight: "8. All virtual players have the same amount of credits you do."
   user:
     full_name: "Full Name"
     email: "Email"

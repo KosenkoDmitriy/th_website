@@ -14,8 +14,8 @@ Credit.find_or_create_by(cost_in_cents: 999, credits: 750000)
 webgl_text = "if any problems - reload page (support all browsers except internet explorer)"
 webplayer_text = "if any problems - reload page (support all browsers except google chrome)"
 Game.find_or_create_by(title: "webgl 64 MB", text: webgl_text, url: "http://th.webgl64.shopomob.ru")
-Game.find_or_create_by(title: "webgl 128 MB", text: webgl_text, url: "http://th.webgl128.shopomob.ru")
-Game.find_or_create_by(title: "webgl 256 MB", text: webgl_text, url: "http://th.webgl256.shopomob.ru")
-Game.find_or_create_by(title: "webgl 512 MB", text: webgl_text, url: "http://th.webgl512.shopomob.ru")
-Game.find_or_create_by(title: "webgl 1024 MB", text: webgl_text, url: "http://th.webgl1024.shopomob.ru")
+# Game.find_or_create_by(title: "webgl 128 MB", text: webgl_text, url: "http://th.webgl128.shopomob.ru")
+# Game.find_or_create_by(title: "webgl 256 MB", text: webgl_text, url: "http://th.webgl256.shopomob.ru")
+# Game.find_or_create_by(title: "webgl 512 MB", text: webgl_text, url: "http://th.webgl512.shopomob.ru")
+# Game.find_or_create_by(title: "webgl 1024 MB", text: webgl_text, url: "http://th.webgl1024.shopomob.ru")
 Game.find_or_create_by(title: "webplayer", text: webplayer_text, url: "http://th.webplayer.shopomob.ru/WebPlayer.html")

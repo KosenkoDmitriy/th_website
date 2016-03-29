@@ -192,9 +192,9 @@ class UsersController < ApplicationController
     win_amount = params[:win_amount].to_i if params[:win_amount].present?
     if user_id > 0
       user = current_user
-      if (win_amount > 0) #bankrupt
+      if win_amount > 0
         user.credits += win_amount
-      else
+      else # bankrupt
         user.credits = 0
       end
       if user.save

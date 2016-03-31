@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   # TODO: use this namespace and change urls in game
   # namespace :api do
   post 'login' => 'users#login', as: :login
+  post 'flogin' => 'users#flogin', as: :flogin # facebook login
   get 'login' => 'users#login'
   post 'add' => 'users#add', as: :add
   post 'sub' => 'users#sub', as: :sub

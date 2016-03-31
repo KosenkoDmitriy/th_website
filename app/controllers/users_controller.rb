@@ -140,6 +140,25 @@ class UsersController < ApplicationController
     render plain: 'please signup/register', status: 404
   end
 
+  # facebook login
+  def flogin
+    uid = params['e'] if params['e'].present?
+    provider = params['p'] if params['p'].present?
+    if User.exists?(uid: uid, provider: provider)
+      user = User.find_by(uid: uid, provider: provider)
+      user.key = generate_key(email, password)
+      if (user.save!)
+        render plain: "#{user.key}", status: 200
+        return
+      end
+      #render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200
+      render plain 'error key', status: 404
+      return
+    end
+    render plain: 'please signup/register', status: 404
+  end
+
+
   # sub lose amount from balance
   def sub
     user, credits_from_param = get_user params

@@ -11,21 +11,30 @@ class User < ActiveRecord::Base
   end
 
 
-# end
-#
   def self.from_omniauth(auth_hash)
 
-    user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
-    user.name = auth_hash['info']['name']
-    user.location = auth_hash['info']['location']
-    user.image_url = auth_hash['info']['image']
-    # user.url = auth_hash['info']['urls']['Twitter'] # Twitter
-    # Start Facebook
-    user.url = auth_hash['info']['urls'][user.provider.capitalize] # facebook
-    user.email = auth_hash['info']['email']
-    user.password = auth_hash['credentials']['token']
-    # End facebook
-    user.save!
+    # user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
+    if (exists?(uid: auth_hash['uid'], provider: auth_hash['provider'])) # existing user
+      user = find_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
+
+    else # new user
+      user = create(uid: auth_hash['uid'], provider: auth_hash['provider'])
+      # user.credits = Rails.configuration.x.win_for_reg
+
+      user.name = auth_hash['info']['name']
+      user.location = auth_hash['info']['location']
+      user.image_url = auth_hash['info']['image']
+      # user.url = auth_hash['info']['urls']['Twitter'] # Twitter
+      # Start Facebook
+      user.url = auth_hash['info']['urls'][user.provider.capitalize] # facebook
+      user.email = auth_hash['info']['email']
+      user.password = auth_hash['credentials']['token']
+      # End facebook
+
+      user.save!
+    end
+
+
     user
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215211301) do
+ActiveRecord::Schema.define(version: 20160329113534) do
 
   create_table "credits", force: :cascade do |t|
     t.string   "title"
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 20151215211301) do
     t.datetime "updated_at",       null: false
     t.string   "key"
     t.datetime "last_login_dt"
+    t.string   "name"
+    t.string   "location"
+    t.string   "image_url"
+    t.string   "url"
+    t.string   "provider"
+    t.string   "uid"
   end
+
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
+  add_index "users", ["provider"], name: "index_users_on_provider"
+  add_index "users", ["uid"], name: "index_users_on_uid"
 
 end

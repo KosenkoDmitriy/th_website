@@ -112,6 +112,7 @@ class UsersController < ApplicationController
 
   def signout
     session[:user_id] = nil
+    # flash[:success] = 'See you!'
     redirect_to root_path
   end
 

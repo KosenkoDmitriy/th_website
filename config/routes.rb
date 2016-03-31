@@ -36,6 +36,10 @@ Rails.application.routes.draw do
   post 'set' => 'users#set_balance', as: :set_balance
   # end
 
+  # social login
+  get '/auth/:provider/callback', to: 'sessions#create'
+
+  # end social login
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

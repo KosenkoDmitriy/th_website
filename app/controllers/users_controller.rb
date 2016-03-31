@@ -142,7 +142,7 @@ class UsersController < ApplicationController
 
   # facebook login
   def flogin
-    uid = params['e'] if params['e'].present?
+    uid = params['u'] if params['u'].present?
     provider = params['p'] if params['p'].present?
     if User.exists?(uid: uid, provider: provider)
       user = User.find_by(uid: uid, provider: provider)

@@ -144,8 +144,8 @@ class UsersController < ApplicationController
   def flogin
     uid = params['u'] if params['u'].present?
     provider = params['p'] if params['p'].present?
-    if User.exists?(uid: uid, provider: provider)
-      user = User.find_by(uid: uid, provider: provider)
+    if User.exists?(bt: uid, provider: provider)
+      user = User.find_by(bt: uid, provider: provider)
       user.key = generate_key(email, password)
       if (user.save!)
         render plain: "#{user.key}", status: 200
@@ -155,7 +155,7 @@ class UsersController < ApplicationController
       render plain 'error key', status: 404
       return
     end
-    render plain: 'please signup/register', status: 404
+    render plain: 'please login/sign in on website first', status: 404
   end
 
 

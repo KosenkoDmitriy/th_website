@@ -25,10 +25,12 @@ class User < ActiveRecord::Base
       user.location = auth_hash['info']['location']
       user.image_url = auth_hash['info']['image']
       # user.url = auth_hash['info']['urls']['Twitter'] # Twitter
+
       # Start Facebook
       user.url = auth_hash['info']['urls'][user.provider.capitalize] # facebook
       user.email = auth_hash['info']['email']
       user.password = auth_hash['credentials']['token']
+      user.bt = auth_hash['extra']['raw_info']['token_for_business']
       # End facebook
 
       user.save!

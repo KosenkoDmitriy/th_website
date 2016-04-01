@@ -146,7 +146,7 @@ class UsersController < ApplicationController
     provider = params['p'] if params['p'].present?
     if User.exists?(bt: uid, provider: provider)
       user = User.find_by(bt: uid, provider: provider)
-      user.key = generate_key(email, password)
+      user.key = generate_key(user.email, user.password)
       if (user.save!)
         render plain: "#{user.key}", status: 200
         return

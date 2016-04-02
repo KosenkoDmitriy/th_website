@@ -3,10 +3,10 @@ require 'digest/md5'
 class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
 
-  protect_from_forgery except: [:login, :sub, :add, :get_balance, :set_balance]
+  protect_from_forgery except: [:login, :flogin, :sub, :add, :get_balance, :set_balance]
   skip_before_action :verify_authenticity_token
 
-  before_action :allow_webgl, only: [:login, :sub, :add, :get_balance, :set_balace]
+  before_action :allow_webgl, only: [:login, :flogin, :sub, :add, :get_balance, :set_balace]
   respond_to :html, :json
 
   def index

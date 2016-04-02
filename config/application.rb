@@ -32,6 +32,6 @@ module ThWebsite
     # api host for webgl
     config.x.api.host = 'shopomob.ru'
 
-    config.x.th_game_url = "http://th.webgl64.shopomob.ru"
+    config.x.th_game_url = "https://th.webgl64.shopomob.ru"
   end
 end

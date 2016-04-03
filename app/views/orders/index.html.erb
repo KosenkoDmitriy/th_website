@@ -1,13 +1,25 @@
-<div class="container container-narrow content">
-  <div class="row" id="home">
-    <div class="col-xs-12">
-      <%= render partial: "shared/errors_flash" %>
-      <%= render partial: "shared/errors", locals: {obj: @user} %>
-      <div class="bg-black credits text-center">
-        <!--<h2 class="text-center dark">Orders</h2>-->
-        <h3 class="text-center bg-red2">Orders</h3>
-        <table class="table table-responsive">
-          <thead class="text-center">
+<div class="section03">
+
+  <%= render partial: "shared/errors_flash" %>
+  <%= render partial: "shared/errors", locals: {obj: @user} %>
+
+  <% image_tag "heart-shape.png", class:"heartshape", alt:"" %>
+  <!--<div class="sub_section01">-->
+    <!--<div class="try_mobileversion"><%= image_tag "try-mobile.png", alt:"" %><h5>Available at iStore.</h5> </div>-->
+    <!--<div class="title_section"><h3>Current <span class="boldtxt">online casino</span> tournaments</h3>-->
+      <!--<div class="blog_counter">10</div>-->
+    <!--</div>-->
+    <!--<div class="sec_desc"><p>Each time sany of players plays a progressive jackpot game, the  <strong>prize value increases</strong>. Mauris volutpat auctor sodales. Aenean ullamcorper vestibulum tellus, nec volutpat tellus vulputate vitae. Pellentesque porta elementum velit ut molestie. Integer in dolor eu ligula imperdiet fermentum sed eget ante. Nullam condimentum aliquam vestibulum. </p>-->
+    <!--</div>-->
+  <!--</div>-->
+  <br><br>
+  <br><br>
+  <div class="sub_section02">
+    <div class="tab_inner">
+      <div class="sorted_display">
+        <!--<h4>We have 32 tournaments for you</h4>-->
+        <table class="tournament_list">
+          <thead>
           <tr>
             <th width="5%">#</th>
             <th width="5%">$</th>
@@ -17,9 +29,15 @@
           </tr>
           </thead>
           <tbody>
-          <% if @orders && @orders.any? %>
+
+
+          </tr>
+          <% isOdd = false
+             if @orders && @orders.any?
+               isOdd = !isOdd
+          %>
               <% @orders.each do |order| %>
-                  <tr>
+                  <tr class="<% isOdd ? 'odd' : 'even' %>">
                     <td><%= order.try(:id) %></td>
                     <td><%= order.try(:credit).try(:fcost) %></td>
                     <td><%= order.try(:credit).try(:fcredits) %></td>
@@ -29,7 +47,7 @@
                     <% else %>
                         <td><%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %></td>
                         <td> - </td>
-                  <% end %>
+                    <% end %>
                   </tr>
               <% end %>
           <% else %>
@@ -37,11 +55,21 @@
           <% end %>
           </tbody>
         </table>
+        <div class="pagination">
+          <ul>
+            <li><a href="#" class="current-page">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+          </ul>
+        </div>
+        <div class="clr"></div>
       </div>
     </div>
+
+    <%#= render partial: "orders/tournament_table" #%>
+
   </div>
-  <!-- /.row -->
 
-  <%= render partial: 'shared/back_to_top' %>
-
+  <div class="clr"></div>
 </div>

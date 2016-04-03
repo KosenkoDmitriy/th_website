@@ -190,7 +190,7 @@ parseInt(a[0].style.zIndex)||0;d(a).each(function(c){this.style.zIndex=b+c});thi
 		if (jQuery.browser.msie) {
 			if(parseInt(jQuery.browser.version) == 7) {
 				
-				$(".left-rail ul.sub-nav > li.active > a").append('<img src="/static/images/arrow-red-down.png" alt="arrow" class="red-arrow" />');
+				$(".left-rail ul.sub-nav > li.active > a").append('<img src="/static/arrow-red-down.png" alt="arrow" class="red-arrow" />');
 				
 				$("a.more").each(function(){
 					var more = $(this);
@@ -199,13 +199,13 @@ parseInt(a[0].style.zIndex)||0;d(a).each(function(c){this.style.zIndex=b+c});thi
 						more.parents("#carousel").length == 0 && 
 						more.parents(".sub-nav-featured").length == 0) {
 						
-						//more.parent().append('<img src="/static/images/arrow-red-right.png" alt="arrow" class="red-arrow" />');
-						more.append('<img src="/static/images/arrow-red-right.png" alt="arrow" class="red-arrow" />');
+						//more.parent().append('<img src="/static/arrow-red-right.png" alt="arrow" class="red-arrow" />');
+						more.append('<img src="/static/arrow-red-right.png" alt="arrow" class="red-arrow" />');
 
 					} else if (more.parents(".sub-nav-featured").length > 0 ||
 								more.parents("#featured-carousel").length > 0 ||
 								more.parents("#carousel").length > 0) {
-						more.parent().append('<img src="/static/images/arrow-white-right-small.png" alt="arrow" class="white-arrow" />');										
+						more.parent().append('<img src="/static/arrow-white-right-small.png" alt="arrow" class="white-arrow" />');
 					}
 
 				});
@@ -331,8 +331,8 @@ parseInt(a[0].style.zIndex)||0;d(a).each(function(c){this.style.zIndex=b+c});thi
 		});
 		
 		//Insert Maps into Div
-		$('.map .zoom1').append('<img src="/static/images/map-zoomed-out-indicators.png" class="map-image1" style="z-index:2;" />');
-		$('.map .zoom2 .inner').append('<img src="/static/images/map-large.png" class="map-image2" style="z-index:1;" />');
+		$('.map .zoom1').append('<img src="/static/map-zoomed-out-indicators.png" class="map-image1" style="z-index:2;" />');
+		$('.map .zoom2 .inner').append('<img src="/static/map-large.png" class="map-image2" style="z-index:1;" />');
 		$('.map .zoom2 ul').hide();
 		
 		//Define Variables

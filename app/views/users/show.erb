@@ -1,37 +1,6 @@
-<div class="container container-narrow content">
-  <div class="row" height="">
-    <div class="col-xs-12 col-sm-6" height="">
-
-      <%= render partial: "shared/fortune_wheel" %>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <%= render partial: "orders/form", locals: {object: @order} %>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <div class="row">
-    <div class="col-xs-12">
-      <%= render partial: "home/game" %>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <%= render partial: 'shared/back_to_top' %>
-
+<%= render partial: "shared_new/content2_credits" %>
+<div class="section03">
+    <% render partial: "home/game" %>
 </div>
+
+<%= render partial: "shared_new/content4_games" %>

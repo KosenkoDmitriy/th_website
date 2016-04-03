@@ -551,7 +551,7 @@ position: absolute;top: 0;left: 0;}
 }
 
 .sub_section03 .section_right {
-    float: left;
+    float: right;
     margin-left: 25px;
     width: 48%;
     height: auto;

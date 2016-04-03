@@ -8,11 +8,15 @@
           <td class="games"><a href="<%= user_path(current_user) %>">Profile</a></td>
           <td class="contact"><a href="<%= signout_path %>">Sign Out</a></td>
     <% else %>
+          <td class="contact"><a href="/auth/facebook">Facebook Sign In </a></td>
+          <td class="contact"><a href="/auth/facebook"> Facebook Sign Up </a></td>
+
           <td class="tournament"><a href="<%= root_path %>#credits">Credits</a></td>
-          <td class="aboutus"><a href="<%= root_path %>#sign_in_up">Sign In</a></td>
-          <td class="contact"><a href="<%= root_path %>#sign_in_up">Sign Up</a></td>
-      <% end %>
-      <!--<td class="aboutus"><a href="about-us.html">About Us</a></td>-->
+          <!--<td class="aboutus"><a href="<%= root_path %>#sign_in_up">Sign In</a></td>-->
+          <!--<td class="contact"><a href="<%= root_path %>#sign_in_up">Sign Up</a></td>-->
+
+    <% end %>
+      <td class="aboutus"><a href="about-us.html">About Us</a></td>
     </tr>
   </table>
 </div>

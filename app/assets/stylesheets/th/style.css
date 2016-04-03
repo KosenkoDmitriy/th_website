@@ -528,3 +528,30 @@ position: absolute;top: 0;left: 0;}
 .front {background:#9f0000;z-index: 2;}
 .back {background:#FFF;-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);transform: rotateY(180deg);}
 
+.sub_section03 a {color:#000;text-decoration: none;}
+.sub_section03 a:hover {color:darkred;text-decoration: none;}
+
+.sub_section03 .section_right table.contact_table tbody td {
+    padding: 20px 10px;
+    font: normal 29px/22px 'PT sans';
+}
+
+.sub_section03 .section_right table.contact_table thead th {
+    font: normal 29px/22px 'PT sans';
+    height: 28px;
+    text-align: center;
+}
+.sub_section03 .section_right table.contact_table {
+    width: 100%;
+}
+
+.sub_section03 .section_left .sec_desc {
+    padding: 0;
+    text-align: center;
+}
+.sub_section03 .section_right {
+    float: left;
+    margin-left: 25px;
+    width: 48%;
+    height: auto;
+}

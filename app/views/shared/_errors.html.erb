@@ -1,9 +1,0 @@
-<% if obj.present? && obj.errors.any? %>
-    <div id="text-center">
-      <h3 class="text-center"><%= pluralize(obj.errors.count, "error") %>:</h3>
-      <% obj.errors.full_messages.each do |msg| %>
-          <p class="text-center">
-            <%= msg %></p>
-      <% end %>
-    </div>
-<% end %>

@@ -3,99 +3,34 @@
 <head>
   <title>Texas Holdem</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]>
-  <script src="<%=asset_path('assets/ie8-responsive-file-warning.js')%>"></script><![endif]-->
-  <script src="<%=asset_path('assets/ie-emulation-modes-warning.js')%>"></script>
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
   <style type="text/css">embed[type*="application/x-shockwave-flash"], embed[src*=".swf"], object[type*="application/x-shockwave-flash"], object[codetype*="application/x-shockwave-flash"], object[src*=".swf"], object[codebase*="swflash.cab"], object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"], object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"], object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"] {
       display: none !important;
   }</style>
-  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+      $(window).load(function () {
+          effect:'fade',
+                  $('#slider').nivoSlider()
+      });
+  </script>
+</head>
+
+<%= csrf_meta_tags %>
 </head>
 <body id="body">
+<!--wrapper -->
+<div id="wrapper">
+  <%= render partial: "shared/top_section" %>
+  <%= render partial: "shared/slider_section" %>
 
-<%= render partial:"shared/nav_menu" %>
-<%= render partial: "shared/balance" %>
-<%= yield %>
-<%= render partial:"shared/footer" %>
+  <%= render partial: "shared/content_section" %>
+  <% yield %>
 
+  <%= render partial: "shared/footer_section" %>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!--<script src="./js/jquery.min.js"></script>-->
-<!--<script src="./js/bootstrap.min.js"></script>-->
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<!--<script src="./js/ie10-viewport-bug-workaround.js"></script>-->
-
-<script type="text/javascript">
-
-    //    $(document).ready(function () {alert("ready") });
-    //    $(document).load(function () {alert("load"); });
-
-    //    back to top
-    // Only enable if the document has a long scroll bar
-    // Note the window height + offset
-
-    $(function () {
-
-        $('#myTabs a').click(function (e) {
-            e.preventDefault();
-            $(this).tab('show');
-        });
-
-        //
-        //        $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
-        //        $('#myTabs a:first').tab('show') // Select first tab
-        //        $('#myTabs a:last').tab('show') // Select last tab
-        //        $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
-
-
-        if (($(window).height() + 100) < $(document).height()) {
-            $('#top-link-block').removeClass('hidden').affix({
-                // how far to scroll down before link "slides" into view
-                offset: {top: 100}
-            });
-        }
-
-
-//        var h = $(".container-narrow").height();
-//        h=$(".mast_buben").position().left;
-
-        absPosLeft = $(".container-narrow").offset().left;
-        $("#top-link-block.affix").css("right", absPosLeft);
-    });
-</script>
-
-<!--Start Facebook SDK
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '1589861361334240',
-            xfbml      : true,
-            version    : 'v2.5'
-        });
-    };
-
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
-<!--End Facebook SDK-->
-
+</div>
 </body>
 </html>

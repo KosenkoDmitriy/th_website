@@ -1,0 +1,19 @@
+<div class="navigation">
+  <table>
+    <tr>
+      <td class="home"><a href="<%= root_path %>#home">Home </a></td>
+      <td class="getting_started"><a href="<%= root_path %>#games">Games</a></td>
+      <% if current_user %>
+          <td class="payment_method"><a href="<%= user_orders_path(current_user) %>">Orders</a></td>
+          <td class="games"><a href="<%= user_path(current_user) %>">Profile</a></td>
+          <td class="contact"><a href="<%= signout_path %>">Sign Out</a></td>
+    <% else %>
+          <td class="tournament"><a href="<%= root_path %>#credits">Credits</a></td>
+          <td class="aboutus"><a href="<%= root_path %>#sign_in_up">Sign In</a></td>
+          <td class="contact"><a href="<%= root_path %>#sign_in_up">Sign Up</a></td>
+      <% end %>
+      <!--<td class="aboutus"><a href="about-us.html">About Us</a></td>-->
+    </tr>
+  </table>
+</div>
+

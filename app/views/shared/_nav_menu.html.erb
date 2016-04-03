@@ -1,19 +1,59 @@
-<div class="navigation">
-  <table>
-    <tr>
-      <td class="home"><a href="<%= root_path %>#home">Home </a></td>
-      <td class="getting_started"><a href="<%= root_path %>#games">Games</a></td>
-      <% if current_user %>
-          <td class="payment_method"><a href="<%= user_orders_path(current_user) %>">Orders</a></td>
-          <td class="games"><a href="<%= user_path(current_user) %>">Profile</a></td>
-          <td class="contact"><a href="<%= signout_path %>">Sign Out</a></td>
-    <% else %>
-          <td class="tournament"><a href="<%= root_path %>#credits">Credits</a></td>
-          <td class="aboutus"><a href="<%= root_path %>#sign_in_up">Sign In</a></td>
-          <td class="contact"><a href="<%= root_path %>#sign_in_up">Sign Up</a></td>
-      <% end %>
-      <td class="aboutus"><a href="about-us.html">About Us</a></td>
-    </tr>
-  </table>
-</div>
+<div class="text-center">
+  <div class="container container-narrow">
+    <div class="mast">
+      <%= image_tag "mast/krest.png", class: "mast_krest" %>
+      <%= image_tag "mast/pika.png", class: "mast_pika" %>
+      <%= image_tag "mast/cherv.png", class: "mast_cherv" %>
+      <%= image_tag "mast/buben.png", class: "mast_buben" %>
+    </div>
+    <div class="header">
 
+      <div class="masthead  text-center">
+        <%= image_tag "logo.png", class: "logo" %>
+
+        <div class="ribbon-menu">
+          <%= image_tag "ribbon_red_l.png", class: "left" %>
+          <%= image_tag "ribbon_red_r.png", class: "right" %>
+        </div>
+
+        <nav class="navbar navbar-default">
+          <div class="">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                      data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="http://html.shopomob.ru/poker/#">
+                <!--Texas Holdem-->
+                <!--<img src="./logo.png" class="img-responsive" class="img-responsive" width="60px" align="">-->
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav nav-pills nav-justified">
+                <li class="active"><a href="<%= root_path %>#home">Home</a></li>
+                <li><a href="<%= root_path %>#games">Games</a></li>
+                <% if current_user %>
+                    <li><a href="<%= user_orders_path(current_user) %>">Orders</a></li>
+                    <li><a href="<%= user_path(current_user) %>">Profile</a></li>
+                    <li><a href="<%= signout_path %>">Sign Out</a></li>
+                <% else %>
+                    <li><a href="<%= root_path %>#credits">Credits</a></li>
+                    <li><a href="<%= root_path %>#sign_in_up">Sign In</a></li>
+                    <li><a href="<%= root_path %>#sign_in_up">Sign Up</a></li>
+                <% end %>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

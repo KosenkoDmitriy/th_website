@@ -37,11 +37,14 @@
   <div class="footer_section_bottom">
     <div class="footer_section_bottom_inner">&nbsp;
       <div class="footer_logo">
-        <div class="logo_section"><%= image_tag "footer-logo.png", alt:"" %></div>
-        <p class="copyright">Rights reserved,  2012.</p>
+        <div class="logo_section">
+          <% image_tag "footer-logo.png", alt:"" %>
+          <%= image_tag "logo.png", width:"100%", alt:"" %>
+        </div>
+        <p class="copyright">All Rights Reserved, <%= Date.today.year %>.</p>
       </div>
       <div class="footer_bottomleftpart"><%= image_tag "visa.jpg", alt:"" %></div>
-      <div class="footer_bottomrightpart">Design by: Prospekt d.o.o.</div>
+      <div class="footer_bottomrightpart">Design by: </div>
       <div class="clr"></div>
     </div>
   </div>

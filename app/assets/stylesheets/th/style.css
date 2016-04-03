@@ -549,9 +549,16 @@ position: absolute;top: 0;left: 0;}
     padding: 0;
     text-align: center;
 }
+
 .sub_section03 .section_right {
     float: left;
     margin-left: 25px;
     width: 48%;
     height: auto;
+}
+
+.section03 .game_play {
+    width: 940px;
+    height: 900px;
+    margin-top: 55px;
 }

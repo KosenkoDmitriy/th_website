@@ -1,19 +1,27 @@
-<div class="container content">
-  <div class="row" id="home">
-    <div class="col-xs-12">
-      <!--<h2 class="text-center dark">Start the best gaming experience</h2>-->
-      <br/>
-      <iframe src="
-        <%= th_game_url %>" class="col-xs-12" width="" height="700" allowfullscreen="true" frameBorder="0"></iframe>
-      <br/>
+
+<div id="contentarea_1">
+    <div class="section03">
+        <div class="game_play">
+            <iframe src="<%= th_game_url %>" class="col-xs-12" width="100%" height="700px" allowfullscreen="true" frameBorder="0"></iframe>
+        </div>
     </div>
-  </div>
-  <!-- /.row -->
 </div>
-<div class="container container-narrow content">
-  <%= render partial: "home/game_about" %>
 
-  <%= render partial: 'home/instructions' %>
+<!--<div class="container content">-->
+  <!--<div class="row" id="home">-->
+    <!--<div class="col-xs-12">-->
+      <!--&lt;!&ndash;<h2 class="text-center dark">Start the best gaming experience</h2>&ndash;&gt;-->
+      <!--<br/>-->
+      <!--<iframe src="<%= th_game_url %>" class="col-xs-12" width="" height="700" allowfullscreen="true" frameBorder="0"></iframe>-->
+      <!--<br/>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--&lt;!&ndash; /.row &ndash;&gt;-->
+<!--</div>-->
+<!--<div class="container container-narrow content">-->
+  <!--<% render partial: "home/game_about" %>-->
 
-  <%= render partial: 'shared/back_to_top' %>
-</div>
+  <!--<% render partial: 'home/instructions' %>-->
+
+  <!--<% render partial: 'shared/back_to_top' %>-->
+<!--</div>-->

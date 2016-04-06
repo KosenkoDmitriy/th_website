@@ -34,9 +34,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @is_odd = false
-           @creditList.each do |credit|
-             @is_odd = !@is_odd %>
+        <% @creditList.each do |credit| %>
             <!--btn_label:"Confirm"-->
             <%= render partial: "orders/form_btn_buy", locals: {object: credit.try(:order) || @order, credit: credit, btn_label: btn_label} %>
         <% end %>

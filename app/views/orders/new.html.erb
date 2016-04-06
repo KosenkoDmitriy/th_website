@@ -1,12 +1,23 @@
-<div class="container container-narrow content">
-  <div class="row" id="home">
-    <div class="col-xs-12">
+<div id="contentarea_1">
+  <div class="section03">
+    <div class="left_content">
       <%= render partial: "shared/errors_flash" %>
-      <%= render partial: "orders/form", locals: {object: @order} %>
+      <% if @order.present? %>
+          <h2 class="title">New Order</h2>
+          <%= render partial: "orders/form", locals: {object: @order} %>
+      <% else %>
+          <h2 class="title">Order not found</h2>
+      <% end %>
     </div>
+
+    <div class="rightside_section">
+      <div class="rightboxes">
+        <%= render partial: "shared_new/rsidebar_games" %>
+      </div>
+      <div class="clr"></div>
+    </div>
+
+    <div class="clr"></div>
+
   </div>
-  <!-- /.row -->
-
-  <%= render partial: 'shared/back_to_top' %>
-
 </div>

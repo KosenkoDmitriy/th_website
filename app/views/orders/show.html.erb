@@ -1,24 +1,30 @@
-<div class="container container-narrow content">
-  <div class="row" id="home">
-    <div class="col-xs-12 text-center bg-black credits">
+<div id="contentarea_1">
+  <div class="section03">
+    <div class="left_content">
       <%= render partial: "shared/errors_flash" %>
-      <% if @order.present? %>
-          <h2 class="text-center bg-red2">Confirm order</h2>
 
+      <h2 class="title">Confirm Order</h2>
+      <% if @order.present? %>
           <p>Email: <%= @order.try(:user).try(:email) %></p>
 
-          <p>Order # <%= @order.try(:id) %></p>
+          <p>Order #<%= @order.try(:id) %></p>
 
           <p><%= @order.try(:credit).try(:fcost) %>
-            - <%= @order.try(:credit).try(:fcredits) %> credits</p>
+            (<%= @order.try(:credit).try(:fcredits) %> credits)</p>
 
           <%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: @order.try(:id), credit_id: @order.try(:credit).try(:id)), class: "btn btn-justified") %>
+
       <% else %>
-          <h2 class="bg-red2">Order not found</h2>
+          <h2 class="title">Order not found</h2>
       <% end %>
     </div>
+
+    <div class="rightside_section">
+      <div class="rightboxes">
+        <%= render partial: "shared_new/rsidebar_games" %>
+      </div>
+      <div class="clr"></div>
+    </div>
   </div>
-  <!-- /.row -->
-  <br/>
-  <%= render partial: 'shared/back_to_top' %>
+</div>
 </div>

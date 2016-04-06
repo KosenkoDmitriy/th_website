@@ -3,7 +3,7 @@
     .wcontainer {
         position: absolute;
         left: 7%;
-        margin-top: 2%;
+        margin-top: 3%;
     }
 
     .roulette {
@@ -88,7 +88,7 @@
             $r.spin().done(function(price) {
                 //TODO: ajax call -> increase or reset current balance
                 ajaxsend(price.name)
-                $('.price').text('You have: ' + price.name);
+                $('.price').text('You win ' + price.name + ' credits');
                 $('.spinner').on('click', clickHandler);
                 $('.spinner span').show();
             });

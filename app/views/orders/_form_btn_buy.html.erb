@@ -1,7 +1,7 @@
 <% if object.present? && current_user.present? %>
     <%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
         <%= hidden_field_tag :credit_id, credit.try(:id) %>
-        <tr class="<%= @is_odd ? 'odd' : 'even' %>">
+        <tr class="<%= cycle("odd", "even") %>">
           <td>
             <%= credit.try(:fcost) %>
           </td>
@@ -14,7 +14,7 @@
         </tr>
     <% end %>
 <% else %>
-    <tr class="<%= @is_odd ? 'odd' : 'even' %>">
+    <tr class="<%= cycle("odd", "even") %>">
       <td>
         <%= credit.try(:fcost) %>
       </td>

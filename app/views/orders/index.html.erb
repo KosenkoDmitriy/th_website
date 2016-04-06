@@ -30,14 +30,9 @@
           </thead>
           <tbody>
 
-
-          </tr>
-          <% isOdd = false
-             if @orders && @orders.any?
-               isOdd = !isOdd
-          %>
+          <% if @orders && @orders.any? %>
               <% @orders.each do |order| %>
-                  <tr class="<% isOdd ? 'odd' : 'even' %>">
+                  <tr class="<%= cycle('odd', 'even') %>">
                     <td><%= order.try(:id) %></td>
                     <td><%= order.try(:credit).try(:fcost) %></td>
                     <td><%= order.try(:credit).try(:fcredits) %></td>

@@ -562,3 +562,7 @@ position: absolute;top: 0;left: 0;}
     height: 900px;
     margin-top: 55px;
 }
+
+.errors {
+    color: darkred;
+}

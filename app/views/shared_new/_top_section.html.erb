@@ -10,20 +10,33 @@
       </a>
     </div>
     <!--main_ligo -->
+
     <!--text01 -->
     <div class="text01">
-      <h4>Jackpots<br />
-        <span> $3,977,353</span></h4>
+      <% if @current_user %>
+        <h4 id="balance">You have<br />
+        <span> <%= number_with_delimiter current_user.try(:fcredits) %> </span> <br />credits</h4>
+      <% else %>
+        <!--<h4>Jackpots<br />-->
+        <!--<span> $3,977,353</span></h4>-->
+      <% end %>
     </div>
     <!--text01 -->
+
     <!--text02 -->
     <div class="text02">
-      <h4>Players online
-        <span>7,246</span></h4>
+      <% if @current_user %>
+          <%= render partial: "shared/errors_flash" %>
+          <h4>Welcome <%= current_user.try(:full_name).try(:present?) ? current_user.try(:full_name) : current_user.try(:email) %></h4>
+
+    <% else %>
+        <!--<h4>Players online-->
+        <!--<span>7,246</span></h4>-->
+      <% end %>
     </div>
     <!--text02 -->
-    <!--start navigation menu -->
 
+    <!--start navigation menu -->
     <%= render partial:"shared_new/nav_menu" %>
 
     <!--end navigation menu -->

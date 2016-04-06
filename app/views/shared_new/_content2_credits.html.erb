@@ -1,8 +1,7 @@
-<div class="section03">
+<div class="section03" id="credits">
   <% image_tag "karo.png", class:"heartshape", alt:"" %>
 
   <div class="sub_section03">
-
     <div class="section_left">
       <!--<div class="title_section"><h3>Win credits <span class="boldtxt">via Fortune Wheel</span></h3></div>-->
       <div class="sec_desc">
@@ -14,7 +13,6 @@
     </div>
 
     <div class="section_right">
-
       <% if @creditList.present? && @creditList.any? %>
           <% if current_user
                class_list = "credits"

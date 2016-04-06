@@ -1,5 +1,6 @@
 <div class="section03">
   <img src="assets/karo.png" class="heartshape" alt="">
+
   <div class="sub_section03">
 
     <div class="section_left">
@@ -11,7 +12,6 @@
         <!--<p>Etiam blandit, neque a venenatis tincidunt, erat nunc ornare augue, in facilisis nisl justo bibendum diam. Etiam quis quam felis. Proin quis quam magna.</p>-->
       </div>
     </div>
-
 
     <div class="section_right">
 
@@ -25,112 +25,32 @@
                btn_label = "Login and Buy"
                url = signin_path
              end %>
-      <table class="contact_table ">
-        <thead>
-        <tr>
-          <th>$</th>
-          <th>credits</th>
-          <th>action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @creditList.each do |credit| %>
-            <!--btn_label:"Confirm"-->
-            <%= render partial: "orders/form_btn_buy", locals: {object: credit.try(:order) || @order, credit: credit, btn_label: btn_label} %>
-        <% end %>
-
-        <!--
-        <tr class="odd">
-          <td><strong>English</strong> </td>
-          <td>UK </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="even">
-          <td><em>24/7</em></td>
-          <td>Australia </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="odd">
-          <td></td>
-          <td>USA </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="even">
-          <td></td>
-          <td>Hong-Kong </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="odd">
-          <td><strong>French</strong> </td>
-          <td>Canada </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="even">
-          <td><em>weekends (9-17)</em></td>
-          <td>France </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="odd">
-          <td></td>
-          <td>Netherlands </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="even">
-          <td></td>
-          <td>Swizerland </td>
-          <td>00123-456789 </td>
-        </tr>
-
-        <tr class="odd">
-          <td><strong>German</strong> </td>
-          <td>Germany</td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="even">
-          <td><em>mon-fri (9-17)</em></td>
-          <td>Austria </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="odd">
-          <td></td>
-          <td>Belgium </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="even">
-          <td></td>
-          <td>Swizerland </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="odd">
-          <td><strong>Spanish</strong> </td>
-          <td>Germany</td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="even">
-          <td><em>mon-fri (9-17)</em></td>
-          <td>Austria </td>
-          <td>00123-456789 </td>
-        </tr>
-        <tr class="odd">
-          <td></td>
-          <td>Belgium </td>
-          <td>00123-456789 </td>
-        </tr>-->
-        </tbody>
-        <tfoot>
-        <tr>
-          <td colspan="3"></td>
-        </tr>
-        </tfoot>
-      </table>
-    </div>
+          <table class="contact_table ">
+            <thead>
+            <tr>
+              <th>$</th>
+              <th>credits</th>
+              <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @creditList.each do |credit| %>
+                <%= render partial: "orders/form_btn_buy", locals: {object: credit.try(:order) || @order, credit: credit, btn_label: btn_label} %>
+            <% end %>
+            </tbody>
+            <tfoot>
+            <tr>
+              <td colspan="3"></td>
+            </tr>
+            </tfoot>
+          </table>
+          </div>
       <% else %>
-          no credits found
+          no any credits found
       <% end %>
 
-    <div class="clr"></div>
-  </div>
-
+      <div class="clr"></div>
+      </div>
 
   <div class="clr"></div>
 </div>

@@ -566,3 +566,11 @@ position: absolute;top: 0;left: 0;}
 .errors {
     color: darkred;
 }
+
+.btn {
+    width: 100%;
+    height: 30px;
+    font-size: large;
+    background-color: transparent;
+    border-radius: 20px;
+}

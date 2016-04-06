@@ -9,5 +9,8 @@ class HomeController < ApplicationController
 
   end
 
+  def fw10
+
+  end
   private
 end

@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
         user.save!
       end
 
-      flash[:success] = "Welcome, #{user.name}!"
+      # flash[:success] = "Welcome, #{user.name}!"
       redirect_to user
     # rescue
     #   flash[:warning] = "There was an error while trying to authenticate you..."

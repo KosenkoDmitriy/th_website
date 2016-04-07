@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
       user = create(uid: auth_hash['uid'], provider: auth_hash['provider'])
       # user.credits = Rails.configuration.x.win_for_reg
 
-      user.name = auth_hash['info']['name']
+      user.full_name = user.name = auth_hash['info']['name']
       user.location = auth_hash['info']['location']
       user.image_url = auth_hash['info']['image']
       # user.url = auth_hash['info']['urls']['Twitter'] # Twitter

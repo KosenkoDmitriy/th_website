@@ -1,28 +1,75 @@
-
 <div id="contentarea_1">
-    <div class="section03">
-        <div class="game_play">
-            <iframe src="<%= th_game_url %>" class="col-xs-12" width="100%" height="700px" allowfullscreen="true" frameBorder="0"></iframe>
-
-        </div>
+  <div class="section03">
+    <div class="game_play">
+      <iframe src="<%= th_game_url %>" class="col-xs-12" width="100%" height="700px" allowfullscreen="true" frameBorder="0"></iframe>
     </div>
+
+    <div class="left_content">
+      <h2 class="title">We are <strong>Texas Holdem</strong></h2>
+      <p><%= render partial: "home/game_about" %></p>
+
+      <!--<div class="company_banner"><img src="images/power-jackpot-banner.jpg" alt=""></div>-->
+      <!--<p><span class="boldtxt">Lorem ipsum dolor sit amet</span>, consectetur adipiscing elit. Sed ultrices convallis-->
+        <!--risus, a tincidunt augue imperdiet non. Proin ultricies facilisis magna ut gravida. Nam vehicula lacus vitae-->
+        <!--nibh hendrerit luctus. Nam lacinia egestas neque sit amet eleifend. <a href="#">Nulla tempor placerat</a>-->
+        <!--sodales. Proin dolor nisl, pulvinar quis molestie eu, commodo eget massa. Duis viverra magna quis ante semper-->
+        <!--nec volutpat arcu cursus. </p>-->
+
+      <div class="boxsection_01">
+        <h2 class="title">Instructions</h2>
+
+        <div class="box_left01">
+          <!--<div class="title_sec"><h3>Instructions</h3></div>-->
+          <div class="desc">
+            <%= render partial: 'home/instruction1' %>
+          </div>
+        </div>
+        <div class="box_right01">
+          <!--<div class="title_sec"><h3>This is other half</h3></div>-->
+          <div class="desc">
+            <%= render partial: 'home/instruction2' %>
+          </div>
+        </div>
+        <div class="clr"></div>
+      </div>
+
+      <!--start Three columns-->
+      <!--<div class="boxsection_01">-->
+        <!--<div class="box_left02">-->
+          <!--<div class="title_sec"><h3>This is one third</h3></div>-->
+          <!--<div class="desc">-->
+            <!--<p>Sed ultrices convallis risus, a tincidunt augue imperdiet non. Proin ultricies facilisis magna ut-->
+              <!--gravida. Nam vehicula lacus vitae nibh hendrerit luctus. Nam lacinia egestas neque sit amet eleifend.-->
+              <!--Nulla tempor placerat sodales. </p></div>-->
+        <!--</div>-->
+        <!--<div class="box_left03">-->
+          <!--<div class="title_sec"><h3>This is second third</h3></div>-->
+          <!--<div class="desc">-->
+            <!--<p>Sed ultrices convallis risus, a tincidunt augue imperdiet non. Proin ultricies facilisis magna ut-->
+              <!--gravida. Nam vehicula lacus vitae nibh hendrerit luctus. Nam lacinia egestas neque sit amet eleifend.-->
+              <!--Nulla tempor placerat sodales. </p></div>-->
+        <!--</div>-->
+        <!--<div class="box_left04">-->
+          <!--<div class="title_sec"><h3>This is third third</h3></div>-->
+          <!--<div class="desc">-->
+            <!--<p>Sed ultrices convallis risus, a tincidunt augue imperdiet non. Proin ultricies facilisis magna ut-->
+              <!--gravida. Nam vehicula lacus vitae nibh hendrerit luctus. Nam lacinia egestas neque sit amet eleifend.-->
+              <!--Nulla tempor placerat sodales. </p></div>-->
+        <!--</div>-->
+        <!--<div class="clr"></div>-->
+      <!--</div>-->
+      <!--end Three columns-->
+    </div>
+
+    <div class="rightside_section">
+
+        <%= render partial: "shared_new/rsidebar_live_casino" %>
+
+        <%= render partial: "shared_new/rsidebar_games" %>
+
+        <% render partial: "shared_new/rsidebar_jackpot" %>
+     </div>
+
+    <div class="clr"></div>
+   </div>
 </div>
-
-<!--<div class="container content">-->
-  <!--<div class="row" id="home">-->
-    <!--<div class="col-xs-12">-->
-      <!--&lt;!&ndash;<h2 class="text-center dark">Start the best gaming experience</h2>&ndash;&gt;-->
-      <!--<br/>-->
-      <!--<iframe src="<%= th_game_url %>" class="col-xs-12" width="" height="700" allowfullscreen="true" frameBorder="0"></iframe>-->
-      <!--<br/>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--&lt;!&ndash; /.row &ndash;&gt;-->
-<!--</div>-->
-<!--<div class="container container-narrow content">-->
-  <!--<% render partial: "home/game_about" %>-->
-
-  <!--<% render partial: 'home/instructions' %>-->
-
-  <!--<% render partial: 'shared/back_to_top' %>-->
-<!--</div>-->

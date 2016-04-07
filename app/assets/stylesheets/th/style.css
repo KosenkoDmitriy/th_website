@@ -257,8 +257,7 @@ font-style: normal;
 					.sub_section03 .section_right table.contact_table tbody tr.odd{ background:#f0d980;}
 					.sub_section03 .section_right table.contact_table tbody tr.even{ background:#f7e397;}
 						.sub_section03 .section_right table.contact_table tbody td{ text-align:left; padding:2px 10px; color:#010101; font:normal 14px/22px 'PT sans';}
-					.sub_section03 .section_right table.contact_table tfoot td{ background:#030706; padding:20px 10px; color:#fff; font:normal 14px/18px 'PT sans'; font-style:italic; text-align:right;}	
-					
+					.sub_section03 .section_right table.contact_table tfoot td{ background:#030706; padding:20px 10px; color:#fff; font:normal 14px/18px 'PT sans'; font-style:italic; text-align:right;}
 		.sub_section04{ width:940px; height:auto; padding:63px 0 0px ; border:0px solid red;}
 			.sub_section04 .sec04_left{ float:left; width:698px; height:auto;}
 				.sub_section04 .sec04_left .title_section{ width:698px; height:47px; background:#030303;}
@@ -580,4 +579,9 @@ position: absolute;top: 0;left: 0;}
 
 .price {
     color:darkred;
+}
+
+.no_padding {
+    /*padding-bottom: 5px;*/
+    min-height: 100px;
 }

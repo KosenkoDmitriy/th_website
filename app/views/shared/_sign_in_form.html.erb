@@ -1,6 +1,6 @@
 
  <%#= link_to 'Twitter', '/auth/twitter' #%>
-<%= link_to image_tag("facebook_login"), '/auth/facebook', class:'img-responsive' %>
+<%= link_to image_tag("facebook_signin"), '/auth/facebook', class:'img-responsive' %>
 <%#= link_to 'Facebook login', '/auth/facebook' #%>
 
 
@@ -30,5 +30,4 @@
       <!--<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-green btn-group-justified">Go</button>-->
       <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "4" %>
     </div>
-    <!--</form>-->
 <% end %>

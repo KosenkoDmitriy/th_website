@@ -1,13 +1,11 @@
-<div class="container container-narrow content">
-  <div class="row" id="home">
-    <div class="col-xs-12">
+<div id="contentarea_1">
+  <div class="section03">
+    <div class="game_play" id="sign_in_up">
+      <%= link_to image_tag("facebook_signup"), '/auth/facebook', class:'img-responsive' %>
+
       <!--<h2 class="text-center dark">Start the best gaming experience</h2>-->
-      <%= render partial: "shared/sign_up" %>
+      <%#= render partial: "shared/sign_up" %>
       <br/>
     </div>
   </div>
-  <!-- /.row -->
-
-  <%= render partial: 'shared/back_to_top' %>
-
 </div>

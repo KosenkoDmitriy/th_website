@@ -582,6 +582,35 @@ position: absolute;top: 0;left: 0;}
 }
 
 .no_padding {
-    /*padding-bottom: 5px;*/
+    padding-bottom: 5px;
     min-height: 100px;
+}
+
+.rightside_section21 {
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+
+.left_content21 {
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+
+.rightside_section2 {
+    float: right;
+    width: 220px;
+    height: auto;
+    margin-top: 0px;
+}
+
+.left_content2 {
+    float: left;
+    width: 702px;
+    height: auto;
+    padding: 0;
+    margin-top: 0px;
+}
+
+.img-responsive img {
+    width:100%;
 }

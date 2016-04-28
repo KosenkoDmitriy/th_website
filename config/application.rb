@@ -30,8 +30,10 @@ module ThWebsite
     config.x.win_for_reg = 35000
 
     # api host for webgl
-    config.x.api.host = 'shopomob.ru'
+    #config.x.api.host = 'shopomob.ru'
+    #config.x.th_game_url = "https://th.webgl64.shopomob.ru"
 
-    config.x.th_game_url = "https://th.webgl64.shopomob.ru"
+    config.x.api.host = 'yourplaceforfun.com'
+    config.x.th_game_url = 'https://game.yourplaceforfun.com'
   end
 end

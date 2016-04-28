@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
 <cross-domain-policy>
   <allow-access-from domain="*.shopomob.ru"/>
+  <allow-access-from domain="*.yourplaceforfun.com"/>
+  <allow-access-from domain="game.yourplaceforfun.com" secure="false"/>
+  <allow-access-from domain="*.facebook.com"/>
+  <allow-access-from domain="connect.facebook.net"/>
 </cross-domain-policy>

@@ -564,6 +564,7 @@ position: absolute;top: 0;left: 0;}
 
 .errors {
     color: darkred;
+    text-align: center;
 }
 
 .btn {
@@ -613,4 +614,9 @@ position: absolute;top: 0;left: 0;}
 
 .img-responsive img {
     width:100%;
+}
+
+.sign_in_up {
+    min-height: 400px;
+    padding:0;
 }

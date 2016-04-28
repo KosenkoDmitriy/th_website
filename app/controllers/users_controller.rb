@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     @creditList = credits
   end
 
+  def sign_in_up
+    @user_empty = User.new
+  end
+
   def signup
     email = params[:user][:email] if params[:user].present? && params[:user][:email].present?
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
@@ -35,20 +39,20 @@ class UsersController < ApplicationController
 
     if email.blank? || password.blank?
       flash[:error] = "please enter email and/or password"
-      # redirect_to :back
+      redirect_to :back
       return
     end
 
     if (confirm_password != password)
       flash[:error] = "passwords didn't match"
-      # redirect_to :back
+      redirect_to :back
       # render ""
       return
     end
 
     if User.exists?(email: email)
       flash[:error] = "email already taken: #{ email }"
-      # redirect_to :back
+      redirect_to :back
       return
     end
 
@@ -70,8 +74,8 @@ class UsersController < ApplicationController
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"
-      # redirect_to :back
-      # return
+      redirect_to :back
+      return
     end
   end
 
@@ -81,6 +85,7 @@ class UsersController < ApplicationController
     @user_empty = User.new(user_params)
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
+      redirect_to :back
       return
     end
     if email.present? && password.present?
@@ -108,6 +113,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = 'empty email and/or password'
     end
+    redirect_to :back
   end
 
   def signout

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   post 'fw' => "users#fw", as: :fw
 
+  get 'sign_in_up' => 'users#sign_in_up', as: :sign_in_up
   post 'signin' => 'users#signin', as: :signin
   get 'signin' => 'users#signin', as: :signin_get
 

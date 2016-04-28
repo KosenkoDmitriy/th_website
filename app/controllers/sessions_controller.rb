@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
           user.credits = Rails.configuration.x.win_for_reg
           flash[:notice] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
         end
-        user.credits += Rails.configuration.x.win_for_login
-        flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
+        # user.credits += Rails.configuration.x.win_for_login
+        # flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
         user.save!
       end
 

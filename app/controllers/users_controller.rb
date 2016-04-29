@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.try(:id) # signup and signin
-      flash[:notice] = "registered successfully! your email: #{ user.email }"
+      flash[:notice] = "registered successfully!"
       flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
       redirect_to user
     else

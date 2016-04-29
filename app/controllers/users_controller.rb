@@ -34,6 +34,8 @@ class UsersController < ApplicationController
 
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
+      redirect_to :back
+      # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
       return
     end
 
@@ -85,6 +87,8 @@ class UsersController < ApplicationController
     @user_empty = User.new(user_params)
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
+      # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
+      # redirect_to sign_in_up_path()
       redirect_to :back
       return
     end
@@ -101,6 +105,7 @@ class UsersController < ApplicationController
           end
           if user.save
             redirect_to user
+            return
           else
             flash[:error] = 'can not update user info'
           end
@@ -114,6 +119,7 @@ class UsersController < ApplicationController
       flash[:error] = 'empty email and/or password'
     end
     redirect_to :back
+    return
   end
 
   def signout

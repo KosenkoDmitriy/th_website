@@ -118,11 +118,11 @@ font-style: normal;
 
 .main_logo{ width:517px; height:243px; position:absolute; left:262px; top:-0px; z-index: 3; }
 .main_logo img { width:100%; }
-.text01{ width:128px; height:auto; text-align:center; position:absolute; left:67px; top:132px;}
+.text01{ width:128px; height:auto; text-align:center; position:absolute; left:67px; top:120px;}
 .text01 h4{color:#161616; font:normal 16px/20px 'PT sans';}
 .text01 h4 span{ font:normal 22px/20px 'PT sans';}
 
-.text02{ width:128px; height:auto; text-align:center; position:absolute; right:67px; top:132px;}
+.text02{ width:128px; height:auto; text-align:center; position:absolute; right:67px; top:120px;}
 .text02 h4{ color:#161616; font:normal 16px/20px 'PT sans';}
 .text02 h4 span{ font:normal 22px/20px 'PT sans';}
 

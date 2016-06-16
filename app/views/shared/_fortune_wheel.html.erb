@@ -13,8 +13,7 @@
         height: 300px;
         left: 40%;
         background-color: red;
-        /*background-image: url('http://tehsis.me/phieneasroulette.png');*/
-        background-image: <%= asset-url("fortune_wheel_green.png") %>;
+        background-image: url(<%=asset_url("fortune_wheel_green.png")%>);
         border-radius: 300px;
     }
 
@@ -239,7 +238,7 @@
 </script>
 <% else %>
     <p class="text-center">
-      <a href="<%= signin_get_path %>" class="btn btn-green">Login and Win credits
+      <a href="<%= sign_in_up_path %>" class="btn btn-green">Login and Win credits
         <%= image_tag("fortune_wheel_green.png", class:"img-responsive col-xs-12")%>
       </a>
     </p>

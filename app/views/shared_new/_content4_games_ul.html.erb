@@ -1,14 +1,14 @@
 <ul>
- <% [ 'bingo_bash.jpeg',
-'black_jack.jpeg',
-'caribbean_poker.jpeg',
-'cha_chingo.jpeg',
-'classic_777_slots.jpeg',
-'european_roulette.jpeg',
-'safari_sam_slots.jpeg',
+ <% [ 'bingo_bash.jpg',
+'black_jack.jpg',
+'caribbean_poker.jpg',
+'cha_chingo.jpg',
+'classic_777_slots.jpg',
+'european_roulette.jpg',
+'safari_sam_slots.jpg',
 'texas_holdem.gif',
-'wheel_of_fortune_vegas_edition.jpeg',
-'wild_savanna_slots.jpeg'
+'wheel_of_fortune_vegas_edition.jpg',
+'wild_savanna_slots.jpg'
 ].shuffle.each do |img_name| %>
       <li>
         <div class="game_img"><%= image_tag "games/#{img_name}", alt:img_name.split('.')[0], width:'100%' %></div>

@@ -20,7 +20,7 @@
 	position:relative;
     width:1024px;
     height:259px;
-	background:url(loading.gif) no-repeat 50% 50%;
+	background:asset-url('loading.gif') no-repeat 50% 50%;
 }
 #slider img {
 	position:absolute;
@@ -43,7 +43,7 @@ text-indent:-55555px;
 	display:block;
 	width:22px;
 	height:22px;
-	background:url(../bullets.png) no-repeat;
+	background:asset-url('bullets.png') no-repeat;
 	border:0;
 	margin-right:3px;
 	float:left;
@@ -57,8 +57,7 @@ text-indent:-55555px;
 	display:block;
 	width:30px;
 	height:30px;
-	/*background:url(arrows.png) no-repeat;*/
-text-indent:-500000px;
+    text-indent:-500000px;
 	border:0;
 }
 a.nivo-nextNav {

@@ -10,13 +10,13 @@
 {
 	border:0px solid blue;
 	
-	background:url(../scroller_arrow.png) 0 15px no-repeat;
+	background:asset-url('scroller_arrow.png') 0 15px no-repeat;
 }
 #news-container ul li div
 {
 	width:214px;
 	padding:10px 0 10px 10px;
-	background:url(../scrolling-bg.gif) top center no-repeat;
+	background:asset-url('scrolling-bg.gif') top center no-repeat;
 	border: 0px solid #aaaaaa;
 	
 }

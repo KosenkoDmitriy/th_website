@@ -16,7 +16,7 @@ a, a:hover, a:active, a:focus {outline:none; outline-style:none; outline-width:0
 
 img {margin:0; padding:0; outline-style:none; outline-width:0; }
 
-body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF; background:url(../main_bg.jpg) repeat-x #b6873a;}
+body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF; background:asset-url('main_bg.jpg') repeat-x #b6873a;}
 
 .clr {font-size:0; height:0; line-height:0; clear:both;}
 .left {margin:0; padding:0; width:auto; height:auto; float:left;}
@@ -25,19 +25,19 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 
 
 /*========wrapper start================*/
-#wrapper{ width:100%; background:url(../main_bg01.jpg) no-repeat top center; min-height:1650px; overflow:hidden}
+#wrapper{ width:100%; background:asset-url('main_bg01.jpg') no-repeat top center; min-height:1650px; overflow:hidden}
 /*========wrapper end================*/
 
 /*=========to section start================*/
 #topsection{ width:100%; height:291px; padding:0px; margin:0px;}
 .topsection_inner{ width:1024px; margin:0px auto; height:291px; position: relative;}
 	.topsection_inner .leaf{ width:76px; height:80px; position:absolute; top:10px; right:-156px;}
-.navigation{ background:url(../navigation_area.png) no-repeat; width:950px;height:74px; position:absolute; bottom:-36px; left:41px; z-index:2; padding:0;}
+.navigation{ background:asset-url('navigation_area.png') no-repeat; width:950px;height:74px; position:absolute; bottom:-36px; left:41px; z-index:2; padding:0;}
 .navigation ul{ list-style:none; padding:0px; margin:0px;}
 .navigation ul li{ float:left; padding:0px; margin:0px;}
 .navigation ul li a{ font-family:'PT Sans'; color:#FFF; font-size:15px; line-height:60px; font-weight:normal; font-style:normal; text-decoration:none; padding:3px 25px; text-shadow:1px 1px 0px #000; display: block; border-left: 1px solid #c60b11; border-right: 1px solid #c60b11; margin: 5px 0 6px -1px;}
-.navigation ul li a:hover{ background:url(../navigation_area.png) no-repeat 0 -79px; }
-.navigation ul li a.select {background:url(../navigation_area.png) no-repeat 0 -79px; display:block;  }
+.navigation ul li a:hover{ background:asset-url('navigation_area.png') no-repeat 0 -79px; }
+.navigation ul li a.select {background:asset-url('navigation_area.png') no-repeat 0 -79px; display:block;  }
 
 
 
@@ -58,21 +58,21 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 /*=========to section end================*/
 
 /*=========slider section start=================*/
-#slider_section{ width:100%; background:url(../slider_section.jpg) no-repeat top center #030303; height:260px; padding:36px 0px 0px 0px; }
+#slider_section{ width:100%; background:asset-url('slider_section.jpg') no-repeat top center #030303; height:260px; padding:36px 0px 0px 0px; }
 .slider_section_inner{ width:1024px; height:259px; margin:0px auto; padding:0px;}
 /*=========slider section end=================*/
 
 /*===========content start====================*/
-#contentarea{ width:100%; background:url(../content_bg.png) repeat-x; height:auto; padding:0px; margin:0px auto; border:0px solid #00C;}
+#contentarea{ width:100%; background:asset-url('content_bg.png') repeat-x; height:auto; padding:0px; margin:0px auto; border:0px solid #00C;}
 #contentarea_1{ width:100%; height:auto; padding:0px; margin:0px auto; border:0px solid #00C;}
 	.section01{ width:1024px; height:auto; margin:0 auto; padding:42px 0 64px 0;}
 		.section01 h2{ color:#050505; font:normal 30px/40px 'Conv_CANDARAI'; text-align:center; margin-bottom:58px;}
 			.section01 h2 span{ color:#050505; font:normal 30px/40px 'Conv_CANDARAZ'; text-align:center;}
 		.section01 .game_box{ width:1024px; height:auto; margin:0 auto;}
-			.section01 .game_box .box01{  background: url("../red_box.png") no-repeat scroll 0 0 transparent;     float: left;     height: 314px;  width: 249px;     margin-right: 8px;        position: relative;     text-align: center;    }
-			.section01 .game_box .box02{ float:left; height: 314px;  width: 249px;  margin-right:8px; background:url(../black_box.png) 0 0 no-repeat; text-align:center; position:relative; }
-			.section01 .game_box .box03{ float:left; height: 314px;  width: 249px; margin-right:8px; background:url(../yellow_box.png) 0 0 no-repeat; text-align:center; position:relative;  }
-			.section01 .game_box .box04{ float:left;height: 314px;  width: 249px; background:url(../green_box.png) 0 0 no-repeat; text-align:center; position:relative; }
+			.section01 .game_box .box01{  background: asset-url('red_box.png') no-repeat scroll 0 0 transparent;     float: left;     height: 314px;  width: 249px;     margin-right: 8px;        position: relative;     text-align: center;    }
+			.section01 .game_box .box02{ float:left; height: 314px;  width: 249px;  margin-right:8px; background:asset-url('black_box.png') 0 0 no-repeat; text-align:center; position:relative; }
+			.section01 .game_box .box03{ float:left; height: 314px;  width: 249px; margin-right:8px; background:asset-url('yellow_box.png') 0 0 no-repeat; text-align:center; position:relative;  }
+			.section01 .game_box .box04{ float:left;height: 314px;  width: 249px; background:asset-url('green_box.png') 0 0 no-repeat; text-align:center; position:relative; }
 			.section01 .game_box h3{ color:#fff; font:normal 26px/30px 'PT Sans'; padding-top:14px; margin-bottom:12px;}
 			.section01 .game_box p{ color:#ffffff; font:normal 13px/18px Arial, Helvetica, sans-serif; padding:13px 0;}
 			.section01 .game_box .btn_action{ position:absolute; bottom:-19px; left:66px;}
@@ -97,7 +97,7 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 
 			
 			
-	.section02{width:1044px; height:284px; margin:0 auto; position:relative; background:url(../steps-bg.png) right 0 no-repeat;}
+	.section02{width:1044px; height:284px; margin:0 auto; position:relative; background:asset-url('steps-bg.png') right 0 no-repeat;}
 		.section02 .heartshape{ position:absolute; top:-98px; left:-210px; width:205px; height:210px;}
 		.section02 .promo_banner{ position:absolute; top:-12px; left:9px;}
 		.section02 .stepsbox{ float:right; width:628px; height:260px; margin:10px 26px 0 10px; border:0px solid blue;}
@@ -108,16 +108,16 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 			.section02 .stepsbox p{ color:#000; font:normal 13px/16px 'PT Sans';}
 				.section02 .stepsbox p span{ font:normal 13px/16px 'PT Sans';}
 	.section03{width:940px; height:auto; margin:0 auto; position:relative;}
-		.red_ground-bg{ width:100%; height:auto; background:url(../redbg-graphics.jpg) center bottom repeat-x; border:0px solid yellow;}
+		.red_ground-bg{ width:100%; height:auto; background:asset-url('redbg-graphics.jpg') center bottom repeat-x; border:0px solid yellow;}
 		.section03 .heartshape{ position:absolute; bottom:400px; left:-210px; width:205px; height:210px;}
-	.section04{ width:100%; height:436px; background:#030303 url(../game-section-bg.jpg) center top no-repeat;}
+	.section04{ width:100%; height:436px; background:#030303 asset-url('game-section-bg.jpg') center top no-repeat;}
 		.section04 .section04_inner{ width:940px; height:auto; margin:0 auto;}
 			.section04 .left_text_section{ float:left; width:322px;}
 				.section04 .left_text_section .box01{ float:left; width:248px; height:auto; text-align:center; margin:120px 0 30px 0;}
 				.section04 .left_text_section p{ color:#faeec9; font:normal 13px/21px 'PT sans' }
 			.section04 .rightdisplay_section{ float:right; width:520px; height:380px; padding-top:57px; margin-right:36px; position:relative;}
 				.section04 .rightdisplay_section h3{ text-align:center; color:#fffffe; font:normal 16px/40px 'PT sans'; text-transform:uppercase;}
-				.section04 .rightdisplay_section .img-frame{ width:484px; height:368px; padding:18px; background:url(../main-frame.png) 0 0 no-repeat;}
+				.section04 .rightdisplay_section .img-frame{ width:484px; height:368px; padding:18px; background:asset-url('main-frame.png') 0 0 no-repeat;}
 				.section04 .rightdisplay_section .playnow01{ width:215px; height:113px; position:absolute; bottom:-100px; left:150px; z-index:888;}
 				.section04 .rightdisplay_section .start_time{ width:100px; position:absolute; bottom:-70px; right:0; color:#000; font:normal 13px/16px 'Conv_PTsans';}		
 		.sub_section01{ width:940px; height:auto; padding-top:145px; position:relative;}	
@@ -126,16 +126,16 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 			.sub_section01 .title_section{ width:940px; height:47px; background:#000;}
 				.sub_section01 .title_section h3{ float:left; color:#ffffff; font:normal 26px/36px 'Conv_PTsans'; padding:2px 10px;}
 				.sub_section01 .title_section h3 span.boldtxt{ font-family:'PT Sans';}
-			.sub_section01 .title_section .blog_counter{ float:right; width:27px; height:27px; margin:10px 12px 0 0; text-align:center; color:#030303; font:normal 12px/26px 'PT Sans'; background:url(../blog-counter-bg.png) 0 0 no-repeat;}
+			.sub_section01 .title_section .blog_counter{ float:right; width:27px; height:27px; margin:10px 12px 0 0; text-align:center; color:#030303; font:normal 12px/26px 'PT Sans'; background:asset-url('blog-counter-bg.png') 0 0 no-repeat;}
 			.sub_section01 .sec_desc{ width:916px; height:auto; padding:34px 12px;}
 				.sub_section01 .sec_desc p{ color:#000; font:normal 14px/22px 'Conv_PTsans'; padding:4px 0;}
 				
 		.sub_section02{ width:940px; height:auto;}	
-			.sub_section02 .sort_tabsection{ width:940px; height:54px; margin:0 auto; padding-top:1px; background:url(../sort_tab_bg.png) 0 0 repeat-x;}
+			.sub_section02 .sort_tabsection{ width:940px; height:54px; margin:0 auto; padding-top:1px; background:asset-url('sort_tab_bg.png') 0 0 repeat-x;}
 				.sub_section02 .sort_tabsection ul{ list-style:none; margin:0; padding:0;}
 					.sub_section02 .sort_tabsection ul li{ float:left; padding:0; margin-right:1px; color:#000000; font:normal 14px/18px 'PT Sans'; font-style:italic; text-align:center;}
 						.sub_section02 .sort_tabsection ul li a{ display:block; color:#000000; text-decoration:none; padding:14px 16px 22px}
-							.sub_section02 .sort_tabsection ul li a:hover, .sub_section02 .sort_tabsection ul li a.select{ color:#fff7d4; background:url(../tab-sort-bg.png) center top no-repeat;}
+							.sub_section02 .sort_tabsection ul li a:hover, .sub_section02 .sort_tabsection ul li a.select{ color:#fff7d4; background:asset-url('tab-sort-bg.png') center top no-repeat;}
 			.sub_section02 .sorted_display{ width:940px; height:auto; margin:0 auto; padding-bottom:30px; }	
 				.sub_section02 .sorted_display h4{ text-align:right; color:#0f1d1b; font:normal 13px/34px 'PT Sans'; margin-right:12px; background-color: #0D980; }
 				.sub_section02 .sorted_display ul{ list-style:none; margin:0; padding:0;}
@@ -148,10 +148,10 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 						.sub_section02 .sorted_display ul li:hover .game_imggreen {opacity:0.8; filter:alpha(opacity=40); }
                         .sub_section02 .sorted_display ul li .game_imgsky{ width:184px; height:132px; background:#079ca9; opacity:1.0; filter:alpha(opacity=100);}
 						.sub_section02 .sorted_display ul li:hover .game_imgsky  {opacity:0.8; filter:alpha(opacity=40); }
-						.sub_section02 .sorted_display ul li .game_price{ width:184px; height:34px; padding:4px 0; text-align:center; background:url(../gameprice_bg.png) 0 0 repeat-x; color:#fbe395; font:normal 15px/30px 'PT Sans';}
+						.sub_section02 .sorted_display ul li .game_price{ width:184px; height:34px; padding:4px 0; text-align:center; background:asset-url('gameprice_bg.png') 0 0 repeat-x; color:#fbe395; font:normal 15px/30px 'PT Sans';}
 						
 				.sub_section02 .sorted_display table.tournament_list{ width:932px; height:auto;}	
-					.sub_section02 .sorted_display table.tournament_list thead th{ height:41px; padding:10px; text-align:center; background:url(../th-bg.jpg) 0 0 repeat-x; color:#fff; font:normal 14px/30px 'PT sans';}
+					.sub_section02 .sorted_display table.tournament_list thead th{ height:41px; padding:10px; text-align:center; background:asset-url('th-bg.jpg') 0 0 repeat-x; color:#fff; font:normal 14px/30px 'PT sans';}
 
 
 					.sub_section02 .sorted_display table.tournament_list tbody tr.odd{ background-color:#f0d980 }
@@ -162,7 +162,7 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 				.sub_section02 .sorted_display .pagination ul{ float:right; list-style:none; margin:0; padding:0;}
 					.sub_section02 .sorted_display .pagination ul li{ float:left; width:23px; height:23px; margin:0 4px; text-align:center; color:#f7dd6c; font:normal 15px/24px 'Conv_PTsans'; border:none;}
 						.sub_section02 .sorted_display .pagination ul li a{color:#f7dd6c; text-decoration:none; display:block;}
-							.sub_section02 .sorted_display .pagination ul li a.current-page, .sub_section02 .sorted_display .pagination ul li a:hover{ color:#000; background:url(../page-hover.png) 0 0 no-repeat;}
+							.sub_section02 .sorted_display .pagination ul li a.current-page, .sub_section02 .sorted_display .pagination ul li a:hover{ color:#000; background:asset-url('page-hover.png') 0 0 no-repeat;}
 							
 		.sub_section03{ width:940px; height:auto; padding:53px 0 ; border:0px solid red;}					
 			.sub_section03 .section_left{ float:left; width:462px; height:auto;}
@@ -174,7 +174,7 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 					.sub_section03 .section_left .sec_desc p{ color:#000; font:normal 14px/21px 'PT sans'; padding:8px 0;}
 			.sub_section03 .section_right{ float:left; margin-left:25px; width:416px; height:auto;}
 				.sub_section03 .section_right table.contact_table{ width:416px; height:auto;}	
-					.sub_section03 .section_right table.contact_table thead th{ height:41px; padding:10px; text-align:left; background:url(../th-bg.jpg) 0 0 repeat-x; color:#fff; font:normal 14px/30px 'PT sans';}
+					.sub_section03 .section_right table.contact_table thead th{ height:41px; padding:10px; text-align:left; background:asset-url('th-bg.jpg') 0 0 repeat-x; color:#fff; font:normal 14px/30px 'PT sans';}
 					.sub_section03 .section_right table.contact_table tbody tr.odd{ background:#f0d980;}
 					.sub_section03 .section_right table.contact_table tbody tr.even{ background:#f7e397;}
 						.sub_section03 .section_right table.contact_table tbody td{ text-align:left; padding:2px 10px; color:#010101; font:normal 14px/22px 'PT sans';}
@@ -190,10 +190,10 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 				
 			.sub_section04 .sec04_right{ float:right; width:229px; height:auto;}
 				
-	.section05{ width:100%; height:315px; margin:0 auto; background:url(../section05-bg.jpg) center top repeat-x;}
+	.section05{ width:100%; height:315px; margin:0 auto; background:asset-url('section05-bg.jpg') center top repeat-x;}
 		.section05 .section05_inner{ width:1133px; height:auto; margin:0 auto; padding:60px 0; position:relative;}
 			.section05 .section05_inner .karoshape{ width:168px; height:198px; position:absolute; top:-126px; right:-106px;}
-			.section05 .download_sec{ width:1133px; height:136px; margin:0 auto; background:url(../download_graphics.png) 0 0 no-repeat;}
+			.section05 .download_sec{ width:1133px; height:136px; margin:0 auto; background:asset-url('download_graphics.png') 0 0 no-repeat;}
 				.section05 .download_sec .download_innertext{ width:670px; height:90px; text-align:center; padding:20px 0; border:0px solid yellow; margin:0 auto 0 auto;}
 					.section05 .download_sec .download_innertext p{color:#fff; font:normal 26px/40px 'PT sans'; text-shadow:1px 2px 1px #000;}
 						.section05 .download_sec .download_innertext p span{ font-family:'PT sansbold';}
@@ -207,8 +207,8 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 	.left_content p{ color:#000; font:normal 14px/22px 'PT sans'; padding:8px 0;}
 		.left_content p span.boldtxt{ font-family:'PT sansbold';}
 		.left_content p a{ color:#a00409;}
-	.left_content .imgbox01	{ width:702px; height:auto; margin:30px auto; background:url(../imgbox01-bg.png) center 64px no-repeat;}
-	.left_content .banner01 { width:664px; height:98px; padding:18px; text-align:center; margin:30px auto; background:url(../baner01-bg.jpg) 0 0 no-repeat;}
+	.left_content .imgbox01	{ width:702px; height:auto; margin:30px auto; background:asset-url('imgbox01-bg.png') center 64px no-repeat;}
+	.left_content .banner01 { width:664px; height:98px; padding:18px; text-align:center; margin:30px auto; background:asset-url('baner01-bg.jpg') 0 0 no-repeat;}
 		.left_content .banner01 p{ color:#ffffff; font:normal 26px/32px 'PT Sans'; text-shadow:1px 1px 2px #000; margin-top:5px}
 			.left_content .banner01 p span{ color:#ffffff; font:normal 26px/32px 'PT sans';}
 	.left_content .boxsection_01{ width:702px; height:auto; padding:20px 0;}
@@ -221,9 +221,9 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 			.left_content .boxsection_01 .title_sec h3{ padding:0 10px; color:#ffffff; font:normal 16px/32px 'PT sans';}
 		.left_content .boxsection_01 .desc{ width:100%; height:auto;}
 			.left_content .boxsection_01 .desc p{ color:#000; font:normal 14px/22px 'Conv_PTsans'; padding:10px;}
-	.section_contact{ width:100%; height:386px; background:url(../contact_redsec-bg.jpg) center top repeat-x;}
+	.section_contact{ width:100%; height:386px; background:asset-url('contact_redsec-bg.jpg') center top repeat-x;}
 		.section_contact .section_contact_inner{ width:980px; height:auto; margin:0 auto; position:relative;}
-			.section_contact .contact_red_fallingline{ width:283px; height:509px; background:url(../contact_red-bg.png) 0 0 no-repeat; position:absolute; top:1px; left:-23px;}
+			.section_contact .contact_red_fallingline{ width:283px; height:509px; background:asset-url('contact_red-bg.png') 0 0 no-repeat; position:absolute; top:1px; left:-23px;}
 				.section_contact .contact_red_fallingline .contact_address{ width:220px; height:auto; text-align:left; padding:20px 26px; border:0px solid;}
 					.section_contact .contact_red_fallingline .contact_address h4{ color:#000; font:bold 18px/32px 'PT sans'; color:#fff; text-align: center}
 					.section_contact .contact_red_fallingline .contact_address p{ color:#000; font:normal 13px/19px 'PT sans'; text-align: center }
@@ -235,13 +235,13 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 						.section_contact .contact_form .rows01 .textareabox02{ float:left; width:676px; height:auto; margin-left:27px;}	
 							.section_contact .contact_form .rows01 .textareabox02 textarea{ width:668px; height:159px; background-color: #000; border: 1px #cd9f40 solid; padding:4px 7px; border-radius:4px; resize:none;  overflow:auto; color:#e5d39b; font:normal 14px/normal 'PT sans';}
 							.section_contact .contact_form .rows01 h5{ float:left; font-style:italic; color:#e5d39b; font:normal 14px/normal 'PT sans'; margin: 10px 0 0 27px;}	
-							.section_contact .contact_form .rows01 input[type="submit"]{ float:right; width:116px; height:42px; background:url(../send-btn01.png) 0 0 no-repeat; padding:0; margin:10px 6px 10px 0; border:none; color:#000; font:normal 14px/22px 'PT sans'; cursor:pointer;}
+							.section_contact .contact_form .rows01 input[type="submit"]{ float:right; width:116px; height:42px; background:asset-url('send-btn01.png') 0 0 no-repeat; padding:0; margin:10px 6px 10px 0; border:none; color:#000; font:normal 14px/22px 'PT sans'; cursor:pointer;}
 	/* ------------blog section----------------------*/
 	.left_content .blog_section{ width:702px; height:auto;}
 		.left_content .blog_section .title_section{ width:690px; height:47px; background:#030303;}
 			.left_content .blog_section .title_section h3{ float:left; color:#ffffff; font:normal 26px/36px 'PT sans'; padding:2px 10px;}
 				.left_content .blog_section .title_section h3 span.boldtxt{ font-family:'Conv_PTsansbold';}
-			.left_content .blog_section .title_section .blog_counter{ float:right; width:27px; height:27px; margin:10px 12px 0 0; text-align:center; color:#030303; font:normal 12px/26px 'Conv_PTsans'; background:url(../blog-counter-bg.png) 0 0 no-repeat;}
+			.left_content .blog_section .title_section .blog_counter{ float:right; width:27px; height:27px; margin:10px 12px 0 0; text-align:center; color:#030303; font:normal 12px/26px 'Conv_PTsans'; background:asset-url('blog-counter-bg.png') 0 0 no-repeat;}
 			.left_content .blog_section .title_section .blog_postby{ float:right; width:auto; height:27px; margin:10px 10px 0 0; color:#fff; font:normal 14px/26px 'PT sans'; font-style:italic;}
 				.left_content .blog_section .title_section .blog_postby a{ color:#fee685; text-decoration:none;}
 			
@@ -251,13 +251,13 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 					.blog_section .blog_posted .eachpost h3{ color:#020202; font:normal 26px/32px 'PT sans'; padding:2px 10px;}
 					.blog_section .blog_posted .eachpost h3 span{ font-family:'PT sans'; font-weight:bold}
 					.blog_section .blog_posted .eachpost p{ color:#000; font:normal 14px/18px 'PT sans';}
-					.blog_section .blog_posted .eachpost .bottombar{ width:658px; height:33px; padding:12px 16px; margin:20px 0 0 0; background:url(../bottombar_bg.png) 0 0 no-repeat;}
+					.blog_section .blog_posted .eachpost .bottombar{ width:658px; height:33px; padding:12px 16px; margin:20px 0 0 0; background:asset-url('bottombar_bg.png') 0 0 no-repeat;}
 						.blog_section .blog_posted .eachpost .bottombar ul.keyword{ float:left; width:400px; list-style:none; margin:0; padding:0;}
 							.blog_section .blog_posted .eachpost .bottombar ul.keyword li{ float:left; color:#000; font:normal 14px/22px 'Conv_PTsans'; font-style:italic; padding:0 3px;}
 								.blog_section .blog_posted .eachpost .bottombar ul.keyword li a{ color:#000; text-decoration:none;}
 						.blog_section .blog_posted .eachpost .bottombar h5{ float:right; color:#000; font:normal 14px/22px 'Conv_PTsans'; font-style:italic;}	
 						
-		.left_content .blog_section .pagination	{ width:644px; height:25px; padding:12px 22px; background:url(../pagination-bg.jpg) 0 0 no-repeat;}
+		.left_content .blog_section .pagination	{ width:644px; height:25px; padding:12px 22px; background:asset-url('pagination-bg.jpg') 0 0 no-repeat;}
 			.left_content .blog_section .pagination .pg_left{ float:left; width:380px; height:auto;}
 				.left_content .blog_section .pagination .pg_left a{ color:#f7dd6c; font:normal 15px/18px 'PT sans'; text-decoration:none;}
 				.left_content .blog_section .pagination .pg_left a.older{ float:left;}
@@ -266,21 +266,21 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 				.left_content .blog_section .pagination .pg_right ul{ list-style:none; margin:0; padding:0;}
 					.left_content .blog_section .pagination .pg_right ul li{ float:left; width:23px; height:23px; margin:0 4px; text-align:center; color:#f7dd6c; font:normal 15px/24px 'Conv_PTsans';}
 						.left_content .blog_section .pagination .pg_right ul li a{color:#f7dd6c; text-decoration:none; display:block;}
-							.left_content .blog_section .pagination .pg_right ul li a.current-page, .left_content .blog_section .pagination .pg_right ul li a:hover{ color:#000; background:url(../page-hover.png) 0 0 no-repeat;}
+							.left_content .blog_section .pagination .pg_right ul li a.current-page, .left_content .blog_section .pagination .pg_right ul li a:hover{ color:#000; background:asset-url('page-hover.png') 0 0 no-repeat;}
 							
 		.left_content .blog_section .blog_posted .singlepost{ width:702px; height:auto; padding:2px 0 10px 0; }		
 			.blog_posted .singlepost .post_img{ width:702px; height:auto; margin-bottom:15px;}
 			.blog_posted .singlepost p{ color:#000; font:normal 13px/21px 'PT sans'; padding:6px 0;}
-				.blog_posted .singlepost .specialtxt_section{ float:left; width:268px; height:112px; background:url(../specialtxtbox_bg.jpg) 0 0 no-repeat; padding:30px 25px; margin:0 16px 15px 0; text-align:center;}
+				.blog_posted .singlepost .specialtxt_section{ float:left; width:268px; height:112px; background:asset-url('specialtxtbox_bg.jpg') 0 0 no-repeat; padding:30px 25px; margin:0 16px 15px 0; text-align:center;}
 					.blog_posted .singlepost .specialtxt_section p{  color:#fff; font:normal 16px/22px 'PT sans'; font-style:italic;}
 					
 		.left_content .blog_section .blog_posted .comemntbox{ width:690px; height:auto; margin:0 auto;}	
 		.blog_section .blog_posted .comemntbox .title_section{ width:690px; height:47px; background:#030303;}
 			.blog_section .blog_posted .comemntbox .title_section h3{ float:left; color:#ffffff; font:normal 26px/36px 'PT sans'; padding:2px 10px;}
 				.blog_section .blog_posted .comemntbox .title_section h3 span.boldtxt{ font-family:'Conv_PTsansbold';}
-			.blog_section .blog_posted .comemntbox .title_section .blog_counter{ float:right; width:27px; height:27px; margin:10px 12px 0 0; text-align:center; color:#030303; font:normal 12px/26px 'Conv_PTsans'; background:url(../blog-counter-bg.png) 0 0 no-repeat;}
+			.blog_section .blog_posted .comemntbox .title_section .blog_counter{ float:right; width:27px; height:27px; margin:10px 12px 0 0; text-align:center; color:#030303; font:normal 12px/26px 'Conv_PTsans'; background:asset-url('blog-counter-bg.png') 0 0 no-repeat;}
 			
-		.blog_section .blog_posted .comemntbox .comemnt_post{ width:690px; height:auto; padding:18px 0; background:url(../comment_sep.jpg) 0 bottom repeat-x;}
+		.blog_section .blog_posted .comemntbox .comemnt_post{ width:690px; height:auto; padding:18px 0; background:asset-url('comment_sep.jpg') 0 bottom repeat-x;}
 			.comemntbox .comemnt_post .commnt{ float:left; width:656px; height:auto; margin-left:27px;}
 				.comemntbox .comemnt_post .commnt .comnt_img{ float:left; width:103px; height:103px; margin-right:32px;}
 				.comemntbox .comemnt_post .commnt .comnt_desc{ float:left; width:520px; height:auto;}
@@ -306,13 +306,13 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 						.comemntbox .write_comments .comment_formbox .rows01 .txtbox01{ float:left; width:225px; height:auto; margin-left:27px;}
 							.comemntbox .write_comments .comment_formbox .rows01 .txtbox01 input[type="text"]{ width:217px; height:30px; background-color: #000; border: 1px #cd9f40 solid; padding:4px 7px; margin-bottom:10px; border-radius:4px; color:#e5d39b; font:normal 14px/normal 'PT sans';}
 						.comemntbox .write_comments .comment_formbox .rows01 .textareabox01{ float:left; width:478px; height:auto; margin-left:27px;}	
-							.comemntbox .write_comments .comment_formbox .rows01 .textareabox01 textarea{ width:470px; height:70px; background:url(../txtareabox01.png) 0 0 no-repeat; padding:4px; border:none; resize:none; overflow:auto; color:#e5d39b; font:normal 14px/normal 'PT sans';}
-							.comemntbox .write_comments .comment_formbox .rows01 input[type="submit"]{ float:right; width:116px; height:42px; background:url(../send-btn01.png) 0 0 no-repeat; padding:0; margin:10px 6px 10px 0; border:none; color:#000; font:normal 14px/22px 'PT sans'; cursor:pointer;}
+							.comemntbox .write_comments .comment_formbox .rows01 .textareabox01 textarea{ width:470px; height:70px; background:asset-url('txtareabox01.png') 0 0 no-repeat; padding:4px; border:none; resize:none; overflow:auto; color:#e5d39b; font:normal 14px/normal 'PT sans';}
+							.comemntbox .write_comments .comment_formbox .rows01 input[type="submit"]{ float:right; width:116px; height:42px; background:asset-url('send-btn01.png') 0 0 no-repeat; padding:0; margin:10px 6px 10px 0; border:none; color:#000; font:normal 14px/22px 'PT sans'; cursor:pointer;}
 	/*------------- /blog section -------------------*/			
 	.rightside_section{ float:right; width:220px; height:auto; margin-top:76px;}
 	
-		.rightside_section .rightboxes{ width:220px; height:auto; padding-bottom:31px; margin-bottom:22px; border-top:3px solid #d70c13; background:url(../side_graphics.png) center bottom no-repeat;}
-			.rightside_section .rightboxes .live_casino{ width:220px; height:250px; background:url(../live_casino-bg.jpg) 0 0 no-repeat;}
+		.rightside_section .rightboxes{ width:220px; height:auto; padding-bottom:31px; margin-bottom:22px; border-top:3px solid #d70c13; background:asset-url('side_graphics.png') center bottom no-repeat;}
+			.rightside_section .rightboxes .live_casino{ width:220px; height:250px; background:asset-url('live_casino-bg.jpg') 0 0 no-repeat;}
 				.rightboxes .live_casino .casino_title{ width:220px; height:54px; text-align:center; }
 					.rightboxes .live_casino .casino_title h3{ color:#fff; font:normal 30px/48px 'Conv_CANDARAB';}
 				.rightboxes .live_casino .casino_text{ width:220px; height:34px; padding:14px 0; text-align:center; border:0px solid yellow;}
@@ -329,8 +329,8 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 			.rightside_section .rightboxes .top_jackpot{ width:220px; height:auto; background:#000;}	
 				.rightside_section .rightboxes .top_jackpot ul{ list-style:none; margin:0; padding:0;}
 				.rightside_section .rightboxes .top_jackpot ul li  { width:220px; height:60px;}
-					.rightside_section .rightboxes .top_jackpot ul li a{  width:220px; display: block; background:url(../box_shade.png) center top no-repeat; text-decoration: none;  }
-					.rightside_section .rightboxes .top_jackpot ul li a:hover{  background:url(../box_shade-hover.jpg)  top repeat-x}
+					.rightside_section .rightboxes .top_jackpot ul li a{  width:220px; display: block; background:asset-url('box_shade.png') center top no-repeat; text-decoration: none;  }
+					.rightside_section .rightboxes .top_jackpot ul li a:hover{  background:asset-url('box_shade-hover.jpg')  top repeat-x}
 					.rightside_section .rightboxes .top_jackpot_text{ width:215px;  background:#000; padding:5px;}
 						.rightside_section .rightboxes .top_jackpot ul li .box_number{ float:left; width:22px;  padding:3px 0;  margin-right:6px; text-align:center; color:#fff; font:normal 14px/normal 'PT Sans';}
 						.rightside_section .rightboxes .top_jackpot ul li .box_img a{ float:left; width:42px;  opacity:0.8; filter:alpha(opacity=80); margin-top:0px; text-decoration: none; }
@@ -339,15 +339,15 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 						
 			.rightside_section .rightboxes .share_box{width:220px; height:auto; background:#000;}	
 				.rightside_section .rightboxes .share_box .title_sec{ padding:10px 0;}
-				.rightside_section .rightboxes .share_box .share_logos{ width:220px; height:37px; padding:10px 0; text-align:center; background:url(../box-shade.jpg) 0 0 repeat-x;}
+				.rightside_section .rightboxes .share_box .share_logos{ width:220px; height:37px; padding:10px 0; text-align:center; background:asset-url('box-shade.jpg') 0 0 repeat-x;}
 					.rightside_section .rightboxes .share_box .share_logos ul{ text-align:center; list-style:none; margin:0; padding:0;}
 						.rightside_section .rightboxes .share_box .share_logos ul li{ display:inline; margin:0 4px;}
 			.rightside_section .rightboxes .category{ width:220px; height:auto; background:#000;}	
 				.rightside_section .rightboxes .category .title_sec{text-align:left; padding-left:10px; width:210px; }
 				.rightside_section .rightboxes .category ul{ list-style:none; margin:0; padding:0 0 10px 0;}
 					.rightside_section .rightboxes .category ul li{ color:#fbf3d8; font:normal 14px/18px 'PT sans'; padding:6px 16px;}
-						.rightside_section .rightboxes .category ul li a{ padding-left:20px; color:#fbf3d8; text-decoration:none; background:url(../bullet-heart1.png) 0 4px no-repeat;}
-						.rightside_section .rightboxes .category ul li:hover, .rightside_section .rightboxes .category ul li.selected{ background:url(../categ-hov.jpg) 0 0 repeat-x;}
+						.rightside_section .rightboxes .category ul li a{ padding-left:20px; color:#fbf3d8; text-decoration:none; background:asset-url('bullet-heart1.png') 0 4px no-repeat;}
+						.rightside_section .rightboxes .category ul li:hover, .rightside_section .rightboxes .category ul li.selected{ background:asset-url('categ-hov.jpg') 0 0 repeat-x;}
 						
 						.rightside_section .rightboxes .post_latest{ width:220px; height:auto; background:#020606;}
 							.rightboxes .post_latest .tab_content1 { margin:0; padding:0; width:220px; height:45px; position:relative; z-index:109;}
@@ -360,27 +360,27 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 							.rightboxes .post_latest .tab_details1 { margin:0; padding:0px; width:220px; height:auto; float:left; position:relative; z-index:99; background:#020606;}
 								.rightboxes .post_latest .tab_details1 .post01{ width:220px; height:auto;}
 									.rightboxes .post_latest .tab_details1 .post01 ul{ list-style:none; margin:0; padding:0;}
-										.rightboxes .post_latest .tab_details1 .post01 ul li{ padding:10px 15px; background:url(../tab-bg.png) 0 0 repeat-x; border-bottom:1px solid #000000;}
+										.rightboxes .post_latest .tab_details1 .post01 ul li{ padding:10px 15px; background:asset-url('tab-bg.png') 0 0 repeat-x; border-bottom:1px solid #000000;}
 											.rightboxes .post_latest .tab_details1 .post01 ul li h3{ color:#fbf3d8; font:normal 14px/22px 'PT sans';}
 											.rightboxes .post_latest .tab_details1 .post01 ul li p{ color:#fbf3d8; font:normal 14px/18px 'PT sans'; font-style:italic;}
 											
 											
-	.red_ground-bg1{ width:100%; height:730px; background:url(../red-bg01.png) center top repeat-x;}
+	.red_ground-bg1{ width:100%; height:730px; background:asset-url('red-bg01.png') center top repeat-x;}
 		.red_ground-bg1 .red_ground-bg1_inner{ width:942px; height:auto; margin:0 auto; position:relative;}
 			.red_ground-bg1 .red_ground-bg1_inner .heartshape{ position:absolute; top:360px; left:-210px; width:205px; height:210px;}
-		.red_ground-bg1 .pricing_table{ width:942px; height:536px; margin:6px auto 0 auto; background:url(../pricing-table.png) 0 0 no-repeat;}
+		.red_ground-bg1 .pricing_table{ width:942px; height:536px; margin:6px auto 0 auto; background:asset-url('pricing-table.png') 0 0 no-repeat;}
 		
 			.pricing_table .box{ float:left; width:229px; height:auto; padding-left:6px; border:0px solid #000;}
 			.pricing_table .box .sec001{ height:32px; margin-top:38px; color:#fff; font:normal 16px/22px 'PT Sans'; text-align:center;}
 			.pricing_table .box .sec002{ height:106px; color:#fff; font:normal 60px/80px 'PT Sans'; text-align:center; padding-top:10px }
 			.pricing_table .box .sec003{ width:200px; height:289px; margin:0 auto;}
 			.pricing_table .box .sec003 ul{  margin-left:20px; padding:0; list-style-image: url('../bullet-heart2.png');}
-			.pricing_table  .box .sec003 ul li{ background:url(../pr-table-bg.png) center top no-repeat; padding:10px 0; color:#282828; font:normal 16px/22px 'PT Sans';}
+			.pricing_table  .box .sec003 ul li{ background:asset-url('pr-table-bg.png') center top no-repeat; padding:10px 0; color:#282828; font:normal 16px/22px 'PT Sans';}
 			.pricing_table .box .sec003 ul li img{ vertical-align:middle; margin-right:12px; }
 			.pricing_table .box .sec004{  color:#fff; font:normal 16px/30px 'PT Sans'; text-align:center; margin-top:-5px}
 			
 						
-			.pricing_table .box:hover{ float:left; width:229px; height:auto;  border:0px solid #000; background:url(../pricing-table-1.png) 0 0 no-repeat; padding-bottom:20px}
+			.pricing_table .box:hover{ float:left; width:229px; height:auto;  border:0px solid #000; background:asset-url('pricing-table-1.png') 0 0 no-repeat; padding-bottom:20px}
 
 			.pricing_table .box:hover .sec001 { height:46px; margin-top:1px; color:#fff; font:normal 18px/36px 'Conv_PTsans'; text-align:center;}	
 			.pricing_table .box:hover .sec002{ height:129px; color:#fff; font:normal 70px/100px 'PT Sans' ; font-weight:bold; text-align:center;}
@@ -396,12 +396,12 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 				.terms_and_condition .redtext_section{ float:left; width:434px; height:auto; margin:22px 0 0 288px;}
 			.terms_and_condition .redtext_section h3{ color:#fefefe; font:normal 22px/30px 'PT Sans'; margin-bottom:14px;}
 			.terms_and_condition .redtext_section ul{ list-style:none; margin:0; padding:0;}
-				.terms_and_condition .redtext_section ul li{ padding:2px 0 2px 26px; color:#fff; font:normal 13px/16px 'PT Sans'; background:url(../bullet-heart.png) 0 6px no-repeat;}
+				.terms_and_condition .redtext_section ul li{ padding:2px 0 2px 26px; color:#fff; font:normal 13px/16px 'PT Sans'; background:asset-url('bullet-heart.png') 0 6px no-repeat;}
 /*===========content end====================*/
 
 /*=========footersection start==================*/
 .footer_section{ width:100%; height:auto;}
-	.footer_section .footersection-top{ width:100%; height:235px; background:url(../footer_bg01.jpg) no-repeat top center #000; }
+	.footer_section .footersection-top{ width:100%; height:235px; background:asset-url('footer_bg01.jpg') no-repeat top center #000; }
 		.footersection-top .footertop_inner{ width:1024px; height:235px; margin:0 auto; position:relative;}
 			.footersection-top .footertop_inner .karoshape{ width:168px; height:198px; position:absolute; top:-100px; right:-160px;}
 			.footersection-top .footertop_inner .social_media{ float:left; width:82px; height:auto; margin:162px 36px 0 260px;}
@@ -419,19 +419,19 @@ body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; color:#FFF;
 					.footersection-top .footertop_inner .footerbox02 ul li{ color:#487872; margin:8px 0; padding:0; font:normal 13px/18px 'PT Sans';}
 						.footersection-top .footertop_inner .footerbox02 ul li a{ color:#487872; text-decoration:none;}
 						.footersection-top .footertop_inner .footerbox02 ul li a:hover{ color:#72bdb4; text-decoration:none;}
-.section_red{ width:100%; height:auto; border-bottom:1px solid #d10000; background:#850000 url(../redsection_bg.jpg) 0 0 repeat-x; }
+.section_red{ width:100%; height:auto; border-bottom:1px solid #d10000; background:#850000 asset-url('redsection_bg.jpg') 0 0 repeat-x; }
 	.section_red .section_red_inner{ width:940px; height:161px; margin:0 auto; padding-bottom:16px; position:relative;}
 		.section_red .section_red_inner .freespin_banner{ position:absolute; top:-18px; left:-43px;}
 		.section_red .section_red_inner .karoshape{ width:168px; height:198px; position:absolute; top:-150px; right:-200px;}
 		.section_red .section_red_inner .redtext_section{ float:left; width:434px; height:auto; margin:22px 0 0 278px;}
 			.section_red .section_red_inner .redtext_section h3{ color:#fefefe; font:normal 22px/30px 'PT Sans'; margin-bottom:14px;}
 			.section_red .section_red_inner .redtext_section ul{ list-style:none; margin:0; padding:0;}
-				.section_red .section_red_inner .redtext_section ul li{ padding:2px 0 2px 26px; color:#fff; font:normal 13px/16px 'PT Sans'; background:url(../bullet-heart.png) 0 6px no-repeat;}
+				.section_red .section_red_inner .redtext_section ul li{ padding:2px 0 2px 26px; color:#fff; font:normal 13px/16px 'PT Sans'; background:asset-url('bullet-heart.png') 0 6px no-repeat;}
 .footer_section_bottom{ width:100%; background:#000; border-top:1px solid #282428; border-bottom:0px solid #130e08; min-height:51px;}
 .footer_section_bottom_inner{ width:1024px; margin:0px auto; min-height:31px; position:relative; padding:0px 0px 0px 0px;}
 .footer_bottomleftpart{ width:215px; height:auto; float:left; padding:0px; margin:0px 0px 0px 269px;}
 .footer_bottomrightpart{ width:200px; float:right; height:auto; padding:0px; margin:0px; color:#545454; font:normal 13px/normal Arial, Helvetica, sans-serif;}
-.footer_logo{ width:338px; height:203px; position:absolute;  background:url(../footer_logo-bg.png) 0 0 no-repeat; display: block;}
+.footer_logo{ width:338px; height:203px; position:absolute;  background:asset-url('footer_logo-bg.png') 0 0 no-repeat; display: block;}
 	.footer_logo .logo_section{ float:left; width:277px; height:117px; padding-top:33px; text-align:center; display: block; }
 	.footer_logo p.copyright{ float:left; width:277px; text-align:center; color:#300001; font-size:13px; font-weight:normal; line-height:46px;}
 /*=========footer section end==================*/

@@ -219,6 +219,29 @@ class UsersController < ApplicationController
     render plain: 'error', status: 404
   end
 
+  # set balance by user id from session
+  def set_balance2
+    user, credits_from_param = get_user2
+    if user.present?
+      user.credits = credits_from_param
+      if user.save!
+        render plain: 'ok', status: 200
+        return
+      end
+    end
+    render plain: 'error', status: 404
+  end
+
+  # get balance by user id from session
+  def get_balance2
+    user, credits_from_param = get_user2
+    if user.present?
+      render plain: "#{user.credits}", status: 200
+      return
+    end
+    render plain: 'error', status: 404
+  end
+
   def fw
     user_id = params[:user_id].to_i if params[:user_id].present?
     win_amount = params[:win_amount].to_i if params[:win_amount].present?
@@ -247,7 +270,12 @@ class UsersController < ApplicationController
       user = User.find_by(key: key)
       return user, credits.to_f
     end
-    return nil
+  end
+
+  def get_user2
+    user = current_user # user = @current_user
+    credits = params['a'] if params['a'].present?
+    return user, credits.to_f
   end
 
   def generate_key email, password
@@ -264,6 +292,11 @@ class UsersController < ApplicationController
   end
 
   def allow_webgl
+    # headers["Access-Control-Allow-Credentials"] = "true"
+    # headers["Access-Control-Allow-Headers"] = "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time"
+    # headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    # headers["Access-Control-Allow-Origin"] = "*"
+
     header_orig = request.headers['Origin']
     host = Rails.configuration.x.api.host
     if header_orig.present? && host.present? && header_orig.include?(host)

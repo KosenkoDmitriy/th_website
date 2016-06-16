@@ -6,4 +6,8 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
   end
+
+  def slot_ramses
+    render :layout => "fullscreen"
+  end
 end

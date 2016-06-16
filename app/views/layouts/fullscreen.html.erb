@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Texas Holdem</title>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <script type="text/javascript">
+//      $(window).load(function () {
+//          effect:'fade',
+//                  $('#slider').nivoSlider()
+//      });
+    </script>
+</head>
+
+<%= csrf_meta_tags %>
+</head>
+<body id="body">
+<!--wrapper -->
+<div id="wrapper">
+  <% render partial: "shared_new/top_section" %>
+
+  <%= yield %>
+
+  <% render partial: "shared_new/content2_red_section" %>
+  <% render partial: "shared_new/content2_footer" %>
+</div>
+</body>
+</html>

@@ -1,22 +1,29 @@
-<% img_name = "fortune_wheel_green400x400.png" %>
+<% img_name = "fortune_wheel_green.png" %>
 <% if current_user %>
 <style type="text/css">
-    .section_left2 {padding-bottom:30px}
-    .section_right2 {padding-top:45px}
+    .sub_section03fw {
+        height: 550px;
+    }
+
+    .section_left2 {
+        /*padding-bottom:30px;*/
+    }
+    .section_right2 {
+        margin-top:90px;
+    }
     .wcontainer {
         position: absolute;
-        left: 3%;
+        left: -4%;
         margin-top: 3%;
     }
 
     .roulette {
         position: absolute;
         margin: 0 auto;
-        width: 400px;
-        height: 400px;
+        width: 500px;
+        height: 500px;
         left: 40%;
-        background-color: red;
-        /*background-image: url('http://tehsis.me/phieneasroulette.png');*/
+        background-color: darkred;
         background-image: url(<%=asset_url(img_name)%>);
         border-radius: 300px;
     }
@@ -30,8 +37,8 @@
         position: absolute;
         width: 60px;
         height: 60px;
-        top: 171px;
-        left: 171px;
+        top: 220px;
+        left: 220px;
         border-radius: 100%;
         z-index: 1000;
         background-color: black;
@@ -41,11 +48,11 @@
         position: absolute;
         width: 0;
         height: 0;
-        top: -44px;
+        top: -58px;
         left: 20px;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-bottom: 40px solid red;
+        border-bottom: 60px solid red;
     }
 </style>
 <div class="wcontainer">

@@ -2,7 +2,7 @@
   <% image_tag "karo.png", class:"heartshape", alt:"" %>
 
   <div class="sub_section03">
-    <div class="section_left">
+    <div class="section_left section_left2">
       <!--<div class="title_section"><h3>Win credits <span class="boldtxt">via Fortune Wheel</span></h3></div>-->
       <div class="sec_desc">
         <!--<img src="assets/power-jackpot.png" alt="">-->
@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="section_right">
+    <div class="section_right section_right2">
       <% if @creditList.present? && @creditList.any? %>
           <% if current_user
                class_list = "credits"

@@ -6,11 +6,13 @@
     }
 
     .section_left2 {
-        /*padding-bottom:30px;*/
+        width: 50%;
     }
+
     .section_right2 {
-        margin-top:90px;
+        width: 44%;
     }
+
     .wcontainer {
         position: absolute;
         left: -4%;
@@ -248,9 +250,14 @@
     }) (jQuery);
 </script>
 <% else %>
-    <p class="text-center">
+    <style type="text/css">
+        .sub_section03fw {
+            padding: 0px;
+        }
+    </style>
+        <p class="text-center">
       <a href="<%= sign_in_up_path %>" class="btn btn-green">Login and Win credits
-        <%= image_tag(img_name, class:"img-responsive col-xs-12")%>
+        <%= image_tag(img_name, class:"img-responsive col-xs-12", width:"480px") %>
       </a>
     </p>
 <% end %>

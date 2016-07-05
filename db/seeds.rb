@@ -25,3 +25,4 @@ Game.find_or_create_by(fid:"slot_soccer", title: "Slot Machine Ulimate Soccer", 
 Game.find_or_create_by(fid:"freecell_solitaire", title: "Free Cell Solitaire", text: "", url: "/freecell_solitaire/index.html")
 Game.find_or_create_by(fid:"black_jack", title: "Black Jack", text: "", url: "/black_jack/index.html")
 Game.find_or_create_by(fid:"bingo", title: "Bingo", text: "", url: "/bingo/index.html")
+Game.find_or_create_by(fid:"baccarat", title: "Baccarat", text: "", url: "/baccarat/index.html")

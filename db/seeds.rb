@@ -22,3 +22,4 @@ webplayer_text = "if any problems - reload page (support all browsers except goo
 Game.find_or_create_by(fid:"video_poker_jack", title: "Video Poker Jack", text: "", url: "/video_poker_jack/index.html")
 Game.find_or_create_by(fid:"spider_solitaire", title: "Spider Solitaire", text: "", url: "/spider_solitaire/index.html")
 Game.find_or_create_by(fid:"slot_soccer", title: "Slot Machine Ulimate Soccer", text: "", url: "/slot_soccer/index.html")
+Game.find_or_create_by(fid:"freecell_solitaire", title: "Free Cell Solitaire", text: "", url: "/freecell_solitaire/index.html")

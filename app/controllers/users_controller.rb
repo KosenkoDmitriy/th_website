@@ -103,7 +103,13 @@ class UsersController < ApplicationController
             user.credits += Rails.configuration.x.win_for_login
           end
           if user.save
-            redirect_to user
+            url = session[:url_back]
+            if url.present?
+              redirect_to url
+            else
+              redirect_to user
+            end
+
             return
           else
             flash[:error] = 'can not update user info'
@@ -117,6 +123,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = 'empty email and/or password'
     end
+
     redirect_to sign_in_up_path() # redirect_to :back
     return
   end

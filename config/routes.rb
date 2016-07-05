@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'fw10' => 'home#fw10'
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
+  get 'slot_ramses' => 'games#slot_ramses', as: :slot_ramses
 
   get 'express_checkout' => 'orders#express_checkout'
   resources :users do
@@ -36,6 +37,10 @@ Rails.application.routes.draw do
   post 'sub' => 'users#sub', as: :sub
   post 'get' => 'users#get_balance', as: :get_balance
   post 'set' => 'users#set_balance', as: :set_balance
+
+  post 'get2' => 'users#get_balance2', as: :get_balance2
+  post 'set2' => 'users#set_balance2', as: :set_balance2
+
   # end
 
   # social login

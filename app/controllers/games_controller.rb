@@ -18,11 +18,6 @@ class GamesController < ApplicationController
     render :layout => "fullscreen"
   end
 
-  # def video_poker_jack
-    # prepend_view_path "public/video_poker_jack/"
-    # render layout: "fullscreen", template: "index.html"
-  # end
-
   private
   def save_url
     if !current_user

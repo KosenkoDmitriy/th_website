@@ -21,3 +21,4 @@ webplayer_text = "if any problems - reload page (support all browsers except goo
 # Game.find_or_create_by(title: "webplayer", text: webplayer_text, url: "http://th.webplayer.shopomob.ru/WebPlayer.html")
 Game.find_or_create_by(fid:"video_poker_jack", title: "Video Poker Jack", text: "", url: "/video_poker_jack/index.html")
 Game.find_or_create_by(fid:"spider_solitaire", title: "Spider Solitaire", text: "", url: "/spider_solitaire/index.html")
+Game.find_or_create_by(fid:"slot_soccer", title: "Slot Machine Ulimate Soccer", text: "", url: "/slot_soccer/index.html")

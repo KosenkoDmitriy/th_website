@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
   get 'slot_ramses' => 'games#slot_ramses', as: :slot_ramses
+  # get 'poker_jack' => 'games#video_poker_jack'
 
   get 'express_checkout' => 'orders#express_checkout'
   resources :users do

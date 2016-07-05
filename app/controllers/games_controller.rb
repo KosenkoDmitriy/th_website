@@ -6,12 +6,22 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+    id = params[:id]
+    if id.to_i > 0
+      @game = Game.find(id)
+    else
+      @game = Game.find_by(fid: id)
+    end
   end
 
   def slot_ramses
     render :layout => "fullscreen"
   end
+
+  # def video_poker_jack
+    # prepend_view_path "public/video_poker_jack/"
+    # render layout: "fullscreen", template: "index.html"
+  # end
 
   private
   def save_url

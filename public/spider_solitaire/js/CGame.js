@@ -53,7 +53,7 @@ function CGame(oData){
         _iDeckCardPlaced=0;
         _iTurnCardCont=0;
         _iCheckEndGame=0;
-        _iScore=500;
+        _iScore=POINTS_TO_START;
         _iMoves=0;
         
         _bTouchActive=false;
@@ -850,12 +850,14 @@ function CGame(oData){
     };
     
     this._calculateScore = function(oCard, iPoint){
+        //alert("_calculateScore"+iPoint);
 
         var oScore = new CScore();
         oScore.showScore(oCard.getPos(), iPoint);
     };
     
     this._removeScore = function(){
+        //alert("removeScore");
         _iScore--;
         if(_iScore<0){
             _iScore=0;
@@ -864,15 +866,28 @@ function CGame(oData){
         var oScore = new CScore();
         oScore.removeScore(_iScore,iTime);
         _oInterface.fadeScore(_iScore, iTime);
-        
     };
         
     this.updateScore = function(iPoint){
-        _iScore+=iPoint*s_iMode;        
-        
+
+        //alert("updateScore"+iPoint);
+        _iScore+=iPoint*s_iMode;
+
+        var url = "/set2";
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: 'text',
+            data: {
+                base64data: "testdata",
+                a: _iScore,
+                k: "",
+            }
+        });
     };
     
     this.updateVisualScore = function(){
+        //alert("updateVisScore");
         _oInterface.refreshScore(_iScore);
     };
     
@@ -883,8 +898,6 @@ function CGame(oData){
         oScore.displayMoves(_iMoves,iTime);
         _oInterface.fadeMove(_iMoves, iTime);
     };
-    
-    
     
     this.update = function(){
         if(_bInitGame){
@@ -971,7 +984,7 @@ function CGame(oData){
     
     POINTS_TO_LOSE = oData.points_to_lose;
     POINTS_TO_WIN = oData.points_to_win;
-    
+    POINTS_TO_START = oData.points_to_start;
     _oParent = this;    
     
     this._init();

@@ -35,7 +35,7 @@
           <script>
             $(document).ready(function(){
                 var initMoney = 100;
-
+                var isAlertOn = false;
                 var url2 = "/get2";
                 $.ajax({
                     type: "POST",
@@ -44,17 +44,17 @@
                     data: {
                         k: "",
                     }, success: function (msg) {
-                        initMoney = parseFloat(msg);
 
-                     var oMain = new CMain({
-                         
+                        initMoney = parseFloat(msg);
+                        var oMain = new CMain({
                                             points_to_lose: -1, //Number of losing points per move
-                                            points_to_win:initMoney //Points win by a complete flush
-                                            
+                                            points_to_win:500, //Points win by a complete flush
+                                            points_to_start: initMoney // init score
                                            });
                                            
                                            
                     $(oMain).on("start_session", function(evt) {
+                        if (isAlertOn) alert("start_session");
                             if(getParamValue('ctl-arcade') === "true"){
                                 parent.__ctlArcadeStartSession();
                             }
@@ -62,6 +62,7 @@
                     });
                      
                     $(oMain).on("end_session", function(evt) {
+                        if (isAlertOn) alert("end_session");
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeEndSession();
                            }
@@ -75,15 +76,17 @@
                            //...ADD YOUR CODE HERE EVENTUALLY
                     });
 
-                    $(oMain).on("save_score", function(evt,iScore, szMode) {
-                        alert("ss");
+                    $(oMain).on("save_score", function(evt, iScore, szMode) {
+                        if (isAlertOn) alert("save_score"+iScore);
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeSaveScore({score:iScore, mode: szMode});
                            }
                            //...ADD YOUR CODE HERE EVENTUALLY
+                        if (isAlertOn) alert("save_score_a"+iScore);
                     });
 
                     $(oMain).on("start_level", function(evt, iLevel) {
+                        if (isAlertOn) alert("start_level");
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeStartLevel({level:iLevel});
                            }
@@ -91,6 +94,7 @@
                     });
 
                     $(oMain).on("end_level", function(evt,iLevel) {
+                        if (isAlertOn) alert("end_level");
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeEndLevel({level:iLevel});
                            }
@@ -98,6 +102,7 @@
                     });
 
                     $(oMain).on("show_interlevel_ad", function(evt) {
+                        if (isAlertOn) alert("show_interlevel_ad");
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeShowInterlevelAD();
                            }
@@ -105,6 +110,7 @@
                     });
                     
                     $(oMain).on("share_event", function(evt, iScore) {
+                        if (isAlertOn) alert("share_event");
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeShareEvent({   img: TEXT_SHARE_IMAGE,
                                                                 title: TEXT_SHARE_TITLE,

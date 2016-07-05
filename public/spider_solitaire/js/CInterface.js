@@ -57,6 +57,7 @@ function CInterface(){
         
         var oSprite = s_oSpriteLibrary.getSprite('score_moves_display');
         _oMoveDisplay = createBitmap(oSprite);
+        _oMoveDisplay.scaleX=1.4;
         _oMoveDisplay.x = 562;
         _oMoveDisplay.y = 79;       
         s_oStage.addChild(_oMoveDisplay);
@@ -70,31 +71,31 @@ function CInterface(){
         s_oStage.addChild(_oMoveNum);                
         
         _oMoveText = new createjs.Text(TEXT_MOVES,"bold 24px "+PRIMARY_FONT, "#ffffff");
-        _oMoveText.x = 469;
-        _oMoveText.y = 109;
-        _oMoveText.textAlign = "left";
+        _oMoveText.x = 529;
+        _oMoveText.y = 80;
+        _oMoveText.textAlign = "center";
         _oMoveText.textBaseline = "alphabetic";
         _oMoveText.lineWidth = 200;
         s_oStage.addChild(_oMoveText);
         
         var oSprite = s_oSpriteLibrary.getSprite('score_moves_display');
         _oScoreDisplay = createBitmap(oSprite);
-        _oScoreDisplay.scaleX=1.4;
-        _oScoreDisplay.x = 352;
+        _oScoreDisplay.scaleX=3.8;
+        _oScoreDisplay.x = 245;
         _oScoreDisplay.y = 79;       
         s_oStage.addChild(_oScoreDisplay);
         
         _oScoreNum = new createjs.Text("0","bold 24px "+PRIMARY_FONT, "#ffffff");
-        _oScoreNum.x = 425;
+        _oScoreNum.x = 305;
         _oScoreNum.y = 109;
-        _oScoreNum.textAlign = "right";
+        _oScoreNum.textAlign = "left";
         _oScoreNum.textBaseline = "alphabetic";
-        _oScoreNum.lineWidth = 200;
+        _oScoreNum.lineWidth = 600;
         s_oStage.addChild(_oScoreNum);
         
         _oScoreText = new createjs.Text(TEXT_SCORE,"bold 24px "+PRIMARY_FONT, "#ffffff");
         _oScoreText.x = 262;
-        _oScoreText.y = 109;
+        _oScoreText.y = 80;
         _oScoreText.textAlign = "left";
         _oScoreText.textBaseline = "alphabetic";
         _oScoreText.lineWidth = 200;

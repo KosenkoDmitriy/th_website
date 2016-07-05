@@ -330,7 +330,7 @@ function CGame(oData){
                         }
                         _oInterface.showLosePanel();
                     }
-                    
+
                     _iHandCont++;
                     if(_iHandCont === NUM_HAND_FOR_ADS){
                         _iHandCont = 0;
@@ -339,9 +339,10 @@ function CGame(oData){
                     }else if(_iHandCont === NUM_HAND_FOR_ADS-1){
                         $(s_oMain).trigger("share_event",[_iMoney]);
                     }
-                    
-                    
+
                     _iCurState = STATE_GAME_EVALUATE;
+
+                    $(s_oMain).trigger("save_score",[_iMoney]); // force calling
                     break;
             } 
             case STATE_GAME_EVALUATE:{

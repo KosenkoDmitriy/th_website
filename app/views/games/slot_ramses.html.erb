@@ -25,7 +25,7 @@
     $(document).ready(function () {
 
         var initMoney = 100;
-        var url2 = "http://localhost:3001/get2";
+        var url2 = "/get2";
         $.ajax({
             type: "POST",
             url: url2,
@@ -62,7 +62,6 @@
                         parent.__ctlArcadeStartSession();
                     }
 
-
                     //...ADD YOUR CODE HERE EVENTUALLY
                 });
 
@@ -81,7 +80,7 @@
 
 //                    alert("save_Score "+iMoney);
 
-                    var url = "http://localhost:3001/set2";
+                    var url = "/set2";
                     $.ajax({
                         type: "POST",
                         url: url,

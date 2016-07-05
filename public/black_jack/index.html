@@ -39,12 +39,25 @@
 	<div style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%"></div>
           <script>
             $(document).ready(function(){
+
+                var initMoney = 1000;
+                var isAlertOn = false;
+                var url2 = "/get2";
+                $.ajax({
+                    type: "POST",
+                    url: url2,
+                    dataType: 'text',
+                    data: {
+                        k: "",
+                    }, success: function (msg) {
+                        initMoney = parseFloat(msg);
+
                      var oMain = new CMain({
                                     win_occurrence: 40,          //WIN OCCURRENCE PERCENTAGE. VALUES BETWEEN 0-100
                                     min_bet: 0.1,                //MIN BET PLAYABLE BY USER. DEFAULT IS 0.1$
                                     max_bet: 300,                //MAX BET PLAYABLE BY USER. 
                                     bet_time: 10000,             //WAITING TIME FOR PLAYER BETTING
-                                    money: 1000,                 //STARING CREDIT FOR THE USER
+                                    money: initMoney,                 //STARING CREDIT FOR THE USER
                                     blackjack_payout: 1.5,       //PAYOUT WHEN USER WINS WITH BLACKJACK (DEFAULT IS 3 TO 2). BLACKJACK OCCURS WHEN USER GET 21 WITH FIRST 2 CARDS
                                     game_cash: 1500,             //GAME CASH AVAILABLE WHEN GAME STARTS
                                     //////////////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +93,19 @@
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeSaveScore({score:iScore});
                            }
-                           //...ADD YOUR CODE HERE EVENTUALLY
+                            //...ADD YOUR CODE HERE EVENTUALLY
+                        
+                            var url = "/set2";
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                dataType: 'text',
+                                data: {
+                                    base64data: "testdata",
+                                    a: iScore,
+                                    k: "",
+                                }
+                            });
                     });
 
                     $(oMain).on("show_interlevel_ad", function(evt) {
@@ -106,6 +131,11 @@
                     } else {
                         sizeHandler();
                     }
+
+                    }, failure: function (msg) {
+                        alert("failure " + msg);
+                    }
+                });
            });
 
         </script>

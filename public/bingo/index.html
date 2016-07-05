@@ -43,17 +43,30 @@
 	<div style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%"></div>
           <script>
             $(document).ready(function(){
-                     var oMain = new CMain({  
+
+                var initMoney = 100;
+                var isAlertOn = false;
+                var url2 = "/get2";
+                $.ajax({
+                    type: "POST",
+                    url: url2,
+                    dataType: 'text',
+                    data: {
+                        k: "",
+                    }, success: function (msg) {
+
+                        initMoney = parseFloat(msg);
+                        var oMain = new CMain({
                          
-                                            bank_money : 1000,
-                                            start_player_money: 100,
-                                            starting_bet:0.25,
-                                            coin_bet:[0.25,0.5,1],
+                                            bank_money : initMoney * 10,
+                                            start_player_money: initMoney,
+                                            starting_bet:250,
+                                            coin_bet:[250,5000,1000],
                                             win_occurrence : [
                                                                 40, //WIN OCURRENCE PERCENTAGE FOR 45 EXTRACTIONS
                                                                 50, //WIN OCURRENCE PERCENTAGE FOR 55 EXTRACTIONS
                                                                 60],//WIN OCURRENCE PERCENTAGE FOR 65 EXTRACTIONS
-                                            time_extraction: 1500,
+                                            time_extraction: 150,
                                             paytable:[
                                                         [5,50,100], //PAYTABLE FOR 45 EXTRACTIONS
                                                         [2,10,50], //PAYTABLE FOR 55 EXTRACTIONS
@@ -84,10 +97,23 @@
                     });
 
                     $(oMain).on("save_score", function(evt,iScore) {
+//                        alert("ss"+iScore);
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeSaveScore({score:iScore});
                            }
                            //...ADD YOUR CODE HERE EVENTUALLY
+
+                        var url = "/set2";
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            dataType: 'text',
+                            data: {
+                                base64data: "testdata",
+                                a: iScore,
+                                k: "",
+                            }
+                        });
                     });
 
                     $(oMain).on("show_interlevel_ad", function(evt) {
@@ -113,6 +139,11 @@
                     }else{ 
                         sizeHandler(); 
                     }
+
+                }, failure: function (msg) {
+                    alert("failure " + msg);
+                }
+                });
            });
 
         </script>

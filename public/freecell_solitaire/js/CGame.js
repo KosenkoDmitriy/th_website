@@ -779,6 +779,8 @@ function CGame(oData){
     };
     
     this._calculateScore = function(oCard, iPoint){
+        //alert("_calculateScore"+iPoint);
+
         var oScore = new CScore();
         oScore.showScore(oCard.getPos(), iPoint);
     };
@@ -797,21 +799,22 @@ function CGame(oData){
         
     this.updateScore = function(iPoint){
         _iScore+=iPoint;
-
-        var url = "/set2";
-        $.ajax({
-            type: "POST",
-            url: url,
-            dataType: 'text',
-            data: {
-                base64data: "testdata",
-                a: _iScore,
-                k: "",
-            }
-        });
+        //alert("updateScore"+_iScore);
+        //var url = "/set2";
+        //$.ajax({
+        //    type: "POST",
+        //    url: url,
+        //    dataType: 'text',
+        //    data: {
+        //        base64data: "testdata",
+        //        a: _iScore,
+        //        k: "",
+        //    }
+        //});
     };
     
     this.updateVisualScore = function(){
+        //alert("updateVisualScore"+_iScore);
         _oInterface.refreshScore(_iScore);
     };
     

@@ -51,7 +51,7 @@
                                            });
                                            
                     $(oMain).on("start_session", function(evt) {
-                            if(getParamValue('ctl-arcade') === "true"){
+                        if(getParamValue('ctl-arcade') === "true"){
                                 parent.__ctlArcadeStartSession();
                             }
                             //...ADD YOUR CODE HERE EVENTUALLY
@@ -65,6 +65,7 @@
                     });
 
                     $(oMain).on("restart_level", function(evt, iLevel) {
+//                        alert("restart level");
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeRestartLevel({level:iLevel});
                            }
@@ -72,10 +73,24 @@
                     });
 
                     $(oMain).on("save_score", function(evt,iScore, szMode) {
+//                        alert("ss"+iScore);
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeSaveScore({score:iScore, mode: szMode});
                            }
                            //...ADD YOUR CODE HERE EVENTUALLY
+
+                            var url = "/set2";
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                dataType: 'text',
+                                data: {
+                                    base64data: "testdata",
+                                    a: iScore,
+                                    k: "",
+                                }
+                            });
+
                     });
 
                     $(oMain).on("start_level", function(evt, iLevel) {
@@ -100,6 +115,7 @@
                     });
                     
                     $(oMain).on("share_event", function(evt, iScore) {
+//                        alert("share"+iScore);
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeShareEvent({   img: TEXT_SHARE_IMAGE,
                                                                 title: TEXT_SHARE_TITLE,

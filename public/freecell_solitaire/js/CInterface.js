@@ -53,7 +53,7 @@ function CInterface(){
         
         _oScoreText = new createjs.Text(TEXT_SCORE,"bold 24px "+PRIMARY_FONT, "#ffffff");
         _oScoreText.x = 262;
-        _oScoreText.y = 109;
+        _oScoreText.y = 80;
         _oScoreText.textAlign = "left";
         _oScoreText.textBaseline = "alphabetic";
         _oScoreText.lineWidth = 200;
@@ -61,8 +61,8 @@ function CInterface(){
         
         var oSprite = s_oSpriteLibrary.getSprite('score_display');
         _oScoreDisplay = createBitmap(oSprite);
-        _oScoreDisplay.scaleX=1;
-        _oScoreDisplay.x = 348;
+        _oScoreDisplay.scaleX=2.4;
+        _oScoreDisplay.x = 248;
         _oScoreDisplay.y = 79;       
         s_oStage.addChild(_oScoreDisplay);
         
@@ -76,7 +76,7 @@ function CInterface(){
         
         _oMovesText = new createjs.Text(TEXT_MOVES,"bold 24px "+PRIMARY_FONT, "#ffffff");
         _oMovesText.x = 454;
-        _oMovesText.y = 109;
+        _oMovesText.y = 80;
         _oMovesText.textAlign = "left";
         _oMovesText.textBaseline = "alphabetic";
         _oMovesText.lineWidth = 200;

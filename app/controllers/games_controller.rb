@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :save_url, except: [:index, :show]
+  before_action :login_first, except: [:index, :show]
 
   def index
     @games = Game.all
@@ -12,6 +12,9 @@ class GamesController < ApplicationController
     else
       @game = Game.find_by(fid: id)
     end
+
+    login_first if !@game.is_skipped_login?
+
   end
 
   def slot_ramses
@@ -19,7 +22,7 @@ class GamesController < ApplicationController
   end
 
   private
-  def save_url
+  def login_first
     if !current_user
       url_back = request.fullpath
       session[:url_back] = url_back

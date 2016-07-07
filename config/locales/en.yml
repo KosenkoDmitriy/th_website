@@ -47,6 +47,7 @@ en:
     up: "Sign Up"
     in: "Sign In"
   restore: "Restore"
+  login_first: "Please login first"
   simple_captcha:
       placeholder: "Enter the image value"
       label: "Enter the code in the box:"

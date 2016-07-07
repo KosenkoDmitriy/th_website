@@ -1,19 +1,77 @@
-<div class="container container-narrow content">
-  <h2 class="text-center bg-red2">Games</h2>
-  <% if @games.present? && @games.any? %>
-      <div class="row" id="games" class="">
-        <% @games.each do |game| %>
-            <div class="col-xs-12 col-sm-6">
-              <%= render partial: "games/game", locals: {game: game} %>
-            </div>
-        <% end %>
+
+<div id="contentarea_1">
+  <div class="section03">
+<br>
+<br>
+<br>
+<div class="sub_section02">
+  <!--tab start -->
+
+  <div class="tab_box">
+    <div class="tab_content" style="width:633px;">
+      <div class="sort_tabsection">
+        <ul>
+          <li><a href="JavaScript:void(0);" class="select">Popular games</a></li>
+          <li><a href="JavaScript:void(0);">New games</a></li>
+          <li><a href="JavaScript:void(0);">Best bonus</a></li>
+          <li><a href="JavaScript:void(0);">A-Z</a></li>
+        </ul>
       </div>
-  <% else %>
-      <p class="big text-center">no any games found</p>
-  <% end %>
+    </div>
+    <div class="clr"></div>
+    <div class="tab_details">
+      <!--tab news start -->
+      <div class="tab_inner active">
+        <div class="sorted_display">
+          <% if @games.present? && @games.any? %>
+              <% @games.each do |game| %>
+                  <%= render partial: "games/game", locals: {game: game} %>
+                  <% end %>
+              <% else %>
+              <p class="big text-center">no any games found</p>
+          <% end %>
 
-  <br>
+          <div class="clr"></div>
+        </div>
+      </div>
+      <!--tab news end -->
+      <!--tab comment start -->
+      <div class="tab_inner">
+        <div class="sorted_display">
+          <%= render partial: "shared_new/content4_games_ul" %>
 
-  <%= render partial: "shared/back_to_top" %>
+          <div class="clr"></div>
+        </div>
+      </div>
+      <!--tab comment end -->
+      <!--tab comment start -->
+      <div class="tab_inner">
+        <div class="sorted_display">
+          <%= render partial: "shared_new/content4_games_ul" %>
+
+          <div class="clr"></div>
+        </div>
+      </div>
+      <!--tab comment end -->
+      <!--tab comment start -->
+      <div class="tab_inner">
+        <div class="sorted_display">
+          <%= render partial: "shared_new/content4_games_ul" %>
+
+          <div class="clr"></div>
+        </div>
+      </div>
+      <!--tab comment end -->
+    </div>
+  </div>
+
+  <!--tab end -->
+</div>
+
+<div class="clr"></div>
+</div>
+
+
+</div>
 </div>
 

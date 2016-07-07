@@ -27,3 +27,4 @@ Game.find_or_create_by(fid:"freecell_solitaire", title: "Free Cell Solitaire", t
 Game.find_or_create_by(fid:"black_jack", title: "Black Jack", text: "", url: "/black_jack/index.html")
 Game.find_or_create_by(fid:"bingo", title: "Bingo", text: "", url: "/bingo/index.html")
 Game.find_or_create_by(fid:"baccarat", title: "Baccarat", text: "", url: "/baccarat/index.html")
+Game.find_or_create_by(fid:"3d_roulette", title: "3D Roulette", text: "", url: "/3d_roulette/index.html")

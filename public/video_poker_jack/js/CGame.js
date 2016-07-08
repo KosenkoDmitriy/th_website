@@ -506,6 +506,7 @@ function CGame(oData){
     
     this.onExit = function(){
         this.unload();
+        oData.money = _iMoney;
 
         s_oMain.gotoMenu();
         $(s_oMain).trigger("end_session");

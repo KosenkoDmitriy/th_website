@@ -871,8 +871,8 @@ function CGame(oData){
     this.updateScore = function(iPoint){
 
         //alert("updateScore"+iPoint);
-        _iScore+=iPoint*s_iMode;
-
+        _iScore += iPoint * s_iMode;
+        oData.points_to_start = _iScore;
         var url = "/set2";
         $.ajax({
             type: "POST",

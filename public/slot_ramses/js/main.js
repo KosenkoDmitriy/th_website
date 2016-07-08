@@ -750,9 +750,9 @@ function CPreloader() {
     var a, g, l, f, k, h, c;
     this._init = function () {
         s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this);
-        s_oSpriteLibrary.addSprite("bg_preloader", "./slot_ramses_files/sprites/bg_preloader.jpg");
-        s_oSpriteLibrary.addSprite("preloader_bar", "./slot_ramses_files/sprites/preloader_bar.png");
-        s_oSpriteLibrary.addSprite("progress_bar", "./slot_ramses_files/sprites/progress_bar.png");
+        s_oSpriteLibrary.addSprite("bg_preloader", "./sprites/bg_preloader.jpg");
+        s_oSpriteLibrary.addSprite("preloader_bar", "./sprites/preloader_bar.png");
+        s_oSpriteLibrary.addSprite("progress_bar", "./sprites/progress_bar.png");
         s_oSpriteLibrary.loadSprites();
         c = new createjs.Container;
         s_oStage.addChild(c)
@@ -1029,36 +1029,36 @@ function CMain(a) {
         l === f && (c.unload(), this.gotoMenu())
     };
     this._initSounds = function () {
-        createjs.Sound.initializeDefaultPlugins() && (0 < navigator.userAgent.indexOf("Opera") || 0 < navigator.userAgent.indexOf("OPR") ? (createjs.Sound.alternateExtensions = ["mp3"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.soundLoaded, this)), createjs.Sound.registerSound("./slot_ramses_files/sounds/press_but.ogg",
-            "press_but"), createjs.Sound.registerSound("./slot_ramses_files/sounds/win.ogg", "win"), createjs.Sound.registerSound("./slot_ramses_files/sounds/reels.ogg", "reels"), createjs.Sound.registerSound("./slot_ramses_files/sounds/reel_stop.ogg", "reel_stop", 6), createjs.Sound.registerSound("./slot_ramses_files/sounds/start_reel.ogg", "start_reel", 6), createjs.Sound.registerSound("./slot_ramses_files/sounds/choose_bonus_item.ogg", "choose_bonus_item"), createjs.Sound.registerSound("./slot_ramses_files/sounds/press_hold.ogg", "press_hold"), createjs.Sound.registerSound("./slot_ramses_files/sounds/soundtrack.ogg", "soundtrack")) : (createjs.Sound.alternateExtensions =
-            ["ogg"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.soundLoaded, this)), createjs.Sound.registerSound("./slot_ramses_files/sounds/press_but.mp3", "press_but"), createjs.Sound.registerSound("./slot_ramses_files/sounds/win.mp3", "win"), createjs.Sound.registerSound("./slot_ramses_files/sounds/reels.mp3", "reels"), createjs.Sound.registerSound("./slot_ramses_files/sounds/reel_stop.mp3", "reel_stop", 6), createjs.Sound.registerSound("./slot_ramses_files/sounds/start_reel.mp3", "start_reel", 6), createjs.Sound.registerSound("./slot_ramses_files/sounds/choose_bonus_item.mp3", "choose_bonus_item"), createjs.Sound.registerSound("./slot_ramses_files/sounds/press_hold.mp3",
-            "press_hold"), createjs.Sound.registerSound("./slot_ramses_files/sounds/soundtrack.mp3", "soundtrack")), f += 8)
+        createjs.Sound.initializeDefaultPlugins() && (0 < navigator.userAgent.indexOf("Opera") || 0 < navigator.userAgent.indexOf("OPR") ? (createjs.Sound.alternateExtensions = ["mp3"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.soundLoaded, this)), createjs.Sound.registerSound("./sounds/press_but.ogg",
+            "press_but"), createjs.Sound.registerSound("./sounds/win.ogg", "win"), createjs.Sound.registerSound("./sounds/reels.ogg", "reels"), createjs.Sound.registerSound("./sounds/reel_stop.ogg", "reel_stop", 6), createjs.Sound.registerSound("./sounds/start_reel.ogg", "start_reel", 6), createjs.Sound.registerSound("./sounds/choose_bonus_item.ogg", "choose_bonus_item"), createjs.Sound.registerSound("./sounds/press_hold.ogg", "press_hold"), createjs.Sound.registerSound("./sounds/soundtrack.ogg", "soundtrack")) : (createjs.Sound.alternateExtensions =
+            ["ogg"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.soundLoaded, this)), createjs.Sound.registerSound("./sounds/press_but.mp3", "press_but"), createjs.Sound.registerSound("./sounds/win.mp3", "win"), createjs.Sound.registerSound("./sounds/reels.mp3", "reels"), createjs.Sound.registerSound("./sounds/reel_stop.mp3", "reel_stop", 6), createjs.Sound.registerSound("./sounds/start_reel.mp3", "start_reel", 6), createjs.Sound.registerSound("./sounds/choose_bonus_item.mp3", "choose_bonus_item"), createjs.Sound.registerSound("./sounds/press_hold.mp3",
+            "press_hold"), createjs.Sound.registerSound("./sounds/soundtrack.mp3", "soundtrack")), f += 8)
     };
     this._loadImages = function () {
         s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this);
-        s_oSpriteLibrary.addSprite("but_exit", "./slot_ramses_files/sprites/but_exit.png");
-        s_oSpriteLibrary.addSprite("bg_menu", "./slot_ramses_files/sprites/bg_menu.jpg");
-        s_oSpriteLibrary.addSprite("bg_game", "./slot_ramses_files/sprites/bg_game.jpg");
-        s_oSpriteLibrary.addSprite("paytable", "./slot_ramses_files/sprites/paytable.jpg");
-        s_oSpriteLibrary.addSprite("but_play_bg", "./slot_ramses_files/sprites/but_play_bg.png");
-        s_oSpriteLibrary.addSprite("mask_slot", "./slot_ramses_files/sprites/mask_slot.png");
-        s_oSpriteLibrary.addSprite("spin_but", "./slot_ramses_files/sprites/but_spin_bg.png");
-        s_oSpriteLibrary.addSprite("coin_but", "./slot_ramses_files/sprites/but_coin_bg.png");
-        s_oSpriteLibrary.addSprite("info_but", "./slot_ramses_files/sprites/but_info_bg.png");
-        s_oSpriteLibrary.addSprite("bet_but", "./slot_ramses_files/sprites/bet_but.png");
-        s_oSpriteLibrary.addSprite("win_frame_anim", "./slot_ramses_files/sprites/win_frame_anim.png");
-        s_oSpriteLibrary.addSprite("but_lines_bg", "./slot_ramses_files/sprites/but_lines_bg.png");
+        s_oSpriteLibrary.addSprite("but_exit", "./sprites/but_exit.png");
+        s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu.jpg");
+        s_oSpriteLibrary.addSprite("bg_game", "./sprites/bg_game.jpg");
+        s_oSpriteLibrary.addSprite("paytable", "./sprites/paytable.jpg");
+        s_oSpriteLibrary.addSprite("but_play_bg", "./sprites/but_play_bg.png");
+        s_oSpriteLibrary.addSprite("mask_slot", "./sprites/mask_slot.png");
+        s_oSpriteLibrary.addSprite("spin_but", "./sprites/but_spin_bg.png");
+        s_oSpriteLibrary.addSprite("coin_but", "./sprites/but_coin_bg.png");
+        s_oSpriteLibrary.addSprite("info_but", "./sprites/but_info_bg.png");
+        s_oSpriteLibrary.addSprite("bet_but", "./sprites/bet_but.png");
+        s_oSpriteLibrary.addSprite("win_frame_anim", "./sprites/win_frame_anim.png");
+        s_oSpriteLibrary.addSprite("but_lines_bg", "./sprites/but_lines_bg.png");
         s_oSpriteLibrary.addSprite("but_maxbet_bg",
-            "./slot_ramses_files/sprites/but_maxbet_bg.png");
-        s_oSpriteLibrary.addSprite("audio_icon", "./slot_ramses_files/sprites/audio_icon.png");
-        s_oSpriteLibrary.addSprite("hit_area_col", "./slot_ramses_files/sprites/hit_area_col.png");
-        s_oSpriteLibrary.addSprite("hold_col", "./slot_ramses_files/sprites/hold_col.png");
-        s_oSpriteLibrary.addSprite("bonus_bg", "./slot_ramses_files/sprites/bonus_bg.jpg");
-        s_oSpriteLibrary.addSprite("bonus_item", "./slot_ramses_files/sprites/bonus_item.png");
-        s_oSpriteLibrary.addSprite("bonus_prize", "./slot_ramses_files/sprites/bonus_prize.png");
+            "./sprites/but_maxbet_bg.png");
+        s_oSpriteLibrary.addSprite("audio_icon", "./sprites/audio_icon.png");
+        s_oSpriteLibrary.addSprite("hit_area_col", "./sprites/hit_area_col.png");
+        s_oSpriteLibrary.addSprite("hold_col", "./sprites/hold_col.png");
+        s_oSpriteLibrary.addSprite("bonus_bg", "./sprites/bonus_bg.jpg");
+        s_oSpriteLibrary.addSprite("bonus_item", "./sprites/bonus_item.png");
+        s_oSpriteLibrary.addSprite("bonus_prize", "./sprites/bonus_prize.png");
         for (var a = 1; a < NUM_SYMBOLS + 1; a++)s_oSpriteLibrary.addSprite("symbol_" +
-            a, "./slot_ramses_files/sprites/symbol_" + a + ".png"), s_oSpriteLibrary.addSprite("symbol_" + a + "_anim", "./slot_ramses_files/sprites/symbol_" + a + "_anim.png");
-        for (a = 1; a < NUM_PAYLINES + 1; a++)s_oSpriteLibrary.addSprite("payline_" + a, "./slot_ramses_files/sprites/payline_" + a + ".png");
+            a, "./sprites/symbol_" + a + ".png"), s_oSpriteLibrary.addSprite("symbol_" + a + "_anim", "./sprites/symbol_" + a + "_anim.png");
+        for (a = 1; a < NUM_PAYLINES + 1; a++)s_oSpriteLibrary.addSprite("payline_" + a, "./sprites/payline_" + a + ".png");
         f += s_oSpriteLibrary.getNumSprites();
         s_oSpriteLibrary.loadSprites()
     };
@@ -1585,6 +1585,7 @@ function CGame(a) {
         q < p && r.disableSpin();
         x++;
         x === A && (x = 0, $(s_oMain).trigger("show_interlevel_ad"));
+
         $(s_oMain).trigger("save_score", q)
     };
     this.hidePayTable = function () {
@@ -1703,6 +1704,7 @@ function CGame(a) {
     };
     this.onExit = function () {
         this.unload();
+        a.money = q;
         s_oMain.gotoMenu();
         $(s_oMain).trigger("end_session");
         $(s_oMain).trigger("share_event",

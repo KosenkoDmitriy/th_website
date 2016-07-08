@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'fw10' => 'home#fw10'
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
-  get 'slot_ramses' => 'games#slot_ramses', as: :slot_ramses
 
   get 'express_checkout' => 'orders#express_checkout'
   resources :users do

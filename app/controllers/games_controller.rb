@@ -14,11 +14,6 @@ class GamesController < ApplicationController
     end
 
     login_first if !@game.is_skipped_login?
-
-  end
-
-  def slot_ramses
-    render :layout => "fullscreen"
   end
 
   private

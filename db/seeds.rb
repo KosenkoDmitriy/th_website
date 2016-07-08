@@ -20,3 +20,4 @@ Game.find_or_create_by(order_id: 70, fid:"black_jack", title: "Black Jack", text
 Game.find_or_create_by(order_id: 40, fid:"bingo", title: "Bingo", text: "", url: "/bingo/index.html")
 Game.find_or_create_by(order_id: 80, fid:"baccarat", title: "Baccarat", text: "", url: "/baccarat/index.html")
 Game.find_or_create_by(order_id: 30, fid:"3d_roulette", title: "3D Roulette", text: "", url: "/3d_roulette/index.html")
+# Game.find_or_create_by(order_id: 110, fid:"slot_ramses", title: "Slot Ramses Treasure", text: "", url: "/slot_ramses/index.html")

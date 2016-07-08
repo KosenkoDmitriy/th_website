@@ -739,6 +739,9 @@ function CGame(oData){
         this.unload();
         $(s_oMain).trigger("end_session");
         $(s_oMain).trigger("share_event",_oSeat.getCredit());
+
+        oData.money = _oSeat.getCredit();
+
         s_oMain.gotoMenu();
         
     };

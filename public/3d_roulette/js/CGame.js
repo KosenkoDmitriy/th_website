@@ -704,6 +704,7 @@ function CGame(oData){
         s_oMain.gotoMenu();
         $(s_oMain).trigger("end_session");
         $(s_oMain).trigger("share_event",_oMySeat.getCredit());
+        oData.money = _oMySeat.getCredit();
     };
     
     this._updateWaitingBet = function(){

@@ -50,14 +50,17 @@
 
 
                         var oMain = new CMain({
-                                    win_occurrence:40,        //WIN PERCENTAGE.SET A VALUE FROM 0 TO 100.
+                                    win_occurrence: 40,        //WIN PERCENTAGE.SET A VALUE FROM 0 TO 100.
                                     slot_cash: 2000,          //THIS IS THE CURRENT SLOT CASH AMOUNT. THE GAME CHECKS IF THERE IS AVAILABLE CASH FOR WINNINGS.
-                                    min_reel_loop:2,          //NUMBER OF REEL LOOPS BEFORE SLOT STOPS  
+                                    min_reel_loop: 2,          //NUMBER OF REEL LOOPS BEFORE SLOT STOPS
                                     reel_delay: 6,            //NUMBER OF FRAMES TO DELAY THE REELS THAT START AFTER THE FIRST ONE
                                     time_show_win:2000,       //DURATION IN MILLISECONDS OF THE WINNING COMBO SHOWING
                                     time_show_all_wins: 2000, //DURATION IN MILLISECONDS OF ALL WINNING COMBO
-                                    money:initMoney,               //STARING CREDIT FOR THE USER
-                                    ad_show_counter:3         //NUMBER OF SPIN PLAYED BEFORE AD SHOWING
+                                    money: initMoney,               //STARING CREDIT FOR THE USER
+                                    ad_show_counter: 3,         //NUMBER OF SPIN PLAYED BEFORE AD SHOWING
+                                    bet_dx: 100,
+                                    bet_min: 100,
+                                    bet_max: 1000
                                     // 
                                     //// THIS FEATURE  IS ACTIVATED ONLY WITH CTL ARCADE PLUGIN./////////////////////////// 
                                     /////////////////// YOU CAN GET IT AT: ///////////////////////////////////////////////////////// 

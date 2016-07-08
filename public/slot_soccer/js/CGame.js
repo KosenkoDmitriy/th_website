@@ -380,7 +380,7 @@ function CGame(oData){
     };
     
     this.changeCoinBet = function(){
-        var iNewBet = Math.floor((_iCurBet+0.05) * 100)/100;
+        var iNewBet = Math.floor((_iCurBet+BET_DX) * 100)/100;
 		var iNewTotalBet;
 		
         if(iNewBet>MAX_BET){
@@ -392,7 +392,7 @@ function CGame(oData){
         }else{
             iNewTotalBet = iNewBet * _iLastLineActive;
 
-			_iCurBet += 0.05;
+			_iCurBet += BET_DX;
 			_iCurBet = Math.floor(_iCurBet * 100)/100;
 			_iTotBet = iNewTotalBet;
 			_oInterface.refreshBet(_iCurBet);
@@ -522,7 +522,8 @@ function CGame(oData){
         this.unload();
         $(s_oMain).trigger("end_session");
         $(s_oMain).trigger("share_event", _iMoney);
-            
+        oData.money = _iMoney;
+
         s_oMain.gotoMenu();
     };
     
@@ -572,6 +573,9 @@ function CGame(oData){
     TIME_SHOW_ALL_WINS = oData.time_show_all_wins;
     TOTAL_MONEY = oData.money;
     SLOT_CASH = oData.slot_cash;
+    MIN_BET = oData.bet_min;
+    MAX_BET = oData.bet_max;
+    BET_DX = oData.bet_dx;
     _iAdsShowingCont = oData.ad_show_counter;
     
     this._init();

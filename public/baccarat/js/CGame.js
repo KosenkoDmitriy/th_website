@@ -459,7 +459,8 @@ function CGame(oData){
             $(s_oMain).trigger("show_interlevel_ad");
         }
 		
-	$(s_oMain).trigger("save_score",[_oSeat.getCredit()]);
+	    $(s_oMain).trigger("save_score",[_oSeat.getCredit()]);
+        oData.money = _oSeat.getCredit();
     };
     
     this.setBet = function(iFicheValue,iFicheIndex,iTypeBet){

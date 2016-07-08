@@ -867,7 +867,7 @@ function CGame(oData){
             createjs.Sound.play("game_over");
         }
 
-        START_SCORE = oData.starting_points = _iScore;
+        oData.starting_points = _iScore;
 
         _oEndPanel = CEndPanel(s_oSpriteLibrary.getSprite('msg_box'));
         _oEndPanel.show(_iScore);

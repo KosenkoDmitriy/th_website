@@ -34,7 +34,7 @@
           <script>
             $(document).ready(function(){
                 var initMoney = 500;
-                var isAlertOn = false;
+                var isDebug = true;
                 var url2 = "/get2";
                 $.ajax({
                     type: "POST",
@@ -48,7 +48,7 @@
                         var oMain = new CMain({
                                             points_to_lose: 1, //Number of losing points per move
                                             starting_points: initMoney, //Points when game starts.
-                                            is_debug: false
+                                            is_debug: isDebug
                                            });
                                            
                     $(oMain).on("start_session", function(evt) {

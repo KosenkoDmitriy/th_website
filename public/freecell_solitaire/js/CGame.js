@@ -800,19 +800,7 @@ function CGame(oData){
     };
         
     this.updateScore = function(iPoint){
-        _iScore+=iPoint;
-        //alert("updateScore"+_iScore);
-        //var url = "/set2";
-        //$.ajax({
-        //    type: "POST",
-        //    url: url,
-        //    dataType: 'text',
-        //    data: {
-        //        base64data: "testdata",
-        //        a: _iScore,
-        //        k: "",
-        //    }
-        //});
+        _iScore += iPoint;
     };
     
     this.updateVisualScore = function(){
@@ -867,6 +855,7 @@ function CGame(oData){
             createjs.Sound.play("game_over");
         }
 
+        _iScore += POINTS_TO_WIN;
         oData.starting_points = _iScore;
 
         _oEndPanel = CEndPanel(s_oSpriteLibrary.getSprite('msg_box'));
@@ -879,7 +868,8 @@ function CGame(oData){
     };
 
     s_oGame=this;
-    
+
+    POINTS_TO_WIN = oData.points_to_win;
     POINTS_TO_LOSE = oData.points_to_lose;
     START_SCORE = oData.starting_points;
     IS_DEBUG = oData.is_debug;

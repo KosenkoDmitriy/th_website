@@ -52,11 +52,10 @@ function CEndPanel(oSpriteBg){
     };
     
     this.show = function(iScore){
-	if(DISABLE_SOUND_MOBILE === false || s_bMobile === false ){
-	        createjs.Sound.play("game_over");
-	}
-        
-        
+        if(DISABLE_SOUND_MOBILE === false || s_bMobile === false ){
+            createjs.Sound.play("game_over");
+        }
+                
         _oMsgTextBack.text = TEXT_GAMEOVER;
         _oMsgText.text = TEXT_GAMEOVER;
         

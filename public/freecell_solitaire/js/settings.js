@@ -43,4 +43,6 @@ var CARD_WIDTH = 78;
 var CARD_HEIGHT = 120;
 
 var POINTS_TO_LOSE;
+var POINTS_TO_WIN;
+
 var START_SCORE;

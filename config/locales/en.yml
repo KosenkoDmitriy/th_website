@@ -48,6 +48,9 @@ en:
     in: "Sign In"
   restore: "Restore"
   login_first: "Please login first"
+  game:
+    s:
+      not_found: "no any games found"
   simple_captcha:
       placeholder: "Enter the image value"
       label: "Enter the code in the box:"

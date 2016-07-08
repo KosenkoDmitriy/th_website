@@ -5,50 +5,53 @@
       <ul>
         <li><a href="JavaScript:void(0);" class="select">Popular games</a></li>
         <li><a href="JavaScript:void(0);">New games</a></li>
-        <li><a href="JavaScript:void(0);">Best bonus</a></li>
+        <!--<li><a href="JavaScript:void(0);">Best bonus</a></li>-->
         <li><a href="JavaScript:void(0);">A-Z</a></li>
       </ul>
     </div>
   </div>
   <div class="clr"></div>
   <div class="tab_details">
-    <!--tab news start -->
+    <!--tab news start Popular-->
     <div class="tab_inner active">
       <div class="sorted_display">
         <% if @games.present? && @games.any? %>
-            <% @games.each do |game| %>
+            <% @games.try(:order, :order_id).each do |game| %>
                 <%= render partial: "games/game", locals: {game: game} %>
             <% end %>
         <% else %>
-            <p class="big text-center">no any games found</p>
+            <p class="big text-center"><%=t("game.s.not_found")%></p>
         <% end %>
 
         <div class="clr"></div>
       </div>
     </div>
     <!--tab news end -->
-    <!--tab comment start -->
+    <!--tab comment start New Games-->
     <div class="tab_inner">
       <div class="sorted_display">
-        <%= render partial: "shared_new/content4_games_ul" %>
+        <% if @games.present? && @games.any? %>
+            <% @games.order(created_at: :desc).each do |game| %>
+                <%= render partial: "games/game", locals: {game: game} %>
+            <% end %>
+        <% else %>
+            <p class="big text-center"><%=t("game.s.not_found")%></p>
+        <% end %>
 
         <div class="clr"></div>
       </div>
     </div>
     <!--tab comment end -->
-    <!--tab comment start -->
+    <!--tab comment start A-Z -->
     <div class="tab_inner">
       <div class="sorted_display">
-        <%= render partial: "shared_new/content4_games_ul" %>
-
-        <div class="clr"></div>
-      </div>
-    </div>
-    <!--tab comment end -->
-    <!--tab comment start -->
-    <div class="tab_inner">
-      <div class="sorted_display">
-        <%= render partial: "shared_new/content4_games_ul" %>
+        <% if @games.present? && @games.any? %>
+            <% @games.try(:order, :title).each do |game| %>
+                <%= render partial: "games/game", locals: {game: game} %>
+            <% end %>
+        <% else %>
+            <p class="big text-center"><%=t("game.s.not_found")%></p>
+        <% end %>
 
         <div class="clr"></div>
       </div>

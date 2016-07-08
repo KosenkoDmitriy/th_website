@@ -43,6 +43,7 @@ function CGame(oData){
         _iMaxCardDraggable=5;
         _iScore=START_SCORE;
         _iMoves=0;
+        _isDebug=IS_DEBUG;
         
         _aCard = new Array();
         _aStackCard = new Array();
@@ -794,7 +795,8 @@ function CGame(oData){
         var oScore = new CScore();
         oScore.removeScore(_iScore,iTime);
         _oInterface.fadeScore(_iScore, iTime);
-        
+
+        if (_isDebug) this.gameOver();
     };
         
     this.updateScore = function(iPoint){
@@ -864,7 +866,9 @@ function CGame(oData){
         if(DISABLE_SOUND_MOBILE === false || s_bMobile === false){
             createjs.Sound.play("game_over");
         }
-        
+
+        START_SCORE = oData.starting_points = _iScore;
+
         _oEndPanel = CEndPanel(s_oSpriteLibrary.getSprite('msg_box'));
         _oEndPanel.show(_iScore);
     };
@@ -878,7 +882,8 @@ function CGame(oData){
     
     POINTS_TO_LOSE = oData.points_to_lose;
     START_SCORE = oData.starting_points;
-    
+    IS_DEBUG = oData.is_debug;
+
     _oParent=this;
     this._init();
 }

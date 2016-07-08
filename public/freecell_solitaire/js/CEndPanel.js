@@ -81,8 +81,9 @@ function CEndPanel(oSpriteBg){
         
         
         $(s_oMain).trigger("end_session");
-        
         s_oGame.onExit();
+
+        //s_oGame.restartGame();
     };
     
     this._init(oSpriteBg);

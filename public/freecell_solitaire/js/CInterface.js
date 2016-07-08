@@ -117,7 +117,6 @@ function CInterface(){
     };
     
     this.refreshButtonPos = function(iNewX,iNewY){
-
         _oButExit.setPosition(_pStartPosExit.x - iNewX,_pStartPosExit.y);
         _oButHelp.setPosition(_pStartPosHelp.x - iNewX,_pStartPosHelp.y);
         _oButRestart.setPosition(_pStartPosRestart.x - iNewX,_pStartPosRestart.y);        

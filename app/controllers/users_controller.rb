@@ -23,6 +23,10 @@ class UsersController < ApplicationController
 
   def mobile_signup
     @user_empty = User.new
+    session[:is_mobile] = true
+    # if session[:is_mobile]
+    #   puts ""
+    # end
     render layout: 'mobile'
   end
 
@@ -83,16 +87,16 @@ class UsersController < ApplicationController
     #   end
     # end
 
-    user.key = generate_key(user.email, user.password)
+    user.key = generate_key(user.email, user.password) if session[:is_mobile]
 
     if user.save
       session[:user_id] = user.try(:id) # signup and signin
       flash[:notice] = "registered successfully!"
       flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
 
-      if request.fullpath == mobile_signup_path
-        render layout: 'mobile', template:'uniwebview/close' and return
-      end
+      # if request.fullpath == mobile_signup_path
+        render layout: 'mobile', template:'uniwebview/close' and return if session[:is_mobile]
+      # end
 
       redirect_to user
     else
@@ -127,16 +131,17 @@ class UsersController < ApplicationController
             user.update_column(:last_login_dt, DateTime.now)
             user.credits += Rails.configuration.x.win_for_login
           end
-          user.key = generate_key(user.email, user.password)
+
+          user.key = generate_key(user.email, user.password) if session[:is_mobile]
 
           if user.save
             game_url_after_login = session[:url_back]
             if game_url_after_login.present?
               redirect_to url
             else
-              if request.fullpath == mobile_signup_path
-                render layout: 'mobile', template:'uniwebview/close' and return
-              end
+              # if request.fullpath == mobile_signup_path
+                render layout: 'mobile', template:'uniwebview/close' and return if session[:is_mobile]
+              # end
               redirect_to user
             end
 
@@ -160,6 +165,8 @@ class UsersController < ApplicationController
 
   def signout
     session[:user_id] = nil
+    session[:is_mobile] = nil
+    session[:url_back] = nil
     # flash[:success] = 'See you!'
     redirect_to root_path
   end

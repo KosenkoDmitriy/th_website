@@ -23,7 +23,18 @@ class UsersController < ApplicationController
 
   def mobile_signup
     @user_empty = User.new
-    render layout: "mobile"
+    render layout: 'mobile'
+  end
+
+  def mobile_signup2
+    @user_empty = User.new
+
+    if request.fullpath == mobile_signup_path
+      # redirect_to uniwebview_close_path #uniwebview://close
+      render layout: 'mobile', template:'uniwebview/close' and return
+      # render :js => "alert('Hello Rails');", :content_type => 'text/javascript' and return
+    end
+    render layout: 'mobile', template:'uniwebview/close' and return
   end
 
   def sign_in_up
@@ -112,8 +123,8 @@ class UsersController < ApplicationController
             user.credits += Rails.configuration.x.win_for_login
           end
           if user.save
-            url = session[:url_back]
-            if url.present?
+            game_url_after_login = session[:url_back]
+            if game_url_after_login.present?
               redirect_to url
             else
               redirect_to user

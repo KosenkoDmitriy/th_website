@@ -30,9 +30,7 @@ class UsersController < ApplicationController
     @user_empty = User.new
 
     if request.fullpath == mobile_signup_path
-      # redirect_to uniwebview_close_path #uniwebview://close
       render layout: 'mobile', template:'uniwebview/close' and return
-      # render :js => "alert('Hello Rails');", :content_type => 'text/javascript' and return
     end
     render layout: 'mobile', template:'uniwebview/close' and return
   end
@@ -85,10 +83,17 @@ class UsersController < ApplicationController
     #   end
     # end
 
+    user.key = generate_key(user.email, user.password)
+
     if user.save
       session[:user_id] = user.try(:id) # signup and signin
       flash[:notice] = "registered successfully!"
       flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
+
+      if request.fullpath == mobile_signup_path
+        render layout: 'mobile', template:'uniwebview/close' and return
+      end
+
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"
@@ -122,11 +127,16 @@ class UsersController < ApplicationController
             user.update_column(:last_login_dt, DateTime.now)
             user.credits += Rails.configuration.x.win_for_login
           end
+          user.key = generate_key(user.email, user.password)
+
           if user.save
             game_url_after_login = session[:url_back]
             if game_url_after_login.present?
               redirect_to url
             else
+              if request.fullpath == mobile_signup_path
+                render layout: 'mobile', template:'uniwebview/close' and return
+              end
               redirect_to user
             end
 

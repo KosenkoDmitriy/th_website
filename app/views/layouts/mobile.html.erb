@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Texas Holdem</title>
+
+  <%= stylesheet_link_tag 'mobile', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'mobile', 'data-turbolinks-track' => true %>
+
+    <script type="text/javascript">
+    </script>
+</head>
+
+<%= csrf_meta_tags %>
+</head>
+<body id="body">
+<!--wrapper -->
+<div id="wrapper">
+  <% render partial: "shared/nav_menu" %>
+
+  <%= yield %>
+
+  <% render partial: "shared/sign_up" %>
+  <% render partial: "shared/footer" %>
+</div>
+</body>
+</html>

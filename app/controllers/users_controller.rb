@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     @creditList = credits
   end
 
+  def mobile_signup
+    @user_empty = User.new
+    render layout: "mobile"
+  end
+
   def sign_in_up
     @user_empty = User.new
   end

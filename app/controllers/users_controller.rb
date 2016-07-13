@@ -39,27 +39,27 @@ class UsersController < ApplicationController
 
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
-      redirect_to sign_in_up_path() # redirect_to :back
+      redirect_back_or_sign_in_up
       # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
       return
     end
 
     if email.blank? || password.blank?
       flash[:error] = "please enter email and/or password"
-      redirect_to sign_in_up_path() # redirect_to :back
+      redirect_back_or_sign_in_up
       return
     end
 
     if (confirm_password != password)
       flash[:error] = "passwords didn't match"
-      redirect_to sign_in_up_path() # redirect_to :back
+      redirect_back_or_sign_in_up
       # render ""
       return
     end
 
     if User.exists?(email: email)
       flash[:error] = "email already taken: #{ email }"
-      redirect_to sign_in_up_path() # redirect_to :back
+      redirect_back_or_sign_in_up
       return
     end
 
@@ -81,9 +81,13 @@ class UsersController < ApplicationController
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"
-      redirect_to sign_in_up_path() # redirect_to :back
+      redirect_back_or_sign_in_up
       return
     end
+  end
+
+  def redirect_back_or_sign_in_up(default = sign_in_up_path, options = {})
+    redirect_to (request.referer.present? ? :back : default), options
   end
 
   def signin
@@ -93,7 +97,7 @@ class UsersController < ApplicationController
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
       # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
-      redirect_to sign_in_up_path() # redirect_to :back
+      redirect_back_or_sign_in_up
       return
     end
     if email.present? && password.present?
@@ -129,7 +133,7 @@ class UsersController < ApplicationController
       flash[:error] = 'empty email and/or password'
     end
 
-    redirect_to sign_in_up_path() # redirect_to :back
+    redirect_back_or_sign_in_up
     return
   end
 

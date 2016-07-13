@@ -16,6 +16,14 @@ class SessionsController < ApplicationController
         user.save!
       end
 
+      m = params['m']
+      if m.present?
+        user.key = generate_key(user.email, user.password)
+        user.save
+        if request.fullpath == mobile_signup_path
+          render layout: 'mobile', template:'uniwebview/close' and return
+        end
+      end
       # flash[:success] = "Welcome, #{user.name}!"
       redirect_to user
     # rescue

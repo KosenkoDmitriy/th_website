@@ -1,18 +1,15 @@
-
-<%#= link_to 'Twitter', '/auth/twitter' #%>
-<% link_to image_tag("facebook_signin"), '/auth/facebook', class:'img-responsive' %>
-<%#= link_to 'Facebook login', '/auth/facebook' #%>
-
-
+<% input_class = request.fullpath == mobile_signup_path ? '' : 'btn'
+   input_class += " form-control"
+%>
 
 <%= form_for(@user_empty, url: signin_path, html: {class: "form-horizontal", role: "form"}) do |f| %>
     <div class="form-group">
       <%#= f.label t("user.email"), class: "sr-only" #%>
-      <%= f.email_field :email, class: "form-control", placeholder: t("user.email"), tabindex: "1" %>
+      <%= f.email_field :email, class: input_class, placeholder: t("user.email"), tabindex: "1" %>
     </div>
     <div class="form-group">
       <%#= f.label t("user.password"), class: "sr-only" #%>
-      <%= f.password_field :password, class: "form-control", placeholder: t("user.password"), tabindex: "2" %>
+      <%= f.password_field :password, class: input_class, placeholder: t("user.password"), tabindex: "2" %>
     </div>
 
     <!--<div class="checkbox">

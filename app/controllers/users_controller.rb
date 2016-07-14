@@ -34,16 +34,7 @@ class UsersController < ApplicationController
     end
     @user_empty = User.new
     session[:is_mobile] = true
-    render layout: 'mobile'
-  end
-
-  def mobile_signup2
-    @user_empty = User.new
-
-    if request.fullpath == mobile_signup_path
-      render layout: 'mobile', template:'uniwebview/close' and return
-    end
-    render layout: 'mobile', template:'uniwebview/close' and return
+    render layout: 'mobile', template: 'mobile/signup'
   end
 
   def sign_in_up

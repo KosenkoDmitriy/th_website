@@ -27,10 +27,7 @@ Rails.application.routes.draw do
   post 'restore' => 'users#restore', as: :restore
   get 'restore' => 'users#restore'
 
-  # namespace :mobile do
   get 'mobile/signup' => 'users#mobile_signup'
-  get 'mobile/signup2' => 'users#mobile_signup2'
-  # end
 
   # TODO: use this namespace and change urls in game
   # namespace :api do

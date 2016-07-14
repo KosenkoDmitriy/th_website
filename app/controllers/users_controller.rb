@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show
     check_permissions
     @order = order_new
-
+    @games = Game.all
     @user = current_user
     @creditList = credits
 
@@ -29,6 +29,9 @@ class UsersController < ApplicationController
   end
 
   def mobile_signup
+    if current_user
+      redirect_to current_user and return
+    end
     @user_empty = User.new
     session[:is_mobile] = true
     render layout: 'mobile'

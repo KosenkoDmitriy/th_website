@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def sign_in_up
+    session[:is_mobile] = nil
     @user_empty = User.new
   end
 

@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @creditList = credits
 
     if session[:is_mobile]
+      session[:is_mobile] = nil
       @user_empty = User.new
       render layout: 'mobile', template: 'uniwebview/close' and return
     end

@@ -8,7 +8,11 @@ class GamesController < ApplicationController
   def show
     id = params[:id]
     if id.to_i > 0
-      @game = Game.find(id)
+      if Game.exists?(id)
+        @game = Game.find(id)
+      else
+        redirect_to games_path and return
+      end
     else
       @game = Game.find_by(fid: id)
     end

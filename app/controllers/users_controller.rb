@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def mobile_signup
     @user_empty = User.new
     session[:is_mobile] = true
-    redirect_to current_user and return if current_user
+    # redirect_to current_user and return if current_user
     render layout: 'mobile', template: 'mobile/signup'
   end
 

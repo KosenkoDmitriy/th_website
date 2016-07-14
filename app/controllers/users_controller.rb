@@ -19,14 +19,17 @@ class UsersController < ApplicationController
 
     @user = current_user
     @creditList = credits
+
+    if session[:is_mobile]
+      @user_empty = User.new
+      render layout: 'mobile', template: 'uniwebview/close' and return
+    end
+
   end
 
   def mobile_signup
     @user_empty = User.new
     session[:is_mobile] = true
-    # if session[:is_mobile]
-    #   puts ""
-    # end
     render layout: 'mobile'
   end
 
@@ -94,10 +97,6 @@ class UsersController < ApplicationController
       flash[:notice] = "registered successfully!"
       flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
 
-      # if request.fullpath == mobile_signup_path
-        render layout: 'mobile', template:'uniwebview/close' and return if session[:is_mobile]
-      # end
-
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"
@@ -137,11 +136,8 @@ class UsersController < ApplicationController
           if user.save
             game_url_after_login = session[:url_back]
             if game_url_after_login.present?
-              redirect_to url
+              redirect_to game_url_after_login
             else
-              # if request.fullpath == mobile_signup_path
-                render layout: 'mobile', template:'uniwebview/close' and return if session[:is_mobile]
-              # end
               redirect_to user
             end
 

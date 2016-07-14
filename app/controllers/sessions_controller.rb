@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     # begin
       user = User.from_omniauth(request.env['omniauth.auth'])
       session[:user_id] = user.try(:id)
+
       user.key = generate_key(user.email, user.password) if session[:is_mobile]
 
       if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
@@ -16,8 +17,6 @@ class SessionsController < ApplicationController
         # flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
         user.save!
       end
-
-      render layout: 'mobile', template:'uniwebview/close' and return if session[:is_mobile]
 
       # flash[:success] = "Welcome, #{user.name}!"
       redirect_to user

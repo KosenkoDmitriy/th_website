@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       user = User.from_omniauth(request.env['omniauth.auth'])
       session[:user_id] = user.try(:id)
 
-      user.key = generate_key(user.email, user.password) if session[:is_mobile]
+      user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]
 
       if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
         user.update_column(:last_login_dt, DateTime.now)

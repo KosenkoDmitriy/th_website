@@ -90,7 +90,7 @@ class UsersController < ApplicationController
     #   end
     # end
 
-    user.key = generate_key(user.email, user.password) if session[:is_mobile]
+    user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]
 
     if user.save
       session[:user_id] = user.try(:id) # signup and signin
@@ -131,7 +131,7 @@ class UsersController < ApplicationController
             user.credits += Rails.configuration.x.win_for_login
           end
 
-          user.key = generate_key(user.email, user.password) if session[:is_mobile]
+          user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]
 
           if user.save
             game_url_after_login = session[:url_back]
@@ -179,7 +179,7 @@ class UsersController < ApplicationController
     password = pass(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
-      user.key = generate_key(email, password)
+      user.key = ApplicationHelper.gk(email, password)
       if (user.save!)
         render plain: "#{user.key}", status: 200
         return
@@ -197,7 +197,7 @@ class UsersController < ApplicationController
     provider = params['p'] if params['p'].present?
     if User.exists?(bt: uid, provider: provider)
       user = User.find_by(bt: uid, provider: provider)
-      user.key = generate_key(user.email, user.password)
+      user.key = ApplicationHelper.gk(user.email, user.password)
       if (user.save!)
         render plain: "#{user.key}", status: 200
         return
@@ -315,13 +315,6 @@ class UsersController < ApplicationController
     user = current_user # user = @current_user
     credits = params['a'] if params['a'].present?
     return user, credits.to_f
-  end
-
-  def generate_key email, password
-    prng = Random.new()
-    salt = prng.rand(100..1000)
-    key = Digest::MD5.hexdigest("#{salt}#{email}#{password}")
-    return key
   end
 
   def pass pass

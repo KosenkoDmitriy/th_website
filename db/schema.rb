@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708125943) do
+ActiveRecord::Schema.define(version: 20160716103658) do
 
   create_table "credits", force: :cascade do |t|
     t.string   "title"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20160708125943) do
     t.string   "fid"
     t.boolean  "is_skipped_login"
     t.integer  "order_id"
+    t.string   "offsetX"
+    t.string   "offsetY"
+    t.string   "width"
+    t.string   "height"
   end
 
   create_table "orders", force: :cascade do |t|

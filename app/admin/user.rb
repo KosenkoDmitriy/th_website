@@ -34,6 +34,21 @@ ActiveAdmin.register User do
     f.actions
   end
 
+  show do
+    attributes_table do
+      row :full_name
+      row :email
+      row :phone_number
+      row :credits
+      row :url
+      row :image_url
+      row :created_at
+      row :updated_at
+      row :last_login_dt
+      row :is_active
+    end
+  end
+
   # controller do
   #   def find_resource
   #     User.where(is_active: false)

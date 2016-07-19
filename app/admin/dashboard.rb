@@ -17,7 +17,11 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Users" do
           ul do
             User.last(30).reverse.map do |user|
-              li link_to(image_tag(user.image_url), admin_user_path(user))
+              if user.image_url.present?
+                li link_to(image_tag(user.image_url), admin_user_path(user))
+              else
+                li link_to(user.full_name, admin_user_path(user))
+              end
             end
           end
         end
@@ -28,7 +32,7 @@ ActiveAdmin.register_page "Dashboard" do
           # para "Welcome to ActiveAdmin."
           ul do
             Order.last(30).reverse.map do |order|
-              link_to(order.id, admin_order_path(order))
+              li link_to("Order #{order.id}", admin_order_path(order))
             end
           end
         end

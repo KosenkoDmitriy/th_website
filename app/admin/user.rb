@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   # scope("Inactive") { |scope| scope.where(is_active: false) }
+  actions :all, except: [:new, :create]
 
   filter :full_name
   filter :email

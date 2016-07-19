@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Credit.find_or_create_by(cost_in_cents: 99, credits: 1000000)
-Credit.find_or_create_by(cost_in_cents: 299, credits: 2000000)
-Credit.find_or_create_by(cost_in_cents: 599, credits: 8000000)
-Credit.find_or_create_by(cost_in_cents: 999, credits: 10000000)
+Credit.find_or_create_by(cost_in_cents: 99, credits: 1000000, title: "1M credits")
+Credit.find_or_create_by(cost_in_cents: 299, credits: 2000000, title: "2M credits")
+Credit.find_or_create_by(cost_in_cents: 599, credits: 8000000, title: "8M credits")
+Credit.find_or_create_by(cost_in_cents: 999, credits: 10000000, title: "10M credits")
 
 Game.find_or_create_by(order_id: 10, is_skipped_login: true, fid:"texas_holdem_foldup", title: "Texas Holdem Foldup", offsetX:"0px", offsetY:"0px", width:'100%', height:'600px', text: '', url: "https://game.yourplaceforfun.com")
 Game.find_or_create_by(order_id: 20, fid:"video_poker_jack", title: "Video Poker Jack", text: '', url: "/video_poker_jack/index.html")

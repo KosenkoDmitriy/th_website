@@ -177,7 +177,7 @@ class UsersController < ApplicationController
     password = pass(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
-      render plain t("user.blocked"), status: 404 and return if !user.is_active?
+      render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 
       user.key = ApplicationHelper.gk(email, password)
       if (user.save!)
@@ -185,7 +185,7 @@ class UsersController < ApplicationController
         return
       end
       #render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200
-      render plain 'error key', status: 404
+      render plain: 'error key', status: 404
       return
     end
     render plain: 'please signup/register', status: 404
@@ -197,7 +197,7 @@ class UsersController < ApplicationController
     provider = params['p'] if params['p'].present?
     if User.exists?(bt: uid, provider: provider)
       user = User.find_by(bt: uid, provider: provider)
-      render plain t("user.blocked"), status: 404 and return if !user.is_active?
+      render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 
       user.key = ApplicationHelper.gk(user.email, user.password)
       if (user.save!)
@@ -205,7 +205,7 @@ class UsersController < ApplicationController
         return
       end
       #render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200
-      render plain 'error key', status: 404
+      render plain: 'error key', status: 404
       return
     end
     render plain: 'please login/sign in on website first', status: 404

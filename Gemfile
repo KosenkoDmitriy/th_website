@@ -55,3 +55,4 @@ gem 'simple_captcha2', require: 'simple_captcha'
 gem 'omniauth-facebook'
 
 gem 'activeadmin', github: 'activeadmin'
+gem 'devise'

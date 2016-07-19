@@ -23,3 +23,4 @@ Game.find_or_create_by(order_id: 30, fid:"3d_roulette", title: "3D Roulette", of
 # Game.find_or_create_by(order_id: 110, fid:"slot_ramses", title: "Slot Ramses Treasure", text: '', url: "/slot_ramses/index.html")
 Game.find_or_create_by(order_id: 90, fid:"candy_super_lines", title: "Candy Super Lines", offsetX:"-175px", offsetY:"30px", width:'1296px', height:'754px', text: '', url: "/candy_super_lines/index.html")
 Game.find_or_create_by(order_id: 100, fid:"angry_finches", title: "Angry Finches", offsetX:"-40px", offsetY:"30px", width:'1024px', height:'772px', text: '', url: "/angry_finches/index.html")
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

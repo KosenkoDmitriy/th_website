@@ -3,6 +3,12 @@ class SessionsController < ApplicationController
     # render text: request.env['omniauth.auth'].to_json #.to_yaml
     # begin
       user = User.from_omniauth(request.env['omniauth.auth'])
+
+      if !user.is_active?
+        flash[:error] = t("user.blocked")
+        redirect_to sign_in_up_path and return
+      end
+
       session[:user_id] = user.try(:id)
 
       user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]

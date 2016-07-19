@@ -118,6 +118,10 @@ class UsersController < ApplicationController
       if User.exists?(email: email, password: password)
         user = User.find_by(email: email, password: password)
         if user
+          if !user.is_active?
+            flash[:error] = t("user.blocked")
+            redirect_back_or_sign_in_up and return
+          end
           session[:user_id] = user.try(:id)
           if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
             flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
@@ -173,6 +177,8 @@ class UsersController < ApplicationController
     password = pass(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
+      render plain t("user.blocked"), status: 404 and return if !user.is_active?
+
       user.key = ApplicationHelper.gk(email, password)
       if (user.save!)
         render plain: "#{user.key}", status: 200
@@ -191,6 +197,8 @@ class UsersController < ApplicationController
     provider = params['p'] if params['p'].present?
     if User.exists?(bt: uid, provider: provider)
       user = User.find_by(bt: uid, provider: provider)
+      render plain t("user.blocked"), status: 404 and return if !user.is_active?
+
       user.key = ApplicationHelper.gk(user.email, user.password)
       if (user.save!)
         render plain: "#{user.key}", status: 200

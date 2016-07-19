@@ -41,6 +41,7 @@ en:
     phone: "Phone Number"
     remember_me: "Remember Me"
     go: "Go"
+    blocked: "Your blocked"
   login: "Login"
   register: "Register"
   sign:

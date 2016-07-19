@@ -1,7 +1,6 @@
 ActiveAdmin.register User do
-  # scope_to :current_user, if:     proc{ current_user.is_active? }
-  # scope :all, is_active: :false
   # scope("Inactive") { |scope| scope.where(is_active: false) }
+
   filter :full_name
   filter :email
   filter :phone_number

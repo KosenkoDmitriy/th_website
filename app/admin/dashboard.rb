@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "Dashboard" do
 
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  menu false #priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
     # div class: "blank_slate_container", id: "dashboard_default_message" do
@@ -20,7 +20,7 @@ ActiveAdmin.register_page "Dashboard" do
               if user.image_url.present?
                 li link_to(image_tag(user.image_url), admin_user_path(user))
               else
-                li link_to(user.full_name, admin_user_path(user))
+                li link_to(user.full_name + " " + user.email, admin_user_path(user))
               end
             end
           end
@@ -32,7 +32,7 @@ ActiveAdmin.register_page "Dashboard" do
           # para "Welcome to ActiveAdmin."
           ul do
             Order.last(30).reverse.map do |order|
-              li link_to("Order #{order.id}", admin_order_path(order))
+              li link_to("Order ##{order.id}", admin_order_path(order))
             end
           end
         end

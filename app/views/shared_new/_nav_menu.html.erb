@@ -2,7 +2,7 @@
   <table>
     <tr>
       <td class="home"><a href="<%= root_path %>#home">Home </a></td>
-      <td class="getting_started"><a href="<%= root_path %>#games">Games</a></td>
+      <td class="getting_started"><a href="<%= games_path %>">Games</a></td>
       <% if current_user %>
           <td class="payment_method"><a href="<%= user_orders_path(current_user) %>">Orders</a></td>
           <td class="games"><a href="<%= user_path(current_user) %>">Profile</a></td>

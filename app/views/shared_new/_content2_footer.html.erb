@@ -11,23 +11,38 @@
         </ul>
       </div>
       <div class="footerbox01">
+        <!--<h3><% t("menu.title")%></h3>-->
         <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="<%= root_url %>privacypolicy.htm">Privacy Policy</a></li>
-          <li><a href="#">Responsible Gambling</a></li>
-          <li><a href="#">Terms and Conditions</a></li>
-          <li><a href="#">Sitemap</a></li>
-          <li><a href="#">Affiliate Program</a></li>
+          <li><a href="<%= root_path %>#home"><%=t("menu.home")%> </a></li>
+          <li><a href="<%= games_path %>"><%=t("menu.games")%></a></li>
+          <% if current_user %>
+              <li><a href="<%= user_orders_path(current_user) %>"><%=t("menu.orders")%></a></li>
+              <li><a href="<%= user_path(current_user) %>"><%=t("menu.profile")%></a></li>
+              <li><a href="<%= signout_path %>"><%=t("menu.sign_out")%></a></li>
+          <% else %>
+              <li><a href="<%= sign_in_up_path %>"><%=t("menu.sign_in")%></a></li>
+              <li><a href="<%= sign_in_up_path %>"><%=t("menu.sign_up")%></a></li>
+              <li><a href="<%= root_path %>#credits"><%=t("menu.credits")%></a></li>
+          <% end %>
         </ul>
       </div>
       <div class="footerbox02">
-        <h3>Safety of your account</h3>
-        <%= image_tag "safesecure-logo.jpg", alt:"Safe Secure Banking", class:"imgright" %>
+        <!--<h3>Safety of your account</h3>-->
+        <!--<%= image_tag "safesecure-logo.jpg", alt:"Safe Secure Banking", class:"imgright" %>-->
+        <!--<ul>-->
+          <!--<li><a href="#">Fully certified casino</a></li>-->
+          <!--<li><a href="#">Strictly regulated fair games</a></li>-->
+          <!--<li><a href="#">Safe monetary deposits</a></li>-->
+          <!--<li><a href="#">Award winning casino</a></li>-->
+        <!--</ul>-->
+
         <ul>
-          <li><a href="#">Fully certified casino</a></li>
-          <li><a href="#">Strictly regulated fair games</a></li>
-          <li><a href="#">Safe monetary deposits</a></li>
-          <li><a href="#">Award winning casino</a></li>
+          <!--<li><a href="#">About Us</a></li>-->
+          <li><a href="<%= root_url %>privacypolicy.htm">Privacy Policy</a></li>
+          <!--<li><a href="#">Responsible Gambling</a></li>-->
+          <!--<li><a href="#">Terms and Conditions</a></li>-->
+          <!--<li><a href="#">Sitemap</a></li>-->
+          <!--<li><a href="#">Affiliate Program</a></li>-->
         </ul>
       </div>
     </div>
@@ -43,8 +58,12 @@
         </div>
         <p class="copyright">All Rights Reserved, <%= Date.today.year %>.</p>
       </div>
-      <div class="footer_bottomleftpart"><%= image_tag "visa.jpg", alt:"" %></div>
-      <div class="footer_bottomrightpart">Design by: </div>
+      <div class="footer_bottomleftpart">
+        <% image_tag "visa.jpg", alt:"" %>
+      </div>
+      <div class="footer_bottomrightpart">
+        <!--Design by: -->
+      </div>
       <div class="clr"></div>
     </div>
   </div>

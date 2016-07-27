@@ -1,20 +1,18 @@
 <div class="navigation">
   <table>
     <tr>
-      <td class="home"><a href="<%= root_path %>#home">Home </a></td>
-      <td class="getting_started"><a href="<%= games_path %>">Games</a></td>
-      <% if current_user %>
-          <td class="payment_method"><a href="<%= user_orders_path(current_user) %>">Orders</a></td>
-          <td class="games"><a href="<%= user_path(current_user) %>">Profile</a></td>
-          <td class="contact"><a href="<%= signout_path %>">Sign Out</a></td>
-    <% else %>
-          <td class="contact"><a href="<%= sign_in_up_path %>">Sign In </a></td>
-          <td class="contact"><a href="<%= sign_in_up_path %>">Sign Up </a></td>
-          <td class="tournament"><a href="<%= root_path %>#credits">Credits</a></td>
-          <!--<td class="aboutus"><a href="<%= root_path %>#sign_in_up">Sign In</a></td>-->
-          <!--<td class="contact"><a href="<%= root_path %>#sign_in_up">Sign Up</a></td>-->
-    <% end %>
-      <td class="aboutus"><a href="#">About Us</a></td>
+      <td class="home"><a href="<%= root_path %>#home"><%=t("menu.home")%> </a></td>
+      <td class="getting_started"><a href="<%= games_path %>"><%=t("menu.games")%></a></td>
+        <% if current_user %>
+          <td class="payment_method"><a href="<%= user_orders_path(current_user) %>"><%=t("menu.orders")%></a></td>
+          <td class="games"><a href="<%= user_path(current_user) %>"><%=t("menu.profile")%></a></td>
+          <td class="contact"><a href="<%= signout_path %>"><%=t("menu.sign_out")%></a></td>
+        <% else %>
+          <td class="contact"><a href="<%= sign_in_up_path %>"><%=t("menu.sign_in")%></a></td>
+          <td class="contact"><a href="<%= sign_in_up_path %>"><%=t("menu.sign_up")%></a></td>
+          <td class="tournament"><a href="<%= root_path %>#credits"><%=t("menu.credits")%></a></td>
+        <% end %>
+      <!--<td class="aboutus"><a href="#"><%=t("menu.about")%></a></td>-->
     </tr>
   </table>
 </div>

@@ -112,13 +112,13 @@
             $.ajax({
                 url: "<%=fw_url%>",
                 type: "POST",
-//                data: { "article": { "title": "acme", "text": "123 Carrot Street" } },
-                data: { "user_id": "<%= current_user.id%>", "win_amount": win_amount },
+                data: { "user_id": "<%= current_user.id %>", "win_amount": win_amount },
                 success: function(resp){
-                    $("#balance").text("You have " + resp + " credits");
+                    $("#balance").html("You have <br><span>" + resp + "</span><br> credits");
                     //alert("Data:" + resp);
                 },
-                error: function(resp){
+                error: function(xhr, status, error){
+                    $(".price").text(xhr.responseText);
                     //alert("Error update balance");
                 }
             });

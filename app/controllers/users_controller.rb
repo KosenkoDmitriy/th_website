@@ -126,6 +126,7 @@ class UsersController < ApplicationController
           if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
             flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
             user.update_column(:last_login_dt, DateTime.now)
+            user.fw_attempts = Rails.configuration.x.fw_attempts
             user.credits += Rails.configuration.x.win_for_login
           end
 
@@ -180,7 +181,7 @@ class UsersController < ApplicationController
       render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 
       user.key = ApplicationHelper.gk(email, password)
-      if (user.save!)
+      if user.save!
         render plain: "#{user.key}", status: 200
         return
       end
@@ -200,7 +201,7 @@ class UsersController < ApplicationController
       render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 
       user.key = ApplicationHelper.gk(user.email, user.password)
-      if (user.save!)
+      if user.save!
         render plain: "#{user.key}", status: 200
         return
       end
@@ -287,16 +288,21 @@ class UsersController < ApplicationController
     user_id = params[:user_id].to_i if params[:user_id].present?
     win_amount = params[:win_amount].to_i if params[:win_amount].present?
     if user_id > 0
-      user = current_user
-      if win_amount > 0
-        user.credits += win_amount
-      else # bankrupt
-        user.credits = 0
+      current_user.fw_attempts -= 1
+      if win_amount > 0 && current_user.fw_attempts >= 0
+          current_user.credits += win_amount
+      # else # bankrupt
+      #   current_user.credits = 0
       end
-      if user.save
+      if current_user.save
         # redirect_to user_path(user)
-        render plain: "#{user.credits}", status: 200
-        return
+        if current_user.fw_attempts < 0
+          render plain: t("user.fw.exceed"), status: 404
+          return
+        else
+          render plain: fcredits(current_user.credits), status: 200
+          return
+        end
       end
     end
     render plain: "error", status: 404

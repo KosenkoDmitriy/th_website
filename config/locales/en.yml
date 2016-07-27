@@ -42,6 +42,8 @@ en:
     remember_me: "Remember Me"
     go: "Go"
     blocked: "Your blocked"
+    fw:
+      exceed: "Daily limit was exceeded. Please try tomorrow."
   login: "Login"
   register: "Register"
   sign:

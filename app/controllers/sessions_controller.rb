@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
         user.update_column(:last_login_dt, DateTime.now)
         if user.credits.nil?
           user.credits = Rails.configuration.x.win_for_reg
+          user.fw_attempts = Rails.configuration.x.fw_attempts
           flash[:notice] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
         end
         # user.credits += Rails.configuration.x.win_for_login

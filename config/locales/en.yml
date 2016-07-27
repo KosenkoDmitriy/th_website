@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  head:
+    title: "Your Place for Fun"
   menu:
     title: "Navigation Menu"
     home: "Home"

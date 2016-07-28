@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   post 'get2' => 'users#get_balance2', as: :get_balance2
   post 'set2' => 'users#set_balance2', as: :set_balance2
 
+  post 'get_reg' => 'users#get_reg'
   # end
 
   # social login

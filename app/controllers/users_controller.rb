@@ -284,6 +284,16 @@ class UsersController < ApplicationController
     render plain: 'error', status: 404
   end
 
+  def get_reg
+    key = params['k'] if params['k'].present?
+    if User.exists?(key: key)
+      user = User.find_by(key: key)
+      render plain: "#{user.full_name}", status: 200
+      return
+    end
+    render plain: 'error', status: 404
+  end
+
   def fw
     user_id = params[:user_id].to_i if params[:user_id].present?
     win_amount = params[:win_amount].to_i if params[:win_amount].present?

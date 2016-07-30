@@ -175,6 +175,8 @@ class UsersController < ApplicationController
   def login
     email = params['e'] if params['e'].present?
     password = params['p'] if params['p'].present?
+    reg_info = params['r'] if params['r'].present?
+
     password = pass(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
@@ -182,7 +184,11 @@ class UsersController < ApplicationController
 
       user.key = ApplicationHelper.gk(email, password)
       if user.save!
-        render plain: "#{user.key}", status: 200
+        if reg_info
+          render json: user.to_json( only: [:full_name, :email, :key ] ), status: 200
+        else
+          render plain: "#{user.key}", status: 200
+        end
         return
       end
       #render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200
@@ -196,13 +202,18 @@ class UsersController < ApplicationController
   def flogin
     uid = params['u'] if params['u'].present?
     provider = params['p'] if params['p'].present?
+    reg_info = params['r'] if params['r'].present?
     if User.exists?(bt: uid, provider: provider)
       user = User.find_by(bt: uid, provider: provider)
       render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 
       user.key = ApplicationHelper.gk(user.email, user.password)
       if user.save!
-        render plain: "#{user.key}", status: 200
+        if reg_info
+          render json: user.to_json( only: [:full_name, :email, :key ] ), status: 200
+        else
+          render plain: "#{user.key}", status: 200
+        end
         return
       end
       #render plain: "#{user.key} #{user.email} #{user.phone_number}", status: 200

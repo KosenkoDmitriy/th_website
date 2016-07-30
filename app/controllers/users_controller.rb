@@ -177,11 +177,16 @@ class UsersController < ApplicationController
     password = params['p'] if params['p'].present?
     reg_info = params['r'] if params['r'].present?
 
+    user = nil
+    bt = password
     password = pass(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
-      render plain: t("user.blocked"), status: 404 and return if !user.is_active?
+    elsif User.exists?(bt: bt) # quik fix for lol game (social login)
+      user = User.find_by(bt: bt)
+    end
 
+    if user.present?
       user.key = ApplicationHelper.gk(email, password)
       if user.save!
         if reg_info

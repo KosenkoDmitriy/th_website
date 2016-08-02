@@ -2,27 +2,19 @@
   <div class="section04">
     <div class="section04_inner">
       <div class="left_text_section" id="games">
-        <div class="box01"><% image_tag "choose-from-230games.png", alt:"" %></div>
+        <div class="box01">
+          <% image_tag "choose-from-230games.png", alt:"" %>
+          <%= link_to image_tag("buttons/app_store.png"), Rails.configuration.x.app_store, alt:"Download on the App Store" %>
+          <%= link_to image_tag("buttons/google_play.png"), Rails.configuration.x.google_play, alt:"Get it on Google play" %>
+        </div>
         <div class="clr"></div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <p>Try your hand at hundreds of  classic and video animated games, right here at your fingertips!</p>
       </div>
       <div class="rightdisplay_section">
         <h3>game of the week</h3>
         <div class="img-frame">
-          <!--<%= image_tag "game-powerjackpot.jpg", alt:"" %>-->
           <a href="<%= game_play_url %>"><%= image_tag "games/texas_holdem.gif", height:"100%", width:"484px", alt:"" %></a>
           <% render partial: "home/game_no_text" %>
-
         </div>
         <div class="playnow01"><a href="<%= game_play_url %>">
           <%= image_tag "game-playnow-btn.png", alt:"Play Now" %>

@@ -33,7 +33,7 @@ class GamesController < ApplicationController
       #   redirect_to url
       #   return
       # end
-      redirect_to @game.fb_url and return if current_user && current_user.provider == "facebook"
+      redirect_to @game.fb_url and return if current_user && current_user.provider == "facebook" && @game.fb_url.present?
     end
   end
 end

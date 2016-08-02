@@ -26,7 +26,12 @@ class SessionsController < ApplicationController
       end
 
       # flash[:success] = "Welcome, #{user.name}!"
-      redirect_to user
+      game_url_after_login = session[:url_back]
+      if game_url_after_login.present?
+        redirect_to game_url_after_login
+      else
+        redirect_to user
+      end
     # rescue
     #   flash[:warning] = "There was an error while trying to authenticate you..."
     # end

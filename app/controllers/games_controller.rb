@@ -28,11 +28,12 @@ class GamesController < ApplicationController
       redirect_to sign_in_up_path
       return
     else
-      if @game.is_embedded != false
-        url = current_user && current_user.provider == "facebook" ? @game.fb_url : @game.url
-        redirect_to url
-        return
-      end
+      # if @game.is_embedded != false
+      #   url = current_user && current_user.provider == "facebook" ? @game.fb_url : @game.url
+      #   redirect_to url
+      #   return
+      # end
+      redirect_to @game.fb_url and return if current_user && current_user.provider == "facebook"
     end
   end
 end

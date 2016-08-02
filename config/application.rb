@@ -37,8 +37,5 @@ module ThWebsite
     config.x.th_game_url = 'https://game.yourplaceforfun.com'
 
     config.x.fw_attempts = 3 # daily limit for fortune wheel
-
-    config.x.app_store = "https://itunes.apple.com/us/app/texas-holdem-fold-up/id1128072737?ls=1&mt=8"
-    config.x.google_play = "https://play.google.com/store/apps/details?id=com.yourplaceforfun.game"
   end
 end

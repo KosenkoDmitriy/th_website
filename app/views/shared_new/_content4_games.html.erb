@@ -4,11 +4,12 @@
       <div class="left_text_section" id="games">
         <div class="box01">
           <% image_tag "choose-from-230games.png", alt:"" %>
-          <%= link_to image_tag("buttons/app_store.png"), Rails.configuration.x.app_store, alt:"Download on the App Store" %>
-          <%= link_to image_tag("buttons/google_play.png"), Rails.configuration.x.google_play, alt:"Get it on Google play" %>
+          <%= link_to image_tag("buttons/app_store.png", class: "img-responsive col-xs-12", width: " 100%"), I18n.t("th.btn.app_store.url"), alt:I18n.t("th.btn.app_store.alt") %>
+          <%= link_to image_tag("buttons/google_play.png", class: "img-responsive col-xs-12", width: "100%"), I18n.t("th.btn.google_play.url"), alt:I18n.t("th.btn.google_play.alt") %>
+
         </div>
         <div class="clr"></div>
-        <p>Try your hand at hundreds of  classic and video animated games, right here at your fingertips!</p>
+        <p>Try your hand at hundreds of classic and video animated games, right here at your fingertips!</p>
       </div>
       <div class="rightdisplay_section">
         <h3>game of the week</h3>
@@ -28,15 +29,12 @@
       <div class="try_mobileversion"><%= image_tag "try-mobile.png", alt:"" %>
         <!--<h5>Available at iStore.</h5>-->
       </div>
-      <div class="title_section"><h3>Choose from <span class="boldtxt">Casino Progressive Games</span></h3>
-        <div class="blog_counter">10</div>
+      <div class="title_section"><h3>Choose from <span class="boldtxt"> Progressive Games</span></h3>
+        <div class="blog_counter"><%=@games.try(:count)%></div>
       </div>
-      <div class="sec_desc">
-        <% render partial: "home/instructions"%>
-        <%= render partial: "home/game_about"%>
-        <!--<p>Each time sany of players plays a progressive jackpot game, the  prize value increases. Mauris volutpat auctor sodales. Aenean ullamcorper vestibulum tellus, nec volutpat tellus vulputate vitae. Pellentesque porta elementum velit ut molestie. Integer in dolor eu ligula imperdiet fermentum sed eget ante. Nullam condimentum aliquam vestibulum.</p>-->
-        <!--<p>Aliquam ut magna arcu, quis suscipit ipsum. Proin interdum egestas lacus nec sagittis. Duis ullamcorper vehicula porta. Quisque sit amet dolor lacus, quis pellentesque dui.</p>-->
-      </div>
+      <!--<div class="sec_desc">-->
+        <!--<% render partial: "home/game_about"%>-->
+      <!--</div>-->
     </div>
 
     <div class="sub_section02">

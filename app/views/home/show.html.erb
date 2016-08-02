@@ -5,7 +5,10 @@
     </div>
 
     <div class="left_content">
-      <h2 class="title">We are <strong>Texas Holdem</strong></h2>
+      <h2 class="title">We are <strong>Texas Hold'em Foldup</strong></h2>
+      <%= link_to image_tag("buttons/app_store.png", class: "img-responsive col-xs-6", width: " 49%"), I18n.t("th.btn.app_store.url"), alt:I18n.t("th.btn.app_store.alt") %>
+      <%= link_to image_tag("buttons/google_play.png", class: "img-responsive col-xs-6", width: "49%"), I18n.t("th.btn.google_play.url"), alt:I18n.t("th.btn.google_play.alt") %>
+
       <p><%= render partial: "home/game_about" %></p>
 
       <!--<div class="company_banner"><img src="images/power-jackpot-banner.jpg" alt=""></div>-->

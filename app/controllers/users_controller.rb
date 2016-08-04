@@ -316,6 +316,8 @@ class UsersController < ApplicationController
     if user_id > 0
       #current_user = User.find(session[:user_id]) if session[:user_id]
       current_user.fw_attempts -= 1
+      current_user.fw_dt = DateTime.now current_user.fw_dt if current_user.fw_dt.nil?
+
       if win_amount > 0 && current_user.fw_attempts >= 0
           current_user.credits += win_amount
       # else # bankrupt

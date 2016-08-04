@@ -314,6 +314,7 @@ class UsersController < ApplicationController
     user_id = params[:user_id].to_i if params[:user_id].present?
     win_amount = params[:win_amount].to_i if params[:win_amount].present?
     if user_id > 0
+      #current_user = User.find(session[:user_id]) if session[:user_id]
       current_user.fw_attempts -= 1
       if win_amount > 0 && current_user.fw_attempts >= 0
           current_user.credits += win_amount
@@ -323,9 +324,25 @@ class UsersController < ApplicationController
       if current_user.save
         # redirect_to user_path(user)
         if current_user.fw_attempts < 0
-          render plain: t("user.fw.exceed"), status: 404
+          t2 = Time.parse(current_user.fw_dt.to_s)
+          t1 = Time.now.utc
+          t = ((t2 - t1) / 3600).round
+          dt = "#{t} hour"
+          dt += 's' if t > 1
+          if t <= 0
+            current_user.fw_attempts = Rails.configuration.x.fw_attempts - 1
+            current_user.credits += win_amount
+            current_user.save
+            render plain: fcredits(current_user.credits), status: 200
+          else
+            render plain: "#{t("user.fw.exceed")} #{ dt }", status: 404
+          end
           return
         else
+          if current_user.fw_attempts == 0
+            current_user.fw_dt = DateTime.now + 1
+            current_user.save
+          end
           render plain: fcredits(current_user.credits), status: 200
           return
         end

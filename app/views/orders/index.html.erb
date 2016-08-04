@@ -41,7 +41,7 @@
                         <td> <%= fdate order.try(:dt) %> </td>
                     <% else %>
                         <td><%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %></td>
-                        <td> - </td>
+                        <td> <%= fdate order.try(:created_at) %> </td>
                     <% end %>
                   </tr>
               <% end %>

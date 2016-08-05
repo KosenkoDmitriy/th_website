@@ -38,11 +38,11 @@ en:
       promo: "Start playing with 100% welcome bonus"
     btn:
       google_play:
-        url:""
-        alt:"Get it on Google play"
+        url: "https://play.google.com/store/apps/details?id=com.yourplaceforfun.game"
+        alt: "Get it on Google play"
       app_store:
-        url:""
-        alt:"Download on the App Store"
+        url: "https://itunes.apple.com/us/app/texas-holdem-fold-up/id1128072737?ls=1&mt=8"
+        alt: "Download on the App Store"
     about: "Free Texas Hold'em Poker is the most popular of the poker games being played today."
     about1: "The most popular card game in the world just got better and more thrilling! With Texas Hold’em Fold Up, you play Texas Hold’em against virtual robots. If any of the virtual robots fold during the hand they fold up to show you their hold cards, providing you with a lot more information, and strategies."
     about2: "Every time that a robot folds up, the odds change, the excitement changes, and how you play your hand changes. This additional information should make it easier to determine if you should fold, check, or raise your hand."

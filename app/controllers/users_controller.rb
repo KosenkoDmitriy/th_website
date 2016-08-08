@@ -332,7 +332,7 @@ class UsersController < ApplicationController
           dt = "#{t} hour"
           dt += 's' if t > 1
           if t <= 0
-            current_user.fw_attempts = Rails.configuration.x.fw_attempts - 1
+            current_user.fw_attempts = Rails.configuration.x.fw_attempts
             current_user.credits += win_amount
             current_user.save
             render plain: fcredits(current_user.credits), status: 200

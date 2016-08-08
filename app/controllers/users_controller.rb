@@ -331,8 +331,12 @@ class UsersController < ApplicationController
           t = ((t2 - t1) / 3600).round
           dt = "#{t} hour"
           dt += 's' if t > 1
-          if t <= 0
+          d1 = current_user.fw_dt.utc
+          d2 = DateTime.now.utc
+          #if t <= 0 && d1 > d2
+          if d1 < d2
             current_user.fw_attempts = Rails.configuration.x.fw_attempts - 1
+            current_user.fw_dt = DateTime.now.utc + 1
             current_user.credits += win_amount
             current_user.save
             render plain: fcredits(current_user.credits), status: 200
@@ -342,7 +346,7 @@ class UsersController < ApplicationController
           return
         else
           if current_user.fw_attempts == 0
-            current_user.fw_dt = DateTime.now + 1
+            current_user.fw_dt = DateTime.now.utc + 1
             current_user.save
           end
           render plain: fcredits(current_user.credits), status: 200

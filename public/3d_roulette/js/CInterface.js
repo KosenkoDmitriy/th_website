@@ -189,7 +189,7 @@ function CInterface(){
     };
 
     this.refreshMoney = function(iMoney){
-        _oMoneyText.text = TEXT_MONEY +"\n"+iMoney+"$";
+        _oMoneyText.text = TEXT_MONEY +"\n"+iMoney+TEXT_CURRENCY;
     };
     
     this.displayAction = function(szText1,szText2){
@@ -198,7 +198,7 @@ function CInterface(){
     };
     
     this.showWin = function(iWinAmount){
-        this.displayAction(TEXT_DISPLAY_MSG_PLAYER_WIN+"\n"+iWinAmount+"$");
+        this.displayAction(TEXT_DISPLAY_MSG_PLAYER_WIN+"\n"+iWinAmount+TEXT_CURRENCY);
     };
     
     this.showLose = function(){

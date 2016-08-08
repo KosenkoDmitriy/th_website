@@ -65,7 +65,7 @@ en:
     go: "Go"
     blocked: "Your blocked"
     fw:
-      exceed: "Daily limit has exceeded. Please try through "
+      exceed: "Daily limit has been exceeded. Please try again in "
   login: "Login"
   register: "Register"
   sign:

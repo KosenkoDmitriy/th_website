@@ -126,7 +126,6 @@ class UsersController < ApplicationController
           if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
             flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
             user.update_column(:last_login_dt, DateTime.now)
-            user.fw_attempts = Rails.configuration.x.fw_attempts
             user.credits += Rails.configuration.x.win_for_login
           end
 
@@ -313,46 +312,44 @@ class UsersController < ApplicationController
   def fw
     user_id = params[:user_id].to_i if params[:user_id].present?
     win_amount = params[:win_amount].to_i if params[:win_amount].present?
-    if user_id > 0
+    if user_id > 0 && current_user.present?
       #current_user = User.find(session[:user_id]) if session[:user_id]
       current_user.fw_attempts -= 1
       current_user.fw_dt = DateTime.now if current_user.fw_dt.nil?
 
-      if win_amount > 0 && current_user.fw_attempts >= 0
+      if current_user.fw_attempts >= 0
+        current_user.credits += win_amount
+        current_user.fw_dt = DateTime.now.utc + 1 if current_user.fw_attempts == 0
+        render plain: fcredits(current_user.credits), status: 200
+      elsif current_user.fw_attempts < 0 # daily limit has been exceeded
+        t2 = Time.parse(current_user.fw_dt.utc.to_s)
+        t_now = Time.now.utc
+        dt_in_minutes = t2.min - t_now.min
+        t = ((t2 - t_now) / 3600).round
+        dt = ''
+        if t == 0 # dt in minutes
+          dt += "#{dt_in_minutes} minute"
+          dt += 's' if dt_in_minutes > 1
+        else      # dt in hours
+          dt = "#{t} hours"
+        end
+
+        d2 = current_user.fw_dt.utc
+        d_now = DateTime.now.utc
+        #if t <= 0
+        if d2 < d_now # checking dt without relogin
+          current_user.fw_attempts = Rails.configuration.x.fw_attempts - 1
+          current_user.fw_dt = DateTime.now.utc + 1 if current_user.fw_attempts == 0
           current_user.credits += win_amount
-      # else # bankrupt
-      #   current_user.credits = 0
-      end
-      if current_user.save
-        # redirect_to user_path(user)
-        if current_user.fw_attempts < 0
-          t2 = Time.parse(current_user.fw_dt.to_s)
-          t1 = Time.now.utc
-          t = ((t2 - t1) / 3600).round
-          dt = "#{t} hour"
-          dt += 's' if t > 1
-          d1 = current_user.fw_dt.utc
-          d2 = DateTime.now.utc
-          #if t <= 0 && d1 > d2
-          if d1 < d2
-            current_user.fw_attempts = Rails.configuration.x.fw_attempts - 1
-            current_user.fw_dt = DateTime.now.utc + 1
-            current_user.credits += win_amount
-            current_user.save
-            render plain: fcredits(current_user.credits), status: 200
-          else
-            render plain: "#{t("user.fw.exceed")} #{ dt }", status: 404
-          end
-          return
-        else
-          if current_user.fw_attempts == 0
-            current_user.fw_dt = DateTime.now.utc + 1
-            current_user.save
-          end
           render plain: fcredits(current_user.credits), status: 200
-          return
+        else
+          render plain: "#{t("user.fw.exceed")} #{ dt } ", status: 404
         end
       end
+
+      current_user.save
+      return
+
     end
     render plain: "error", status: 404
   end

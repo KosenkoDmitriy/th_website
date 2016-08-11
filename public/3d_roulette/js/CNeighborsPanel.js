@@ -26,7 +26,7 @@ function CNeighborsPanel(){
         var oBg = createBitmap(s_oSpriteLibrary.getSprite('neighbor_bg'));
         _oContainer.addChild(oBg);
         
-        _oMoneyText = new createjs.Text(_iTotMoney+"$","20px "+FONT1, "#fff");
+        _oMoneyText = new createjs.Text(_iTotMoney+TEXT_CURRENCY,"20px "+FONT1, "#fff");
         _oMoneyText.textAlign = "center";
         _oMoneyText.x = CANVAS_WIDTH - 56;
         _oMoneyText.y = CANVAS_HEIGHT - 30;
@@ -472,7 +472,7 @@ function CNeighborsPanel(){
         _iTotMoney = iMoney;
         _aNumClicked = new Array();
         
-        _oMoneyText.text = iMoney + "$";
+        _oMoneyText.text = iMoney + TEXT_CURRENCY;
         _oContainer.visible = true;
     };
     
@@ -639,7 +639,7 @@ function CNeighborsPanel(){
             _iCurBet = roundDecimal(_iCurBet,1);
             var iAmount = (_iTotMoney - _iCurBet);
             iAmount = roundDecimal(iAmount,1);
-            _oMoneyText.text =  iAmount + "$";
+            _oMoneyText.text =  iAmount + TEXT_CURRENCY;
         }
 
         if(DISABLE_SOUND_MOBILE === false || s_bMobile === false){

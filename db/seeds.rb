@@ -24,4 +24,6 @@ Game.find_or_create_by(order_id: 30, fid:"3d_roulette", title: "3D Roulette", of
 # Game.find_or_create_by(order_id: 110, fid:"slot_ramses", title: "Slot Ramses Treasure", text: '', url: "/slot_ramses/index.html")
 Game.find_or_create_by(order_id: 90, fid:"candy_super_lines", title: "Candy Super Lines", offsetX:"-175px", offsetY:"30px", width:'1296px', height:'754px', text: '', url: "/candy_super_lines/index.html")
 Game.find_or_create_by(order_id: 100, fid:"angry_finches", title: "Angry Finches", offsetX:"-40px", offsetY:"30px", width:'1024px', height:'772px', text: '', url: "/angry_finches/index.html")
-Game.find_or_create_by(order_id: 110, is_embedded: false, fid:"lol", title: "League of Legends", offsetX:"-40px", offsetY:"30px", width:'1024px', height:'772px', text: '', url: "https://lol.yourplaceforfun.com", fb_url: "https://apps.facebook.com/1085475714893018/")
+game=Game.find_or_create_by(order_id: 110, is_embedded: false, fid:"lol", title: "League of Legends", offsetX:"-40px", offsetY:"30px", width:'1024px', height:'772px', text: '', url: "https://lol.yourplaceforfun.com", fb_url: "https://apps.facebook.com/1085475714893018/")
+game.text = "<ul style='color:black'>Supported browsers on:<li><b>Windows:</b> Firefox, Safari, Internet Explorer, Opera v.36 or less.</li><li> <b>Mac OS X:</b> Firefox, Safari</li></ul>"
+game.save

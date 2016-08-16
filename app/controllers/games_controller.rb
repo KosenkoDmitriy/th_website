@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @games = Game.last(6).reverse
     id = params[:id]
     if id.to_i > 0
       if Game.exists?(id)

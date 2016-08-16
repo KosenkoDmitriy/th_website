@@ -16,11 +16,11 @@
           <%= link_to image_tag("buttons/app_store.png", class: "img-responsive col-xs-6", width: " 49%"), I18n.t("th.btn.app_store.url"), alt:I18n.t("th.btn.app_store.alt") %>
           <%= link_to image_tag("buttons/google_play.png", class: "img-responsive col-xs-6", width: "49%"), I18n.t("th.btn.google_play.url"), alt:I18n.t("th.btn.google_play.alt") %>
       <% end %>
-      <p class="big text-center"><%= @game.try(:text) %>
+      <p class="big text-center"><%= @game.try(:text).try(:html_safe) %>
     </div>
 
     <div class="rightside_section" style="margin-top:0px">
-      <%= render partial: "shared_new/rsidebar_games" %>
+      <%= render partial: "shared_new/rsidebar_last_games" %>
     </div>
 
     <div class="clr"></div>

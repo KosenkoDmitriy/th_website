@@ -1,0 +1,41 @@
+<div class="rightboxes">
+  <div class="popular_games">
+    <% if @games.present? && @games.any? %>
+
+        <div class="title_sec"><h3>NEW GAMES</h3></div>
+
+        <table>
+          <tbody>
+          <% (0..@games.count-2).step(2) do |i|
+             game = @games[i]
+             url = game_path game if game.present?
+          %>
+              <tr>
+                <td>
+                  <a href="<%= url %>">
+                    <%= image_tag "/#{game.try(:fid)}/logo.jpg", alt: game.try(:title), width:'108', height:'100%' %>
+                  </a>
+                </td>
+
+                <td>
+                  <%
+                      game = @games[i+1]
+                      url = game_path game if game.present?
+                  %>
+                  <a href="<%= url %>">
+                    <%= image_tag "/#{game.try(:fid)}/logo.jpg", alt: game.try(:title), width:'108', height:'100%' %>
+                  </a>
+                </td>
+              </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+        <div class="bottom_sec">All <%= Game.count %> games <a href="<%= games_url %>" style="color:whitesmoke;">here</a></div>
+
+    <% else %>
+        <div class="title_sec"><h3><%= t("game.s.not_found") %></h3></div>
+
+    <% end %>
+  </div>
+</div>

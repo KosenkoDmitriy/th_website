@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
     if response.success?
       self.update_attribute(:dt, DateTime.now) # purchase date time
       self.update_attribute(:status, "paid") # success status
+      payment_type = response.params['payment_type']
+      self.update_attribute(:payment_type, payment_type)
       ucredits = user.try(:credits) + credit.try(:credits)
       user.update_attribute(:credits, ucredits)
     end

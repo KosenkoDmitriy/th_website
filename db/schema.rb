@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804091142) do
+ActiveRecord::Schema.define(version: 20160822141144) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -65,10 +65,12 @@ ActiveRecord::Schema.define(version: 20160804091142) do
     t.string   "ip"
     t.string   "express_token"
     t.string   "express_payer_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.datetime "dt"
-    t.string   "status",           default: "unpaid"
+    t.string   "status",            default: "unpaid"
+    t.string   "payment_type"
+    t.string   "payment_type_help"
   end
 
   add_index "orders", ["credit_id"], name: "index_orders_on_credit_id"

@@ -4,7 +4,7 @@ ActiveAdmin.register Order do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :user_id, :credit_id, :ip, :express_token, :express_payer_id, :created_at, :updated_at, :dt, :status
+permit_params :user_id, :credit_id, :ip, :express_token, :express_payer_id, :created_at, :updated_at, :dt, :status, :payment_type, :payment_type_help
 #
 # or
 #

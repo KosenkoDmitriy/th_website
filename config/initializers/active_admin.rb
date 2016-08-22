@@ -208,12 +208,14 @@ ActiveAdmin.setup do |config|
   #
   # To change the default utility navigation to show a link to your website & a logout btn
   #
-  #   config.namespace :admin do |admin|
-  #     admin.build_menu :utility_navigation do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-  #       admin.add_logout_button_to_menu menu
-  #     end
-  #   end
+    config.namespace :admin do |admin|
+      admin.build_menu :utility_navigation do |menu|
+        #menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+        menu.add label: "Google Analytics", url: "https://analytics.google.com/analytics/web/?authuser=0#report/defaultid/a82931218w122510757p128185568", html_options: { target: :blank }
+        menu.add label: "View Website", url: "/"
+        admin.add_logout_button_to_menu menu
+      end
+    end
   #
   # If you wanted to add a static menu item to the default menu provided:
   #

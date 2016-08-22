@@ -37,6 +37,14 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
+
+      # column do
+      #   div do
+      #     text_node %{<iframe src="https://analytics.google.com/analytics/web/?authuser=0#report/defaultid/a82931218w122510757p128185568/" width="800" height="600" scrolling="yes" frameborder="no"></iframe>}.html_safe
+      #     #https://analytics.google.com/analytics/web/?authuser=0#report/defaultid/a82931218w122510757p128185568/
+      #   end
+      # end
+
     end
   end # content
 end

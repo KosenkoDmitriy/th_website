@@ -8,11 +8,38 @@ ActiveAdmin.register Game do
   index do
     selectable_column
     id_column
+    # column :order_id
     column :title
     column 'Views', :counter
     column :created_at
     column :updated_at
     actions
+  end
+
+  form do |f| # edit form
+    f.semantic_errors *f.object.errors.keys # To display a list of all validation errors:
+    inputs 'Details' do
+      input :title
+      input :text, label: 'Text in html'
+      input :counter, label: 'Views'
+      # input :order_id
+    end
+    f.actions
+  end
+
+  show do # view form
+    attributes_table do
+      row :title
+      row "Text in html" do
+        resource.text
+      end
+      row 'Views' do
+        resource.counter
+      end
+      # row :order_id
+      row :created_at
+      row :updated_at
+    end
   end
 
 end

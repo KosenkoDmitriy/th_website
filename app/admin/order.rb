@@ -39,7 +39,7 @@ ActiveAdmin.register Order do
 
     actions
   end
-  
+
   # form do |f| # edit form
   #   f.semantic_errors *f.object.errors.keys # To display a list of all validation errors:
   #   inputs 'Details' do

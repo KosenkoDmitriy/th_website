@@ -7,4 +7,5 @@
   <allow-access-from domain="connect.facebook.net"/>
   <allow-access-from domain="ho.yourplaceforfun.com" secure="false"/>
   <allow-access-from domain="lol.yourplaceforfun.com" secure="false"/>
+  <allow-access-from domain="game.lol.yourplaceforfun.com" secure="false"/>
 </cross-domain-policy>

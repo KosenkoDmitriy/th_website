@@ -10,7 +10,7 @@ ActiveAdmin.register User do
 
   index do
     column "Avatar", :image_url do |u|
-      link_to image_tag(u.image_url), u.url
+      link_to image_tag(u.image_url), u.url if u.url.present?
     end
     column :full_name
     column :email

@@ -1,15 +1,29 @@
 ActiveAdmin.register Credit do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
+
 permit_params :id, :title, :cost_in_cents, :credits, :dt, :text, :created_at, :updated_at
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+
+  form do |f| # edit form
+    f.semantic_errors *f.object.errors.keys # To display a list of all validation errors:
+    inputs 'Details' do
+      #input :id
+      input :title
+      input :cost_in_cents
+      input :credits
+      input :text
+    end
+    f.actions
+  end
+
+  show do # view form
+    attributes_table do
+      row :title
+      row :cost_in_cents
+      row :credits
+      row :credits
+      row :text
+      row :updated_at
+      row :created_at
+    end
+  end
 
 end

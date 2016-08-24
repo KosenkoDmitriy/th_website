@@ -7,12 +7,6 @@ ActiveAdmin.register Order do
   filter :payment_type, as: :select, collection: ["echeck", "instant"]
 
   preserve_default_filters!
-  #filter :user, as: :select
-  #filter :credit, as: :select
-
-  # def scoped_collection
-  #   super.includes :credit # prevents N+1 queries to your database
-  # end
 
   index do
     selectable_column
@@ -44,6 +38,34 @@ ActiveAdmin.register Order do
     # end
 
     actions
+  end
+  
+  # form do |f| # edit form
+  #   f.semantic_errors *f.object.errors.keys # To display a list of all validation errors:
+  #   inputs 'Details' do
+  #     input :user_id, as: :select
+  #     input :credit_id, as: :select
+  #     input :ip
+  #     input :status
+  #     input :payment_type
+  #   end
+  #   f.actions
+  # end
+
+  show do # view form
+    attributes_table do
+      row :user_id
+      row :credit_id
+      row :ip
+      row :express_token
+      row :express_payer_id
+      row :created_at
+      row :updated_at
+      #row :dt
+      row :status
+      row :payment_type
+      # row :payment_type_help
+    end
   end
 
 end

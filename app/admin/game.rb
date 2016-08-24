@@ -22,7 +22,14 @@ ActiveAdmin.register Game do
       input :title
       input :text, label: 'Text in html'
       input :counter, label: 'Views'
+
       # input :order_id
+    end
+    inputs "Game Bounds" do
+      input :offsetX
+      input :offsetY
+      input :width
+      input :height
     end
     f.actions
   end
@@ -36,6 +43,12 @@ ActiveAdmin.register Game do
       row 'Views' do
         resource.counter
       end
+
+      row :offsetX
+      row :offsetY
+      row :width
+      row :height
+
       # row :order_id
       row :created_at
       row :updated_at

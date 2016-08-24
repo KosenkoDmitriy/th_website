@@ -16,7 +16,7 @@
     <div class="tab_inner active">
       <div class="sorted_display">
         <% if @games.present? && @games.any? %>
-            <% @games.try(:order, :order_id).each do |game| %>
+            <% @games.try(:order, counter: :desc).each do |game| %>
                 <%= render partial: "games/game", locals: {game: game} %>
             <% end %>
         <% else %>

@@ -19,6 +19,7 @@ class GamesController < ApplicationController
     end
 
     login_first if !@game.is_skipped_login?
+
   end
 
   private
@@ -29,6 +30,8 @@ class GamesController < ApplicationController
       redirect_to sign_in_up_path
       return
     else
+      @game.counter += 1
+      @game.save
       # if @game.is_embedded != false
       #   url = current_user && current_user.provider == "facebook" ? @game.fb_url : @game.url
       #   redirect_to url

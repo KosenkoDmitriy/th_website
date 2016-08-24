@@ -9,7 +9,6 @@ ActiveAdmin.register User do
   filter :is_active
 
   index do
-    actions
     column "Avatar", :image_url do |u|
       link_to image_tag(u.image_url), u.url
     end
@@ -20,6 +19,7 @@ ActiveAdmin.register User do
     column :is_active
     column :last_login_dt
     column :created_at
+    actions
   end
 
   form do |f| # edit form
@@ -34,7 +34,7 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  show do
+  show do # view form
     attributes_table do
       row :full_name
       row :email

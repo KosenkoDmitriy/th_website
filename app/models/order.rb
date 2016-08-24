@@ -9,6 +9,9 @@ class Order < ActiveRecord::Base
       self.update_attribute(:status, "paid") # success status
       payment_type = response.params['payment_type']
       self.update_attribute(:payment_type, payment_type)
+      #payment_type_help = I18n.t("devise.paypal.payment_type.instant") if payment_type == 'instant'
+      #payment_type_help = I18n.t("devise.paypal.payment_type.echeck") if payment_type == 'echeck'
+      #self.update_attribute(:payment_type_help, payment_type_help)
       ucredits = user.try(:credits) + credit.try(:credits)
       user.update_attribute(:credits, ucredits)
     end

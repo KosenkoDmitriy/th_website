@@ -18,11 +18,17 @@ class GamesController < ApplicationController
       @game = Game.find_by(fid: id)
     end
 
-    login_first if !@game.is_skipped_login?
+
+    !@game.is_skipped_login? ? login_first : counter
 
   end
 
   private
+  def counter
+    @game.counter += 1
+    @game.save
+  end
+
   def login_first
     if !current_user
       url_back = request.fullpath
@@ -30,8 +36,7 @@ class GamesController < ApplicationController
       redirect_to sign_in_up_path
       return
     else
-      @game.counter += 1
-      @game.save
+      counter
       # if @game.is_embedded != false
       #   url = current_user && current_user.provider == "facebook" ? @game.fb_url : @game.url
       #   redirect_to url

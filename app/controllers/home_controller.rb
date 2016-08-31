@@ -7,7 +7,9 @@ class HomeController < ApplicationController
   end
 
   def show
-
+    game = Game.find_by(fid: 'texas_holdem_foldup')
+    game.counter += 1
+    game.save
   end
 
   def fw10

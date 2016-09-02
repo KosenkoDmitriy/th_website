@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def sign_in_up
     session[:is_mobile] = nil
     @user_empty = User.new
+    redirect_to user_path current_user if current_user
   end
 
   def signup

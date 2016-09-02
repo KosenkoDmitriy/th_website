@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   def index
+    @order = order_new
     @user_empty = User.new
     @creditList = credits
     @games = Game.all

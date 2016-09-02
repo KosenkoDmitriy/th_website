@@ -2,6 +2,8 @@
   <% image_tag "karo.png", class:"heartshape", alt:"" %>
 
   <div class="sub_section03 sub_section03fw">
+    <h2 style="color:black"><%=t("credit.s.fortune_wheel")%></h2>
+
     <div class="section_left section_left2">
       <!--<div class="title_section"><h3>Win credits <span class="boldtxt">via Fortune Wheel</span></h3></div>-->
       <div class="sec_desc">
@@ -44,7 +46,7 @@
           </table>
           </div>
       <% else %>
-          no any credits found
+          <%=t("credit.s.not_found")%>
       <% end %>
 
       <div class="clr"></div>

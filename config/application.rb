@@ -34,7 +34,7 @@ module ThWebsite
     #config.x.th_game_url = "https://th.webgl64.shopomob.ru"
 
     config.x.api.host = 'yourplaceforfun.com'
-    config.x.th_game_url = 'https://game.yourplaceforfun.com'
+    #config.x.th_game_url = 'https://game.yourplaceforfun.com'
 
     config.x.fw_attempts = 1 # daily limit for fortune wheel
   end

@@ -1,20 +1,33 @@
 <div id="contentarea_1">
   <div class="section03">
-    <div class="game_play">
-      <% if current_user || @game.is_skipped_login? %>
-        <iframe src="<%= @game.try(:url) %>" class="col-xs-12" width=<%=@game.try(:width) || "100%" %> height="<%=@game.try(:height) || '600px' %>" style="margin-top:<%=@game.try(:offsetY)%>;margin-left:<%=@game.try(:offsetX)%>" allowfullscreen="true" frameBorder="0"></iframe>
-      <% else %>
-        <a href="<%= sign_in_up_path %>"><%= t("login_first")%></a>
-      <% end%>
-    </div>
 
-    <br><br>
+    <% if is_mobile %>
+        <br>
+        <br>
+        <br>
+        <% if @game.fid == "texas_holdem_foldup" %>
+            <p style="color:black">This game doesn't support mobile browsers. Please use our mobile app on Android and iOS.</p>
+        <% elsif @game.fid == "lol" %>
+            <p style="color:black">This game doesn't support mobile browsers. Please use desktop version of browser on notebook or on PC.</p>
+        <% end %>
+    <% else %>
+        <div class="game_play">
+          <% if current_user || @game.is_skipped_login? %>
+              <iframe src="<%= @game.try(:url) %>" class="col-xs-12" width=<%= @game.try(:width) || "100%" %> height="<%= @game.try(:height) || '600px' %>" style="margin-top:<%=@game.try(:offsetY)%>;margin-left:<%= @game.try(:offsetX) %>" allowfullscreen="true" frameBorder="0"></iframe>
+          <% else %>
+              <a href="<%= sign_in_up_path %>"><%= t("login_first") %></a>
+          <% end %>
+        </div>
+        <br>
+    <% end %>
+
+    <br>
 
     <div class="left_content" style="margin-top:-20px">
       <h2 class="title"><%= @game.try(:title) %></h2>
       <% if @game.fid == "texas_holdem_foldup" %>
-          <%= link_to image_tag("buttons/app_store.png", class: "img-responsive col-xs-6", width: " 49%"), I18n.t("th.btn.app_store.url"), alt:I18n.t("th.btn.app_store.alt") %>
-          <%= link_to image_tag("buttons/google_play.png", class: "img-responsive col-xs-6", width: "49%"), I18n.t("th.btn.google_play.url"), alt:I18n.t("th.btn.google_play.alt") %>
+          <%= link_to image_tag("buttons/app_store.png", class: "img-responsive col-xs-6", width: " 49%"), I18n.t("th.btn.app_store.url"), alt: I18n.t("th.btn.app_store.alt") %>
+          <%= link_to image_tag("buttons/google_play.png", class: "img-responsive col-xs-6", width: "49%"), I18n.t("th.btn.google_play.url"), alt: I18n.t("th.btn.google_play.alt") %>
       <% end %>
       <p class="big text-center"><%= @game.try(:text).try(:html_safe) %>
     </div>

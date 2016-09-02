@@ -18,7 +18,6 @@ class GamesController < ApplicationController
       @game = Game.find_by(fid: id)
     end
 
-
     !@game.is_skipped_login? ? login_first : counter
 
   end

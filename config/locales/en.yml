@@ -73,6 +73,11 @@ en:
     in: "Sign In"
   restore: "Restore"
   login_first: "Please login first"
+  credit:
+    s:
+      not_found: "no any credits found"
+      fortune_wheel: "you can spin the wheel each 24 hours to win free credits"
+      fortune_wheel_short: "spin every 24 hours for free credits"
   game:
     s:
       not_found: "no any games found"

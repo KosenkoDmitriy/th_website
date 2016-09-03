@@ -8,13 +8,26 @@ class HomeController < ApplicationController
   end
 
   def show
-    game = Game.find_by(fid: 'texas_holdem_foldup')
-    game.counter += 1
-    game.save
+
   end
 
   def fw10
 
   end
+
+  def contact_us
+    text = params['text']
+    email_from = params['email']
+    if text.present? && email_from.present?
+      title = "YourPlaceForFun. Request from " + email_from
+      email_to = Rails.configuration.x.email_to
+      if UserMailer.notify_me(email_to, title, text).deliver
+        flash[:notice] = "Success! Your message was sent!"
+      else
+        flash[:notice] = "Error! Your message was not sent. Please try again later."
+      end
+    end
+  end
+
   private
 end

@@ -7,12 +7,13 @@
           <td class="payment_method"><a href="<%= user_orders_path(current_user) %>"><%=t("menu.orders")%></a></td>
           <td class="games"><a href="<%= user_path(current_user) %>"><%=t("menu.profile")%></a></td>
           <td class="contact"><a href="<%= signout_path %>"><%=t("menu.sign_out")%></a></td>
-        <% else %>
+    <% else %>
           <td class="contact"><a href="<%= sign_in_up_path %>"><%=t("menu.sign_in")%></a></td>
           <td class="contact"><a href="<%= sign_in_up_path %>"><%=t("menu.sign_up")%></a></td>
           <td class="tournament"><a href="<%= root_path %>#credits"><%=t("menu.credits")%></a></td>
         <% end %>
       <!--<td class="aboutus"><a href="#"><%=t("menu.about")%></a></td>-->
+      <td class="contact_us"><a href="<%= contact_us_get_path %>" class=""><%=t("menu.contact_us")%></a></td>
     </tr>
   </table>
 </div>

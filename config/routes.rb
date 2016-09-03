@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
 
+  post 'contact_us' => 'home#contact_us', as: :contact_us
+  get 'contact_us' => 'home#contact_us', as: :contact_us_get
+
   get 'express_checkout' => 'orders#express_checkout'
   resources :users do
     resources :orders

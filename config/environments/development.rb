@@ -53,4 +53,19 @@ Rails.application.configure do
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
+
+
+  # started mail settings
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {
+      :location => '/usr/sbin/sendmail',
+      :arguments => '-i'
+  }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = { from: 'no-reply@yourplaceforfun.com' }
+  config.action_mailer.default_url_options = { host: 'yourplaceforfun.com' } # for active admin
+  # ended mail settings
+
 end

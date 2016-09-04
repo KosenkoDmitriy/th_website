@@ -623,3 +623,51 @@ position: absolute;top: 0;left: 0;}
     min-height: 400px;
     padding:0;
 }
+
+
+
+.contact_us {
+  margin-top:62px !important;
+}
+
+.contact_us .error{
+  color:whitesmoke;
+}
+
+.contact_us input[type="email"] {
+  border: 1px solid;
+}
+
+.contact_us input {
+  width:100%;
+  color:whitesmoke;
+  background-color: transparent;
+  font:normal 20px 'PT sans';
+}
+
+.contact_us textarea {
+  width:100%;
+  color:whitesmoke;
+  background-color: transparent;
+  font:normal 20px 'PT sans';
+}
+
+.contact_us .simple_captcha_label {
+  color:gainsboro;
+}
+
+.contact_us input#captcha {
+  font:normal 20px 'PT sans';
+}
+
+.contact_us .simple_captcha {
+  padding: 5px 0px 0px 0px !important;
+}
+
+.contact_us .simple_captcha .simple_captcha_field, .contact_us .simple_captcha .simple_captcha_image {
+  border: 1px solid #ccc;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+//{ float:right; width:116px; height:42px; background:asset-url('send-btn01.png') 0 0 no-repeat; padding:0; margin:10px 6px 10px 0; border:none; color:#000; font:normal 14px/22px 'PT sans'; cursor:pointer;}

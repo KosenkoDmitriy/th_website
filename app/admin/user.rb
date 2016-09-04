@@ -2,6 +2,9 @@ ActiveAdmin.register User do
   # scope("Inactive") { |scope| scope.where(is_active: false) }
   actions :all, except: [:new, :create]
 
+  permit_params :full_name, :email, :phone_number, :credits, :is_active
+
+
   filter :full_name
   filter :email
   filter :phone_number
@@ -58,7 +61,6 @@ ActiveAdmin.register User do
   # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :full_name, :email, :phone_number, :credits, :is_active
 #
 # or
 #

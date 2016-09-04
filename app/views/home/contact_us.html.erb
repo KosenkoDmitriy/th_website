@@ -1,41 +1,32 @@
-
 <div id="contentarea_1">
   <div class="section04">
     <div class="section04_inner">
       <div class="left_text_section" id="games">
-        <div class="box01">
+        <div class="box01 contact_us">
           <%= render partial: "shared/errors_flash" %>
           <%= render partial: "shared/errors", locals: {obj: @user} %>
-          <%= form_tag(contact_us_path, method: "post", id: "newsletter", role: "search", class: "form-horizontal") do %>
+          <%= form_tag(contact_us_path, method: "post", id: "newsletter", role: "search", class: " form-horizontal") do %>
               <!--<label>Получать новости на email</label>-->
 
-              <%= text_field_tag(:email, "#{current_user.try(:email) if current_user }", required: "true", type: "email", placeholder: "your email", class: "form-control", size: "40x20", tabindex:1) %>
-              <%= text_area_tag(:text, "", required: "true", type: "text", placeholder: "your message", class: "form-control", size: "40x5", tabindex:2) %>
+              <%= text_field_tag(:email, @email_from, required: "true", type: "email", placeholder: "your email", class: "form-control", size: "40x20", tabindex: 1) %>
+              <%= text_area_tag(:text, @text, required: "true", type: "text", placeholder: "your message", class: "form-control", size: "40x4", tabindex: 2) %>
 
-              <div class="form-group">
-                <%= show_simple_captcha %>
-              </div>
-
-             <%= submit_tag("Contact Us", class: "", tabindex:3) %>
+              <%= show_simple_captcha %>
+              <br>
+              <%= submit_tag("Contact Us", class: "", tabindex: 3) %>
 
           <% end %>
 
         </div>
         <div class="clr"></div>
-        <!--<p>Try your hand at hundreds of classic and video animated games, right here at your fingertips!</p>-->
       </div>
       <div class="rightdisplay_section">
-        <!--<h3></h3>-->
-        <br>
 
         <div class="img-frame">
           <a href="<%= th_game_url %>"><%= image_tag "games/texas_holdem.gif", height: "100%", width: "484px", alt: "" %></a>
-          <% render partial: "home/game_no_text" %>
         </div>
         <div class="playnow01">
-          <!--<a href="<%= th_game_url %>">-->
-          <!--<%= image_tag "game-playnow-btn.png", alt: "Play Now" %>-->
-          <!--</a>-->
+
         </div>
       </div>
     </div>

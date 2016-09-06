@@ -37,12 +37,10 @@ input, input:before, input:after {
 ::-moz-selection { background: transparent;color:inherit; }
 
 #canvas{
-    width:768px;
-    height: 1024px;
-    
+    width: 958px !important;
+    height: 568px !important;
+    left: -18px !important;
     position: absolute;
-    
-    
 }
 
 canvas {
@@ -65,6 +63,7 @@ canvas {
     user-select: none;
     outline: none;
     -webkit-tap-highlight-color: transparent; /* mobile webkit */
+
 }
 
 /***************FONTS*******************/

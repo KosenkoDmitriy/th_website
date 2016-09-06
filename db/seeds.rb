@@ -43,4 +43,7 @@ game=Game.find_by(fid:"freecell_solitaire")
 game.update_columns(offsetX:'', offsetY:'', width:'100%', height:'568px')
 
 game=Game.find_by(fid:"angry_finches")
-game.update_columns(offsetX:'', offsetY:'', width:'100%', height:'568px')
+game.update_columns(offsetX:'', offsetY:'', width:'99%', height:'763.5px')
+
+game=Game.find_by(fid:"candy_super_lines")
+game.update_columns(offsetX:'', offsetY:'', width:'100%', height:'530px')

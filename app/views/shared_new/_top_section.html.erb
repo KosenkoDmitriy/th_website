@@ -17,7 +17,7 @@
         <h4 id="balance">You have<br />
         <span> <%= number_with_delimiter current_user.try(:fcredits) %> </span> <br />credits</h4>
       <% else %>
-          <h4><%=t("th.promos.free_apps")%></h4>
+          <h4><b><%=t("th.promos.free_apps")%></b></h4>
         <!--<h4>Jackpots<br />-->
         <!--<span> $3,977,353</span></h4>-->
     <% end %>
@@ -37,7 +37,7 @@
                          end %></h4>
 
     <% else %>
-          <h4 style="color:black">
+          <h4>
             <b>
              <%=t("th.promos.promo")%>
             </b>

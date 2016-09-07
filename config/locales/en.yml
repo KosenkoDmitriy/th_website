@@ -36,8 +36,8 @@ en:
     contact_us: "Contact Us"
   th:
     promos:
-      promo: "Sign up now and receive 45,000 credits for Free"
-      free_apps: "you can get the Texas Hold Em Fold Up app for free"
+      promo: "Sign up now and receive 45,000 credits for FREE"
+      free_apps: "you can get the Texas Hold Em Fold Up app for FREE"
     btn:
       google_play:
         url: "https://play.google.com/store/apps/details?id=com.yourplaceforfun.game"
@@ -78,11 +78,11 @@ en:
   credit:
     s:
       not_found: "no any credits found"
-      fortune_wheel: "you can spin the wheel each 24 hours to win free credits"
-      fortune_wheel_short: "spin every 24 hours for free credits"
+      fortune_wheel: "you can spin the wheel each 24 hours to win FREE credits"
+      fortune_wheel_short: "spin every 24 hours for FREE credits"
   game:
     s:
-      title1: "Select from "
+      title1: "Select from our "
       title2: "wide selection of games"
       not_found: "no any games found"
   simple_captcha:

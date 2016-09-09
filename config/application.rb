@@ -38,7 +38,7 @@ module ThWebsite
 
     config.x.fw_attempts = 1 # daily limit for fortune wheel
 
-    #config.x.email_to = 'mdabaker@aol.com'
-    config.x.email_to = 'kosenkodmitryv@gmail.com'
+    config.x.email_to = 'mdabaker@aol.com'
+    #config.x.email_to = 'kosenkodmitryv@gmail.com'
   end
 end

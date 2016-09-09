@@ -32,7 +32,7 @@ class HomeController < ApplicationController
       from_name = 'Anonymous'
       from_name = current_user.full_name if current_user && current_user.full_name.present?
 
-      @title = "Request from #{from_name} (" + @email_from + ")"
+      @title = "YourPlaceForFun. Request from #{from_name} (" + @email_from + ")"
 
       email_to = Rails.configuration.x.email_to
       #UserMailer.notify_me(email_to, @title, @text).deliver_now

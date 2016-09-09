@@ -29,14 +29,20 @@ class HomeController < ApplicationController
 
 
     if @text.present? && @email_from.present?
-      @title = "YourPlaceForFun. Request from " + @email_from
+      from_name = current_user ? current_user.try(:full_name) : 'Anonymous'
+      @title = "Request from #{from_name} (" + @email_from + ")"
+
       email_to = Rails.configuration.x.email_to
       #UserMailer.notify_me(email_to, @title, @text).deliver_now
-      if UserMailer.notify_me(email_to, @title, @text).deliver_now
+
+      email_with_name = "YourPlaceForFun.Com <#{email_to}>"
+
+      if UserMailer.notify_me(email_with_name, @title, @text).deliver_now
         flash[:error] = "Success! Your message was sent!"
       else
         flash[:error] = "Error! Your message was not sent. Please try again later."
       end
+
     end
   end
 

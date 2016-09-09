@@ -29,7 +29,9 @@ class HomeController < ApplicationController
 
 
     if @text.present? && @email_from.present?
-      from_name = current_user ? current_user.try(:full_name) : 'Anonymous'
+      from_name = 'Anonymous'
+      from_name = current_user.full_name if current_user && current_user.full_name.present?
+
       @title = "Request from #{from_name} (" + @email_from + ")"
 
       email_to = Rails.configuration.x.email_to

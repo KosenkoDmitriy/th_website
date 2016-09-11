@@ -177,6 +177,11 @@ class UsersController < ApplicationController
     password = params['p'] if params['p'].present?
     reg_info = params['r'] if params['r'].present?
 
+    if email.blank? || password.blank?
+      render plain: 'please enter your credentials', status: 404
+      return
+    end
+
     user = nil
     bt = password
     password = pass(password)

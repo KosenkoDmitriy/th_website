@@ -182,7 +182,7 @@ class UsersController < ApplicationController
     password = pass(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
-    elsif User.exists?(bt: bt) # quik fix for lol game (social login)
+    elsif User.exists?(bt: bt) && bt.present? # quik fix for lol game (social login)
       user = User.find_by(bt: bt)
     end
 

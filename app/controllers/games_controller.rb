@@ -22,7 +22,7 @@ class GamesController < ApplicationController
 
     !@game.is_skipped_login? ? login_first : counter
 
-    redirect_to @game.try(:url) if @game.fid == "candy_super_lines" and is_mobile == true
+    redirect_to @game.try(:url) and return if @game.fid == "candy_super_lines" and is_mobile == true
 
   end
 

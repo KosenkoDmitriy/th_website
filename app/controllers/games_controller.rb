@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  include ApplicationHelper
+
   before_action :login_first, except: [:index, :show]
 
   def index
@@ -18,6 +20,7 @@ class GamesController < ApplicationController
       @game = Game.find_by(fid: id)
     end
 
+    redirect_to @game.try(:url) and return if @game.fid == "candy_super_lines" and is_mobile == true
     !@game.is_skipped_login? ? login_first : counter
 
   end

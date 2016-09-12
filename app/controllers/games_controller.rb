@@ -22,8 +22,6 @@ class GamesController < ApplicationController
 
     !@game.is_skipped_login? ? login_first : counter
 
-    redirect_to @game.try(:url) and return if @game.fid == "candy_super_lines" and is_mobile == true
-
   end
 
   private
@@ -45,6 +43,7 @@ class GamesController < ApplicationController
       #   redirect_to url
       #   return
       # end
+      redirect_to @game.try(:url) and return if @game.fid == "candy_super_lines" and is_mobile == true
       redirect_to @game.fb_url and return if current_user && current_user.provider == "facebook" && @game.fb_url.present?
     end
   end

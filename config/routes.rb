@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get 'logout' => 'users#signout', as: :logout
 
   post 'restore/:step' => 'users#restore', as: :restore
-  get 'restore' => 'users#restore'#, as: :restore
+  get 'restore' => 'users#restore', as: :restore_get
 
   get 'mobile/signup' => 'users#mobile_signup'
 

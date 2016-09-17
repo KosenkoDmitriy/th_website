@@ -7,6 +7,7 @@
       <%#= f.label t("user.email"), class: "sr-only" #%>
       <%= f.email_field :email, class: input_class, placeholder: t("user.email"), tabindex: "1" %>
     </div>
+    <br>
     <div class="form-group">
       <%#= f.label t("user.password"), class: "sr-only" #%>
       <%= f.password_field :password, class: input_class, placeholder: t("user.password"), tabindex: "2" %>
@@ -18,11 +19,17 @@
                 </label>
               </div>-->
     <!--<br/>-->
+    <br>
+    <p align="right"><i>
+      <%= link_to "Forgot Password?", restore_get_url %>
+    </i>
+    </p>
+    <br>
 
     <div class="form-group">
       <%= show_simple_captcha %>
     </div>
-
+    <br>
     <div class="form-group">
       <!--<button type="submit" name="log-me-in" id="submit" tabindex="5" class="btn btn-lg btn-green btn-group-justified">Go</button>-->
       <%= f.submit t("user.go"), class: "btn btn-lg btn-green btn-group-justified", tabindex: "4" %>

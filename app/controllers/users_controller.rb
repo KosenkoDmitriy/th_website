@@ -168,11 +168,10 @@ class UsersController < ApplicationController
 
   def restore
 
-    # if !simple_captcha_valid?
-    #   flash[:error] = t("simple_captcha.message.user")
-    #   return
-    # end
-
+    if !simple_captcha_valid?
+      flash[:error] = t("simple_captcha.message.user")
+      return
+    end
 
     step = params['step'].to_i
     if step == 1 # sent activation code
@@ -182,12 +181,10 @@ class UsersController < ApplicationController
 
       if User.exists?(email: email)
         user = User.find_by(email: email)
-        #user.update_column(password: pass)
       else
         flash[:error] = "user not found"
         return
       end
-
 
       email_with_name = %("YourPlaceForFun.Com" <#{email}>)
       acode = "#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
@@ -208,7 +205,7 @@ class UsersController < ApplicationController
 
       if User.exists?(acode: @acode)
         user = User.find_by(acode: @acode)
-        user.update_columns(password: new_pass, acode: "")
+        user.update_columns(password: pass(new_pass), acode: "")
         redirect_to sign_in_up_path
       else
         flash[:error] = "invalid confirmation code"

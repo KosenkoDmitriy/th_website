@@ -186,7 +186,7 @@ class UsersController < ApplicationController
         return
       end
 
-      email_with_name = %("YourPlaceForFun.Com" <#{email}>)
+      email_with_name = %("#{user.try(:full_name)}" <#{email}>)
       acode = "#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
       user.update_columns(acode: acode)
       if UserMailer.notify_me(email_with_name, "Restore Password. YourPlaceForFun.Com", "Confirmation code: #{acode}").deliver_now

@@ -189,7 +189,7 @@ class UsersController < ApplicationController
       email_with_name = %("YourPlaceForFun.Com" <#{email}>)
       acode = "#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
       user.update_columns(acode: acode)
-      if UserMailer.notify_me(email_with_name, "Restore Password", "Confirmation code: #{acode}").deliver_now
+      if UserMailer.notify_me(email_with_name, "Restore Password. YourPlaceForFun.Com", "Confirmation code: #{acode}").deliver_now
         flash[:error] = "Success! Confirmation code was sent to your email!"
       else
         flash[:error] = "Error! Confirmation code was not sent. Please try again later."

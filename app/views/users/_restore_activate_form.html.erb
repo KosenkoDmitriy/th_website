@@ -1,0 +1,11 @@
+<% input_class = request.fullpath == mobile_signup_path ? '' : 'btn'
+   input_class += " form-control"
+%>
+<%= form_tag(restore_path(2), method: "post", id: "newsletter", role: "form", class: " form-horizontal") do %>
+    <%= text_field_tag(:acode, @acode, required: "true", type: "text", placeholder: t("restore_form.acode"), class: @input_class, size: "40x20", tabindex: 11) %>
+    <%= text_field_tag(:password, '', required: "true", type: "password", placeholder:  t("restore_form.password.new"), class: @input_class, size: "40x20", tabindex: 12) %>
+    <%= text_field_tag(:password2, '', required: "true", type: "password", placeholder: t("restore_form.password.confirm"), class: @input_class, size: "40x20", tabindex: 13) %>
+    <%= show_simple_captcha %>
+    <br>
+    <%= submit_tag(t("restore_form.btn2"), class: @input_class, tabindex: 14) %>
+<% end %>

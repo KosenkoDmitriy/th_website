@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824090531) do
+ActiveRecord::Schema.define(version: 20160917094622) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20160824090531) do
     t.boolean  "is_active",        default: true
     t.integer  "fw_attempts",      default: 3
     t.datetime "fw_dt"
+    t.string   "acode"
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true

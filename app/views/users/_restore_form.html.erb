@@ -1,0 +1,8 @@
+
+<%= form_tag(restore_path(1), method: "post", id: "newsletter", role: "form", class: " form-horizontal") do |f| %>
+    <%= text_field_tag(:email, @email_from, required: "true", type: "email", placeholder: "your email", class: @input_class, size: "40x20", tabindex: 1) %>
+    <%= show_simple_captcha %>
+    <br>
+    <%= submit_tag(t("restore_form.btn1"), class: @input_class, tabindex: 3) %>
+
+<% end %>

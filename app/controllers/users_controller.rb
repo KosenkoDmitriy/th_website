@@ -168,6 +168,53 @@ class UsersController < ApplicationController
 
   def restore
 
+    # if !simple_captcha_valid?
+    #   flash[:error] = t("simple_captcha.message.user")
+    #   return
+    # end
+
+
+    step = params['step'].to_i
+    if step == 1 # sent activation code
+
+      email = params['email'] if params['email'].present?
+      flash[:error] = "empty email" and return if email.blank?
+
+      if User.exists?(email: email)
+        user = User.find_by(email: email)
+        #user.update_column(password: pass)
+      else
+        flash[:error] = "user not found"
+        return
+      end
+
+
+      email_with_name = %("YourPlaceForFun.Com" <#{email}>)
+      acode = "#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
+      user.update_columns(acode: acode)
+      if UserMailer.notify_me(email_with_name, "Restore Password", "Confirmation code: #{acode}").deliver_now
+        flash[:error] = "Success! Confirmation code was sent to your email!"
+      else
+        flash[:error] = "Error! Confirmation code was not sent. Please try again later."
+      end
+    elsif step == 2 # reset password confirmation
+      new_pass = params['password'] if params['password'].present?
+      pass = params['password2'] if params['password2'].present?
+      @acode = params['acode'] if params['acode'].present?
+
+      flash[:error] = "empty password" and return if new_pass.blank?
+      flash[:error] = "empty confirmation code" and return if @acode.blank?
+      flash[:error] = "passwords didn't match" if pass != new_pass
+
+      if User.exists?(acode: @acode)
+        user = User.find_by(acode: @acode)
+        user.update_columns(password: new_pass, acode: "")
+        redirect_to sign_in_up_path
+      else
+        flash[:error] = "invalid confirmation code"
+        return
+      end
+    end
   end
 
 

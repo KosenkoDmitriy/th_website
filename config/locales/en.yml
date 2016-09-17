@@ -74,6 +74,15 @@ en:
     up: "Sign Up"
     in: "Sign In"
   restore: "Restore"
+  restore_form:
+    email: "Your Email"
+    title: "Restore Password"
+    password:
+      new: "New Password"
+      confirm: "Confirm Password"
+    acode: "Activation Code (pls check your email)"
+    btn1: "Get Activation Code"
+    btn2: "Reset Password"
   login_first: "Please login first"
   credit:
     s:

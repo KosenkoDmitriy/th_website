@@ -1,13 +1,22 @@
-<div class="container container-narrow content">
-  <div class="row" id="home">
-    <div class="col-xs-12">
-      <h2 class="text-center dark">Restore password</h2>
-      <p></p>
-      <br/>
+<% @input_class = request.fullpath == mobile_signup_path ? '' : 'btn'
+   @input_class += " form-control"
+%>
+<div class="section03">
+  <div class="sub_section03 sign_in_up">
+    <br><br><br>
+    <h1 style="color:black" align="center"><%=t("restore_form.title")%></h1>
+
+    <br>
+    <%= render partial: "shared/errors_flash" %>
+    <%= render partial: "shared/errors", locals: {obj: @user} %>
+    <br>
+
+    <div class="section_left left_content2">
+      <%= render partial: "users/restore_form" %>
+    </div>
+    <div class="section_right rightside_section2">
+      <%= render partial: "users/restore_activate_form" %>
     </div>
   </div>
-  <!-- /.row -->
-
-  <%= render partial: 'shared/back_to_top' %>
-
 </div>
+<br><br><br><br>

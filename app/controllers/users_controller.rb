@@ -306,7 +306,9 @@ class UsersController < ApplicationController
 
   def set_balance
     user, credits_from_param = get_user params
+    # fid = request.referrer.split('/')[-2]
     if user.present?
+      # dt = user.credits - credits_from_param
       user.credits = credits_from_param
       if user.save!
         render plain: 'ok', status: 200
@@ -329,7 +331,9 @@ class UsersController < ApplicationController
   # set balance by user id from session
   def set_balance2
     user, credits_from_param = get_user2
+    # fid = request.referrer.split('/')[-2]
     if user.present?
+      # dt = user.credits - credits_from_param
       user.credits = credits_from_param
       if user.save!
         render plain: 'ok', status: 200

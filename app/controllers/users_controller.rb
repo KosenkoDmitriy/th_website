@@ -328,6 +328,33 @@ class UsersController < ApplicationController
     render plain: 'error', status: 404
   end
 
+
+  # sub lose amount from balance
+  def sub2
+    user, credits_from_param = get_user2
+    if user.present?
+      user.credits -= credits_from_param
+      if user.save!
+        render plain: 'ok', status: 200
+        return
+      end
+    end
+    render plain: 'error', status: 404
+  end
+
+  # add win amount to balance
+  def add2
+    user, credits_from_param = get_user2
+    if user.present?
+      user.credits += credits_from_param
+      if user.save!
+        render plain: 'ok', status: 200
+        return
+      end
+    end
+    render plain: 'error', status: 404
+  end
+
   # set balance by user id from session
   def set_balance2
     user, credits_from_param = get_user2

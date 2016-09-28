@@ -39,11 +39,14 @@ Rails.application.routes.draw do
   post 'login' => 'users#login', as: :login
   post 'flogin' => 'users#flogin', as: :flogin # facebook login
   get 'login' => 'users#login'
+
   post 'add' => 'users#add', as: :add
   post 'sub' => 'users#sub', as: :sub
   post 'get' => 'users#get_balance', as: :get_balance
   post 'set' => 'users#set_balance', as: :set_balance
 
+  post 'add2' => 'users#add2', as: :add2
+  post 'sub2' => 'users#sub2', as: :sub2
   post 'get2' => 'users#get_balance2', as: :get_balance2
   post 'set2' => 'users#set_balance2', as: :set_balance2
 

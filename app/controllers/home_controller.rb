@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     @text = params['text']
     @email_from = params['email']
 
-    if !simple_captcha_valid?
+    if !simple_captcha_valid? && !current_user.present?
       flash[:error] = t("simple_captcha.message.user")
       #redirect_to contact_us_get_path
       return

@@ -11,7 +11,7 @@
               <%= text_field_tag(:email, @email_from, required: "true", type: "email", placeholder: "your email", class: "form-control", size: "40x20", tabindex: 1) %>
               <%= text_area_tag(:text, @text, required: "true", type: "text", placeholder: "your message", class: "form-control", size: "40x4", tabindex: 2) %>
 
-              <%= show_simple_captcha %>
+              <%= show_simple_captcha if !current_user.present? %>
               <br>
               <%= submit_tag("Contact Us", class: "", tabindex: 3) %>
 

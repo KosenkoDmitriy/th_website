@@ -20,8 +20,8 @@ class HomeController < ApplicationController
     @email_from = current_user.try(:email) if current_user
     @text = params['text']
     @email_from = params['email']
-
-    if !simple_captcha_valid? && !current_user.present?
+    m=request.method
+    if !simple_captcha_valid? && !current_user.present? && request.method == "POST"
       flash[:error] = t("simple_captcha.message.user")
       #redirect_to contact_us_get_path
       return

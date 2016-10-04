@@ -1,5 +1,5 @@
 ActiveAdmin.register Game do
-  permit_params :id, :title, :text, :url, :created_at, :updated_at, :fid, :is_skipped_login, :order_id, :offsetX, :offsetY, :width, :height, :fb_url, :is_embedded, :counter
+  permit_params :id, :title, :text, :stext, :url, :created_at, :updated_at, :fid, :is_skipped_login, :order_id, :offsetX, :offsetY, :width, :height, :fb_url, :is_embedded, :counter
 
   # custom scope not defined on the model
   scope :all
@@ -20,7 +20,9 @@ ActiveAdmin.register Game do
     f.semantic_errors *f.object.errors.keys # To display a list of all validation errors:
     inputs 'Details' do
       input :title
-      input :text, label: 'Text in html'
+      input :text, label: 'Description in html'
+      input :stext, label: 'Short Description in html'
+
       input :counter, label: 'Views'
 
       # input :order_id
@@ -37,8 +39,11 @@ ActiveAdmin.register Game do
   show do # view form
     attributes_table do
       row :title
-      row "Text in html" do
+      row "Description in html" do
         resource.text
+      end
+      row "Short Description in html" do
+        resource.stext
       end
       row 'Views' do
         resource.counter

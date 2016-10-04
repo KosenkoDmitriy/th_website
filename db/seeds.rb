@@ -67,7 +67,7 @@ game=Game.find_by(fid:candy_super_lines)
 game.update_columns(stext:'Play our version of one the most popular games among all age groups.')
 
 game=Game.find_by(fid:video_poker_jack)
-game.update_columns(stext:'Increase your odds of winning by makings Jacks Or Better for your best poker hands.')
+game.update_columns(stext:'Increase your odds of winning by making Jacks Or Better for your best poker hands.')
 
 game=Game.find_by(fid:black_jack)
 game.update_columns(stext:'Bet up to 1,000 credits, split and double down on this great casino game.')

@@ -76,6 +76,7 @@ class UsersController < ApplicationController
 
     user.password = pass(password)
     user.confirm_password = ''
+    user.last_login_dt = DateTime.now
     user.credits = Rails.configuration.x.win_for_reg
 
     # if !user.valid?

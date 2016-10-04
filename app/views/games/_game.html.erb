@@ -1,10 +1,23 @@
 <% url = game_path game %>
 <ul>
   <li>
-    <div class="game_img">
-      <a href="<%= url %>">
-        <img src='/<%=game.try(:fid)%>/logo.jpg' alt='<%=game.try(:title)%>' width='100%' height='100%' />
-      </a>
+    <div class="flip-container">
+      <div class="flipper">
+        <div class="front">
+          <div class="game_img">
+            <a href="<%= game_play_url %>">
+              <img src='/<%= game.try(:fid) %>/logo.jpg' alt='<%= game.try(:title) %>' width='100%' height='100%'/>
+            </a>
+          </div>
+        </div>
+        <div class="back">
+          <div class="game_img" style="background-color: #008800;">
+            <a style="color:whitesmoke;text-decoration:none; " href="<%= game_play_url %>">
+              <div style="height: 132px;text-align: center;">
+              <span style="padding:5px; width:100%; height:132px;display:table-cell;vertical-align: middle;"><%= game.try(:stext) %></span></a></div>
+        </div>
+        </div>
+      </div>
     </div>
     <div class="game_price"><%= game.try(:title) %></div>
   </li>

@@ -1,0 +1,21 @@
+<div class="section03" id="credits">
+  <div class="sub_section03" align="center">
+    <%= video_tag "video.mov", :size => "720x1280", :controls => true %>
+  </div>
+</div>
+
+
+
+<!--
+<video width="320" height="480" controls>
+<source src="http://www.html5videoplayer.net/videos/toystory.mp4" type="video/mp4" />
+<source src="http://www.html5videoplayer.net/videos/toystory.webm" type="video/webm" />
+<source src="http://www.html5videoplayer.net/videos/toystory.ogv" type="video/ogg" />
+
+</video>
+-->
+
+<% video_tag "video.mp4", :size => "720x1280", :controls => true %>
+<% video_tag(["video.mov", "video.ogv", "video.mp4", "video.webm"], :size => "720x1280", :controls => true) %>
+
+

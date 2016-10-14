@@ -12,6 +12,28 @@
 <%= render partial: "shared_new/content4_games" %>
 <% render partial: "shared_new/content2" %>
 <%= render partial: "shared_new/content2_credits" %>
+<%= render partial: "shared_new/content2_video" %>
+
+<!--
+<video width="320" height="480" controls>
+<source src="http://www.html5videoplayer.net/videos/toystory.mp4" type="video/mp4" />
+<source src="http://www.html5videoplayer.net/videos/toystory.webm" type="video/webm" />
+<source src="http://www.html5videoplayer.net/videos/toystory.ogv" type="video/ogg" />
+
+</video>
+-->
+
+<!--
+<source src="videos/video.mp4" type="video/mp4" />
+
+<source src="videos/video.webm" type="video/webm" />
+<source src="videos/video.ogv" type="video/ogg" />
+-->
+
+<%= video_tag "video.mp4", :size => "720x1280", :controls => true %>
+<%= video_tag "video.webm", :size => "720x1280", :controls => true %>
+<%= video_tag "video.ogv", :size => "720x1280", :controls => true %>
+<%= video_tag "video.mov", :size => "720x1280", :controls => true %>
 
 
 

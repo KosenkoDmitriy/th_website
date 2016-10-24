@@ -129,6 +129,7 @@ class UsersController < ApplicationController
             flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
             user.update_column(:last_login_dt, DateTime.now)
             user.credits += Rails.configuration.x.win_for_login
+            LoginHistory.create(count:1, user:user)
           end
 
           user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]
@@ -307,9 +308,16 @@ class UsersController < ApplicationController
 
   def set_balance
     user, credits_from_param = get_user params
-    # fid = request.referrer.split('/')[-2]
+
+    fid = request.referrer.split('/')[-2]
+    tfid = params["id"] if params["id"].present?
+    fid = "texas_holdem_foldup" if tfid == "th"
     if user.present?
-      # dt = user.credits - credits_from_param
+      dt = credits_from_param - user.credits
+      if Game.exists?(fid:fid)
+        game = Game.find_by(fid:fid)
+        ScoreHistory.create(amount:dt, user:user, game:game)
+      end
       user.credits = credits_from_param
       if user.save!
         render plain: 'ok', status: 200
@@ -346,6 +354,11 @@ class UsersController < ApplicationController
   # add win amount to balance
   def add2
     user, credits_from_param = get_user2
+    fid = request.referrer.split('/')[-2]
+    if Game.exists?(fid:fid)
+      game = Game.find_by(fid:fid)
+      ScoreHistory.create(amount:credits_from_param, user:user, game:game)
+    end
     if user.present?
       user.credits += credits_from_param
       if user.save!
@@ -359,9 +372,13 @@ class UsersController < ApplicationController
   # set balance by user id from session
   def set_balance2
     user, credits_from_param = get_user2
-    # fid = request.referrer.split('/')[-2]
+    fid = request.referrer.split('/')[-2]
     if user.present?
-      # dt = user.credits - credits_from_param
+      dt = credits_from_param - user.credits
+      if Game.exists?(fid:fid)
+        game = Game.find_by(fid:fid)
+        ScoreHistory.create(amount:dt, user:user, game:game)
+      end
       user.credits = credits_from_param
       if user.save!
         render plain: 'ok', status: 200

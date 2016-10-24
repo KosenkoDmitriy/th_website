@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :orders, dependent: :destroy
 
+  has_many :login_history, dependent: :destroy
+  has_many :score_history, dependent: :destroy
+
   def display_name
     res = email if email.present?
     res = full_name if full_name.present?

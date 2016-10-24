@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
 
       if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
         user.update_column(:last_login_dt, DateTime.now)
+        LoginHistory.create(count:1, user:user)
         if user.credits.nil?
           user.credits = Rails.configuration.x.win_for_reg
           flash[:notice] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"

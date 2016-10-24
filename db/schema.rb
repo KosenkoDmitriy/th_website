@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003171257) do
+ActiveRecord::Schema.define(version: 20161024152653) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20161003171257) do
 # Could not dump table "games" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
+  create_table "login_histories", force: :cascade do |t|
+    t.integer  "count"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "login_histories", ["user_id"], name: "index_login_histories_on_user_id"
+
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "credit_id"
@@ -75,6 +84,17 @@ ActiveRecord::Schema.define(version: 20161003171257) do
 
   add_index "orders", ["credit_id"], name: "index_orders_on_credit_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
+  create_table "score_histories", force: :cascade do |t|
+    t.float    "amount"
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "score_histories", ["game_id"], name: "index_score_histories_on_game_id"
+  add_index "score_histories", ["user_id"], name: "index_score_histories_on_user_id"
 
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40

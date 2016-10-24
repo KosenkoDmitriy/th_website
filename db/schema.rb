@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20161003171257) do
     t.string   "uid"
     t.string   "bt"
     t.boolean  "is_active",        default: true
-    t.integer  "fw_attempts",      default: 3
+    t.integer  "fw_attempts",      default: 1
     t.datetime "fw_dt"
     t.string   "acode"
   end

@@ -7,10 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
-Credit.find_or_create_by(cost_in_cents: 99, credits: 1000000, title: "1M credits")
-Credit.find_or_create_by(cost_in_cents: 299, credits: 2000000, title: "2M credits")
-Credit.find_or_create_by(cost_in_cents: 599, credits: 8000000, title: "8M credits")
-Credit.find_or_create_by(cost_in_cents: 999, credits: 10000000, title: "10M credits")
+credit=Credit.find(1)
+credit.update_columns(cost_in_cents: 99, credits:500000, title: '500K credits')
+credit=Credit.find(2)
+credit.update_columns(cost_in_cents: 299, credits:2500000, title: '2.5M credits')
+credit=Credit.find(3)
+credit.update_columns(cost_in_cents: 399, credits:4000000, title: '4M credits')
+credit=Credit.find(4)
+credit.update_columns(cost_in_cents: 599, credits:5000000, title: '5M credits')
 
 texas_holdem_foldup = "texas_holdem_foldup"
 video_poker_jack = "video_poker_jack"

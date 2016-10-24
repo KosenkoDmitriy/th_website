@@ -309,12 +309,12 @@ class UsersController < ApplicationController
   def set_balance
     user, credits_from_param = get_user params
 
-    fid = request.referrer.split('/')[-2]
+    fid = request.referrer.split('/')[-2] if request.referrer.present?
     tfid = params["id"] if params["id"].present?
     fid = "texas_holdem_foldup" if tfid == "th"
     if user.present?
       dt = credits_from_param - user.credits
-      if Game.exists?(fid:fid)
+      if Game.exists?(fid:fid) && dt != 0
         game = Game.find_by(fid:fid)
         ScoreHistory.create(amount:dt, user:user, game:game)
       end
@@ -355,7 +355,7 @@ class UsersController < ApplicationController
   def add2
     user, credits_from_param = get_user2
     fid = request.referrer.split('/')[-2]
-    if Game.exists?(fid:fid)
+    if Game.exists?(fid:fid) && credits_from_param != 0
       game = Game.find_by(fid:fid)
       ScoreHistory.create(amount:credits_from_param, user:user, game:game)
     end
@@ -375,7 +375,7 @@ class UsersController < ApplicationController
     fid = request.referrer.split('/')[-2]
     if user.present?
       dt = credits_from_param - user.credits
-      if Game.exists?(fid:fid)
+      if Game.exists?(fid:fid) && dt != 0
         game = Game.find_by(fid:fid)
         ScoreHistory.create(amount:dt, user:user, game:game)
       end

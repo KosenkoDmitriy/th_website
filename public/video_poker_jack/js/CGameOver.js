@@ -17,10 +17,10 @@ function CGameOver(){
         _oTextTitle.y = 290;
 	_oTextTitle.shadow = new createjs.Shadow("#000000", 2, 2, 2);
         _oContainer.addChild(_oTextTitle);
-        
+
         _oButRecharge = new CTextButton(CANVAS_WIDTH/2 -100,450,s_oSpriteLibrary.getSprite('but_game_bg'),TEXT_RECHARGE,"Arial","#fff",14,_oContainer);
         _oButRecharge.addEventListener(ON_MOUSE_UP, this._onRecharge, this);
-        
+
         _oButExit = new CTextButton(CANVAS_WIDTH/2 + 100,450,s_oSpriteLibrary.getSprite('but_game_bg'),TEXT_EXIT,"Arial","#fff",14,_oContainer);
         _oButExit.addEventListener(ON_MOUSE_UP, this._onExit, this);
         

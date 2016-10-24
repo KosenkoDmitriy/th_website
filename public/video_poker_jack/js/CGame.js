@@ -283,7 +283,7 @@ function CGame(oData){
      };
      
     this.recharge = function(){
-        _iMoney = TOTAL_MONEY;
+        //_iMoney = TOTAL_MONEY;
         _oPayTable.setCreditColumn(_iCurCreditIndex);
         
         

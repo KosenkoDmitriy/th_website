@@ -1,10 +1,14 @@
 class GamesController < ApplicationController
   include ApplicationHelper
 
-  before_action :login_first, except: [:index, :show]
+  before_action :login_first, except: [:index, :show, :scores]
 
   def index
     @games = Game.all
+  end
+
+  def scores
+
   end
 
   def show

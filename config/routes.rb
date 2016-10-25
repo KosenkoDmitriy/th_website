@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'fw10' => 'home#fw10'
   root 'home#index'
   get 'game_play' => 'home#show', as: :game_play
+  get 'scores' => 'games#scores', as: :score
 
   post 'contact_us' => 'home#contact_us', as: :contact_us
   get 'contact_us' => 'home#contact_us', as: :contact_us_get

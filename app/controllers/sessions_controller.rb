@@ -4,6 +4,11 @@ class SessionsController < ApplicationController
     # begin
       user = User.from_omniauth(request.env['omniauth.auth'])
 
+      if !user.present?
+        flash[:error] = t("user.empty")
+        redirect_to sign_in_up_path and return
+      end
+
       if !user.is_active?
         flash[:error] = t("user.blocked")
         redirect_to sign_in_up_path and return

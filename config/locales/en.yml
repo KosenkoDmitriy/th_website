@@ -67,6 +67,7 @@ en:
     remember_me: "Remember Me"
     go: "Go"
     blocked: "Your blocked"
+    empty: "Please relogin or register"
     fw:
       exceed: "Daily limit has been exceeded. Please try again in "
   login: "Login"

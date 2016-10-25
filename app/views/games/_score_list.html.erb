@@ -51,8 +51,47 @@
     <% end %>
     </tbody>
   </table>
+  <br><br>
 
 
+  <h2>Top 10 of Every Day Login</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Player</th>
+      <th>Logins/month</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% gid = 0
+       days_in_month = Time.days_in_month(Time.now.month-1, Time.now.year) #.months_ago(1).month)
+       dt_utc = DateTime.now.utc #.months_ago(1) prev month
+       dt1 = DateTime.new(dt_utc.year, dt_utc.month, 1)#.strftime("%Y-%m-%d")
+       dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month)#.strftime("%Y-%m-%d")
+
+       time_range = dt1..dt2
+       LoginHistory.
+               joins(:user).
+               where('created_at' => time_range).
+# where("created_at >= ? AND created_at <= ? ", dt1, dt2).
+               select("users.full_name as fname, users.id as uid, count(count) as login_count").
+               group("fname").
+               order("login_count DESC").
+               #take(10).
+               limit(10).
+               each do |login|
+         gid += 1
+    %>
+
+        <tr>
+          <td><%= gid %></td>
+          <td><%= login.try(:fname) %></td>
+          <td>&nbsp<%= login.try(:login_count) %></td>
+        </tr>
+    <% end %>
+
+    </table>
   <br><br>
 
   <h2>Top 10 List (Current Month)</h2>
@@ -163,44 +202,3 @@
   </table>
   <br><br>
 
-
-  <h2>Top 10 of Every Day Login</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Player</th>
-      <th>Logins/month</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% gid = 0
-       days_in_month = Time.days_in_month(Time.now.month-1, Time.now.year) #.months_ago(1).month)
-       dt_utc = DateTime.now.utc #.months_ago(1) prev month
-       dt1 = DateTime.new(dt_utc.year, dt_utc.month, 1)#.strftime("%Y-%m-%d")
-       dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month)#.strftime("%Y-%m-%d")
-
-       time_range = dt1..dt2
-       LoginHistory.
-              joins(:user).
-       where('created_at' => time_range).
-# where("created_at >= ? AND created_at <= ? ", dt1, dt2).
-               select("users.full_name as fname, users.id as uid, count(count) as login_count").
-               group("users.full_name").
-               order("login_count DESC").
-               #take(10).
-               limit(10).
-               each do |login|
-         gid += 1
-    %>
-
-        <tr>
-          <td><%= gid %></td>
-          <td><%= login.try(:user).try(:full_name) %></td>
-          <td><%= login.try(:fname) %></td>
-          <td>&nbsp<%= login.try(:login_count) %></td>
-        </tr>
-    <% end %>
-     
-  </table>
-  <br><br>

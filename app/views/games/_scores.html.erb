@@ -1,0 +1,134 @@
+<table>
+
+  <br>
+
+  <h2>Top 10 List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Game</th>
+      <th>Player</th>
+      <th>Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% no = 0 %>
+
+    <% #ScoreHistory.order(amount: :desc).take(100).each do |score|
+       #ScoreHistory.select("date(created_at) as ordered_date, sum(amount) as total_price").group("date(created_at)").each do |score|
+       #ScoreHistory.select("date(created_at) as ordered_date, sum(amount) as total_price").each do |score|
+       #ScoreHistory.joins(:user).select("amount, sum(amount) as total_price").group("amount").each do |score|
+
+       #ScoreHistory.find_by_sql("SELECT games.title as gtitle, users.full_name as fname, sum(amount) as sum_amount FROM score_histories
+       #INNER JOIN users ON users.id = score_histories.user_id
+       #INNER JOIN games ON games.id = score_histories.game_id
+       #GROUP BY games.title, users.full_name ORDER BY games.title, sum_amount DESC, users.full_name").each do |score|
+       ScoreHistory.
+               #         .find_by_sql("SELECT g.title as gtitle, u.full_name as fname, sum(amount) as sum_amount
+               # FROM score_histories sc, users u, games g WHERE u.id = sc.user_id AND g.id = sc.game_id
+               # GROUP BY g.title, u.full_name
+               # ORDER BY g.title, sum_amount DESC, u.full_name ")
+               take(0).each do |score|
+    %>
+        <tr>
+          <% no+=1
+             no=no%=10 %>
+          <td><%= no == 0 ? 10 : no %>)</td>
+          <td><%= score.try(:gtitle) %></td>
+          <td><%= score.try(:fname) %></td>
+          <td><%= score.try(:sum_amount) %></td>
+
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <br><br>
+  <% gid = 0
+     Game.order(:title).each do |game| %>
+
+      <h2><%= gid += 1 %>. <%= game.try(:title) %></h2>
+      <table>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Player</th>
+          <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+
+           no = 0
+           ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
+       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)}
+       GROUP BY g.title, u.full_name ORDER BY g.title, sum DESC limit 10
+                                ").each do |score|
+             #ScoreHistory.includes(:game).select("date(created_at) as ordered_date, sum(amount) as sum_amount").
+             #group("game.title, sum_amount").having("sum(amount) > ?", 100).each do |score|
+             #ScoreHistory.includes(:game, :user).group("games.title, users.full_name").each do |score|
+             #where(games:{id:1}).
+             #where(users: {id:1} ).group().each do |score|
+             #ScoreHistory.find_by_sql("SELECT sc.*,count(sc.id) num FROM score_histories sc GROUP BY num HAVING count(sc.id) <= 3 ").each do |score|
+        %>
+            <tr>
+
+              <td><%= gid %>.<%= no+=1 %>)</td>
+              <!--<td><%= score.try(:count_user) %></td>-->
+              <!--<td><%= score.try(:game).try(:title) %>|</td>-->
+
+              <td><%= score.try(:user).try(:full_name) %></td>
+              <td><%= score.try(:sum) %></td>
+
+
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+
+  <br>
+  <br>
+
+  <br><br>
+
+  <h2>Pot for a Prize</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Game</th>
+      <th>Player</th>
+      <th>Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% gid = 0
+       Game.order(:title).each do |game| %>
+
+
+        <%
+           gid += 1
+           no = 0
+
+           ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
+       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)}
+       GROUP BY g.title, u.full_name ORDER BY g.title, sum DESC limit 10
+                                ").each do |score|
+        %>
+            <tr>
+
+
+              <% if current_user.full_name == score.user.full_name+"" %>
+                  <td><%= gid %></td>
+                  <td><%= game.try(:title) %></td>
+                  <td><%= "YOU (#{score.user.full_name})" %></td>
+                  <td>&nbsp<%= score.try(:sum) %></td>
+              <% else %>
+
+              <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+    </table>
+  <br><br>

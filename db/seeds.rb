@@ -102,3 +102,13 @@ game.update_columns(stext:'Gain the advantage by seeing what your opponent folds
 
 game=Game.find_by(fid:lol)
 game.update_columns(stext:'Looking for action? Play this exciting battle game.')
+
+
+# test data
+User.take(10).each do |user|
+  Game.all.each do |game|
+    (1..10).each do
+      ScoreHistory.create(user:user, game:game, amount:rand(10..1000))
+    end
+  end
+end

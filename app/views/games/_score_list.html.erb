@@ -2,14 +2,19 @@
 
   <br>
 
-  <h2>Top 10 List</h2>
+  <h2>Total Scores (Current Month)</h2>
   <table>
     <thead>
     <tr>
       <th>#</th>
-      <th>Game</th>
-      <th>Player</th>
+      <!--<th>Game</th>-->
       <th>Score</th>
+
+
+      <th>Player</th>
+      <th>Credits (All Time)</th>
+      <th>Every Day Logins</th>
+
     </tr>
     </thead>
     <tbody>
@@ -24,26 +29,33 @@
        #INNER JOIN users ON users.id = score_histories.user_id
        #INNER JOIN games ON games.id = score_histories.game_id
        #GROUP BY games.title, users.full_name ORDER BY games.title, sum_amount DESC, users.full_name").each do |score|
-       ScoreHistory.
+       ScoreHistory.joins(:user, :game).#includes(:login_histories).
                #         .find_by_sql("SELECT g.title as gtitle, u.full_name as fname, sum(amount) as sum_amount
                # FROM score_histories sc, users u, games g WHERE u.id = sc.user_id AND g.id = sc.game_id
                # GROUP BY g.title, u.full_name
                # ORDER BY g.title, sum_amount DESC, u.full_name ")
-               take(0).each do |score|
+               select("games.title as gtitle, users.credits as credits, users.full_name as fname, users.id as uid, sum(amount) as sum_amount").group("users.full_name").order("sum_amount DESC, credits DESC").take(11).each do |score|
     %>
         <tr>
           <% no+=1
              no=no%=10 %>
           <td><%= no == 0 ? 10 : no %>)</td>
-          <td><%= score.try(:gtitle) %></td>
-          <td><%= score.try(:fname) %></td>
+          <!--<td><%= score.try(:gtitle) %></td>-->
           <td><%= score.try(:sum_amount) %></td>
 
+          <td><%= score.try(:fname) %></td>
+          <td><%= score.try(:credits) %></td>
+          <td><%= score.try(:logins) %></td>
+          <td><%= LoginHistory.find_by(user_id:score.uid).count %></td>
         </tr>
     <% end %>
     </tbody>
   </table>
+
+
   <br><br>
+  <h2>Top 10 List (Current Month)</h2>
+
   <% gid = 0
      Game.order(:title).each do |game| %>
 
@@ -59,7 +71,7 @@
         <tbody>
         <%
            days_in_month = Time.days_in_month(Time.now.month-1, Time.now.year) #.months_ago(1).month)
-           dt_utc = DateTime.now.utc #.months_ago(1) # prev month
+           dt_utc = DateTime.now.utc #.months_ago(1) prev month
            dt1 = DateTime.new(dt_utc.year, dt_utc.month, 1)#.strftime("%Y-%m-%d")
            dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month)#.strftime("%Y-%m-%d")
            no = 0
@@ -138,5 +150,14 @@
             </tr>
         <% end %>
     <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Total Scores</td>
+      <td><%= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
+       WHERE u.id = sc.user_id AND u.id = #{current_user.id}
+       GROUP BY u.full_name ORDER BY sum DESC
+                                ").first.sum %></td></tr>
     </table>
   <br><br>
+

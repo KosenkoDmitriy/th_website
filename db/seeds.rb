@@ -113,3 +113,9 @@ User.take(10).each do |user|
     end
   end
 end
+
+User.take(10).each do |user|
+  (1..28).each do |day|
+    LoginHistory.create(user:user, count:rand(1..5), created_at:DateTime.new(DateTime.now.year, rand(1..12), day))
+  end
+end

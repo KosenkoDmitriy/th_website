@@ -107,8 +107,9 @@ game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 # test data
 User.take(10).each do |user|
   Game.all.each do |game|
-    (1..10).each do
+    (1..2).each do
       ScoreHistory.create(user:user, game:game, amount:rand(10..1000))
+      ScoreHistory.create(user:user, game:game, amount:rand(10..1000), created_at: DateTime.now.months_ago(1))
     end
   end
 end

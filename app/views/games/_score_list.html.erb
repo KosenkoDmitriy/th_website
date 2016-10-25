@@ -58,12 +58,20 @@
         </thead>
         <tbody>
         <%
-
+           days_in_month = Time.days_in_month(Time.now.month-1, Time.now.year) #.months_ago(1).month)
+           dt_utc = DateTime.now.utc #.months_ago(1) # prev month
+           dt1 = DateTime.new(dt_utc.year, dt_utc.month, 1)#.strftime("%Y-%m-%d")
+           dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month)#.strftime("%Y-%m-%d")
            no = 0
            ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
-       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)}
-       GROUP BY g.title, u.full_name ORDER BY g.title, sum DESC limit 10
+       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)} AND sc.created_at >= '#{dt1}' AND sc.created_at <= '#{dt2}'
+       GROUP BY g.title, u.full_name
+       ORDER BY g.title, sum DESC limit 10
                                 ").each do |score|
+             #              HAVING sc.created_at > #{dt1} AND sc.created_at < #{dt2}
+
+             #WHERE date(sc.created_at ,'%Y-%m-%d') >= #{dt1} AND date(sc.created_at) <= #{dt2} AND g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)}
+             # sc.created_at >= #{dt1} AND sc.created_at <= #{dt2}
              #ScoreHistory.includes(:game).select("date(created_at) as ordered_date, sum(amount) as sum_amount").
              #group("game.title, sum_amount").having("sum(amount) > ?", 100).each do |score|
              #ScoreHistory.includes(:game, :user).group("games.title, users.full_name").each do |score|

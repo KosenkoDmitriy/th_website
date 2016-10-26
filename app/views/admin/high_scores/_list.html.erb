@@ -26,19 +26,21 @@
        total_amount += score.sum_amount
        no+=1
   %>
+
       <tr>
         <td><%= no %></td>
         <td><%= score.gtitle %></td>
         <td><%= score.sum_amount %></td>
       </tr>
   <% end %>
-  <b>
     <tr>
-      <td></td>
-      <td>Totally</td>
-      <td><%#= ScoreHistory.where('created_at' => time_range).sum(:amount) #%><%= total_amount %></td>
+
+    <td></td>
+      <td><b>Totally</b></td>
+      <td><b><%#= ScoreHistory.where('created_at' => time_range).sum(:amount) #%><%= total_amount %>  </b>
+      </td>
+
     </tr>
-  </b>
   </tbody>
 </table>
 <br><br>
@@ -185,13 +187,13 @@
         <tr>
           <td></td>
           <td></td>
-          <td>Total Scores</td>
-          <td><%= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
+          <td><b>Totally</b></td>
+          <td><b><%= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
        WHERE  sc.created_at >= '#{dt1}' AND sc.created_at <= '#{dt2}' AND u.id = sc.user_id AND u.id = #{current_user.try(:id) }
        GROUP BY u.full_name ORDER BY sum DESC
-                                ").try(:first).try(:sum) %></td>
+                                ").try(:first).try(:sum) %></b></td>
         </tr>
-      </b>
+
     </table>
 
     <br><br>

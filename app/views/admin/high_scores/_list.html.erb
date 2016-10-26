@@ -19,7 +19,7 @@
   <tbody>
   <% no = 0
      ScoreHistory.joins(:user, :game).where('created_at' => time_range).
-             select("games.title as gtitle, users.credits as credits, users.full_name as fname, users.id as uid, sum(amount) as sum_amount").
+             select("games.title as gtitle, users.credits as credits, users.id as uid, users.full_name as fname, users.id as uid, sum(amount) as sum_amount").
              group("users.full_name").order("sum_amount DESC, credits DESC").
              take(top).each do |score|
   %>
@@ -27,9 +27,9 @@
         <% no+=1
            no=no%=top %>
         <td><%= no == 0 ? top : no %></td>
-        <td><%= score.try(:fname) %></td>
+        <td><%= link_to score.try(:fname), admin_user_path(score.try(:uid)) %></td>
         <td><%= score.try(:sum_amount) %></td>
-        <td><%= LoginHistory.where(created_at: time_range, user_id: score.uid).count %></td>
+        <td><%= LoginHistory.where(created_at: time_range, user_id: score.try(:uid)).count %></td>
       </tr>
   <% end %>
   </tbody>
@@ -51,7 +51,7 @@
      LoginHistory.
              joins(:user).
              where('created_at' => time_range).
-             select("users.full_name as fname, users.id as uid, count(count) as login_count").
+             select("users.id as uid, users.full_name as fname, users.id as uid, count(count) as login_count").
              group("fname").
              order("login_count DESC").
              #take(top).
@@ -62,7 +62,7 @@
 
       <tr>
         <td><%= gid %></td>
-        <td><%= login.try(:fname) %></td>
+        <td><%= link_to login.try(:fname), admin_user_path(login.try(:uid)) %></td>
         <td>&nbsp<%= login.try(:login_count) %></td>
       </tr>
   <% end %>
@@ -95,9 +95,7 @@
       %>
           <tr>
             <td><%= no+=1 %></td>
-            <!--<td><%= score.try(:count_user) %></td>-->
-            <!--<td><%= score.try(:game).try(:title) %>|</td>-->
-            <td><%= score.try(:user).try(:full_name) %></td>
+            <td><%= link_to score.try(:user).try(:full_name), admin_user_path(score.try(:user).try(:id)) %></td>
             <td><%= score.try(:sum) %></td>
           </tr>
       <% end %>
@@ -137,9 +135,9 @@
               <tr>
                 <% if current_user.try(:full_name) == score.user.full_name+"" %>
                     <td><%= gid %></td>
-                    <td><%= game.try(:title) %></td>
-                    <td><%= "YOU (#{score.user.full_name})" %></td>
-                    <td>&nbsp<%= score.try(:sum) %></td>
+                    <td><%= link_to game.try(:title), admin_game_path(game) %></td>
+                    <td><%= link_to "YOU (#{score.user.full_name})", admin_user_path(score.user) %></td>
+                    <td><%= score.try(:sum) %></td>
                 <% else %>
 
                 <% end %>

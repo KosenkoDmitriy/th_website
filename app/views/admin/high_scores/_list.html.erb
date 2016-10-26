@@ -6,7 +6,7 @@
    dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month).strftime("%Y-%m-%d")
    time_range = dt1..dt2
 %>
-<h2>Total High Scores (Current Month)</h2>
+<h2>Total High Scores/Current Month</h2>
 <table class="index_table index">
   <thead>
   <tr>
@@ -37,7 +37,7 @@
 <br><br>
 
 
-<h2>Every Day Logins (Current Month)</h2>
+<h2>Every Day Logins/Current Month</h2>
 <table class="index_table index">
   <thead>
   <tr>
@@ -70,7 +70,7 @@
   </table>
 <br><br>
 
-<h2>Top 10 Players For Each Game (Current Month)</h2>
+<h2>Top 10 Players For Each Game/Current Month</h2>
 
 <% gid = 0
    Game.order(:title).each do |game| %>
@@ -113,7 +113,7 @@
 <% current_user=User.first
    if current_user
 %>
-    <h2>Pot for a Prize </h2>
+    <h2>Pot for a Prize (Example) </h2>
     <table class="index_table index">
       <thead>
       <tr>

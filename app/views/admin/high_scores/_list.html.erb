@@ -6,6 +6,43 @@
    dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month).strftime("%Y-%m-%d")
    time_range = dt1..dt2
 %>
+
+<h2> total credits earned while playing the each game for a calendar month </h2>
+<table class="index_table index">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Player</th>
+    <th>Credits</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% no=0
+     total_amount = 0
+     ScoreHistory.joins(:game).where('created_at' => time_range).
+             select("sum(amount) as sum_amount, games.title as gtitle").
+             group("gtitle").
+             order("sum_amount DESC").each do |score|
+       total_amount += score.sum_amount
+       no+=1
+  %>
+      <tr>
+        <td><%= no %></td>
+        <td><%= score.gtitle %></td>
+        <td><%= score.sum_amount %></td>
+      </tr>
+  <% end %>
+  <b>
+    <tr>
+      <td></td>
+      <td>Totally</td>
+      <td><%#= ScoreHistory.where('created_at' => time_range).sum(:amount) #%><%= total_amount %></td>
+    </tr>
+  </b>
+  </tbody>
+</table>
+<br><br>
+
 <h2>Total High Scores/Current Month</h2>
 <table class="index_table index">
   <thead>
@@ -145,15 +182,15 @@
           <% end %>
       <% end %>
       <b>
-      <tr>
-        <td></td>
-        <td></td>
-        <td>Total Scores</td>
-        <td><%= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Total Scores</td>
+          <td><%= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
        WHERE  sc.created_at >= '#{dt1}' AND sc.created_at <= '#{dt2}' AND u.id = sc.user_id AND u.id = #{current_user.try(:id) }
        GROUP BY u.full_name ORDER BY sum DESC
                                 ").try(:first).try(:sum) %></td>
-      </tr>
+        </tr>
       </b>
     </table>
 

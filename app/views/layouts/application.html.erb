@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%=t("head.title")%></title>
+  <title><%= t("head.title") %></title>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -14,7 +14,7 @@
   </script>
 </head>
 <% if is_mobile %>
-    <meta name=viewport content="width=device-width, initial-scale=1">
+    <!--<meta name=viewport content="width=device-width, initial-scale=1">-->
 <% end %>
 <%= csrf_meta_tags %>
 </head>
@@ -27,7 +27,7 @@
 
   <%= render partial: "shared_new/content2_red_section" %>
   <%= render partial: "shared_new/content2_footer" %>
-  <%= render partial: "shared_new/ga" %>
+  <%= render partial: "shared_new/ga" if request.host.include?(Rails.configuration.x.api.host) %>
 </div>
 </body>
 </html>

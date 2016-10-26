@@ -152,53 +152,57 @@
 
   <br><br>
 
-  <h2>Pot for a Prize</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Game</th>
-      <th>Player</th>
-      <th>Score</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% gid = 0
-       Game.order(:title).each do |game| %>
+  <% if current_user %>
+
+      <h2>Pot for a Prize</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Game</th>
+          <th>Player</th>
+          <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% gid = 0
+           Game.order(:title).each do |game| %>
 
 
-        <%
-           gid += 1
-           no = 0
+            <%
+               gid += 1
+               no = 0
 
-           ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
+               ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
        WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)}
        GROUP BY g.title, u.full_name ORDER BY g.title, sum DESC limit 10
                                 ").each do |score|
-        %>
-            <tr>
+            %>
+                <tr>
 
 
-              <% if current_user.full_name == score.user.full_name+"" %>
-                  <td><%= gid %></td>
-                  <td><%= game.try(:title) %></td>
-                  <td><%= "YOU (#{score.user.full_name})" %></td>
-                  <td>&nbsp<%= score.try(:sum) %></td>
-              <% else %>
+                  <% if current_user.try(:full_name) == score.user.full_name+"" %>
+                      <td><%= gid %></td>
+                      <td><%= game.try(:title) %></td>
+                      <td><%= "YOU (#{score.user.full_name})" %></td>
+                      <td>&nbsp<%= score.try(:sum) %></td>
+                  <% else %>
 
-              <% end %>
-            </tr>
+                  <% end %>
+                </tr>
+            <% end %>
         <% end %>
-    <% end %>
-    <tr>
-      <td></td>
-      <td></td>
-      <td>Total Scores</td>
-      <td><%= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
-       WHERE u.id = sc.user_id AND u.id = #{current_user.id}
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Total Scores</td>
+          <td><%= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
+       WHERE u.id = sc.user_id AND u.id = #{current_user.try(:id) }
        GROUP BY u.full_name ORDER BY sum DESC
                                 ").first.sum %></td>
-    </tr>
-  </table>
-  <br><br>
+        </tr>
+      </table>
+
+      <br><br>
+  <% end %>
 

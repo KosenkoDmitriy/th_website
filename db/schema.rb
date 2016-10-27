@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20161027130358) do
   create_table "messages", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
-    t.string   "interval"
+    t.integer  "interval"
     t.boolean  "is_email",     default: true
     t.boolean  "is_sms",       default: true
     t.boolean  "is_published", default: true

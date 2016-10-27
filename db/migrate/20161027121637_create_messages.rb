@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.string :title
       t.text :text
-      t.string :interval
+      t.integer :interval, default: 0
       t.boolean :is_email, default: true
       t.boolean :is_sms, default: true
       t.boolean :is_published, default: true

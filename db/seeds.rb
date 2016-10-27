@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 mail = 'bogach_89@mail.ru'
 password = 'qwerty123456'
-AdminUser.create!(email: mail, password: password, password_confirmation: password) if AdminUser.exists?(email:mail)
+AdminUser.create!(email: mail, password: password, password_confirmation: password) if !AdminUser.exists?(email:mail)
 
 credit=Credit.find_or_create_by(id:1)
 credit.update_columns(cost_in_cents: 99, credits:500000, title: '500K credits')

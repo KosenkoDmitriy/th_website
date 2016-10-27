@@ -27,8 +27,17 @@
 
 set :output, File.join(Whenever.path, "log", "cron.log")
 
-every 1.minute do  # 1.minute :hour 3.hours 1.day 1.week 1.month 1.year is also supported
+every 1.day do  # 1.minute :hour 3.hours 1.day 1.week 1.month 1.year is also supported
   #runner "User.unsubscribe"
-
   runner "Remind.daily" #rake "remind:daily"
+end
+
+every 1.week do  # 1.minute :hour 3.hours 1.day 1.week 1.month 1.year is also supported
+  #runner "User.unsubscribe"
+  runner "Remind.weekly" #rake "remind:weekly"
+end
+
+every 1.month do  # 1.minute :hour 3.hours 1.day 1.week 1.month 1.year is also supported
+  #runner "User.unsubscribe"
+  runner "Remind.monthly" #rake "remind:monthly"
 end

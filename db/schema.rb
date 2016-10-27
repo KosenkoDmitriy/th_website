@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(version: 20161027130358) do
     t.string   "title"
     t.text     "text"
     t.string   "interval"
-    t.boolean  "is_published", default: true
     t.boolean  "is_email",     default: true
     t.boolean  "is_sms",       default: true
+    t.boolean  "is_published", default: true
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

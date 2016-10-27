@@ -5,15 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+mail = 'bogach_89@mail.ru'
+password = 'qwerty123456'
+AdminUser.create!(email: mail, password: password, password_confirmation: password) if AdminUser.exists?(email:mail)
 
-credit=Credit.find(1)
+credit=Credit.find_or_create_by(id:1)
 credit.update_columns(cost_in_cents: 99, credits:500000, title: '500K credits')
-credit=Credit.find(2)
+credit=Credit.find_or_create_by(id:2)
 credit.update_columns(cost_in_cents: 299, credits:2500000, title: '2.5M credits')
-credit=Credit.find(3)
+credit=Credit.find_or_create_by(id:3)
 credit.update_columns(cost_in_cents: 399, credits:4000000, title: '4M credits')
-credit=Credit.find(4)
+credit=Credit.find_or_create_by(id:4)
 credit.update_columns(cost_in_cents: 599, credits:5000000, title: '5M credits')
 
 texas_holdem_foldup = "texas_holdem_foldup"
@@ -30,7 +32,7 @@ angry_finches = "angry_finches"
 lol = "lol"
 
 game=Game.find_or_create_by(order_id: 10, is_skipped_login: true, fid:texas_holdem_foldup, title: "Texas Holdem Foldup", offsetX:"0px", offsetY:"0px", width:'100%', height:'600px', text: '', url: "https://game.yourplaceforfun.com")
-game.update_column(text: "<p class='big text-center'> The most popular card game in the world just got better and more thrilling! With Texas Hold’em Fold Up, you play Texas Hold’em against virtual robots. If any of the virtual robots fold during the hand they fold up to show you their hold cards, providing you with a lot more information, and strategies. </p> <p class='big text-center'> Every time that a robot folds up, the odds change, the excitement changes, and how you play your hand changes. This additional information should make it easier to determine if you should fold, check, or raise your hand. </p> <p></p> <div class='boxsection_01'> <h2 class='title'>Instructions</h2> <div class='box_left01'> <!--<div class='title_sec'><h3>Instructions</h3></div>--> <div class='desc'> <p class='big'>1. If you want win the bonus - click on the button 'bonus bet' and make any bet before clicking on the button 'start game'.</p> <p class='big'>2. Make the bet and play Texas Hold'em Fold Up (sm) against five other virtual players.</p> <p class='big'>3. If you win the pot you get BOTH the pot and the TEXAS HOLD EM FOLD UP BONUS. If you split the pot you get half of the TEXAS HOLD EM FOLD UP BONUS</p> <p class='big'>4. You choose the amount of your bet for each hand and the five other virtual players will match your bet, creating the pot.</p> </div> </div> <div class='box_right01'> <!--<div class='title_sec'><h3>This is other half</h3></div>--> <div class='desc'> <p class='big'>5. If any of the virtual players fold, they will fold the cards face up, showing you what they folded.</p> <p class='big'>6. If you choose to call, raise, or go ALL IN, you can only bet the maximium amount of credits that you have displayed at the start of the game in the CREDITS window.</p> <p class='big'>7. The button moves each hand. You will be the first to act on the first hand, and last to act on the sixth, and so on.</p> <p class='big'>8. All virtual players have the same amount of credits you do.</p> </div> </div> <div class='clr'></div> </div>")
+game.update_columns(text: "<p class='big text-center'> The most popular card game in the world just got better and more thrilling! With Texas Hold’em Fold Up, you play Texas Hold’em against virtual robots. If any of the virtual robots fold during the hand they fold up to show you their hold cards, providing you with a lot more information, and strategies. </p> <p class='big text-center'> Every time that a robot folds up, the odds change, the excitement changes, and how you play your hand changes. This additional information should make it easier to determine if you should fold, check, or raise your hand. </p> <p></p> <div class='boxsection_01'> <h2 class='title'>Instructions</h2> <div class='box_left01'> <!--<div class='title_sec'><h3>Instructions</h3></div>--> <div class='desc'> <p class='big'>1. If you want win the bonus - click on the button 'bonus bet' and make any bet before clicking on the button 'start game'.</p> <p class='big'>2. Make the bet and play Texas Hold'em Fold Up (sm) against five other virtual players.</p> <p class='big'>3. If you win the pot you get BOTH the pot and the TEXAS HOLD EM FOLD UP BONUS. If you split the pot you get half of the TEXAS HOLD EM FOLD UP BONUS</p> <p class='big'>4. You choose the amount of your bet for each hand and the five other virtual players will match your bet, creating the pot.</p> </div> </div> <div class='box_right01'> <!--<div class='title_sec'><h3>This is other half</h3></div>--> <div class='desc'> <p class='big'>5. If any of the virtual players fold, they will fold the cards face up, showing you what they folded.</p> <p class='big'>6. If you choose to call, raise, or go ALL IN, you can only bet the maximium amount of credits that you have displayed at the start of the game in the CREDITS window.</p> <p class='big'>7. The button moves each hand. You will be the first to act on the first hand, and last to act on the sixth, and so on.</p> <p class='big'>8. All virtual players have the same amount of credits you do.</p> </div> </div> <div class='clr'></div> </div>")
 
 Game.find_or_create_by(order_id: 20, fid:video_poker_jack, title: "Video Poker Jack", text: '', url: "/video_poker_jack/index.html")
 Game.find_or_create_by(order_id: 50, fid:spider_solitaire, title: "Spider Solitaire", text: '', url: "/spider_solitaire/index.html")
@@ -46,7 +48,7 @@ Game.find_or_create_by(order_id: 90, fid:candy_super_lines, title: "Candy Super 
 Game.find_or_create_by(order_id: 100, fid:angry_finches, title: "Angry Finches", text: '', url: "/angry_finches/index.html")
 
 game=Game.find_or_create_by(order_id: 110, is_embedded: false, fid:lol, title: "League of Legends", offsetX:"-40px", offsetY:"30px", width:'1024px', height:'772px', text: '', url: "https://lol.yourplaceforfun.com", fb_url: "https://apps.facebook.com/1085475714893018/")
-game.update_column(text: "<ul style='color:black'>Supported browsers on:<li><b>Windows:</b> Firefox, Safari, Internet Explorer, Opera v.36 or less.</li><li> <b>Mac OS X:</b> Firefox, Safari</li></ul>")
+game.update_columns(text: "<ul style='color:black'>Supported browsers on:<li><b>Windows:</b> Firefox, Safari, Internet Explorer, Opera v.36 or less.</li><li> <b>Mac OS X:</b> Firefox, Safari</li></ul>")
 
 
 
@@ -105,6 +107,9 @@ game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 
 
 # test data
+(1..10).each do |i|
+  User.create(email:"s#{i}@s.ru",password:"123")
+end
 User.take(10).each do |user|
   Game.all.each do |game|
     (1..2).each do

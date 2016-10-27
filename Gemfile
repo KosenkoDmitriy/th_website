@@ -56,3 +56,5 @@ gem 'omniauth-facebook'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
+
+gem 'whenever', :require => false

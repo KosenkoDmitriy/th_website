@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  text: MyText
+  interval: MyString
+  is_published: false
+  is_email: false
+  is_sms: false
+
+two:
+  title: MyString
+  text: MyText
+  interval: MyString
+  is_published: false
+  is_email: false
+  is_sms: false

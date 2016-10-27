@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024152653) do
+ActiveRecord::Schema.define(version: 20161027121637) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(version: 20161024152653) do
   end
 
   add_index "login_histories", ["user_id"], name: "index_login_histories_on_user_id"
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "text"
+    t.string   "interval"
+    t.boolean  "is_published", default: true
+    t.boolean  "is_email",     default: true
+    t.boolean  "is_sms",       default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"

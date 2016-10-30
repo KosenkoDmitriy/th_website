@@ -15,9 +15,9 @@
    total_scores = 0
 %>
 
-
+<%= text = " # #{'Game'.center(29, ' ')} Player #{ "Scores".rjust(18, ' ')}" %>
 <% Remind.user_in_top10_of_all_games_for_cur_mo(user).each do |item| %>
     <% total_scores += item[:uscores] %>
-    <%= item[:no] %>. <%= item[:gtitle] %> <%= item[:uname] %> <%= item[:uscores] %>
+<%= "#{item[:no].to_s.rjust(2, ' ')}. #{item[:gtitle].ljust(27, ' ')} #{item[:uname].rjust(5,' ')} #{item[:uscores].to_s.rjust(20, ' ')}" %>
 <% end %>
-    Total Scores: <%= total_scores %>
+Total Scores: <%= total_scores %>

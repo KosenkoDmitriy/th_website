@@ -67,7 +67,6 @@ module Remind
         if user.try(:display_name) == score.try(:user).try(:display_name)
           list[:no]=no
           list[:gtitle]=game.try(:title)
-          # text+="YOU (#{score.user.full_name}) \t"
           list[:uname]="YOU"
           list[:uscores]=score.try(:sum)
           dict << list

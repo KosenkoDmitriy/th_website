@@ -1,0 +1,55 @@
+<%
+   if user
+%>
+    <h2><%= user.full_name %> in top ten list for all games (Example) </h2>
+    <table class="index_table index">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Game</th>
+        <th>Player</th>
+        <th>Score</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% gid = 0
+         total_amount = 0
+
+         Game.order(:title).each do |game| %>
+          <%
+             gid += 1
+             no = 0
+             ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
+       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)} AND sc.created_at >= '#{dt1}' AND sc.created_at <= '#{dt2}'
+       GROUP BY g.title, u.full_name ORDER BY g.title, sum DESC limit #{top}
+                                      ").each do |score|
+          %>
+              <tr>
+                <% if user.try(:display_name) == score.try(:user).try(:display_name) %>
+                    <% total_amount += score.try(:sum) %>
+                    <td><%= gid %></td>
+                    <td><%= link_to game.try(:title), admin_game_path(game) %></td>
+                    <td><%= link_to "YOU (#{score.user.full_name})", admin_user_path(score.user) %></td>
+                    <td><%= score.try(:sum) %></td>
+                <% else %>
+
+                <% end %>
+              </tr>
+          <% end %>
+      <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><b>Totally</b></td>
+        <td>
+          <b><%= total_amount %><%#= ScoreHistory.find_by_sql("SELECT SUM(sc.amount) as sum FROM score_histories sc, users u
+       WHERE  sc.created_at >= '#{dt1}' AND sc.created_at <= '#{dt2}' AND u.id = sc.user_id AND u.id = #{user.try(:id) }
+       GROUP BY u.full_name ORDER BY sum DESC
+                                ").try(:first).try(:sum) #%></b></td>
+      </tr>
+      </tbody>
+
+    </table>
+
+    <br><br>
+<% end %>

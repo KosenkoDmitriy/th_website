@@ -10,3 +10,14 @@
 
 <%= render plain: Remind.top_list_as_text(User.first) %>
 
+<%
+   user = current_user.present? ? current_user : User.first
+   total_scores = 0
+%>
+
+
+<% Remind.user_in_top10_of_all_games_for_cur_mo(user).each do |item| %>
+    <% total_scores += item[:uscores] %>
+    <%= item[:no] %>. <%= item[:gtitle] %> <%= item[:uname] %> <%= item[:uscores] %>
+<% end %>
+    Total Scores: <%= total_scores %>

@@ -46,7 +46,7 @@ module Remind
 
   end
 
-  def self.user_in_top10_of_all_games user
+  def self.user_in_top10_of_all_games_for_cur_mo user
 
     @top = 10
     days_in_month = Time.days_in_month(Time.now.month-1, Time.now.year) #.months_ago(1).month)
@@ -88,7 +88,7 @@ module Remind
 
     gid=0
     total_amount = 0
-    text = " # #{'Game'.center(29, ' ')} Player #{ "Scores".rjust(18,' ')}  \n"
+    text = " # #{'Game'.center(29, ' ')} Player #{ "Scores".rjust(18, ' ')}  \n"
     # text+="".center(50,' ')+"\n"
     Game.order(:title).each do |game|
 
@@ -105,7 +105,7 @@ module Remind
           text+=game.try(:title).ljust(27, ' ')+"\t"
           # text+="YOU (#{score.user.full_name}) \t"
           text+="  YOU   \t"
-          text+="#{score.try(:sum)}".rjust(10,' ')+"\n"
+          text+="#{score.try(:sum)}".rjust(10, ' ')+"\n"
         else
 
         end

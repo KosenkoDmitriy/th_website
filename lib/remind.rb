@@ -46,6 +46,37 @@ module Remind
 
   end
 
+  def self.user_in_top10_of_all_games user
+
+    @top = 10
+    days_in_month = Time.days_in_month(Time.now.month-1, Time.now.year) #.months_ago(1).month)
+    dt_utc = DateTime.now.utc #.months_ago(1) prev month
+    @dt1 = DateTime.new(dt_utc.year, dt_utc.month, 1).strftime("%Y-%m-%d")
+    @dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month).strftime("%Y-%m-%d")
+    @time_range = @dt1..@dt2
+
+    no = 0
+    dict = []
+    Game.order(:title).each do |game|
+      no += 1
+      list = {}
+      ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
+       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)} AND sc.created_at >= '#{@dt1}' AND sc.created_at <= '#{@dt2}'
+    GROUP BY g.title, u.full_name ORDER BY g.title, sum DESC limit #{@top}
+                               ").each do |score|
+        if user.try(:display_name) == score.try(:user).try(:display_name)
+          list[:no]=no
+          list[:gtitle]=game.try(:title)
+          # text+="YOU (#{score.user.full_name}) \t"
+          list[:uname]="YOU"
+          list[:uscores]=score.try(:sum)
+          dict << list
+        end
+      end
+    end
+    return dict
+  end
+
   def self.top_list_as_text user
 
     @top = 10

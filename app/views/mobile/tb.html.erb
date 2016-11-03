@@ -167,3 +167,46 @@
 
 
 
+<div class="row">
+  <div class="col-xs-6">
+    <%=t("credit.s.fortune_wheel")%>
+    <%= render partial: "shared/fortune_wheel" %>
+  </div>
+  <div class="col-xs-6">
+
+    <% if @creditList.present? && @creditList.any? %>
+        <% if current_user
+             class_list = "credits"
+             btn_label = "Buy"
+             url = user_orders_path(current_user)
+           else
+             class_list = "credits_big"
+             btn_label = "Login and Buy"
+             url = signin_path
+           end %>
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>$</th>
+            <th>credits</th>
+            <th>action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @creditList.each do |credit| %>
+              <%= render partial: "orders/form_btn_buy", locals: {object: credit.try(:order) || @order, credit: credit, btn_label: btn_label} %>
+          <% end %>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="3"></td>
+          </tr>
+          </tfoot>
+        </table>
+        </div>
+    <% else %>
+        <%=t("credit.s.not_found")%>
+    <% end %>
+
+  </div>
+</div>

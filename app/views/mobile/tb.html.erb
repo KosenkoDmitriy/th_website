@@ -84,17 +84,17 @@
 
 
 <!--<div class="row">-->
-  <!--<div class="col-xs-1 col-xs-offset-1">-->
-    <!--<%#= image_tag "heart-shape.png", class: "heartshape", alt: "" #%>-->
-  <!--</div>-->
-  <!--<div class="col-xs-8 col-xs-offset-2">-->
-    <!--<%#= render partial: "games/tab_list" #%>-->
-  <!--</div>-->
+<!--<div class="col-xs-1 col-xs-offset-1">-->
+<!--<%#= image_tag "heart-shape.png", class: "heartshape", alt: "" #%>-->
+<!--</div>-->
+<!--<div class="col-xs-8 col-xs-offset-2">-->
+<!--<%#= render partial: "games/tab_list" #%>-->
+<!--</div>-->
 <!--</div>-->
 
 <div class="row">
   <!--<div class="col-xs-2">-->
-    <!--<%= image_tag "heart-shape.png", class: "heartshape", alt: "" %>-->
+  <!--<%= image_tag "heart-shape.png", class: "heartshape", alt: "" %>-->
   <!--</div>-->
   <!--<div class="col-xs-9 col-xs-push-1">-->
 
@@ -117,8 +117,10 @@
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Popular Games</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">New Games</a></li>
+        <li role="presentation" class="active">
+          <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Popular Games</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">New Games</a>
+        </li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">A-Z</a></li>
       </ul>
 
@@ -127,34 +129,34 @@
         <div role="tabpanel" class="tab-pane active" id="home">
           <% if @games.present? && @games.any? %>
               <div class="row">
-              <% @games.try(:order, counter: :desc).each do |game| %>
-                  <%= render partial: "mobile/game", locals: {game: game} %>
-              <% end %>
+                <% @games.try(:order, counter: :desc).each do |game| %>
+                    <%= render partial: "mobile/game", locals: {game: game} %>
+                <% end %>
               </div>
           <% else %>
-              <p class="big text-center"><%=t("game.s.not_found")%></p>
+              <p class="big text-center"><%= t("game.s.not_found") %></p>
           <% end %>
         </div>
         <div role="tabpanel" class="tab-pane" id="profile">
           <% if @games.present? && @games.any? %>
               <div class="row">
-              <% @games.order(created_at: :desc).each do |game| %>
-                  <%= render partial: "mobile/game", locals: {game: game} %>
-              <% end %>
+                <% @games.order(created_at: :desc).each do |game| %>
+                    <%= render partial: "mobile/game", locals: {game: game} %>
+                <% end %>
               </div>
           <% else %>
-              <p class="big text-center"><%=t("game.s.not_found")%></p>
+              <p class="big text-center"><%= t("game.s.not_found") %></p>
           <% end %>
         </div>
         <div role="tabpanel" class="tab-pane" id="messages">
           <% if @games.present? && @games.any? %>
               <div class="row">
-              <% @games.try(:order, :title).each do |game| %>
-                  <%= render partial: "mobile/game", locals: {game: game} %>
-              <% end %>
+                <% @games.try(:order, :title).each do |game| %>
+                    <%= render partial: "mobile/game", locals: {game: game} %>
+                <% end %>
               </div>
           <% else %>
-              <p class="big text-center"><%=t("game.s.not_found")%></p>
+              <p class="big text-center"><%= t("game.s.not_found") %></p>
           <% end %>
         </div>
       </div>
@@ -169,7 +171,7 @@
 
 <div class="row">
   <div class="col-xs-6">
-    <%=t("credit.s.fortune_wheel")%>
+    <%= t("credit.s.fortune_wheel") %>
     <%= render partial: "shared/fortune_wheel" %>
   </div>
   <div class="col-xs-6">
@@ -203,10 +205,91 @@
           </tr>
           </tfoot>
         </table>
-        </div>
     <% else %>
-        <%=t("credit.s.not_found")%>
+        <%= t("credit.s.not_found") %>
     <% end %>
 
   </div>
 </div>
+
+<!--video-->
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+    <%= video_tag "video.mov", size: "400x720", controls: true %>
+  </div>
+  <div class="col-xs-2"></div>
+</div>
+
+
+
+<!--footer-->
+
+<!--<div class="row">-->
+  <!--<div class="col-xs-4 col-xs-offset-1">-->
+    <!--<%= image_tag("cashe-credit-banner") %>-->
+  <!--</div>-->
+  <!--<div class="col-xs-8">-->
+
+  <!--</div>-->
+<!--</div>-->
+
+<!-- /.container -->
+   <div class="bg-red">
+    <div class="container container-narrow">
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="ribbon1 text-center">
+            <a href="<%= credits_url %>">
+              <%= image_tag "cashe-credit-banner", class: "", alt: "win more credits" %>
+              <br>
+              <span>Cash, Credits <br>and <br>Free Spins!</span>
+            </a>
+          </div>
+          <div class="ribbon text-center">
+            <a href="<%= root_path %>">
+              <%= image_tag "logo.png", class: "img-responsive", alt: "logo" %>
+            </a>
+            <br>
+            <span class="">All Rights <br>Reserved <%= Date.today.year %> </span>
+          </div>
+        </div>
+
+        <div class="col-xs-offset-1 col-xs-8">
+          <a href="<%= credits_url %>">
+            <h3>Get more credits now</h3>
+          </a>
+
+          <a href="<%= sign_in_up_url %>">
+            <p class="big">register or login to the website and will get the bonus</p>
+          </a>
+
+          <!--<ul>-->
+          <!--<li>Texas Holdem</li>-->
+          <!--</ul>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="with-ribbon bg-black">
+    <div class="container container-narrow">
+      <div class="row">
+        <div class="col-xs-3">
+        </div>
+        <div class="col-xs-offset-1 col-xs-8 valign">
+          <p>Navigation Menu:</p>
+
+          <a href="<%= root_path %>#home">Home</a><br>
+          <a href="<%= root_path %>#games">Games</a><br>
+          <a href="<%= root_path %>#credits">Credits</a><br>
+          <a href="<%= root_path %>#sign_up_in">Sign Up</a><br>
+          <a href="<%= root_path %>#sign_up_in">Sign In</a><br>
+
+          <!--<a href="#">Downloads</a><br>-->
+          <!--<a href="#">About</a><br>-->
+          <!--<a href="#">Contact</a><br>-->
+        </div>
+      </div>
+    </div>
+  </div>
+

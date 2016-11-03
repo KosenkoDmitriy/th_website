@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
 
   def tb # twitter boostrap 3
+    @games=Game.all
     @user_empty = User.new
     session[:is_mobile] = true
     render layout: 'mobile', template: 'mobile/tb'

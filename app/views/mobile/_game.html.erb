@@ -1,0 +1,7 @@
+<div class="col-xs-4">
+  <% url = game_path game %>
+  <a href="<%= url %>">
+    <img src='/<%= game.try(:fid) %>/logo.jpg' class='img-responsive' style="height:120px" alt='<%= game.try(:title) %>' width='100%' height='100%'/>
+  </a>
+  <%=game.try(:title)%>
+</div>

@@ -101,10 +101,69 @@
   <div class="col-xs-10 col-xs-push-1 col-xs-pull-1">
     <%= image_tag "try-mobile.png", alt: "" %>
 
+
     <h3><%= t("game.s.title1") %> <span class="boldtxt"> <%= t("game.s.title2") %></span></h3>
 
     <div class="blog_counter"><%= @games.try(:count) %></div>
+
+
+    <script>
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+    <div>
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Popular Games</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">New Games</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">A-Z</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+          <% if @games.present? && @games.any? %>
+              <div class="row">
+              <% @games.try(:order, counter: :desc).each do |game| %>
+                  <%= render partial: "mobile/game", locals: {game: game} %>
+              <% end %>
+              </div>
+          <% else %>
+              <p class="big text-center"><%=t("game.s.not_found")%></p>
+          <% end %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+          <% if @games.present? && @games.any? %>
+              <div class="row">
+              <% @games.order(created_at: :desc).each do |game| %>
+                  <%= render partial: "mobile/game", locals: {game: game} %>
+              <% end %>
+              </div>
+          <% else %>
+              <p class="big text-center"><%=t("game.s.not_found")%></p>
+          <% end %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="messages">
+          <% if @games.present? && @games.any? %>
+              <div class="row">
+              <% @games.try(:order, :title).each do |game| %>
+                  <%= render partial: "mobile/game", locals: {game: game} %>
+              <% end %>
+              </div>
+          <% else %>
+              <p class="big text-center"><%=t("game.s.not_found")%></p>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </div>
+
+
 
 

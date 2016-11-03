@@ -11,5 +11,7 @@
  * file per style scope.
  *
  *= require_tree ./mobile
+ * require ./mobile/bootstrap.min.css
+ * require ./mobile/style.css.scss
  *= require_self
  */

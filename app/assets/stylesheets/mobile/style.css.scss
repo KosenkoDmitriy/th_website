@@ -1,3 +1,23 @@
-.mobile_signup_container { padding: 15px 30px 250px 30px; }
-.mobile_signup { padding: 35px; }
-.errors { color:darkred; }
+.mobile_signup_container {
+  padding: 15px 30px 250px 30px;
+}
+
+.mobile_signup {
+  padding: 35px;
+}
+
+.errors {
+  color: darkred;
+}
+
+body {
+  background: image-url('main_bg01.jpg') no-repeat top center;
+  //width: 100%;
+  //min-height: 1650px;
+  //overflow: hidden;
+}
+
+.section04 {
+  background: #030303 image-url('game-section-bg.jpg') center top no-repeat;
+}
+

@@ -102,9 +102,9 @@
     <%= image_tag "try-mobile.png", alt: "" %>
 
 
-    <h3><%= t("game.s.title1") %> <span class="boldtxt"> <%= t("game.s.title2") %></span></h3>
-
-    <div class="blog_counter"><%= @games.try(:count) %></div>
+    <h3><%= t("game.s.title1") %> <span class="boldtxt"> <%= t("game.s.title2") %></span>
+      <span class="badge"><%= @games.try(:count) %></span>
+    </h3>
 
 
     <script>

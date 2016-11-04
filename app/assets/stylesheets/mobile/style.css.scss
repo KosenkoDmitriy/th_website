@@ -22,3 +22,34 @@ body {
   //height:436px;
 }
 
+footer .ribbon1 {
+  border-bottom: 1px solid #d10000;
+  background: #850000 image-url('redsection_bg') 0 0 repeat-x;
+}
+
+footer .ribbon2 {
+  //border-bottom: 1px solid #d10000;
+  background: #000 image-url('footer_bg01') no-repeat top center;
+}
+
+footer .bottom {
+  width: 100%;
+  background: #000;
+  border-top: 1px solid #282428;
+  border-bottom: 0px solid #130e08;
+  min-height: 51px;
+}
+
+footer .logo {
+  background: #000 image-url('footer_logo-bg') no-repeat top center;
+}
+
+footer .logo_pre {
+  //background: #000 image-url('cashe-credit-banner') no-repeat top center;
+  //min-height: 200px;
+
+  //position: absolute;
+  //z-index: 1;
+  margin: -18px 0 0 6em;
+}
+

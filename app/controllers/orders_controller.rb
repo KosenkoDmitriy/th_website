@@ -23,9 +23,11 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new(:express_token => params[:token])
     @creditList = credits
+    @games = Game.all
   end
 
   def show
+    @games = Game.all
     token = params[:token]
     payer_id = params[:PayerID]
     if token.present? && payer_id.present?

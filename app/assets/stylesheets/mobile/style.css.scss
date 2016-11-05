@@ -18,11 +18,11 @@ body {
 }
 
 .section04 {
-  background: #030303 image-url('game-section-bg.jpg') center center fixed no-repeat;
+  background: #030303 image-url('game-section-bg.jpg') center center no-repeat;
   //height:436px;
-  -webkit-background-size: 100% auto;
-  -moz-background-size: 100% auto;
-  -o-background-size: 100% auto;
+  //-webkit-background-size: 100% auto;
+  //-moz-background-size: 100% auto;
+  //-o-background-size: 100% auto;
   background-size: 100% auto;
 }
 

@@ -31,7 +31,7 @@ candy_super_lines = "candy_super_lines"
 angry_finches = "angry_finches"
 lol = "lol"
 
-game=Game.find_or_create_by(order_id: 10, is_skipped_login: true, fid:texas_holdem_foldup, title: "Texas Holdem Foldup", offsetX:"0px", offsetY:"0px", width:'100%', height:'600px', text: '', url: "https://game.yourplaceforfun.com")
+game=Game.find_or_create_by(order_id: 10, is_skipped_login: false, fid:texas_holdem_foldup, title: "Texas Holdem Foldup", offsetX:"0px", offsetY:"0px", width:'100%', height:'600px', text: '', url: "https://game.yourplaceforfun.com")
 game.update_columns(text: "<p class='big text-center'> The most popular card game in the world just got better and more thrilling! With Texas Hold’em Fold Up, you play Texas Hold’em against virtual robots. If any of the virtual robots fold during the hand they fold up to show you their hold cards, providing you with a lot more information, and strategies. </p> <p class='big text-center'> Every time that a robot folds up, the odds change, the excitement changes, and how you play your hand changes. This additional information should make it easier to determine if you should fold, check, or raise your hand. </p> <p></p> <div class='boxsection_01'> <h2 class='title'>Instructions</h2> <div class='box_left01'> <!--<div class='title_sec'><h3>Instructions</h3></div>--> <div class='desc'> <p class='big'>1. If you want win the bonus - click on the button 'bonus bet' and make any bet before clicking on the button 'start game'.</p> <p class='big'>2. Make the bet and play Texas Hold'em Fold Up (sm) against five other virtual players.</p> <p class='big'>3. If you win the pot you get BOTH the pot and the TEXAS HOLD EM FOLD UP BONUS. If you split the pot you get half of the TEXAS HOLD EM FOLD UP BONUS</p> <p class='big'>4. You choose the amount of your bet for each hand and the five other virtual players will match your bet, creating the pot.</p> </div> </div> <div class='box_right01'> <!--<div class='title_sec'><h3>This is other half</h3></div>--> <div class='desc'> <p class='big'>5. If any of the virtual players fold, they will fold the cards face up, showing you what they folded.</p> <p class='big'>6. If you choose to call, raise, or go ALL IN, you can only bet the maximium amount of credits that you have displayed at the start of the game in the CREDITS window.</p> <p class='big'>7. The button moves each hand. You will be the first to act on the first hand, and last to act on the sixth, and so on.</p> <p class='big'>8. All virtual players have the same amount of credits you do.</p> </div> </div> <div class='clr'></div> </div>")
 
 Game.find_or_create_by(order_id: 20, fid:video_poker_jack, title: "Video Poker Jack", text: '', url: "/video_poker_jack/index.html")
@@ -51,6 +51,9 @@ game=Game.find_or_create_by(order_id: 110, is_embedded: false, fid:lol, title: "
 game.update_columns(text: "<ul style='color:black'>Supported browsers on:<li><b>Windows:</b> Firefox, Safari, Internet Explorer, Opera v.36 or less.</li><li> <b>Mac OS X:</b> Firefox, Safari</li></ul>")
 
 
+
+game=Game.find_by(fid:texas_holdem_foldup)
+game.update_columns(is_skipped_login:false, url:"/texas_holdem_foldup/index.html")
 
 game=Game.find_by(fid:video_poker_jack)
 game.update_columns(offsetX:'', offsetY:'', width:'100%', height:'568px')
@@ -106,21 +109,21 @@ game=Game.find_by(fid:lol)
 game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 
 
-# test data
-(1..10).each do |i|
-  User.create(email:"s#{i}@s.ru",password:"123")
-end
-User.take(10).each do |user|
-  Game.all.each do |game|
-    (1..2).each do
-      ScoreHistory.create(user:user, game:game, amount:rand(10..1000))
-      ScoreHistory.create(user:user, game:game, amount:rand(10..1000), created_at: DateTime.now.months_ago(1))
-    end
-  end
-end
-
-User.take(10).each do |user|
-  (1..28).each do |day|
-    LoginHistory.create(user:user, count:rand(1..5), created_at:DateTime.new(DateTime.now.year, rand(1..12), day))
-  end
-end
+# # test data
+# (1..10).each do |i|
+#   User.create(email:"s#{i}@s.ru",password:"123")
+# end
+# User.take(10).each do |user|
+#   Game.all.each do |game|
+#     (1..2).each do
+#       ScoreHistory.create(user:user, game:game, amount:rand(10..1000))
+#       ScoreHistory.create(user:user, game:game, amount:rand(10..1000), created_at: DateTime.now.months_ago(1))
+#     end
+#   end
+# end
+#
+# User.take(10).each do |user|
+#   (1..28).each do |day|
+#     LoginHistory.create(user:user, count:rand(1..5), created_at:DateTime.new(DateTime.now.year, rand(1..12), day))
+#   end
+# end

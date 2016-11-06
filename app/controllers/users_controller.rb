@@ -3,10 +3,10 @@ require 'digest/md5'
 class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
 
-  protect_from_forgery except: [:login, :flogin, :sub, :add, :get_balance, :set_balance, :get_balance2, :set_balance2]
+  protect_from_forgery except: [:login, :flogin, :sub, :add, :get_balance, :set_balance]
   skip_before_action :verify_authenticity_token
 
-  before_action :allow_webgl, only: [:login, :flogin, :sub, :add, :get_balance, :set_balace, :get_balance2, :set_balance2]
+  before_action :allow_webgl, only: [:login, :flogin, :sub, :add, :get_balance, :set_balace]
   respond_to :html, :json
 
   def index
@@ -282,9 +282,11 @@ class UsersController < ApplicationController
 
   # sub lose amount from balance
   def sub
-    user, credits_from_param = get_user params
+    user, credits_from_param = get_user_by_key params
     if user.present?
       user.credits -= credits_from_param
+      new_score_history user, credits_from_param
+
       if user.save!
         render plain: 'ok', status: 200
         return
@@ -295,9 +297,11 @@ class UsersController < ApplicationController
 
   # add win amount to balance
   def add
-    user, credits_from_param = get_user params
+    user, credits_from_param = get_user_by_key params
     if user.present?
       user.credits += credits_from_param
+      new_score_history user, credits_from_param
+
       if user.save!
         render plain: 'ok', status: 200
         return
@@ -307,17 +311,12 @@ class UsersController < ApplicationController
   end
 
   def set_balance
-    user, credits_from_param = get_user params
+    user, credits_from_param = get_user_by_key params
 
-    fid = request.referrer.split('/')[-2] if request.referrer.present?
-    tfid = params["id"] if params["id"].present?
-    fid = "texas_holdem_foldup" if tfid == "th"
     if user.present?
       dt = credits_from_param - user.credits
-      if Game.exists?(fid:fid) && dt != 0
-        game = Game.find_by(fid:fid)
-        ScoreHistory.create(amount:dt, user:user, game:game)
-      end
+      new_score_history user, dt
+
       user.credits = credits_from_param
       if user.save!
         render plain: 'ok', status: 200
@@ -329,7 +328,7 @@ class UsersController < ApplicationController
 
   # get balance
   def get_balance
-    user, credits_from_param = get_user params
+    user, credits_from_param = get_user_by_key params
     if user.present?
       render plain: "#{user.credits}", status: 200
       return
@@ -343,6 +342,8 @@ class UsersController < ApplicationController
     user, credits_from_param = get_user2
     if user.present?
       user.credits -= credits_from_param
+      new_score_history user, credits_from_param
+
       if user.save!
         render plain: 'ok', status: 200
         return
@@ -354,11 +355,8 @@ class UsersController < ApplicationController
   # add win amount to balance
   def add2
     user, credits_from_param = get_user2
-    fid = request.referrer.split('/')[-2]
-    if Game.exists?(fid:fid) && credits_from_param != 0
-      game = Game.find_by(fid:fid)
-      ScoreHistory.create(amount:credits_from_param, user:user, game:game)
-    end
+    new_score_history user, credits_from_param
+
     if user.present?
       user.credits += credits_from_param
       if user.save!
@@ -372,13 +370,10 @@ class UsersController < ApplicationController
   # set balance by user id from session
   def set_balance2
     user, credits_from_param = get_user2
-    fid = request.referrer.split('/')[-2]
     if user.present?
       dt = credits_from_param - user.credits
-      if Game.exists?(fid:fid) && dt != 0
-        game = Game.find_by(fid:fid)
-        ScoreHistory.create(amount:dt, user:user, game:game)
-      end
+      new_score_history user, dt
+
       user.credits = credits_from_param
       if user.save!
         render plain: 'ok', status: 200
@@ -396,6 +391,20 @@ class UsersController < ApplicationController
       return
     end
     render plain: 'error', status: 404
+  end
+
+  def new_score_history user, amount
+    fid = request.referrer.split('/')[-2] if request.referrer.present?
+
+    # check for mobile app
+    tfid = params["id"] if params["id"].present?
+    fid = "texas_holdem_foldup" if tfid == "th"
+    # end check for mobile app
+
+    if Game.exists?(fid:fid) && amount != 0
+      game = Game.find_by(fid:fid)
+      ScoreHistory.create(amount:amount, user:user, game:game)
+    end
   end
 
   def get_reg
@@ -455,7 +464,7 @@ class UsersController < ApplicationController
 
   private
 
-  def get_user params
+  def get_user_by_key params
     credits = params['a'] if params['a'].present?
     key = params['k'] if params['k'].present?
     if User.exists?(key: key)

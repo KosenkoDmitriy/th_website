@@ -1,5 +1,5 @@
 // JavaScript Document
-$(document).ready(function() {
+$(document).on('ready page:load page:change', function () {
 	$(".tab_content ul li a").click(function() {
 		$('.tab_content ul li a').removeClass();
 		$(this).addClass('select');
@@ -9,7 +9,7 @@ $(document).ready(function() {
   	});
 });
 
-$(document).ready(function() {
+$(document).on('ready page:load page:change', function () {
 	$(".banner_tab ul li a").click(function() {
 		$('.banner_tab ul li a').removeClass();
 		$(this).addClass('select');
@@ -19,7 +19,7 @@ $(document).ready(function() {
   	});
 });
 
-$(document).ready(function() {
+$(document).on('ready page:load page:change', function () {
 	$(".tab_content02 ul li a").click(function() {
 		$('.tab_content02 ul li a').removeClass();
 		$(this).addClass('select');
@@ -29,7 +29,7 @@ $(document).ready(function() {
   	});
 });
 
-$(document).ready(function() {
+$(document).on('ready page:load page:change', function () {
 	$(".tab_content1 ul li a").click(function() {
 		$('.tab_content1 ul li a').removeClass();
 		$(this).addClass('select');

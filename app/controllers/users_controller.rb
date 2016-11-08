@@ -126,9 +126,9 @@ class UsersController < ApplicationController
           end
           session[:user_id] = user.try(:id)
           if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
-            flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
+            #flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
             user.update_column(:last_login_dt, DateTime.now)
-            user.credits += Rails.configuration.x.win_for_login
+            #user.credits += Rails.configuration.x.win_for_login
             LoginHistory.create(count:1, user:user)
           end
 

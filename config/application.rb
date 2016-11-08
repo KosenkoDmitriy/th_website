@@ -25,7 +25,7 @@ module ThWebsite
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # + 100 000 credits after login every day (only one once)
+    # + 10 000 credits after login every day (only one once)
     config.x.win_for_login = 10000
 
     # 35 000 credits for new registraion/sign up

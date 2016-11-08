@@ -66,6 +66,8 @@ en:
     phone: "Phone Number"
     remember_me: "Remember Me"
     go: "Go"
+    sign_in: "Sign In and stand out more"
+    sign_up: "Sign Up and stand out more"
     blocked: "Your blocked"
     empty: "Please relogin or register"
     fw:

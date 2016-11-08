@@ -13,7 +13,7 @@
 
     <!--text01 -->
     <div class="text01">
-      <% if @current_user %>
+      <% if current_user %>
         <h4 id="balance">You have<br />
         <span> <%= number_with_delimiter current_user.try(:fcredits) %> </span> <br />credits</h4>
       <% else %>
@@ -26,7 +26,7 @@
 
     <!--text02 -->
     <div class="text02">
-      <% if @current_user %>
+      <% if current_user %>
           <%= render partial: "shared/errors_flash" %>
           <h4>Welcome <br /><%= if current_user.try(:full_name).try(:present?)
                            current_user.try(:full_name)

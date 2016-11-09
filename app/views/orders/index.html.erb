@@ -21,11 +21,12 @@
         <table class="tournament_list">
           <thead>
           <tr>
-            <th width="5%">#</th>
-            <th width="5%">$</th>
-            <th width="10%">credits</th>
-            <th width="10%">confirm</th>
-            <th width="40%">date time </th>
+            <th width="15%">#</th>
+            <th width="10%">$</th>
+            <th width="20%">credits</th>
+            <th width="15%">confirm</th>
+            <th width="30%">date time </th>
+            <th width="10%">delete</th>
           </tr>
           </thead>
           <tbody>
@@ -43,10 +44,11 @@
                         <td><%= link_to(image_tag("btn_xpress_checkout"), express_checkout_path(order_id: order.try(:id), credit_id: order.try(:credit).try(:id)), class: "btn btn-justified") %></td>
                         <td> <%= fdate order.try(:created_at) %> </td>
                     <% end %>
+                    <td> <%= link_to("x", user_order_path(current_user, order), method: :delete) %> </td>
                   </tr>
               <% end %>
           <% else %>
-              <tr><td colspan="5">No orders</td></tr>
+              <tr><td colspan="6">No orders</td></tr>
           <% end %>
           </tbody>
         </table>

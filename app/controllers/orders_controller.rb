@@ -88,6 +88,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    if Order.exists?(params[:id])
+      order = Order.find(params[:id])
+      if order.destroy
+        flash[:success] = "order ##{order.try(:id)} was deleted successfully"
+      else
+        flash[:error] = "can't delete order ##{order.try(:id)}"
+      end
+    else
+      flash[:error] = "can't find order ##{params[:id]}"
+    end
+    redirect_to :action => 'index'
+  end
+
   def failure
     flash[:error] = "failure"
     # render plain: "failure"

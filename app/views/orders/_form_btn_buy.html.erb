@@ -1,18 +1,18 @@
 <% if object.present? && current_user.present? %>
-    <%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
-        <%= hidden_field_tag :credit_id, credit.try(:id) %>
-        <tr class="<%= cycle("odd", "even") %>">
-          <td>
-            <%= credit.try(:fcost) %>
-          </td>
-          <td>
-            <%= credit.try(:fcredits) %>
-          </td>
-          <td>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td>
+        <%= credit.try(:fcost) %>
+      </td>
+      <td>
+        <%= credit.try(:fcredits) %>
+      </td>
+      <td>
+        <%= form_for(object, url: user_orders_path(current_user), html: {class: "form-horizontal", role: "form"}) do |f| %>
+            <%= hidden_field_tag :credit_id, credit.try(:id) %>
             <%= f.submit btn_label, class: "btn btn-green btn-group-justified" %>
-          </td>
-        </tr>
-    <% end %>
+        <% end %>
+      </td>
+    </tr>
 <% else %>
     <tr class="<%= cycle("odd", "even") %>">
       <td>

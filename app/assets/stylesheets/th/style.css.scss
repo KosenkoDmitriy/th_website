@@ -579,6 +579,7 @@ position: absolute;top: 0;left: 0;}
     font-size: large;
     background-color: transparent;
     border-radius: 20px;
+    padding-left: 8px;
 }
 
 .freespin_banner2 {
@@ -628,7 +629,9 @@ position: absolute;top: 0;left: 0;}
     padding:0;
 }
 
-
+.sign_in_up input {
+  margin-bottom:5px;
+}
 
 .contact_us {
   margin-top:62px !important;
@@ -639,7 +642,12 @@ position: absolute;top: 0;left: 0;}
 }
 
 .contact_us input[type="email"] {
-  border: 1px solid;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+.contact_us input[type="submit"] {
+  width:103%;
 }
 
 .contact_us input {
@@ -647,6 +655,7 @@ position: absolute;top: 0;left: 0;}
   color:whitesmoke;
   background-color: transparent;
   font:normal 20px 'PT sans';
+  padding-left: 6px;
 }
 
 .contact_us textarea {
@@ -654,6 +663,7 @@ position: absolute;top: 0;left: 0;}
   color:whitesmoke;
   background-color: transparent;
   font:normal 20px 'PT sans';
+  padding-left: 6px;
 }
 
 .contact_us .simple_captcha_label {
@@ -669,7 +679,7 @@ position: absolute;top: 0;left: 0;}
 }
 
 .contact_us .simple_captcha .simple_captcha_field, .contact_us .simple_captcha .simple_captcha_image {
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   margin: 0px !important;
   padding: 0px !important;
 }

@@ -12,7 +12,7 @@
   }
   .simple_captcha .simple_captcha_field,
   .simple_captcha .simple_captcha_image{
-      border: 1px solid #ccc;
+      border: 0px solid #ccc;
       margin: 0px 0px 2px 0px !important;
       padding: 5px !important;
   }
@@ -28,8 +28,9 @@
   }
   .simple_captcha .simple_captcha_field input{
     width: 100% !important;
+    border-radius: 20px;
     font-size: 2em;
-    border: none;
+    border: 2px solid #ccc;
     background-color: transparent;
     text-align: center;
   }
@@ -48,7 +49,7 @@
   </div>
 
   <div class='simple_captcha_label'>
-    <%= simple_captcha_options[:label] %>
+    <%#= simple_captcha_options[:label] #%>
   </div>
 
   <!--<div class='simple_captcha_refresh_button'>-->

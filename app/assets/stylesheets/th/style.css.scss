@@ -520,14 +520,13 @@ font-style: normal;
 /*==========flipping images========*/
 .flip-container {-webkit-perspective: 1000;-moz-perspective: 1000;perspective: 1000;}			
 .flip-container:hover .flipper, .flip-container.hover .flipper {-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);transform: rotateY(180deg);}
-.flip-container, .front, .back {width:107px; height:106px;}
+.flip-container, .front, .back {width:184px; height:106px;}
 .flipper{-webkit-transition: 0.6s;-webkit-transform-style: preserve-3d;-moz-transition: 0.6s;-moz-transform-style: preserve-3d;transition: 0.6s;
 #games .flip-container, .front, .back {width:100%; height:100%;}
-
   transform-style: preserve-3d;position: relative;}
 .front, .back {-webkit-backface-visibility: hidden;-moz-backface-visibility: hidden;backface-visibility: hidden;
 position: absolute;top: 0;left: 0;}
-.front {background:#9f0000;z-index: 2;}
+.front {background:#9f0000;z-index: -1;}
 .back {background:#FFF;-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);transform: rotateY(180deg);}
 
 .sub_section03 a {color:#000;text-decoration: none;}

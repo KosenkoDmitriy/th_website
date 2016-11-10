@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   post 'sub2' => 'users#sub2', as: :sub2
   post 'get2' => 'users#get_balance2', as: :get_balance2
   post 'set2' => 'users#set_balance2', as: :set_balance2
-  post 'avatar_url' => "users#avatar_url", as: :avatar_url
+  get 'avatar_url' => "users#avatar_url", as: :avatar_url
 
   post 'get_reg' => 'users#get_reg'
   # end

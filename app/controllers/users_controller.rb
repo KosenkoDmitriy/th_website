@@ -329,6 +329,14 @@ class UsersController < ApplicationController
     render plain: 'error', status: 404
   end
 
+  def avatar_url
+    if current_user.present?
+      render plain: "#{current_user.try(:image_url)}", status: 200
+      return
+    end
+    render plain: 'error', status: 404
+  end
+
   # get balance
   def get_balance
     user, credits_from_param = get_user_by_key params

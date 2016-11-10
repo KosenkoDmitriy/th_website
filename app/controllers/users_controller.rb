@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def sign_in_up
     session[:is_mobile] = nil
     @user_empty = User.new
+    @user_empty = User.new flash[:user] if flash[:user]
     redirect_to user_path current_user if current_user
   end
 
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
 
     @user_empty = user = User.new(user_params)
 
+    flash[:user] = @user_empty
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
       redirect_back_or_sign_in_up
@@ -109,6 +111,7 @@ class UsersController < ApplicationController
     email = params['user']['email'] if params['user'].present? && params['user']['email'].present?
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
     @user_empty = User.new(user_params)
+    flash[:user] = @user_empty
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
       # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
@@ -117,9 +120,9 @@ class UsersController < ApplicationController
     end
     if email.present? && password.present?
       password = pass(password)
-      if User.exists?(email: email, password: password)
-        user = User.find_by(email: email, password: password)
-        if user
+      if User.exists?(email: email)
+        user = User.find_by(email: email)
+        if user.password == password
           if !user.is_active?
             flash[:error] = t("user.blocked")
             redirect_back_or_sign_in_up and return
@@ -147,7 +150,7 @@ class UsersController < ApplicationController
             flash[:error] = 'can not update user info'
           end
         else
-          flash[:error] = 'please signup/register'
+          flash[:error] = 'incorrect password'
         end
       else
         flash[:error] = 'please signup/register'

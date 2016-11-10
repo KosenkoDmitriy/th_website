@@ -1,5 +1,5 @@
 <div class="text-center errors">
   <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+      <%= content_tag :div, msg, class: name if name != 'user' %>
   <% end %>
 </div>

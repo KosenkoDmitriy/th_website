@@ -171,6 +171,12 @@
         <%= render partial: "/admin/high_scores/top_10_in_all_games", locals: {user: user} %>
     <% end %>
 
+    <% user = User.find_by(email: "corporaterider@aol.com) %>
+    <% if user %>
+        <h2>top ten list for each game (example for user: <%= user.full_name %>)</h2>
+        <%= render partial: "/admin/high_scores/top_10_in_all_games", locals: {user: user} %>
+    <% end %>
+
     <% user = User.find_by(email: "mdabaker@aol.com") %>
     <% if user %>
         <h2>top ten list for each game (example for user: <%= user.full_name %>)</h2>

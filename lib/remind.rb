@@ -58,7 +58,30 @@ module Remind
         end
       end
     end
-    return dict
+
+    no = 0
+    dict2 = []
+    Game.order(:title).each do |game|
+      no+=1
+      list = {}
+      list[:no]=no
+      list[:gtitle]=game.try(:title)
+      list[:uname]="not YOU"
+      list[:uscores]=user.score_history.where(game:game).sum(:amount) #ScoreHistory.where(user:user, game:game).sum(:amount)
+      dict2 << list
+    end
+
+    dict2.each do |item2|
+    dict.each do |item|
+      if item[:no] == item2[:no]
+        item2[:gtitle] = item[:gtitle]
+        item2[:uname] = item[:uname]
+        item2[:uscores] = item[:uscores]
+      end
+    end
+    end
+
+    return dict2
   end
 
   def self.unsubscribe

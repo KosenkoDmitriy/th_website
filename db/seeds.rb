@@ -110,39 +110,39 @@ game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 
 
 # test data
-(1..10).each do |i|
-  email = "s#{i}@s.ru"
-  password = "123"
-  if User.exists?(email: email)
-    user=User.find_by(email: email)
-    user.update_columns(full_name: "User #{i}")
-  else
-    User.create(email: email, password: password)
-  end
-end
-
-User.take(10).each do |user|
-  Game.all.each do |game|
-    (1..2).each do
-      ScoreHistory.create(user:user, game:game, amount:rand(10..1000))
-      ScoreHistory.create(user:user, game:game, amount:rand(10..1000), created_at: DateTime.now.months_ago(1))
-    end
-  end
-end
-
-User.take(10).each do |user|
-  (1..28).each do |day|
-    LoginHistory.create(user:user, count:rand(0..5), created_at:DateTime.new(DateTime.now.year, rand(1..12), day))
-  end
-end
-
-# unsubscribe except some users
-User.all.each do |user|
-  ["kosenkodmitryv@gmail.com", ].each do |email|
-    if user.email == email
-      user.update_columns(is_subscribed: true)
-    else
-      user.update_columns(is_subscribed: false)
-    end
-  end
-end
+# (1..10).each do |i|
+#   email = "s#{i}@s.ru"
+#   password = "123"
+#   if User.exists?(email: email)
+#     user=User.find_by(email: email)
+#     user.update_columns(full_name: "User #{i}")
+#   else
+#     User.create(email: email, password: password)
+#   end
+# end
+#
+# User.take(10).each do |user|
+#   Game.all.each do |game|
+#     (1..2).each do
+#       ScoreHistory.create(user:user, game:game, amount:rand(10..1000))
+#       ScoreHistory.create(user:user, game:game, amount:rand(10..1000), created_at: DateTime.now.months_ago(1))
+#     end
+#   end
+# end
+#
+# User.take(10).each do |user|
+#   (1..28).each do |day|
+#     LoginHistory.create(user:user, count:rand(0..5), created_at:DateTime.new(DateTime.now.year, rand(1..12), day))
+#   end
+# end
+#
+# # unsubscribe except some users
+# User.all.each do |user|
+#   ["kosenkodmitryv@gmail.com", ].each do |email|
+#     if user.email == email
+#       user.update_columns(is_subscribed: true)
+#     else
+#       user.update_columns(is_subscribed: false)
+#     end
+#   end
+# end

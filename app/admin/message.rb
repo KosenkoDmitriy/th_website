@@ -2,6 +2,15 @@ ActiveAdmin.register Message do
   #menu false
   permit_params :title, :text, :interval, :is_published, :is_email, :is_sms
 
+
+  filter :title
+  filter :text
+  filter :interval
+  filter :is_published
+  filter :created_at
+  filter :updated_at
+
+
   form do |f| # edit form
     f.semantic_errors *f.object.errors.keys # To display a list of all validation errors:
     inputs 'Details' do

@@ -112,7 +112,7 @@ game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 # test data
 # (1..10).each do |i|
 #   email = "s#{i}@s.ru"
-#   password = "123"
+#   password = Digest::MD5.hexdigest("123")
 #   if User.exists?(email: email)
 #     user=User.find_by(email: email)
 #     user.update_columns(full_name: "User #{i}")
@@ -146,3 +146,5 @@ game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 #     end
 #   end
 # end
+
+# User.all.each {|u| u.update_columns(password:password, credits:rand(3000..55000))}

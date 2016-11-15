@@ -30,7 +30,7 @@ every 1.day do
 end
 
 #every 1.day do  # 1.minute :hour 3.hours 1.day 1.week 1.month 1.year is also supported
-every 1.day, :at => '3:30 pm' do
+every 1.day, :at => '6:00 pm' do
   #runner "User.unsubscribe"
   runner "Remind.daily" #rake "remind:daily"
 end

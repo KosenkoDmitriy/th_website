@@ -19,14 +19,14 @@ module Remind
   def self.score_list messages
     messages.where(is_published: true).each do |msg|
       User.where(is_subscribed: true).each do |user|
-        if msg.is_sms
-          body_text = msg.title + "\n"
-          body_text += msg.text + "\n"
-          #TODO: will sent an sms
-        end
-        if msg.is_email
+        # if msg.is_sms
+        #   body_text = msg.title + "\n"
+        #   body_text += msg.text + "\n"
+        #   #TODO: will sent an sms
+        # end
+        # if msg.is_email
           UserMailer.notify_user(user, msg).deliver_now
-        end
+        # end
       end
     end
   end

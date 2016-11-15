@@ -138,7 +138,7 @@ game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 #
 # # unsubscribe except some users
 # User.all.each do |user|
-#   ["kosenkodmitryv@gmail.com", ].each do |email|
+#   ["kosenkodmitryv@gmail.com", "mdabaker@aol.com", "held.gary@gmail.com"].each do |email|
 #     if user.email == email
 #       user.update_columns(is_subscribed: true)
 #     else

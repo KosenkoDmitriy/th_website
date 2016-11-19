@@ -40,17 +40,17 @@ class User < ActiveRecord::Base
 
   def generate_key_invite email, key_invite
     if key_invite #session[:k].present? # invintation key
-      if User.exists?(key_invite:key_invite) #TODO: && !User.exists?(email:email)
+      if User.exists?(key_invite:key_invite) && !User.exists?(email:email)
         user_refferal = User.find_by(key_invite:key_invite)
         if user_refferal.credits.blank?
           user_refferal.credits = Rails.configuration.x.win_for_invite
         else
           user_refferal.credits += Rails.configuration.x.win_for_invite
         end
+        self.key_invite = user_refferal.id # Digest::MD5.hexdigest(email)
         user_refferal.save
       end
     end
-    self.key_invite =  user_refferal.id # Digest::MD5.hexdigest(email)
   end
 
   private

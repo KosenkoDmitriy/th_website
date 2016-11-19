@@ -1,0 +1,55 @@
+<div class="section03">
+
+  <%= render partial: "shared/errors_flash" %>
+  <%= render partial: "shared/errors", locals: {obj: @user} %>
+
+  <% image_tag "heart-shape.png", class:"heartshape", alt:"" %>
+
+  <br><br>
+  <br><br>
+  <div class="sub_section02">
+    <div class="tab_inner">
+      <div class="sorted_display">
+        <!--<h4>We have 32 tournaments for you</h4>-->
+        <table class="tournament_list">
+          <thead>
+          <tr>
+            <th width="15%">#</th>
+            <th width="15%">Full Name</th>
+            <th width="15%">Email</th>
+            <th width="35%">Your credits for invite</th>
+            <th width="20%">Joined Date Time </th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <% credits = 0
+             id = 0
+             if @users && @users.any? %>
+              <% @users.reverse.each do |order|
+                id+=1
+              credits += Rails.configuration.x.win_for_invite %>
+                  <tr class="<%= cycle('odd', 'even') %>">
+                    <td><%= id %></td>
+                    <td><%= order.try(:full_name) %></td>
+                    <td><%= order.try(:email) %></td>
+                    <td><%= fcredits Rails.configuration.x.win_for_invite %></td>
+                    <td><%= fdate order.try(:created_at) %></td>
+                  </tr>
+              <% end %>
+          <% else %>
+              <tr><td colspan="5">No any invited friends</td></tr>
+          <% end %>
+          <tr class="<%= cycle('odd', 'even') %>">
+            <td colspan="2"></td>
+            <td><b>Totally</b></td>
+            <td><b><%= fcredits credits%></b></td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+</div>

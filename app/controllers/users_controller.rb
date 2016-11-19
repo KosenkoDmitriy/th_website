@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     redirect_to current_user
   end
 
+  def invites
+    @users = User.where(key_invite:current_user.id) #, created_at:current_user.last_login_dt..DateTime.now)
+  end
+
   def show
     check_permissions
     @order = order_new

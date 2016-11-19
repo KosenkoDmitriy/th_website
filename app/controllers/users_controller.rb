@@ -84,22 +84,15 @@ class UsersController < ApplicationController
     user.last_login_dt = DateTime.now
     user.credits = Rails.configuration.x.win_for_reg
 
-    if session[:k].present? # invintation key
-      user_refferal = User.find_by(key_invite:session[:k]) if User.exists?(key_invite:session[:k])
-       if user_refferal.present?
-         # user_refferal.invited << user
-         user_refferal.credits = 0 if user_refferal.credits.blank?
-         user_refferal.credits += Rails.configuration.x.win_for_invite
-         if user_refferal.save
-           # flash[:success] = ""
-         else
-           # flash[:error] = "error refferal"
-           # redirect_back_or_sign_in_up
-           # return
-         end
-       end
-    end
-    user.generate_key_invite email
+    # if session[:k].present? # invintation key
+    #    if User.exists?(key_invite:session[:k])
+    #      user_refferal = User.find_by(key_invite:session[:k])
+    #      user_refferal.credits = 0 if user_refferal.credits.blank?
+    #      user_refferal.credits += Rails.configuration.x.win_for_invite
+    #      user_refferal.save
+    #    end
+    # end
+    # user.generate_key_invite email
 
     # if !user.valid?
     #   user.errors.each do |error|

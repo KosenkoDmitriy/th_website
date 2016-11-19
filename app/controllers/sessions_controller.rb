@@ -16,6 +16,16 @@ class SessionsController < ApplicationController
 
       session[:user_id] = user.try(:id)
 
+      # if session[:k].present? # invintation key
+      #   if User.exists?(key_invite:session[:k])
+      #     user_refferal = User.find_by(key_invite:session[:k])
+      #     user_refferal.credits = 0 if user_refferal.credits.blank?
+      #     user_refferal.credits += Rails.configuration.x.win_for_invite
+      #     user_refferal.save
+      #   end
+      # end
+      user.generate_key_invite user.email
+
       user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]
 
       if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login

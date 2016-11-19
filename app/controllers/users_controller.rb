@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     user.last_login_dt = DateTime.now
     user.credits = Rails.configuration.x.win_for_reg
 
-    user.generate_key_invite email,session[:k]
+    # user.generate_key_invite email,session[:k] # disable invite friends for non facebook (email) users
 
     # if !user.valid?
     #   user.errors.each do |error|

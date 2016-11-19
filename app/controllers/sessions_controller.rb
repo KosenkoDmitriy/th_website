@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
       session[:user_id] = user.try(:id)
 
-      user.generate_key_invite user.email,session[:k]
+      user.generate_key_invite user.email,session[:k] # invite facebook friend
 
       user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]
 

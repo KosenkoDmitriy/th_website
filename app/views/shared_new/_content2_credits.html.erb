@@ -1,30 +1,8 @@
-<%invite_url="#{root_url}sign_in_up?k=#{params[:id]}"%>
+<% invite_url="#{root_url}sign_in_up?k=#{params[:id]}" %>
 <div class="section03" id="credits">
   <%# image_tag "karo.png", class: "heartshape", alt: "" #%>
 
   <div class="sub_section03 sub_section03fw">
-
-    <script>
-        $(document).on('ready page:load page:change', function () {
-
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=535757289936191";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        });
-    </script>
-    <!--<div class="fb-send" data-href="<%=invite_url%>"></div>-->
-    <!--<div class="fb-send" data-href="https://developers.facebook.com/docs/plugins/"></div>-->
-    <div class="fb-send" data-href="https:/yourplaceforfun.com/sign_in_up?k=1"></div>
-    <!--<div class="fb-send" data-href="http:/localhost:3000/sign_in_up?k=1"></div>-->
-
-
-    <h1 style="color:black"><a href=<%=invite_url%>>Invite your friend and get <%= fcredits Rails.configuration.x.win_for_invite %> credits</a> (<%= link_to "View History", invites_path %>)</h1>
-
     <div id="fb-root"></div>
 
     <h2 style="color:black"><%= t("credit.s.fortune_wheel") %></h2>
@@ -40,6 +18,32 @@
     </div>
 
     <div class="section_right section_right2">
+
+      <% if current_user.try(:provider) == 'facebook' %>
+          <script>
+              $(document).on('ready page:load page:change', function () {
+                  (function (d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s);
+                      js.id = id;
+                      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=535757289936191";
+                      fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'facebook-jssdk'));
+              });
+          </script>
+
+          <h1 style="color:black">
+            You could get <%= fcredits Rails.configuration.x.win_for_invite %> credits for each friend
+          </h1>
+
+          <div class="fb-send" data-href="<%= invite_url %>"></div>
+          <!--<div class="fb-send" data-href="https:/yourplaceforfun.com/sign_in_up?k=1"></div>-->
+          <h1 style="color:black">
+            <%= link_to "(View Your Registered Friends)", invites_path %>
+          </h1>
+      <% end %>
+
       <% if @creditList.present? && @creditList.any? %>
           <% if current_user
                class_list = "credits"

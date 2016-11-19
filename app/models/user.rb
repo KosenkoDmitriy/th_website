@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  def generate_key_invite email
+    self.key_invite = Digest::MD5.hexdigest(email)
+  end
+
   private
   def self.update_fields user, auth_hash
     user.full_name = user.name = auth_hash['info']['name']

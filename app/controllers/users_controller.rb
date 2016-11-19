@@ -20,6 +20,8 @@ class UsersController < ApplicationController
     @user = current_user
     @creditList = credits
 
+    session[:k] = nil if session[:k] # invintation key
+
     if session[:is_mobile]
       session[:is_mobile] = nil
       @user_empty = User.new
@@ -37,6 +39,7 @@ class UsersController < ApplicationController
 
   def sign_in_up
     session[:is_mobile] = nil
+    session[:k] = params['k'] if params['k'].present?
     @user_empty = User.new
     @user_empty = User.new flash[:user] if flash[:user]
     redirect_to user_path current_user if current_user
@@ -80,6 +83,23 @@ class UsersController < ApplicationController
     user.confirm_password = ''
     user.last_login_dt = DateTime.now
     user.credits = Rails.configuration.x.win_for_reg
+
+    if session[:k].present? # invintation key
+      user_refferal = User.find_by(key_invite:session[:k]) if User.exists?(key_invite:session[:k])
+       if user_refferal.present?
+         # user_refferal.invited << user
+         user_refferal.credits = 0 if user_refferal.credits.blank?
+         user_refferal.credits += Rails.configuration.x.win_for_invite
+         if user_refferal.save
+           # flash[:success] = ""
+         else
+           # flash[:error] = "error refferal"
+           # redirect_back_or_sign_in_up
+           # return
+         end
+       end
+    end
+    user.generate_key_invite email
 
     # if !user.valid?
     #   user.errors.each do |error|
@@ -167,6 +187,7 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     session[:is_mobile] = nil
     session[:url_back] = nil
+    session[:k] = nil # invintation key
     # flash[:success] = 'See you!'
     redirect_to root_path
   end
@@ -495,6 +516,7 @@ class UsersController < ApplicationController
     pass = Digest::MD5.hexdigest(pass)
     return pass
   end
+
 
   def allow_webgl
     # headers["Access-Control-Allow-Credentials"] = "true"

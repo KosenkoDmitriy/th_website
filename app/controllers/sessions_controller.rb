@@ -16,15 +16,7 @@ class SessionsController < ApplicationController
 
       session[:user_id] = user.try(:id)
 
-      # if session[:k].present? # invintation key
-      #   if User.exists?(key_invite:session[:k])
-      #     user_refferal = User.find_by(key_invite:session[:k])
-      #     user_refferal.credits = 0 if user_refferal.credits.blank?
-      #     user_refferal.credits += Rails.configuration.x.win_for_invite
-      #     user_refferal.save
-      #   end
-      # end
-      user.generate_key_invite user.email
+      user.generate_key_invite user.email,session[:k]
 
       user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]
 

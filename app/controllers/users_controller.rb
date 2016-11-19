@@ -84,15 +84,7 @@ class UsersController < ApplicationController
     user.last_login_dt = DateTime.now
     user.credits = Rails.configuration.x.win_for_reg
 
-    # if session[:k].present? # invintation key
-    #    if User.exists?(key_invite:session[:k])
-    #      user_refferal = User.find_by(key_invite:session[:k])
-    #      user_refferal.credits = 0 if user_refferal.credits.blank?
-    #      user_refferal.credits += Rails.configuration.x.win_for_invite
-    #      user_refferal.save
-    #    end
-    # end
-    # user.generate_key_invite email
+    user.generate_key_invite email,session[:k]
 
     # if !user.valid?
     #   user.errors.each do |error|

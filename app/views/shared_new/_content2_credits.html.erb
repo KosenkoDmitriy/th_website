@@ -2,6 +2,8 @@
   <%# image_tag "karo.png", class: "heartshape", alt: "" #%>
 
   <div class="sub_section03 sub_section03fw">
+    <h1 style="color:black"><a href=<%="#{root_url}sign_in_up?k=#{params[:id]}"%>>Invite your friend and get <%= fcredits Rails.configuration.x.win_for_invite %> credits</a> (<%= link_to "View History", invites_path %>)</h1>
+
     <h2 style="color:black"><%= t("credit.s.fortune_wheel") %></h2>
 
     <div class="section_left section_left2">
@@ -15,7 +17,6 @@
     </div>
 
     <div class="section_right section_right2">
-      <h2 style="color:black">Invite your friend and get <%= fcredits Rails.configuration.x.win_for_invite %> credits </h2> <%= link_to "Invite History", invites_path %>
       <% if @creditList.present? && @creditList.any? %>
           <% if current_user
                class_list = "credits"

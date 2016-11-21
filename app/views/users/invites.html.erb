@@ -37,15 +37,16 @@
                     <td><%= fdate order.try(:created_at) %></td>
                   </tr>
               <% end %>
+              <tr class="<%= cycle('odd', 'even') %>">
+                <td colspan="2"></td>
+                <td><b>Totally</b></td>
+                <td><b><%= fcredits credits%></b></td>
+                <td></td>
+              </tr>
           <% else %>
-              <tr><td colspan="5">No any invited friends</td></tr>
+              <tr><td colspan="5">No any registered friends</td></tr>
           <% end %>
-          <tr class="<%= cycle('odd', 'even') %>">
-            <td colspan="2"></td>
-            <td><b>Totally</b></td>
-            <td><b><%= fcredits credits%></b></td>
-            <td></td>
-          </tr>
+
           </tbody>
         </table>
       </div>

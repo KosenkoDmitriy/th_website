@@ -33,15 +33,32 @@
               });
           </script>
 
-          <h1 style="color:black">
-            You could get <%= fcredits Rails.configuration.x.win_for_invite %> credits for each friend
-          </h1>
+          <!--<p style="color:black">You could invite your friend and-->
+            <!--get <%= fcredits Rails.configuration.x.win_for_invite %> credits</p>-->
 
-          <div class="fb-send" data-href="<%= invite_url %>"></div>
+          <!--Please click on button below to continue <div class="fb-send" data-href="<%= invite_url %>"></div>-->
           <!--<div class="fb-send" data-href="https:/yourplaceforfun.com/sign_in_up?k=1"></div>-->
-          <h1 style="color:black">
-            <%= link_to "(View Your Registered Friends)", invites_path %>
-          </h1>
+          <!--<p style="color:black"><%= link_to "(View Your Registered Friends)", invites_path %></p>-->
+
+          <table>
+            <tr>
+              <td align="center">
+                <h1 style="color:black">Please click on blue button to invite friend and get <%= fcredits Rails.configuration.x.win_for_invite %> credits</h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="fb-send" data-href="<%= invite_url %>"></div>
+                <div class="fb-send" data-href="https:/yourplaceforfun.com/sign_in_up?k=1"></div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center">
+                <%= link_to "[ View your registered friends and earned credits ]", invites_path %>
+              </td>
+            </tr>
+          </table>
+
       <% end %>
 
       <% if @creditList.present? && @creditList.any? %>

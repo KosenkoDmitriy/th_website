@@ -3,6 +3,14 @@
 <head>
   <title><%= t("head.title") %></title>
 
+  <!-- You can use open graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url"           content="https://yourplaceforfun.com/" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="You Place For Fun" />
+  <meta property="og:description"   content="You could get 35,000 credits for sign up and win free credits every 24 hours!" />
+  <meta property="og:image"         content="https://yourplaceforfun.com/logo.png" />
+
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 

@@ -31,7 +31,7 @@
               credits += Rails.configuration.x.win_for_invite %>
                   <tr class="<%= cycle('odd', 'even') %>">
                     <td><%= id %></td>
-                    <td><%= order.try(:full_name) %></td>
+                    <td><%= link_to order.try(:full_name), order.try(:url) %></td>
                     <td><%= order.try(:email) %></td>
                     <td><%= fcredits Rails.configuration.x.win_for_invite %></td>
                     <td><%= fdate order.try(:created_at) %></td>
@@ -44,7 +44,7 @@
                 <td></td>
               </tr>
           <% else %>
-              <tr><td colspan="5">No any registered friends</td></tr>
+              <tr><td colspan="5">Not any registered friends</td></tr>
           <% end %>
 
           </tbody>

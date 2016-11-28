@@ -1,4 +1,3 @@
-<% invite_url="#{root_url}sign_in_up?k=#{params[:id]}" %>
 <div class="section03" id="credits">
   <%# image_tag "karo.png", class: "heartshape", alt: "" #%>
 
@@ -19,47 +18,7 @@
 
     <div class="section_right section_right2">
 
-      <% if current_user.try(:provider) == 'facebook' %>
-          <script>
-              $(document).on('ready page:load page:change', function () {
-                  (function (d, s, id) {
-                      var js, fjs = d.getElementsByTagName(s)[0];
-                      if (d.getElementById(id)) return;
-                      js = d.createElement(s);
-                      js.id = id;
-                      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=535757289936191";
-                      fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'facebook-jssdk'));
-              });
-          </script>
-
-          <!--<p style="color:black">You could invite your friend and-->
-            <!--get <%= fcredits Rails.configuration.x.win_for_invite %> credits</p>-->
-
-          <!--Please click on button below to continue <div class="fb-send" data-href="<%= invite_url %>"></div>-->
-          <!--<div class="fb-send" data-href="https:/yourplaceforfun.com/sign_in_up?k=1"></div>-->
-          <!--<p style="color:black"><%= link_to "(View Your Registered Friends)", invites_path %></p>-->
-
-          <table>
-            <tr>
-              <td align="center">
-                <h1 style="color:black">Please click on blue button to invite friend and get <%= fcredits Rails.configuration.x.win_for_invite %> credits</h1>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="fb-send" data-href="<%= invite_url %>"></div>
-                <!--<div class="fb-send" data-href="https:/yourplaceforfun.com/sign_in_up?k=1"></div>-->
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" align="center">
-                <%= link_to "[ View your registered friends and earned credits ]", invites_path %>
-              </td>
-            </tr>
-          </table>
-
-      <% end %>
+      <%= render partial: "users/invite" %>
 
       <% if @creditList.present? && @creditList.any? %>
           <% if current_user

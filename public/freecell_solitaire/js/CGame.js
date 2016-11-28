@@ -780,7 +780,7 @@ function CGame(oData){
     };
     
     this._calculateScore = function(oCard, iPoint){
-        //alert("_calculateScore"+iPoint);
+        //if (_isDebug) alert("_calculateScore"+iPoint);
 
         var oScore = new CScore();
         oScore.showScore(oCard.getPos(), iPoint);
@@ -788,27 +788,47 @@ function CGame(oData){
     
     this._removeScore = function(){
         _iScore-=POINTS_TO_LOSE;
-        if(_iScore<0){
-            _iScore=0;
-        }
+
+        START_SCORE = oData.starting_points = _iScore;
+
+        var url = "/sub2";
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: 'text',
+            data: {
+                base64data: "testdata",
+                a: POINTS_TO_LOSE,
+                k: "",
+            }
+        });
+
+
+        //if(_iScore<0){
+        //    _iScore=0;
+        //}
         var iTime=750;
         var oScore = new CScore();
         oScore.removeScore(_iScore,iTime);
         _oInterface.fadeScore(_iScore, iTime);
 
-        if (_isDebug) this.gameOver();
+        //if (_isDebug) this.gameOver();
     };
         
     this.updateScore = function(iPoint){
+        //if (_isDebug) alert("updateScore");
+
         _iScore += iPoint;
     };
     
     this.updateVisualScore = function(){
-        //alert("updateVisualScore"+_iScore);
+        //(_isDebug) alert("updateVisualScore"+_iScore);
         _oInterface.refreshScore(_iScore);
     };
     
     this._updateMoves = function(){
+        //if (_isDebug) alert("_updateMoves");
+
         _iMoves++;
         var iTime=750;
         var oScore = new CScore();

@@ -797,7 +797,6 @@ function CGame(oData){
             url: url,
             dataType: 'text',
             data: {
-                base64data: "testdata",
                 a: POINTS_TO_LOSE,
                 k: "",
             }
@@ -816,9 +815,21 @@ function CGame(oData){
     };
         
     this.updateScore = function(iPoint){
-        //if (_isDebug) alert("updateScore");
+        //if (_isDebug) alert("updateScore"+iPoint);
 
         _iScore += iPoint;
+
+        var url = "/add2";
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: 'text',
+            data: {
+                a: iPoint,
+                k: "",
+            }
+        });
+
     };
     
     this.updateVisualScore = function(){

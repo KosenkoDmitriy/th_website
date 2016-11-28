@@ -48,7 +48,7 @@
                         initMoney = parseFloat(msg);
                         var oMain = new CMain({
                                             points_to_lose: -10, //Number of losing points per move
-                                            points_to_win: 5000, //Points win by a complete flush
+                                            points_to_win: 500, //overrided in cgame (Points win by a complete flush)
                                             points_to_start: initMoney // init score
                                            });
                                            
@@ -70,19 +70,31 @@
                     });
 
                     $(oMain).on("restart_level", function(evt, iLevel) {
-                           if(getParamValue('ctl-arcade') === "true"){
+                        if (isAlertOn) alert("restart_level"+iLevel);
+                        if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeRestartLevel({level:iLevel});
                            }
                            //...ADD YOUR CODE HERE EVENTUALLY
                     });
 
-                    $(oMain).on("save_score", function(evt, iScore, szMode) {
-                        if (isAlertOn) alert("save_score"+iScore);
+                    $(oMain).on("save_score", function(evt, PointsToWin, iScore, szMode) {
+                        if (isAlertOn) alert("save_score\n win amount:"+PointsToWin+" score:"+iScore);
                            if(getParamValue('ctl-arcade') === "true"){
                                parent.__ctlArcadeSaveScore({score:iScore, mode: szMode});
                            }
                            //...ADD YOUR CODE HERE EVENTUALLY
-                        if (isAlertOn) alert("save_score_a"+iScore);
+
+                        var url = "/add2";
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            dataType: 'text',
+                            data: {
+                                base64data: "testdata",
+                                a: PointsToWin,
+                                k: "",
+                            }
+                        });
                     });
 
                     $(oMain).on("start_level", function(evt, iLevel) {

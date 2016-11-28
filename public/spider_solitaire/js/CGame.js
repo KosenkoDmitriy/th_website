@@ -827,7 +827,7 @@ function CGame(oData){
     };
     
     this._onExitHelp = function () {
-         _bStartGame = true;         
+         _bStartGame = true;
     };
     
     this.gameOver = function(){  
@@ -840,7 +840,6 @@ function CGame(oData){
     };
 
     this.restartGame = function () {
-        
         this.unload();
         this._init();
     };
@@ -852,8 +851,8 @@ function CGame(oData){
     this._calculateScore = function(oCard, iPoint){
         //alert("_calculateScore"+iPoint);
 
-        var oScore = new CScore();
-        oScore.showScore(oCard.getPos(), iPoint);
+        //var oScore = new CScore();
+        //oScore.showScore(oCard.getPos(), iPoint);
     };
     
     this._removeScore = function(){
@@ -883,19 +882,19 @@ function CGame(oData){
         
     this.updateScore = function(iPoint){
         //alert("updateScore"+iPoint); // when collect flash A2345678910jqk
-        _iScore += iPoint * s_iMode;
-        POINTS_TO_START = oData.points_to_start = _iScore;
-        var url = "/add2";
-        $.ajax({
-            type: "POST",
-            url: url,
-            dataType: 'text',
-            data: {
-                base64data: "testdata",
-                a: iPoint * s_iMode,
-                k: "",
-            }
-        });
+        //_iScore += iPoint; * s_iMode;
+        //POINTS_TO_START = oData.points_to_start = _iScore;
+        //var url = "/add2";
+        //$.ajax({
+        //    type: "POST",
+        //    url: url,
+        //    dataType: 'text',
+        //    data: {
+        //        base64data: "testdata",
+        //        a: iPoint * s_iMode,
+        //        k: "",
+        //    }
+        //});
     };
     
     this.updateVisualScore = function(){

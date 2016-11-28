@@ -53,19 +53,19 @@ function CEndPanel(oSpriteBg){
 
         if(DISABLE_SOUND_MOBILE === false || s_bMobile === false ){
 	        createjs.Sound.play("game_over");
-	}
+	    }
         
         _oMsgTextBack.text = TEXT_GAMEOVER;
         _oMsgText.text = TEXT_GAMEOVER;
         
-        _oScoreTextBack.text = TEXT_SCORE +": "+iScore;
-        _oScoreText.text = TEXT_SCORE +": "+iScore;
+        _oScoreTextBack.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
+        _oScoreText.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
         
         _oGroup.visible = true;
         
         var oParent = this;
         createjs.Tween.get(_oGroup).to({alpha:1 }, 500).call(function() {oParent._initListener();});
-        $(s_oMain).trigger("save_score",[iScore, s_iMode]);
+        $(s_oMain).trigger("save_score",[POINTS_TO_WIN, iScore, s_iMode]);
         $(s_oMain).trigger("end_level",1);
       
         $(s_oMain).trigger("share_event",[iScore]);

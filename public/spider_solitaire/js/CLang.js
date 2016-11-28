@@ -15,7 +15,7 @@ TEXT_HINT2     = "NO MORE MOVES AVAILABLE, CLICK RESTART BUTTON!";
 TEXT_HELP1_PAGE2 = "SCORE SYSTEM";
 TEXT_HELP2_PAGE2 = "You can earn "; 
 
-TEXT_WIN_PAGE2 =  " Points by scoring a royal flush";
+TEXT_WIN_PAGE2 =  " Credits by scoring a royal flush 8 times";
 
 TEXT_LOSE1_PAGE2 = "Don't use too many moves. You lose "; 
 TEXT_LOSE2_PAGE2 = " Point every move";
@@ -32,6 +32,6 @@ TEXT_TOP_MODE = "CHOSE GAME MODE";
 TEXT_SHARE_IMAGE = "200x200.jpg";
 TEXT_SHARE_TITLE = "Congratulations!";
 TEXT_SHARE_MSG1 = "You collected <strong>";
-TEXT_SHARE_MSG2 = " points</strong>!<br><br>Share your score with your friends!";
+TEXT_SHARE_MSG2 = " credits</strong>!<br><br>Share your score with your friends!";
 TEXT_SHARE_SHARE1 = "My score is ";
-TEXT_SHARE_SHARE2 = " points! Can you do better";
+TEXT_SHARE_SHARE2 = " credits! Can you do better";

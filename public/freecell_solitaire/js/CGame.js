@@ -112,7 +112,6 @@ function CGame(oData){
     };
     
     this._shuffleCard = function(bVal){
-        
         var iSuit = -1;
         var aCardDeck=new Array();
         for(var j=0;j<52;j++){
@@ -132,25 +131,32 @@ function CGame(oData){
                 aTmpDeck[i]=aCardDeck[i];
         }
 
-        var aShuffledCardDecks = new Array();
-        while (aTmpDeck.length > 0) {
-                aShuffledCardDecks.push(aTmpDeck.splice(Math.round(Math.random() * (aTmpDeck.length - 1)), 1)[0]);
-        }
-        
-        if(bVal){
-            for(var i=0; i<aShuffledCardDecks.length; i++){
-                _aCard[i] = new CCard (_oStartDeckPos.x, _oStartDeckPos.y, _oCardContainer, 
-                                                    aShuffledCardDecks[i].fotogram,aShuffledCardDecks[i].rank,aShuffledCardDecks[i].suit);
-                
+        if (_isDebug) {
+            for (var i = 0; i < aCardDeck.length; i++) {
+                _aCard[i] = new CCard(_oStartDeckPos.x, _oStartDeckPos.y, _oCardContainer,
+                    aCardDeck[i].fotogram, aCardDeck[i].rank, aCardDeck[i].suit);
+
             }
-            
         } else {
-            for(var i=0; i<aShuffledCardDecks.length; i++){
-                _aCard[i] = new CCard (_oStartDeckPos.x, _oStartDeckPos.y, _oCardContainer, 
-                                                    aCardDeck[i].fotogram, aCardDeck[i].rank, aCardDeck[i].suit);
+            var aShuffledCardDecks = new Array();
+            while (aTmpDeck.length > 0) {
+                aShuffledCardDecks.push(aTmpDeck.splice(Math.round(Math.random() * (aTmpDeck.length - 1)), 1)[0]);
             }
-        }       
-        
+
+            if (bVal) {
+                for (var i = 0; i < aShuffledCardDecks.length; i++) {
+                    _aCard[i] = new CCard(_oStartDeckPos.x, _oStartDeckPos.y, _oCardContainer,
+                        aShuffledCardDecks[i].fotogram, aShuffledCardDecks[i].rank, aShuffledCardDecks[i].suit);
+
+                }
+
+            } else {
+                for (var i = 0; i < aShuffledCardDecks.length; i++) {
+                    _aCard[i] = new CCard(_oStartDeckPos.x, _oStartDeckPos.y, _oCardContainer,
+                        aCardDeck[i].fotogram, aCardDeck[i].rank, aCardDeck[i].suit);
+                }
+            }
+        }
     };
     
     this._setBoard = function(){
@@ -815,21 +821,7 @@ function CGame(oData){
     };
         
     this.updateScore = function(iPoint){
-        //if (_isDebug) alert("updateScore"+iPoint);
-
-        _iScore += iPoint;
-
-        var url = "/add2";
-        $.ajax({
-            type: "POST",
-            url: url,
-            dataType: 'text',
-            data: {
-                a: iPoint,
-                k: "",
-            }
-        });
-
+        //_iScore += iPoint;
     };
     
     this.updateVisualScore = function(){

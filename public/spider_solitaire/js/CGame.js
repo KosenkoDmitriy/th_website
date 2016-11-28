@@ -998,7 +998,9 @@ function CGame(oData){
     POINTS_TO_WIN = oData.points_to_win;
     POINTS_TO_START = oData.points_to_start;
     _oParent = this;    
-    
+    if (s_iMode == 1) POINTS_TO_WIN = 1000;
+    if (s_iMode == 2) POINTS_TO_WIN = 2500;
+    if (s_iMode == 3) POINTS_TO_WIN = 5000;
     this._init();
 }
 

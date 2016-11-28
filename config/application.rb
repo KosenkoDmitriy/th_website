@@ -30,7 +30,8 @@ module ThWebsite
 
     # 35 000 credits for new registraion/sign up
     config.x.win_for_reg = 35000
-    config.x.win_for_invite = 25000
+    config.x.win_for_invite = 25000 # awards for invite fb friend
+    config.x.non_casino_game_fee = 500 #
 
     # api host for webgl
     #config.x.api.host = 'shopomob.ru'

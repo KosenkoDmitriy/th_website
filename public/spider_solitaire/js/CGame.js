@@ -857,11 +857,24 @@ function CGame(oData){
     };
     
     this._removeScore = function(){
-        //alert("removeScore");
-        _iScore--;
-        if(_iScore<0){
-            _iScore=0;
-        }
+        //alert("removeScore"+oData.points_to_lose);
+        _iScore += oData.points_to_lose;
+        POINTS_TO_START = oData.points_to_start = _iScore;
+
+        var url = "/sub2";
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: 'text',
+            data: {
+                base64data: "testdata",
+                a: -oData.points_to_lose,
+                k: "",
+            }
+        });
+        //if(_iScore<0){
+        //    _iScore=0;
+        //}
         var iTime=750;
         var oScore = new CScore();
         oScore.removeScore(_iScore,iTime);
@@ -869,18 +882,17 @@ function CGame(oData){
     };
         
     this.updateScore = function(iPoint){
-
-        //alert("updateScore"+iPoint);
+        //alert("updateScore"+iPoint); // when collect flash A2345678910jqk
         _iScore += iPoint * s_iMode;
-        oData.points_to_start = _iScore;
-        var url = "/set2";
+        POINTS_TO_START = oData.points_to_start = _iScore;
+        var url = "/add2";
         $.ajax({
             type: "POST",
             url: url,
             dataType: 'text',
             data: {
                 base64data: "testdata",
-                a: _iScore,
+                a: iPoint * s_iMode,
                 k: "",
             }
         });

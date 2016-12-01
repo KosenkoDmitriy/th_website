@@ -1,3 +1,5 @@
+<% invite_url="#{root_url}sign_in_up?k=#{params[:id]}" %>
+
 <% if current_user.try(:provider) == 'facebook' %>
     <script>
         $(document).on('ready page:load page:change', function () {

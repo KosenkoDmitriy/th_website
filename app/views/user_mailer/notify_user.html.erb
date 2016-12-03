@@ -3,4 +3,4 @@
 
 <br>
 <br>
-<%= link_to "Unsubscribe", unsubscribe_path(@user.try(:password)) if @user.present? %>
+<%= link_to "Unsubscribe", unsubscribe_url(@user.try(:password)) if @user.present? %>

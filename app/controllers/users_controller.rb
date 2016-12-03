@@ -3,10 +3,10 @@ require 'digest/md5'
 class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
 
-  protect_from_forgery except: [:login, :flogin, :sub, :add, :get_balance, :set_balance]
+  protect_from_forgery except: [:login, :flogin, :sub, :add, :get_balance, :set_balance, :unsubscribe]
   skip_before_action :verify_authenticity_token
 
-  before_action :allow_webgl, only: [:login, :flogin, :sub, :add, :get_balance, :set_balace]
+  before_action :allow_webgl, only: [:login, :flogin, :sub, :add, :get_balance, :set_balace, :unsubscribe]
   respond_to :html, :json
 
   def index
@@ -15,6 +15,19 @@ class UsersController < ApplicationController
 
   def invites
     @users = User.where(key_invite:current_user.id) #, created_at:current_user.last_login_dt..DateTime.now)
+  end
+
+  def unsubscribe
+    key = params["k"] if params["k"].present?
+    if User.exists?(password: key)
+      user = User.find_by(password: key)
+      if user.update_column(:is_subscribed, false)
+        flash[:msg] = "You have unsubscribed successfully"
+      end
+    else
+      flash[:msg] = "user not found"
+      return
+    end
   end
 
   def show

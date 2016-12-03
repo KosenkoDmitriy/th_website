@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'home#index'
 
+  get 'unsubscribe/:k' => 'users#unsubscribe', as: :unsubscribe
+
   get 'mobile/tb' => 'home#tb'
   get 'invites' => "users#invites", as: :invites
 

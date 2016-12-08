@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def unsubscribe
     key = params["k"] if params["k"].present?
-    if User.exists?(password: key)
+    if key.present? && User.exists?(password: key)
       user = User.find_by(password: key)
       if user.update_column(:is_subscribed, false)
         flash[:msg] = "You have unsubscribed successfully"
@@ -443,7 +443,7 @@ class UsersController < ApplicationController
 
   def get_reg
     key = params['k'] if params['k'].present?
-    if User.exists?(key: key)
+    if key.present? && User.exists?(key: key)
       user = User.find_by(key: key)
       render plain: "#{user.full_name}", status: 200
       return
@@ -501,7 +501,7 @@ class UsersController < ApplicationController
   def get_user_by_key params
     credits = params['a'] if params['a'].present?
     key = params['k'] if params['k'].present?
-    if User.exists?(key: key)
+    if key.present? && User.exists?(key: key)
       user = User.find_by(key: key)
       return user, credits.to_f
     end

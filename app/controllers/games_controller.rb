@@ -102,7 +102,7 @@ class GamesController < ApplicationController
       #   return
       # end
 
-      if @game.fid == "lol" || @game.fid == "angry_finches" || @game.fid == "candy_super_lines" || @game.fid == "freecell_solitaire" || @game.fid == "slot_soccer"
+      if @game.fid == "lol" || @game.fid == "angry_finches" || @game.fid == "candy_super_lines" || @game.fid == "freecell_solitaire" || @game.fid == "spider_solitaire" || @game.fid == "slot_soccer"
         if current_user
           current_user.credits -= Rails.configuration.x.non_casino_game_fee
           current_user.save

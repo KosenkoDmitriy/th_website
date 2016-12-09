@@ -35,7 +35,6 @@
         <%= @game.try(:text).try(:present?) ? @game.try(:text).try(:html_safe) : @game.try(:stext).try(:html_safe) %>
       </p>
 
-      <h2 class="title">Top Players</h2>
       <%= render partial: "games/top_list", locals: {user: current_user, items: @top_list, game:@game} %>
     </div>
 

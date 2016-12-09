@@ -6,9 +6,11 @@
         <br>
         <br>
         <% if @game.fid == "texas_holdem_foldup" %>
-            <p style="color:black">This game doesn't support mobile browsers. Please use our mobile app on Android and iOS.</p>
+            <p style="color:black">This game doesn't support mobile browsers. Please use our mobile app on Android and
+              iOS.</p>
         <% elsif @game.fid == "lol" %>
-            <p style="color:black">This game doesn't support mobile browsers. Please use desktop version of browser on notebook or on PC.</p>
+            <p style="color:black">This game doesn't support mobile browsers. Please use desktop version of browser on
+              notebook or on PC.</p>
         <% end %>
     <% else %>
         <div class="game_play">
@@ -29,7 +31,12 @@
           <%= link_to image_tag("buttons/app_store.png", class: "img-responsive col-xs-6", width: " 49%"), I18n.t("th.btn.app_store.url"), alt: I18n.t("th.btn.app_store.alt") %>
           <%= link_to image_tag("buttons/google_play.png", class: "img-responsive col-xs-6", width: "49%"), I18n.t("th.btn.google_play.url"), alt: I18n.t("th.btn.google_play.alt") %>
       <% end %>
-      <p class="big text-center"><%= @game.try(:text).try(:present?) ? @game.try(:text).try(:html_safe) : @game.try(:stext).try(:html_safe) %>
+      <p class="big text-center">
+        <%= @game.try(:text).try(:present?) ? @game.try(:text).try(:html_safe) : @game.try(:stext).try(:html_safe) %>
+      </p>
+
+      <h2 class="title">Top Players</h2>
+      <%= render partial: "games/top_list", locals: {user: current_user, items: @top_list, game:@game} %>
     </div>
 
     <div class="rightside_section" style="margin-top:0px">

@@ -4,7 +4,7 @@
     <div class="sort_tabsection">
       <ul>
         <li><a href="JavaScript:void(0);" class="select">Popular games</a></li>
-        <li><a href="JavaScript:void(0);">New games</a></li>
+        <!--<li><a href="JavaScript:void(0);">New games</a></li>-->
         <!--<li><a href="JavaScript:void(0);">Best bonus</a></li>-->
         <li><a href="JavaScript:void(0);">A-Z</a></li>
       </ul>
@@ -28,19 +28,19 @@
     </div>
     <!--tab news end -->
     <!--tab comment start New Games-->
-    <div class="tab_inner">
-      <div class="sorted_display">
-        <% if @games.present? && @games.any? %>
-            <% @games.order(created_at: :desc).each do |game| %>
-                <%= render partial: "games/game", locals: {game: game} %>
-            <% end %>
-        <% else %>
-            <p class="big text-center"><%=t("game.s.not_found")%></p>
-        <% end %>
+    <!--<div class="tab_inner">-->
+      <!--<div class="sorted_display">-->
+        <!--<%# if @games.present? && @games.any? #%>-->
+            <!--<%# @games.order(created_at: :desc).each do |game| #%>-->
+                <!--<%#= render partial: "games/game", locals: {game: game} #%>-->
+            <!--<%# end #%>-->
+        <!--<%# else #%>-->
+            <!--<p class="big text-center"><%#=t("game.s.not_found")#%></p>-->
+        <!--<%# end #%>-->
 
-        <div class="clr"></div>
-      </div>
-    </div>
+        <!--<div class="clr"></div>-->
+      <!--</div>-->
+    <!--</div>-->
     <!--tab comment end -->
     <!--tab comment start A-Z -->
     <div class="tab_inner">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119095946) do
+ActiveRecord::Schema.define(version: 20161221171700) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -115,6 +115,15 @@ ActiveRecord::Schema.define(version: 20161119095946) do
   end
 
   add_index "simple_captcha_data", ["key"], name: "idx_key"
+
+  create_table "th_login_histories", force: :cascade do |t|
+    t.string   "platform"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "th_login_histories", ["user_id"], name: "index_th_login_histories_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name"

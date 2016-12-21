@@ -243,11 +243,12 @@ class UsersController < ApplicationController
   end
 
 
-  # login from game
+  # email login from game
   def login
     email = params['e'] if params['e'].present?
     password = params['p'] if params['p'].present?
     reg_info = params['r'] if params['r'].present?
+    platform = params['t'] if params['t'].present?
 
     if email.blank? || password.blank?
       render plain: 'please enter your credentials', status: 404
@@ -259,11 +260,15 @@ class UsersController < ApplicationController
     password = pass(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
-    elsif User.exists?(bt: bt) && bt.present? # quik fix for lol game (social login)
+    elsif User.exists?(bt: bt) && bt.present? # quick fix for lol game (social login)
       user = User.find_by(bt: bt)
     end
 
     if user.present?
+      render plain: t("user.blocked"), status: 404 and return if !user.is_active?
+
+      ThLoginHistory.create(user_id:user.try(:id), platform:platform)
+
       user.key = ApplicationHelper.gk(email, password)
       if user.save!
         if reg_info
@@ -280,13 +285,18 @@ class UsersController < ApplicationController
     render plain: 'please signup/register', status: 404
   end
 
-  # facebook login
+  # facebook login from game
   def flogin
     uid = params['u'] if params['u'].present?
     provider = params['p'] if params['p'].present?
     reg_info = params['r'] if params['r'].present?
+    platform = params['t'] if params['t'].present?
+
     if User.exists?(bt: uid, provider: provider)
       user = User.find_by(bt: uid, provider: provider)
+
+      ThLoginHistory.create(user_id:user.try(:id), platform:platform)
+
       render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 
       user.key = ApplicationHelper.gk(user.email, user.password)

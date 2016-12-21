@@ -148,3 +148,14 @@ game.update_columns(stext:'Looking for action? Play this exciting battle game.')
 # end
 
 # User.all.each {|u| u.update_columns(password:password, credits:rand(3000..55000))}
+
+#
+# User.all.each do |user|
+#   if user.email != "s16@s.ru"
+#   game = Game.find_by(fid:"spider_solitaire")
+#   (1..2).each do
+#     ScoreHistory.create(user:user, game:game, amount:rand(10000..50000))
+#     ScoreHistory.create(user:user, game:game, amount:rand(10000..50000), created_at: DateTime.now.months_ago(1))
+#   end
+#   end
+# end

@@ -1,0 +1,24 @@
+<%
+   days_in_month = Time.days_in_month(Time.now.month, Time.now.year) #.months_ago(1).month)
+   dt_utc = DateTime.now.utc #.months_ago(1) prev month
+   dt1 = DateTime.new(dt_utc.year, dt_utc.month, 1).strftime("%Y-%m-%d")
+   dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month).strftime("%Y-%m-%d")
+   time_range = dt1..dt2
+%>
+iOS Total Logins:
+<ul>
+  <li>all time: <%= ThLoginHistory.where(platform: "ios").count %></li>
+  <li>per cur month: <%= ThLoginHistory.where(platform: "ios", created_at: time_range).count %></li>
+</ul>
+
+Android Total Logins:
+<ul>
+<li>all time: <%= ThLoginHistory.where(platform: "android").count %></li>
+<li>per cur month: <%= ThLoginHistory.where(platform: "android", created_at: time_range).count %></li>
+</ul>
+
+Web Total Logins:
+<ul>
+  <li>all time: <%= ThLoginHistory.where(platform: "web").count %></li>
+  <li>per cur month: <%= ThLoginHistory.where(platform: "web", created_at: time_range).count %></li>
+</ul>

@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def signup
-    email = params[:user][:email] if params[:user].present? && params[:user][:email].present?
+    email = params[:user][:email].downcase if params[:user].present? && params[:user][:email].present?
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
     confirm_password = params['user']['confirm_password'] if params['user'].present? && params['user']['confirm_password'].present?
 

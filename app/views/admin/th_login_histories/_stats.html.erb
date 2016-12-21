@@ -17,8 +17,8 @@ Android Total Logins:
 <li>per cur month: <%= ThLoginHistory.where(platform: "android", created_at: time_range).count %></li>
 </ul>
 
-Web Total Logins:
-<ul>
-  <li>all time: <%= ThLoginHistory.where(platform: "web").count %></li>
-  <li>per cur month: <%= ThLoginHistory.where(platform: "web", created_at: time_range).count %></li>
-</ul>
+<!--Web Total Logins:-->
+<!--<ul>-->
+  <!--<li>all time: <%#= ThLoginHistory.where(platform: "web").count #%></li>-->
+  <!--<li>per cur month: <%#= ThLoginHistory.where(platform: "web", created_at: time_range).count #%></li>-->
+<!--</ul>-->

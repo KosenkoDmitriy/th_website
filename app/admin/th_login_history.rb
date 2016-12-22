@@ -1,4 +1,6 @@
 ActiveAdmin.register ThLoginHistory do
+  menu label: "TH Mobile Login History"
+
   # scope :all
   # scope("Popular", default: true) { |scope| scope.reorder(counter: :desc, title: :asc) }
 

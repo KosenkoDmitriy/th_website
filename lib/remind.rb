@@ -46,7 +46,7 @@ module Remind
       no += 1
       list = {}
       ScoreHistory.find_by_sql("SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
-       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)} AND sc.created_at >= '#{@dt1}' AND sc.created_at <= '#{@dt2}'
+       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)} AND sc.amount > 0 AND sc.created_at >= '#{@dt1}' AND sc.created_at <= '#{@dt2}'
     GROUP BY g.title, u.full_name ORDER BY g.title, sum DESC limit #{@top}
                                ").each do |score|
         if user.try(:display_name) == score.try(:user).try(:display_name)

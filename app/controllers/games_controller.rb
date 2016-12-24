@@ -44,7 +44,7 @@ class GamesController < ApplicationController
     dict = []
 
     sql="SELECT *, SUM(sc.amount) as sum, COUNT(u.id) as count_user FROM score_histories sc, users u, games g
-       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)} AND sc.created_at >= '#{@dt1}' AND sc.created_at <= '#{@dt2}'
+       WHERE g.id = sc.game_id and u.id = sc.user_id AND g.id = #{game.try(:id)} AND sc.amount > 0 AND sc.created_at >= '#{@dt1}' AND sc.created_at <= '#{@dt2}'
        GROUP BY u.full_name
        ORDER BY sum DESC "; #limit #{@top}";
     ScoreHistory.find_by_sql(sql).each do |score|

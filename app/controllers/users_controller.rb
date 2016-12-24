@@ -134,12 +134,12 @@ class UsersController < ApplicationController
     password = params['user']['password'] if params['user'].present? && params['user']['password'].present?
     @user_empty = User.new(user_params)
     flash[:user] = @user_empty
-    if !simple_captcha_valid?
-      flash[:error] = t("simple_captcha.message.user")
-      # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
-      redirect_back_or_sign_in_up
-      return
-    end
+    # if !simple_captcha_valid?
+    #   flash[:error] = t("simple_captcha.message.user")
+    #   # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
+    #   redirect_back_or_sign_in_up
+    #   return
+    # end
     if email.present? && password.present?
       password = pass(password)
       if User.exists?(email: email)
@@ -267,7 +267,7 @@ class UsersController < ApplicationController
     if user.present?
       render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 
-      ThLoginHistory.create(user_id:user.try(:id), platform:platform)
+      ThLoginHistory.create(user_id:user.try(:id), platform:platform) if platform.present?
 
       user.key = ApplicationHelper.gk(email, password)
       if user.save!
@@ -295,7 +295,7 @@ class UsersController < ApplicationController
     if User.exists?(bt: uid, provider: provider)
       user = User.find_by(bt: uid, provider: provider)
 
-      ThLoginHistory.create(user_id:user.try(:id), platform:platform)
+      ThLoginHistory.create(user_id:user.try(:id), platform:platform) if platform.present?
 
       render plain: t("user.blocked"), status: 404 and return if !user.is_active?
 

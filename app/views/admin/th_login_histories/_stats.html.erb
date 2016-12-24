@@ -5,20 +5,44 @@
    dt2 = DateTime.new(dt_utc.year, dt_utc.month, days_in_month).strftime("%Y-%m-%d")
    time_range = dt1..dt2
 %>
-iOS Total Logins:
+iOS Logins:
 <ul>
-  <li>all time: <%= ThLoginHistory.where(platform: "ios").count %></li>
-  <li>per cur month: <%= ThLoginHistory.where(platform: "ios", created_at: time_range).count %></li>
+  <li><%= ThLoginHistory.where(platform: "ios").count %> (for all time)</li>
+  <li>per cur month:
+    <ul>
+      <% list = ThLoginHistory.where(platform: "ios", created_at: time_range).group(:user_id).count %>
+      <li><%= list.count %> (total)</li>
+      <li>
+        <% total=0
+           list.each do |item| %>
+            <% total += item.try(:last) - 1 if item.try(:last) > 1 && item.try(:first).present? %>
+        <% end %>
+        <%= total %> (more than once)
+      </li>
+    </ul>
+  </li>
 </ul>
 
-Android Total Logins:
+Android Logins:
 <ul>
-<li>all time: <%= ThLoginHistory.where(platform: "android").count %></li>
-<li>per cur month: <%= ThLoginHistory.where(platform: "android", created_at: time_range).count %></li>
+  <li><%= ThLoginHistory.where(platform: "android").count %> (for all time)</li>
+  <li>per cur month:
+    <ul>
+      <% list = ThLoginHistory.where(platform: "android", created_at: time_range).group(:user_id).count %>
+      <li><%= list.count %> (total)</li>
+      <li>
+        <% total=0
+           list.each do |item| %>
+            <% total += item.try(:last) - 1 if item.try(:last) > 1 && item.try(:first).present? %>
+        <% end %>
+        <%= total %> (more than once)
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <!--Web Total Logins:-->
 <!--<ul>-->
-  <!--<li>all time: <%#= ThLoginHistory.where(platform: "web").count #%></li>-->
-  <!--<li>per cur month: <%#= ThLoginHistory.where(platform: "web", created_at: time_range).count #%></li>-->
+<!--<li>all time: <%#= ThLoginHistory.where(platform: "web").count #%></li>-->
+<!--<li>per cur month: <%#= ThLoginHistory.where(platform: "web", created_at: time_range).count #%></li>-->
 <!--</ul>-->

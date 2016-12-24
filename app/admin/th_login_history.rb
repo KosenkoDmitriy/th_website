@@ -8,4 +8,15 @@ ActiveAdmin.register ThLoginHistory do
 
   sidebar :stats, partial: 'stats', priority:0
 
+
+  index do
+    selectable_column
+    # column "User", :user_id do |u|
+    #   link_to User.find(u).try(:full_name) if u.present?
+    # end
+    column :platform
+    column :user_id
+    column :created_at
+    actions
+  end
 end

@@ -430,6 +430,11 @@ class UsersController < ApplicationController
   # get balance by user id from session
   def get_balance2
     user, credits_from_param = get_user2
+    p=params['f'] if params['f'].present?
+    if p.to_i > 0
+      render plain: "#{fcredits(user.credits)}", status: 200
+      return
+    end
     if user.present?
       render plain: "#{user.credits}", status: 200
       return

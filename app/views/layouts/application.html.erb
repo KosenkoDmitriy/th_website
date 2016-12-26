@@ -37,6 +37,31 @@
   <%= render partial: "shared_new/content2_red_section" %>
   <%= render partial: "shared_new/content2_footer" %>
   <%= render partial: "shared_new/ga" if request.host.include?(Rails.configuration.x.api.host) %>
+
+  <% if current_user %>
+  <script>
+
+      $(document).on('ready page:load page:change', function () {
+
+          var myVar = setInterval(function(){ ajaxsend() }, 5000);
+          function ajaxsend() {
+              $.ajax({
+                  url: "/get2",
+                  type: "POST",
+                  data: { "f": 1 },
+                  success: function(resp){
+                      $("#balance").html("You have <br><span>" + resp + "</span><br> credits");
+//                      alert("Data:" + resp);
+                  },
+                  error: function(xhr, status, error){
+                      $(".price").text(xhr.responseText);
+//                      alert("Error update balance"+error+status+"\n"+xhr.responseText);
+                  }
+              });
+          }
+      });
+  </script>
+      <%end%>
 </div>
 </body>
 </html>

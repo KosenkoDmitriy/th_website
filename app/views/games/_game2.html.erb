@@ -1,0 +1,24 @@
+<% url = game_path game %>
+<ul>
+  <li>
+    <div class="wrapper">
+      <div class="front anim">
+        <a href="<%= url %>">
+          <img src='/<%= game.try(:fid) %>/logo.jpg' alt='<%= game.try(:title) %>' width='100%' height='100%'/>
+        </a>
+      </div>
+      <div class="back anim">
+        <div class="game_img" style="background-color: #008800;">
+          <a style="color:whitesmoke;text-decoration:none; " href="<%= url %>">
+            <div style="height: 132px;text-align: center;">
+              <span style="padding:5px; width:100%; height:132px;display:table-cell;vertical-align: middle;">
+                <%= game.try(:stext) %>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="game_price"><%= game.try(:title) %></div>
+  </li>
+</ul>

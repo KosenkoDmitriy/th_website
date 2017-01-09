@@ -17,7 +17,7 @@
       <div class="sorted_display">
         <% if @games.present? && @games.any? %>
             <% @games.try(:order, counter: :desc).each do |game| %>
-                <%= render partial: "games/game", locals: {game: game} %>
+                <%= render partial: "games/game2", locals: {game: game} %>
             <% end %>
         <% else %>
             <p class="big text-center"><%=t("game.s.not_found")%></p>

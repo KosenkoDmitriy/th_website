@@ -529,6 +529,7 @@ position: absolute;top: 0;left: 0;}
 .front {background:#9f0000;z-index: -1;}
 .back {background:#FFF;-webkit-transform: rotateY(180deg);-moz-transform: rotateY(180deg);transform: rotateY(180deg);}
 
+
 .sub_section03 a {color:#000;text-decoration: none;}
 .sub_section03 a:hover {color:darkred;text-decoration: none;}
 
@@ -684,3 +685,28 @@ position: absolute;top: 0;left: 0;}
 }
 
 //{ float:right; width:116px; height:42px; background:asset-url('send-btn01.png') 0 0 no-repeat; padding:0; margin:10px 6px 10px 0; border:none; color:#000; font:normal 14px/22px 'PT sans'; cursor:pointer;}
+.or_line {
+  margin: 16px auto;
+  position: relative;
+  color: #000;
+}
+
+.or_line:before {
+  content: '';
+  width: 43%;
+  height: 2px;
+  background: #777;
+  position: absolute;
+  top: 9px;
+  left: 2%;
+}
+
+.or_line:after {
+  content: '';
+  width: 43%;
+  height: 2px;
+  background: #777;
+  position: absolute;
+  top: 9px;
+  right: 2%;
+}

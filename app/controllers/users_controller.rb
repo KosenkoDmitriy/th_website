@@ -54,7 +54,15 @@ class UsersController < ApplicationController
     render layout: 'mobile', template: 'mobile/signup'
   end
 
-  def sign_in_up
+  def sign_up
+    session[:is_mobile] = nil
+    session[:k] = params['k'] if params['k'].present?
+    @user_empty = User.new
+    @user_empty = User.new flash[:user] if flash[:user]
+    redirect_to user_path current_user if current_user
+  end
+
+  def sign_in
     session[:is_mobile] = nil
     session[:k] = params['k'] if params['k'].present?
     @user_empty = User.new

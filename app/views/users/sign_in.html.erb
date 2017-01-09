@@ -1,0 +1,25 @@
+<div class="section03 no_padding" id="sign_in_up">
+
+  <div class="sub_section03 no_padding">
+    <!--<h1><%#= t("th.promos.personal_info") #%></h1>-->
+
+    <h1><%= t("credit.s.for_free") %></h1>
+
+    <br>
+
+    <div class="narrow">
+      <%= link_to image_tag("buttons/facebook_login"), '/auth/facebook', class: 'img-responsive' %>
+      <div class="or_line" style="color:black" align="center">OR</div>
+      <h1 style="color:black" align="center">Login with Email</h1>
+
+      <%= render partial: "shared/errors_flash" %>
+      <%= render partial: "shared/errors", locals: {obj: @user} %>
+      <br>
+      <!--<h2 style="color:black" class="text-center"><i class="glyphicon glyphicon-log-in"></i> <%= t("login") %></h2>-->
+      <%= render partial: "shared/sign_in_form" %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>

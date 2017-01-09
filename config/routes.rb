@@ -26,7 +26,10 @@ Rails.application.routes.draw do
 
   post 'fw' => "users#fw", as: :fw
 
-  get 'sign_in_up' => 'users#sign_in_up', as: :sign_in_up
+  get 'sign_in_up' => 'users#sign_up', as: :sign_in_up # register for old api
+  get 'sign_up' => 'users#sign_up', as: :sign_up # register
+  get 'sign_in' => 'users#sign_in', as: :sign_in       # login
+
   post 'signin' => 'users#signin', as: :signin
   get 'signin' => 'users#signin', as: :signin_get
 

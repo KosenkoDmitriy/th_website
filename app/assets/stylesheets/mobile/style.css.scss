@@ -62,3 +62,29 @@ footer .logo_pre {
   align-items: center;
 }
 
+
+.or_line {
+  margin: 16px auto;
+  position: relative;
+  color: #000;
+}
+
+.or_line:before {
+  content: '';
+  width: 43%;
+  height: 2px;
+  background: #777;
+  position: absolute;
+  top: 9px;
+  left: 2%;
+}
+
+.or_line:after {
+  content: '';
+  width: 43%;
+  height: 2px;
+  background: #777;
+  position: absolute;
+  top: 9px;
+  right: 2%;
+}

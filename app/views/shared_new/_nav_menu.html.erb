@@ -8,8 +8,8 @@
           <td class="games"><a href="<%= user_path(current_user) %>"><%=t("menu.profile")%></a></td>
           <td class="contact"><a href="<%= signout_path %>"><%=t("menu.sign_out")%></a></td>
     <% else %>
-          <td class="contact"><a href="<%= sign_in_up_path %>"><%=t("menu.sign_in")%></a></td>
-          <td class="contact"><a href="<%= sign_in_up_path %>"><%=t("menu.sign_up")%></a></td>
+          <td class="contact"><a href="<%= sign_in_path %>"><%=t("menu.sign_in")%></a></td>
+          <td class="contact"><a href="<%= sign_up_path %>"><%=t("menu.sign_up")%></a></td>
           <td class="tournament"><a href="<%= root_path %>#credits"><%=t("menu.credits")%></a></td>
         <% end %>
       <!--<td class="aboutus"><a href="#"><%=t("menu.about")%></a></td>-->

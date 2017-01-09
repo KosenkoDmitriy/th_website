@@ -710,3 +710,14 @@ position: absolute;top: 0;left: 0;}
   top: 9px;
   right: 2%;
 }
+
+.narrow {
+  min-width: 200px;
+  max-width: 500px;
+  margin: auto;
+  width: 50%;
+}
+
+.narrow input {
+  margin-top:5px;
+}

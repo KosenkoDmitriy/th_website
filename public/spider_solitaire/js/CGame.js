@@ -44,7 +44,7 @@ function CGame(oData){
 
     
     this._init = function(){
-		
+        WINS_TO_WIN = 0;
         _iStackOffsetBack = 10;
         _iStackCardOffset = 23;
         _iDepth=0;
@@ -834,7 +834,7 @@ function CGame(oData){
         if(DISABLE_SOUND_MOBILE === false || s_bMobile === false){
             createjs.Sound.play("game_over");
         }
-        
+
         _oEndPanel = CEndPanel(s_oSpriteLibrary.getSprite('msg_box'));
         _oEndPanel.show(_iScore);
     };
@@ -845,14 +845,19 @@ function CGame(oData){
     };
 
     this.pauseGame = function (){
-        _bStartGame = !_bStartGame;                              
+        _bStartGame = !_bStartGame;
     };
     
     this._calculateScore = function(oCard, iPoint){
-        //alert("_calculateScore"+iPoint);
+        WINS_TO_WIN += 1;
 
-        //var oScore = new CScore();
-        //oScore.showScore(oCard.getPos(), iPoint);
+        //alert(WINS_TO_WIN+"/8 _calculateScore "+iPoint);
+        // if 8 subwins was passed
+        if (WINS_TO_WIN == 8) {
+
+            var oScore = new CScore();
+            oScore.showScore(oCard.getPos(), iPoint);
+        }
     };
     
     this._removeScore = function(){
@@ -866,7 +871,6 @@ function CGame(oData){
             url: url,
             dataType: 'text',
             data: {
-                base64data: "testdata",
                 a: -oData.points_to_lose,
                 k: "",
             }
@@ -881,20 +885,12 @@ function CGame(oData){
     };
         
     this.updateScore = function(iPoint){
-        //alert("updateScore"+iPoint); // when collect flash A2345678910jqk
-        //_iScore += iPoint; * s_iMode;
-        //POINTS_TO_START = oData.points_to_start = _iScore;
-        //var url = "/add2";
-        //$.ajax({
-        //    type: "POST",
-        //    url: url,
-        //    dataType: 'text',
-        //    data: {
-        //        base64data: "testdata",
-        //        a: iPoint * s_iMode,
-        //        k: "",
-        //    }
-        //});
+        //alert(WINS_TO_WIN+"/8 updateScore "+iPoint); // when collect flash A2345678910jqk
+
+        if (WINS_TO_WIN == 8) {
+            _iScore += iPoint;// * s_iMode;
+            POINTS_TO_START = oData.points_to_start = _iScore;
+        }
     };
     
     this.updateVisualScore = function(){
@@ -912,8 +908,6 @@ function CGame(oData){
     
     this.update = function(){
         if(_bInitGame){
-            
-            
             
             if(_aCard[51].getPlaced()){ 
                 if(DISABLE_SOUND_MOBILE === false || s_bMobile === false ){
@@ -1000,6 +994,7 @@ function CGame(oData){
     if (s_iMode == 1) POINTS_TO_WIN = 1000;
     if (s_iMode == 2) POINTS_TO_WIN = 2500;
     if (s_iMode == 3) POINTS_TO_WIN = 5000;
+    WINS_TO_WIN = 0;
     this._init();
 }
 

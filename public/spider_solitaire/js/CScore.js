@@ -28,7 +28,7 @@ function CScore() {
         createjs.Tween.get(oScoreMove).to({x:425 , y:109}, iTime, createjs.Ease.cubicIn).call(function(){s_oGame.updateVisualScore(iPoint); s_oStage.removeChild(oScoreMove); });
         createjs.Tween.get(oScoreMove).to({scaleX:1 , scaleY:1}, iTime, createjs.Ease.linear);
 		
-	createjs.Tween.get(oScoreMoveBack).to({x:425 , y:109}, iTime, createjs.Ease.cubicIn).call(function(){ s_oStage.removeChild(oScoreMoveBack); });
+        createjs.Tween.get(oScoreMoveBack).to({x:425 , y:109}, iTime, createjs.Ease.cubicIn).call(function(){ s_oStage.removeChild(oScoreMoveBack); });
         createjs.Tween.get(oScoreMoveBack).to({scaleX:1 , scaleY:1}, iTime, createjs.Ease.linear);
 
     };

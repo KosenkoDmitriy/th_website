@@ -12,7 +12,7 @@ function CEndPanel(oSpriteBg){
         
         _oBg = createBitmap(oSpriteBg);
         
-	_oMsgTextBack = new createjs.Text("","bold 60px "+PRIMARY_FONT, "#000");
+	    _oMsgTextBack = new createjs.Text("","bold 60px "+PRIMARY_FONT, "#000");
         _oMsgTextBack.x = CANVAS_WIDTH/2 +1;
         _oMsgTextBack.y = (CANVAS_HEIGHT/2)-160;
         _oMsgTextBack.textAlign = "center";
@@ -58,9 +58,13 @@ function CEndPanel(oSpriteBg){
         _oMsgTextBack.text = TEXT_GAMEOVER;
         _oMsgText.text = TEXT_GAMEOVER;
         
-        _oScoreTextBack.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
-        _oScoreText.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
-        
+        //_oScoreTextBack.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
+        //_oScoreText.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
+
+        // uncomment two lines below if calculate() method was disabled
+        _oScoreTextBack.text = TEXT_SCORE +": "+(iScore);
+        _oScoreText.text = TEXT_SCORE +": "+(iScore);
+
         _oGroup.visible = true;
         
         var oParent = this;

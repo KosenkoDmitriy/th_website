@@ -59,6 +59,16 @@
                                 parent.__ctlArcadeStartSession();
                             }
                             //...ADD YOUR CODE HERE EVENTUALLY
+//                        var url = "/sub2";
+//                        $.ajax({
+//                            type: "POST",
+//                            url: url,
+//                            dataType: 'text',
+//                            data: {
+//                                a: 500,
+//                                k: "",
+//                            }
+//                        });
                     });
                      
                     $(oMain).on("end_session", function(evt) {
@@ -90,11 +100,11 @@
                             url: url,
                             dataType: 'text',
                             data: {
-                                base64data: "testdata",
                                 a: PointsToWin,
                                 k: "",
                             }
                         });
+
                     });
 
                     $(oMain).on("start_level", function(evt, iLevel) {

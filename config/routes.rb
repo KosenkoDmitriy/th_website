@@ -62,6 +62,8 @@ Rails.application.routes.draw do
   get 'avatar_url' => "users#avatar_url", as: :avatar_url
 
   post 'get_reg' => 'users#get_reg'
+  post 'fw_th' => "users#fw_th", as: :fw_th
+
   # end
 
   # social login

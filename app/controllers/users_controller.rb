@@ -3,10 +3,10 @@ require 'digest/md5'
 class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
 
-  protect_from_forgery except: [:login, :flogin, :sub, :add, :get_balance, :set_balance, :unsubscribe]
+  protect_from_forgery except: [:fw_th, :login, :flogin, :sub, :add, :get_balance, :set_balance, :unsubscribe]
   skip_before_action :verify_authenticity_token
 
-  before_action :allow_webgl, only: [:login, :flogin, :sub, :add, :get_balance, :set_balace, :unsubscribe]
+  before_action :allow_webgl, only: [:fw_th, :login, :flogin, :sub, :add, :get_balance, :set_balace, :unsubscribe]
   respond_to :html, :json
 
   def index
@@ -474,7 +474,7 @@ class UsersController < ApplicationController
     render plain: 'error', status: 404
   end
 
-  def fw
+  def fw # of website
     user_id = params[:user_id].to_i if params[:user_id].present?
     win_amount = params[:win_amount].to_i if params[:win_amount].present?
     if user_id > 0 && current_user.present?
@@ -518,6 +518,56 @@ class UsersController < ApplicationController
     end
     render plain: "error", status: 404
   end
+
+  def fw_th # of mobile game
+
+    user, win_amount = get_user_by_key params
+    if user.present?
+      #user.credits += win_amount
+      #new_score_history user, win_amount
+
+      user.fw_attempts -= 1
+      user.fw_dt = DateTime.now if user.fw_dt.nil?
+
+      if user.fw_attempts >= 0
+        user.credits += win_amount
+        user.fw_dt = DateTime.now.utc + 1 if user.fw_attempts == 0
+        #render plain: fcredits(user.credits), status: 200
+        render plain: win_amount, status: 200
+      elsif user.fw_attempts < 0 # daily limit has been exceeded
+        t2 = Time.parse(user.fw_dt.utc.to_s)
+        t_now = Time.now.utc
+        dt_in_minutes = t2.min - t_now.min
+        t = ((t2 - t_now) / 3600).round
+        dt = ''
+        if t == 0 # dt in minutes
+          dt += "#{dt_in_minutes} minute"
+          dt += 's' if dt_in_minutes > 1
+        else      # dt in hours
+          dt = "#{t} hours"
+        end
+
+        d2 = user.fw_dt.utc
+        d_now = DateTime.now.utc
+        #if t <= 0
+        if d2 < d_now # checking dt without relogin
+          user.fw_attempts = Rails.configuration.x.fw_attempts - 1
+          user.fw_dt = DateTime.now.utc + 1 if user.fw_attempts == 0
+          user.credits += win_amount
+          #render plain: fcredits(user.credits), status: 200
+          render plain: win_amount, status: 200
+        else
+          render plain: "#{t("user.fw.exceed")} #{ dt } ", status: 404
+        end
+      end
+
+      user.save
+      return
+
+    end
+    render plain: "please try again later", status: 404
+  end
+
 
   private
 

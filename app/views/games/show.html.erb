@@ -17,7 +17,7 @@
           <% if current_user || @game.is_skipped_login? %>
               <iframe src="<%= @game.try(:url) %>" class="col-xs-12" width=<%= @game.try(:width) || "100%" %> height="<%= @game.try(:height) || '600px' %>" style="margin-top:<%=@game.try(:offsetY)%>;margin-left:<%= @game.try(:offsetX) %>" allowfullscreen="true" frameBorder="0"></iframe>
           <% else %>
-              <a href="<%= sign_in_up_path %>"><%= t("login_first") %></a>
+              <a href="<%= sign_in_path %>"><%= t("login_first") %></a>
           <% end %>
         </div>
         <br>

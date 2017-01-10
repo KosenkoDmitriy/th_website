@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
 
       if !user.present?
         flash[:error] = t("user.empty")
-        redirect_to sign_in_up_path and return
+        redirect_to sign_in_path and return
       end
 
       if !user.is_active?
         flash[:error] = t("user.blocked")
-        redirect_to sign_in_up_path and return
+        redirect_to sign_in_path and return
       end
 
       user.key = ApplicationHelper.gk(user.email, user.password) if session[:is_mobile]

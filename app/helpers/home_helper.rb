@@ -10,13 +10,4 @@ module HomeHelper
     return url
   end
 
-  def sign_in_up_url
-    user = current_user
-    if user
-      user_path user
-    else
-      root_path + "#sign_in_up"
-    end
-  end
-
 end

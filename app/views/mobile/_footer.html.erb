@@ -51,8 +51,8 @@
               <li><a href="<%= user_path(current_user) %>"><%= t("menu.profile") %></a></li>
               <li><a href="<%= signout_path %>"><%= t("menu.sign_out") %></a></li>
           <% else %>
-              <li><a href="<%= sign_in_up_path %>"><%= t("menu.sign_in") %></a></li>
-              <li><a href="<%= sign_in_up_path %>"><%= t("menu.sign_up") %></a></li>
+              <li><a href="<%= sign_in_path %>"><%= t("menu.sign_in") %></a></li>
+              <li><a href="<%= sign_up_path %>"><%= t("menu.sign_up") %></a></li>
               <li><a href="<%= root_path %>#credits"><%= t("menu.credits") %></a></li>
           <% end %>
         </ul>

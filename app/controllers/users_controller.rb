@@ -80,27 +80,27 @@ class UsersController < ApplicationController
     flash[:user] = @user_empty
     if !simple_captcha_valid?
       flash[:error] = t("simple_captcha.message.user")
-      redirect_back_or_sign_in_up
-      # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
+      redirect_back_or_sign_up
+      # render template: "users/sign_up", locals: {user_empty: @user_empty}
       return
     end
 
     if email.blank? || password.blank?
       flash[:error] = "please enter email and/or password"
-      redirect_back_or_sign_in_up
+      redirect_back_or_sign_up
       return
     end
 
     if (confirm_password != password)
       flash[:error] = "passwords didn't match"
-      redirect_back_or_sign_in_up
+      redirect_back_or_sign_up
       # render ""
       return
     end
 
     if User.exists?(email: email)
       flash[:error] = "email already taken: #{ email }"
-      redirect_back_or_sign_in_up
+      redirect_back_or_sign_up
       return
     end
 
@@ -128,12 +128,16 @@ class UsersController < ApplicationController
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"
-      redirect_back_or_sign_in_up
+      redirect_back_or_sign_up
       return
     end
   end
 
-  def redirect_back_or_sign_in_up(default = sign_in_up_path, options = {})
+  def redirect_back_or_sign_up(default = sign_up_path, options = {})
+    redirect_to (request.referer.present? ? :back : default), options
+  end
+
+  def redirect_back_or_sign_in(default = sign_in_path, options = {})
     redirect_to (request.referer.present? ? :back : default), options
   end
 
@@ -144,8 +148,8 @@ class UsersController < ApplicationController
     flash[:user] = @user_empty
     # if !simple_captcha_valid?
     #   flash[:error] = t("simple_captcha.message.user")
-    #   # render template: "users/sign_in_up", locals: {user_empty: @user_empty}
-    #   redirect_back_or_sign_in_up
+    #   # render template: "users/sign_in", locals: {user_empty: @user_empty}
+    #   redirect_back_or_sign_in
     #   return
     # end
     if email.present? && password.present?
@@ -155,7 +159,7 @@ class UsersController < ApplicationController
         if user.password == password
           if !user.is_active?
             flash[:error] = t("user.blocked")
-            redirect_back_or_sign_in_up and return
+            redirect_back_or_sign_in and return
           end
           session[:user_id] = user.try(:id)
           if (user.last_login_dt.present? && user.last_login_dt <= DateTime.now - 1) || user.last_login_dt.blank? # yesterday login or first login
@@ -189,7 +193,7 @@ class UsersController < ApplicationController
       flash[:error] = 'empty email and/or password'
     end
 
-    redirect_back_or_sign_in_up
+    redirect_back_or_sign_in
     return
   end
 
@@ -242,7 +246,7 @@ class UsersController < ApplicationController
       if User.exists?(acode: @acode)
         user = User.find_by(acode: @acode)
         user.update_columns(password: pass(new_pass), acode: "")
-        redirect_to sign_in_up_path
+        redirect_to sign_in_path
       else
         flash[:error] = "invalid confirmation code"
         return

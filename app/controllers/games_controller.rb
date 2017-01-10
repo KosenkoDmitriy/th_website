@@ -92,7 +92,7 @@ class GamesController < ApplicationController
     if !current_user
       url_back = request.fullpath
       session[:url_back] = url_back
-      redirect_to sign_in_up_path
+      redirect_to sign_in_path
       return
     else
       counter

@@ -336,7 +336,7 @@ class UsersController < ApplicationController
       new_score_history user, -credits_from_param
 
       if user.save!
-        render plain: 'ok', status: 200
+        render plain: user.credits, status: 200
         return
       end
     end
@@ -351,7 +351,7 @@ class UsersController < ApplicationController
       new_score_history user, credits_from_param
 
       if user.save!
-        render plain: user.credits, status: 200# if is_return > 0
+        render plain: user.credits, status: 200
         return
       end
     end

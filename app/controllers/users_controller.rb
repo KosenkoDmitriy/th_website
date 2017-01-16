@@ -401,8 +401,9 @@ class UsersController < ApplicationController
       new_score_history user, credits_from_param
 
       if user.save!
-        render plain: 'ok', status: 200
-        return
+        #render plain: 'ok', status: 200
+        render plain: user.credits, status:200
+	return
       end
     end
     render plain: 'error', status: 404
@@ -416,8 +417,9 @@ class UsersController < ApplicationController
     if user.present?
       user.credits += credits_from_param
       if user.save!
-        render plain: 'ok', status: 200
-        return
+        #render plain: 'ok', status: 200
+        render plain: user.credits, status:200
+	return
       end
     end
     render plain: 'error', status: 404

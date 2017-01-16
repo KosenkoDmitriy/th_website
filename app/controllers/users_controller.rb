@@ -398,7 +398,7 @@ class UsersController < ApplicationController
     user, credits_from_param = get_user2
     if user.present?
       user.credits -= credits_from_param
-      new_score_history user, credits_from_param
+      new_score_history user, -credits_from_param
 
       if user.save!
         #render plain: 'ok', status: 200

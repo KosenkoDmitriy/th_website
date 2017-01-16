@@ -332,6 +332,8 @@ class UsersController < ApplicationController
   def sub
     user, credits_from_param = get_user_by_key params
     if user.present?
+      credits_from_param *= -1 if credits_from_param < 0
+
       user.credits -= credits_from_param
       new_score_history user, -credits_from_param
 
@@ -347,6 +349,8 @@ class UsersController < ApplicationController
   def add
     user, credits_from_param = get_user_by_key params
     if user.present?
+      credits_from_param *= -1 if credits_from_param < 0
+
       user.credits += credits_from_param
       new_score_history user, credits_from_param
 
@@ -397,6 +401,7 @@ class UsersController < ApplicationController
   def sub2
     user, credits_from_param = get_user2
     if user.present?
+      credits_from_param *= -1 if credits_from_param < 0
       user.credits -= credits_from_param
       new_score_history user, -credits_from_param
 
@@ -412,6 +417,7 @@ class UsersController < ApplicationController
   # add win amount to balance
   def add2
     user, credits_from_param = get_user2
+    credits_from_param *= -1 if credits_from_param < 0
     new_score_history user, credits_from_param
 
     if user.present?

@@ -97,7 +97,7 @@ font-style: normal;
 .navigation{ background:asset-url('navigation_area.png') no-repeat; width:940px; height:74px; position:absolute; bottom:-36px; left:41px; z-index:3; padding:0; padding: 0 3px 0 0; }
 .navigation table { width: 100%; border-spacing: 0; border-collapse: collapse; height: 74px; }
 .navigation td { vertical-align: middle; text-align: center;  }
-.navigation td a{ font-family:'PT Sans'; color:#FFF; padding: 23px 0; font-size:15px; line-height:20px; font-weight:normal; font-style:normal; text-decoration:none; text-shadow:1px 1px 0px #000; display: block; border-left: 1px solid #c60b11; border-right: 1px solid #c60b11;}
+.navigation td a{ font-family:'PT Sans'; color:#FFF; padding: 23px 0; font-size:30px; line-height:20px; font-weight:normal; font-style:normal; text-decoration:none; text-shadow:4px 4px 0px #000; display: block; border-left: 1px solid #c60b11; border-right: 1px solid #c60b11;}
 .navigation td a:hover{ background:asset-url('navigation_area.png') no-repeat 0 -79px; border-left: 1px solid #e51319; border-right: 1px solid #e51319; }
 
 .navigation td:first-child  a{ border-left: 0px; }

@@ -26,8 +26,8 @@ class SessionsController < ApplicationController
         #flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_login } credits for sign in"
         user.save!
         msg = Message.new
-        msg.title = Rails.configuration.x.signup.thanks.title
-        msg.text = Rails.configuration.x.signup.thanks.text
+        msg.title = Rails.configuration.x.signup_thanks_title
+        msg.text = Rails.configuration.x.signup_thanks_text
         UserMailer.notify_user(user, msg).deliver_now
         LoginHistory.create(count:1, user:user)
       end

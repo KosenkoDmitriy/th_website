@@ -124,7 +124,10 @@ class UsersController < ApplicationController
       session[:user_id] = user.try(:id) # signup and signin
       flash[:notice] = "registered successfully!"
       flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
-
+      msg = Message.new
+      msg.title = Rails.configuration.x.signup.thanks.title
+      msg.text = Rails.configuration.x.signup.thanks.text
+      UserMailer.notify_user(user, msg).deliver_now
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"

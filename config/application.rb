@@ -44,5 +44,9 @@ module ThWebsite
 
     config.x.email_to = 'mdabaker@aol.com'
     #config.x.email_to = 'kosenkodmitryv@gmail.com'
+
+    config.x.signup.thanks.title = "YourPlaceForFun.com. Don't forget to get your FREE Credits."
+    config.x.signup.thanks.text = "Thank you for joining our website.<br> Please go to <a href='https://yourplaceforfun.com/#credits'>www.yourplaceforfun.com</a> and spin the wheel to get free credits every 24 hours."
+    UserMailer.notify_user(user, msg).deliver_now
   end
 end

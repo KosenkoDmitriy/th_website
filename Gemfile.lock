@@ -98,6 +98,8 @@ GEM
     griddler (1.3.1)
       htmlentities
       rails (>= 3.2.0)
+    griddler-sendgrid (1.0.0)
+      griddler
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -244,6 +246,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   griddler
+  griddler-sendgrid
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook

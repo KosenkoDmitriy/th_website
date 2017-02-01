@@ -58,3 +58,6 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 
 gem 'whenever', :require => false
+
+gem 'griddler'
+

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   mount_griddler
-  
+
   get 'unsubscribe/:k' => 'users#unsubscribe', as: :unsubscribe
 
   get 'mobile/tb' => 'home#tb'

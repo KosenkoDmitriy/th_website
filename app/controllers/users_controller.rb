@@ -526,8 +526,8 @@ class UsersController < ApplicationController
           render plain: "#{t("user.fw.exceed")} #{ dt } ", status: 404
         end
       end
-
-      current_user.save
+      FwHistory.create(amount:win_amount, user:current_user, is_mobile:false) if current_user.save
+      #FwHistory.create(amount:win_amount, user:current_user, is_mobile:false, source:request.env['HTTP_USER_AGENT']) if current_user.save
       return
 
     end
@@ -575,8 +575,8 @@ class UsersController < ApplicationController
           render plain: "#{t("user.fw.exceed")} #{ dt } ", status: 404
         end
       end
-
-      user.save
+      FwHistory.create(amount:win_amount, user:user, is_mobile:true) if user.save
+      #FwHistory.create(amount:win_amount, user:user, is_mobile:true, source:request.env['HTTP_USER_AGENT']) if user.save
       return
 
     end

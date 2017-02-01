@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221171700) do
+ActiveRecord::Schema.define(version: 20170201100540) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20161221171700) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "fw_histories", force: :cascade do |t|
+    t.float    "amount"
+    t.integer  "user_id"
+    t.boolean  "is_mobile"
+    t.string   "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "fw_histories", ["user_id"], name: "index_fw_histories_on_user_id"
+
 # Could not dump table "games" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
@@ -71,10 +82,10 @@ ActiveRecord::Schema.define(version: 20161221171700) do
   create_table "messages", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
-    t.integer  "interval",     default: 0
+    t.string   "interval"
+    t.boolean  "is_published", default: true
     t.boolean  "is_email",     default: true
     t.boolean  "is_sms",       default: true
-    t.boolean  "is_published", default: true
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

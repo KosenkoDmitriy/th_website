@@ -7,7 +7,9 @@ function CEndPanel(oSpriteBg){
     var _oMsgText;
     var _oScoreTextBack;
     var _oScoreText;
-    
+    var _oWinScoreText;
+    var _oHelpText;
+
     this._init = function(oSpriteBg){
         
         _oBg = createBitmap(oSpriteBg);
@@ -21,7 +23,13 @@ function CEndPanel(oSpriteBg){
         _oMsgText.x = CANVAS_WIDTH/2;
         _oMsgText.y = (CANVAS_HEIGHT/2)-162;
         _oMsgText.textAlign = "center";
-        
+
+        _oWinScoreText = new createjs.Text("","bold 60px "+PRIMARY_FONT, "#ffffff");
+        _oWinScoreText.x = CANVAS_WIDTH/2;
+        _oWinScoreText.y = (CANVAS_HEIGHT/2) - 58;
+        _oWinScoreText.textAlign = "center";
+
+
         _oScoreTextBack = new createjs.Text("","bold 40px "+PRIMARY_FONT, "#000");
         _oScoreTextBack.x = CANVAS_WIDTH/2 +1;
         _oScoreTextBack.y = (CANVAS_HEIGHT/2) + 50;
@@ -32,11 +40,18 @@ function CEndPanel(oSpriteBg){
         _oScoreText.y = (CANVAS_HEIGHT/2) + 52;
         _oScoreText.textAlign = "center";
 
+
+        _oHelpText = new createjs.Text("","bold 30px "+PRIMARY_FONT, "#ffffff");
+        _oHelpText.x = CANVAS_WIDTH/2;
+        _oHelpText.y = (CANVAS_HEIGHT/2) + 142;
+        _oHelpText.textAlign = "center";
+
+
         _oGroup = new createjs.Container();
         _oGroup.alpha = 0;
         _oGroup.visible=false;
         
-        _oGroup.addChild(_oBg, _oScoreTextBack,_oScoreText,_oMsgTextBack,_oMsgText);
+        _oGroup.addChild(_oBg, _oHelpText, _oWinScoreText, _oScoreTextBack,_oScoreText,_oMsgTextBack,_oMsgText);
 
         s_oStage.addChild(_oGroup);
     };
@@ -57,7 +72,9 @@ function CEndPanel(oSpriteBg){
         
         _oMsgTextBack.text = TEXT_GAMEOVER;
         _oMsgText.text = TEXT_GAMEOVER;
-        
+
+        _oWinScoreText.text = POINTS_TO_WIN + " credits";
+
         //_oScoreTextBack.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
         //_oScoreText.text = TEXT_SCORE +": "+(iScore+POINTS_TO_WIN);
 
@@ -65,6 +82,7 @@ function CEndPanel(oSpriteBg){
         _oScoreTextBack.text = TEXT_SCORE +": "+(iScore);
         _oScoreText.text = TEXT_SCORE +": "+(iScore);
 
+        _oHelpText.text = "please click anywhere to continue ...";
         _oGroup.visible = true;
         
         var oParent = this;

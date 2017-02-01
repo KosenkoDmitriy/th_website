@@ -38,6 +38,7 @@
                 var isAlertOn = false;
                 var url2 = "/get2";
                 var gameFee = 500;
+
                 $.ajax({
                     type: "POST",
                     url: url2,
@@ -50,7 +51,8 @@
                         var oMain = new CMain({
                                             points_to_lose: -10, //Number of losing points per move
                                             points_to_win: gameFee, //overrided in cgame (Points win by a complete flush)
-                                            points_to_start: initMoney // init score
+                                            points_to_start: initMoney, // init score
+                                            is_debug: false
                                            });
                                            
                                            

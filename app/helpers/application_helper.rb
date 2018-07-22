@@ -27,10 +27,12 @@ module ApplicationHelper
   MOBILE_BROWSERS = ["playbook", "windows phone", "android", "ipod", "iphone", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
 
   def detect_browser
-    agent = request.headers["HTTP_USER_AGENT"].downcase
-
-    MOBILE_BROWSERS.each do |m|
-      return "mobile" if agent.match(m)
+    agent = request.headers["HTTP_USER_AGENT"]
+    if agent.present?
+      agent = agent.downcase
+      MOBILE_BROWSERS.each do |m|
+        return "mobile" if agent.match(m)
+      end
     end
     return "desktop"
   end

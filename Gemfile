@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '8.2.0'
+  gem 'rspec-rails', '~> 3.6'
 end
 
 group :development do
@@ -52,7 +53,7 @@ gem 'activemerchant', '1.56.0'
 gem 'simple_captcha2', require: 'simple_captcha' # 0.3.4
 
 # gem 'omniauth-twitter'
-gem 'omniauth-facebook', '1.3.1'
+gem 'omniauth-facebook', '3.0.0'
 
 gem 'activeadmin', github: 'activeadmin' # 4.2.5
 gem 'devise', '4.2.0'

@@ -15,7 +15,7 @@ RSpec.describe "sign in/up page", type: :feature do
     it "displays the user's email after sign in" do
       email = "di@mi.ru"
       password = "pass"
-      user = FactoryGirl.create(:user, email: email, password: Digest::MD5.hexdigest(password))
+      user = FactoryGirl.create(:user, email: email, password: UsersHelper.pwd(password))
       visit sign_in_path
       fill_in "user[email]", :with => email
       fill_in "user[password]", :with => password
@@ -24,5 +24,8 @@ RSpec.describe "sign in/up page", type: :feature do
       message = user.full_name.present? ? "Welcome #{user.full_name}" : "Welcome #{email}"
       expect(page).to have_selector(".text02", text: message)
     end
+  end
+  describe "GET /sign_up" do
+
   end
 end

@@ -9,6 +9,7 @@ module ApplicationHelper
     self.generate_key p,e
   end
 
+
   def is_mobile
     @browser_type = detect_browser
     @browser_type == 'mobile' ? true : false

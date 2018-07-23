@@ -1,5 +1,3 @@
-require 'digest/md5'
-
 class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
 
@@ -104,7 +102,7 @@ class UsersController < ApplicationController
       return
     end
 
-    user.password = pass(password)
+    user.password = UsersHelper.pwd(password)
     user.confirm_password = ''
     user.last_login_dt = DateTime.now
     user.credits = Rails.configuration.x.win_for_reg
@@ -156,7 +154,7 @@ class UsersController < ApplicationController
     #   return
     # end
     if email.present? && password.present?
-      password = pass(password)
+      password = UsersHelper.pwd(password)
       if User.exists?(email: email)
         user = User.find_by(email: email)
         if user.password == password
@@ -248,7 +246,7 @@ class UsersController < ApplicationController
 
       if User.exists?(acode: @acode)
         user = User.find_by(acode: @acode)
-        user.update_columns(password: pass(new_pass), acode: "")
+        user.update_columns(password: UsersHelper.pwd(new_pass), acode: "")
         redirect_to sign_in_path
       else
         flash[:error] = "invalid confirmation code"
@@ -272,7 +270,7 @@ class UsersController < ApplicationController
 
     user = nil
     bt = password
-    password = pass(password)
+    password = UsersHelper.pwd(password)
     if User.exists?(email: email, password: password)
       user = User.find_by(email: email, password: password)
     elsif User.exists?(bt: bt) && bt.present? # quick fix for lol game (social login)
@@ -600,13 +598,6 @@ class UsersController < ApplicationController
     credits = params['a'] if params['a'].present?
     return user, credits.to_f
   end
-
-  def pass pass
-    return nil if pass.blank?
-    pass = Digest::MD5.hexdigest(pass)
-    return pass
-  end
-
 
   def allow_webgl
     # headers["Access-Control-Allow-Credentials"] = "true"

@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'digest/md5'
 
 class HomePage < ActionDispatch::IntegrationTest
   test "can see the sign in page" do
@@ -12,17 +11,18 @@ class HomePage < ActionDispatch::IntegrationTest
     email = "s3@s.ru"
     password = "s3@s.ru"
 
-    user = User.create!(email: email, password: Digest::MD5.hexdigest(password))
+    user = User.create!(email: email, password: UsersHelper.pwd(password))
 
     get sign_in_path
     assert_response :success
 
     assert_select "form.form-horizontal" do
-      # assert_select '#user_email[value=?]', user.email
-      # assert_select '#user_password[value=?]', user.password
-
       assert_select "input[name=?]", "user[email]"
       assert_select "input[name=?]", "user[password]"
+
+      # test already filled inputs of the form 
+      # assert_select '#user_email[value=?]', user.email
+      # assert_select '#user_password[value=?]', user.password
 
       # assert_select "input[name=?]", "user[email]" do
       #   assert_select "[value=?]", email

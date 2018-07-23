@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  float: 
-  is_mobile: 
+  # float: 
+  is_mobile:
 
 two:
-  float: 
-  is_mobile: 
+  # float:
+  is_mobile:

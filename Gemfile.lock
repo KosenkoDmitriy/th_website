@@ -270,7 +270,7 @@ DEPENDENCIES
   omniauth-facebook (= 3.0.0)
   rails (= 4.2.5)
   responders (~> 2.0)
-  rspec-rails (~> 3.6)
+  rspec-rails (~> 3.7)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_captcha2

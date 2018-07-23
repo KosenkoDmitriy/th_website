@@ -38,7 +38,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_girl_rails', '4.9.0'
   gem 'capybara', '2.18.0'
-  gem 'simplecov', require: false
+  gem 'simplecov', require: false # '0.16.1'
 end
 
 group :development do

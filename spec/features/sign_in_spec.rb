@@ -17,8 +17,8 @@ RSpec.describe "sign in/up page", type: :feature do
       password = "pass"
       user = FactoryGirl.create(:user, email: email, password: UsersHelper.pwd(password))
       visit sign_in_path
-      fill_in "user[email]", :with => email
-      fill_in "user[password]", :with => password
+      fill_in "user[email]", with: email
+      fill_in "user[password]", with: password
       click_button "Login with Email"
       # expect(page).to have_selector(".error", text: "")
       message = user.full_name.present? ? "Welcome #{user.full_name}" : "Welcome #{email}"
@@ -26,6 +26,8 @@ RSpec.describe "sign in/up page", type: :feature do
     end
   end
   describe "GET /sign_up" do
-
+    it "get bonus (free credits) to a new user after sign up" do
+      
+    end
   end
 end

@@ -203,6 +203,7 @@ class UsersController < ApplicationController
     session[:is_mobile] = nil
     session[:url_back] = nil
     session[:k] = nil # invintation key
+
     # flash[:success] = 'See you!'
     redirect_to root_path
   end
@@ -451,6 +452,7 @@ class UsersController < ApplicationController
   # get balance by user id from session
   def get_balance2
     user, credits_from_param = get_user2
+    # render plain: 'error', status: 404 if user.nil?
     p=params['f'] if params['f'].present?
     if p.to_i > 0
       render plain: "#{fcredits(user.credits)}", status: 200

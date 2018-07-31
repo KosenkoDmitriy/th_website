@@ -34,15 +34,31 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '8.2.0'
+  # add some extra Rails-specific features.
   gem 'rspec-rails', '~> 3.7'
-  gem 'factory_girl_rails', '4.9.0'
-  gem 'capybara', '2.18.0'
-  gem 'simplecov', require: false # '0.16.1'
+  # replaces Rails’ default fixture with factories
+  gem 'factory_girl_rails', '4.9.0' #
+end
+
+group :test do
+  # generate a test coverage report after each spec run
+  gem 'simplecov', '0.16.1', require: false
+  # generates names, email addresses and placeholders for factories
+  gem "faker", "~> 1.9.1"
+  # simulate users' interactioons
+  gem "capybara", "~> 2.18.0"
+  # cleaning data from the test database after each spec run
+  gem "database_cleaner", "~> 1.7.0"
+  # It opens your default web browser on demand to show you what your application is rendering. Very useful for debugging tests.
+  gem "launchy", "~> 2.4.3"
+  # test JavaScript-based browser interactions with Capybara
+  gem "selenium-webdriver", "~> 3.13.1"
 end
 
 group :development do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', '8.2.0'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

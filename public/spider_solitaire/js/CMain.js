@@ -162,10 +162,12 @@ function CMain(oData){
 
     this.gotoGame = function(iMode){
         s_iMode=iMode;
-        _oGame = new CGame(_oData);   						
+        _oGame = new CGame(_oData);
         _iState = STATE_GAME;
     };
-    
+    this.updateBalance = function(dt) {
+      _oData.points_to_start -= dt;
+    };
     this.gotoHelp = function(){
         _oHelp = new CHelp();
         _iState = STATE_HELP;

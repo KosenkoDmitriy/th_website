@@ -2,7 +2,7 @@ module ApplicationHelper
   def th_game_url
     #Rails.configuration.x.th_game_url
     game = Game.find_by(fid: 'texas_holdem_foldup')
-    game_path(game)
+    game_path(game) if game
   end
 
   def self.gk p,e

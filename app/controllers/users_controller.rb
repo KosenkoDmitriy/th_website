@@ -124,7 +124,10 @@ class UsersController < ApplicationController
       session[:user_id] = user.try(:id) # signup and signin
       flash[:notice] = "registered successfully!"
       flash[:notice2] = "you got #{ fcredits Rails.configuration.x.win_for_reg } credits for sign up"
-
+      msg = Message.new
+      msg.title = Rails.configuration.x.signup_thanks_title
+      msg.text = Rails.configuration.x.signup_thanks_text
+      UserMailer.notify_user(user, msg).deliver_now
       redirect_to user
     else
       flash[:error] = "error: can\' t create user #{ user.email }"
@@ -332,6 +335,8 @@ class UsersController < ApplicationController
   def sub
     user, credits_from_param = get_user_by_key params
     if user.present?
+      credits_from_param *= -1 if credits_from_param < 0
+
       user.credits -= credits_from_param
       new_score_history user, -credits_from_param
 
@@ -347,6 +352,8 @@ class UsersController < ApplicationController
   def add
     user, credits_from_param = get_user_by_key params
     if user.present?
+      credits_from_param *= -1 if credits_from_param < 0
+
       user.credits += credits_from_param
       new_score_history user, credits_from_param
 
@@ -397,8 +404,9 @@ class UsersController < ApplicationController
   def sub2
     user, credits_from_param = get_user2
     if user.present?
+      credits_from_param *= -1 if credits_from_param < 0
       user.credits -= credits_from_param
-      new_score_history user, credits_from_param
+      new_score_history user, -credits_from_param
 
       if user.save!
         #render plain: 'ok', status: 200
@@ -412,6 +420,7 @@ class UsersController < ApplicationController
   # add win amount to balance
   def add2
     user, credits_from_param = get_user2
+    credits_from_param *= -1 if credits_from_param < 0
     new_score_history user, credits_from_param
 
     if user.present?
@@ -517,8 +526,8 @@ class UsersController < ApplicationController
           render plain: "#{t("user.fw.exceed")} #{ dt } ", status: 404
         end
       end
-
-      current_user.save
+      FwHistory.create(amount:win_amount, user:current_user, is_mobile:false) if current_user.save
+      #FwHistory.create(amount:win_amount, user:current_user, is_mobile:false, source:request.env['HTTP_USER_AGENT']) if current_user.save
       return
 
     end
@@ -566,8 +575,8 @@ class UsersController < ApplicationController
           render plain: "#{t("user.fw.exceed")} #{ dt } ", status: 404
         end
       end
-
-      user.save
+      FwHistory.create(amount:win_amount, user:user, is_mobile:true) if user.save
+      #FwHistory.create(amount:win_amount, user:user, is_mobile:true, source:request.env['HTTP_USER_AGENT']) if user.save
       return
 
     end

@@ -37,6 +37,8 @@
                 var initMoney = 100;
                 var isAlertOn = false;
                 var url2 = "/get2";
+                var gameFee = 500;
+
                 $.ajax({
                     type: "POST",
                     url: url2,
@@ -48,8 +50,9 @@
                         initMoney = parseFloat(msg);
                         var oMain = new CMain({
                                             points_to_lose: -10, //Number of losing points per move
-                                            points_to_win: 500, //overrided in cgame (Points win by a complete flush)
-                                            points_to_start: initMoney // init score
+                                            points_to_win: gameFee, //overrided in cgame (Points win by a complete flush)
+                                            points_to_start: initMoney, // init score
+                                            is_debug: false
                                            });
                                            
                                            
@@ -59,16 +62,17 @@
                                 parent.__ctlArcadeStartSession();
                             }
                             //...ADD YOUR CODE HERE EVENTUALLY
-//                        var url = "/sub2";
-//                        $.ajax({
-//                            type: "POST",
-//                            url: url,
-//                            dataType: 'text',
-//                            data: {
-//                                a: 500,
-//                                k: "",
-//                            }
-//                        });
+                        var url = "/sub2";
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            dataType: 'text',
+                            data: {
+                                a: gameFee,
+                                k: "",
+                            }
+                        });
+                        oMain.updateBalance(gameFee);
                     });
                      
                     $(oMain).on("end_session", function(evt) {

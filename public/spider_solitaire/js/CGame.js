@@ -139,12 +139,10 @@ function CGame(oData){
                     break;
             }
         }
-        
-        
-        
-    
-        
-        this._shuffleCard(oCardInfo, true);//True to shuffle
+
+
+
+        this._shuffleCard(oCardInfo, !oData.is_debug);//True to shuffle
         this._setBoard();
     
 
@@ -860,7 +858,12 @@ function CGame(oData){
         }
     };
     
-    this._removeScore = function(){
+    this._removeScore = function() {
+        //if (oData.is_debug) {
+        //    this.gameOver();
+        //    return;
+        //}
+
         //alert("removeScore"+oData.points_to_lose);
         _iScore += oData.points_to_lose;
         POINTS_TO_START = oData.points_to_start = _iScore;

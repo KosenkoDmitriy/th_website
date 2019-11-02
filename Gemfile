@@ -76,7 +76,7 @@ gem 'simple_captcha2', require: 'simple_captcha' # 0.3.4
 gem 'omniauth-facebook', '3.0.0'
 
 gem 'activeadmin', github: 'activeadmin' # 4.2.5
-gem 'devise', '4.2.0'
+gem 'devise', '4.7.1'
 
 gem 'whenever', :require => false # 0.9.7
 
